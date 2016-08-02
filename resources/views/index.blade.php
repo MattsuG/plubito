@@ -34,9 +34,9 @@
 					<div class="collapse navbar-collapse" id="top-navbar-1">
 						<ul class="nav navbar-nav navbar-right">
 							<li><a class="scroll-link" href="#features">＋ヒトについて</a></li>
-							<li><a class="" href="/mentor/">トーク検索</a></li>
-							<li><a class="" href="/login">ログイン</a></li>
-							<li><a class="btn btn-link-2" href="join/signup">サインアップ</a></li>
+							<li><a class="" href="/mentor">トーク検索</a></li>
+							<li><a class="" href="/auth/login">ログイン</a></li>
+							<li><a class="btn btn-link-2" href="/auth/register">サインアップ</a></li>
 						</ul>
 					</div>
 				</div>

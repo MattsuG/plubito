@@ -14,25 +14,28 @@
         <div>
             <div>
 
-                <h1 class="logo-name">IN+</h1>
+                <h1 class="logo-name">+ヒト</h1>
 
             </div>
-            <h3>＋ヒトユーザー登録</h3>
-            <p>xxxxxxxxxxxxxxxxxxxxxxx</p>
-            <form class="m-t" role="form" action="../mentor">
+            <h3>ユーザー登録</h3>
+            <p>hello new user^^</p>
+            <form method="post" class="m-t" role="form" action="">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="名前" required="">
+                     @if ($errors->has('name'))
+                    <div class="errors"><p>{{ $errors->first('name') }}</p></div>
+                    @endif
+                    <input id="name" type="text" name="name" class="form-control" placeholder="名前" required="" value="{{ old('name') }}">
                 </div>
                 <div class="form-group">
-                    <input type="email" class="form-control" placeholder="Eメール" required="">
+                    <input type="email" name="email" class="form-control" placeholder="Eメール" required="">
                 </div>
                 <div class="form-group">
-                    <input type="password" class="form-control" placeholder="パスワード" required="">
+                    <input type="password" name="password" class="form-control" placeholder="パスワード" required="">
                 </div>
                 <div class="form-group">
-                        <div class="checkbox i-checks"><label> <input type="checkbox"><i></i> 利用規約に同意する </label></div>
+                        <div class="checkbox i-checks"><label> <input name="term" type="checkbox"><i></i> 利用規約に同意する </label></div>
                 </div>
-                <button type="submit" class="btn btn-primary block full-width m-b">登録</button>
+                <button type="submit" value="Add New" class="btn btn-primary block full-width m-b">登録</button>
 
                 <p class="text-muted text-center"><small>すでにアカウントをお持ちですか？</small></p>
                 <a class="btn btn-sm btn-white btn-block" href="../login">Login</a>

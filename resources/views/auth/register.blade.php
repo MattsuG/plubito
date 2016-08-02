@@ -14,30 +14,61 @@
         <div>
             <div>
 
-                <h1 class="logo-name">IN+</h1>
+                <h1 class="logo-name">+ヒト</h1>
 
             </div>
-            <h3>＋ヒトユーザー登録</h3>
-            <p>xxxxxxxxxxxxxxxxxxxxxxx</p>
-            <form class="m-t" role="form" action="../mentor">
+            <h3>ユーザー登録</h3>
+            <p>hello new user^^</p>
+            <form method="post" class="m-t" role="form" action="/auth/register">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            
+                {{-- nameフィールド --}}
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="名前" required="">
+                     @if ($errors->has('name'))
+                    <div class="errors"><p>{{ $errors->first('name') }}</p></div>
+                    @endif
+                    <input id="name" type="text" name="name" class="form-control" placeholder="名前" required="" value="{{ old('name') }}">
                 </div>
+
+                {{-- emailフィールド --}}
                 <div class="form-group">
-                    <input type="email" class="form-control" placeholder="Eメール" required="">
+                    @if ($errors->has('email'))
+                    <div class="errors"><p>{{ $errors->first('email') }}</p></div>
+                    @endif
+                    <input id="email" type="email" name="email" class="form-control" placeholder="Eメール" required="" value="{{ old('email') }}">
                 </div>
+
+                {{-- passwordフィールド --}}
                 <div class="form-group">
-                    <input type="password" class="form-control" placeholder="パスワード" required="">
+                    @if ($errors->has('password'))
+                    <div class="errors"><p>{{ $errors->first('password') }}</p></div>
+                    @endif
+                    <input id="password" type="password" name="password" class="form-control" placeholder="パスワード" required="">
                 </div>
+
+                {{-- password_confirmationフィールド --}}
                 <div class="form-group">
-                        <div class="checkbox i-checks"><label> <input type="checkbox"><i></i> 利用規約に同意する </label></div>
+                     @if ($errors->has('password_confirmation'))
+                    <div class="errors"><p>{{ $errors->first('password_confirmation') }}</p></div>
+                    @endif
+                    
+                    <input id="password_confirmantion" type="password" name="password_confirmation" class="form-control" placeholder="パスワード確認" required="">
                 </div>
+
+                {{-- 登録ボタン --}}
+                <div class="form-group">
+                        <div class="checkbox i-checks"><label> <input name="term" type="checkbox"><i></i> 利用規約に同意する </label></div>
+                </div>
+
                 <button type="submit" class="btn btn-primary block full-width m-b">登録</button>
 
                 <p class="text-muted text-center"><small>すでにアカウントをお持ちですか？</small></p>
-                <a class="btn btn-sm btn-white btn-block" href="../login">Login</a>
+                <a class="btn btn-sm btn-white btn-block" href="/auth/login">ログイン</a>
+                
+                {{-- CSRFを防ぐためのトークンを隠しフィールドに埋め込むコードの生成 --}}
+                {!! csrf_field() !!}
             </form>
-            <p class="m-t"> <small>Inspinia we app framework base on Bootstrap 3 &copy; 2014</small> </p>
+            <p class="m-t"> <small>TIMELAG Inc. &copy; 2016</small> </p>
         </div>
     </div>
 @stop
