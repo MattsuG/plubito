@@ -23,6 +23,7 @@
 	// ユーザー登録
 	Route::get('auth/register', 'Auth\AuthController@getRegister');
 	Route::post('auth/register', 'Auth\AuthController@postRegister');
+	Route::get('auth/confirm/{token}', 'Auth\AuthController@getConfirm'); // ① ユーザー確認処理へのルートを追加
 
 	// Route::group(['middlewareGroups' => 'web'], function () {
 	// 	Route::resource('mentor', 'MentorController');
