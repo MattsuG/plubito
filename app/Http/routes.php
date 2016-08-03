@@ -33,4 +33,9 @@
 	    return view('index');
 	});
 
+	//ユーザー詳細表示
+	Route::get('/user/show/{id}', 'UserController@show');
+
+	
+	    
 

@@ -191,14 +191,14 @@
             <div class="col-md-4">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <h5>Hayato Matsuzawaさんのプロフィール</h5>
+                        <h5>{{ $user->name }}さんのプロフィール</h5>
                     </div>
                     <div>
                         <div class="ibox-content no-padding border-left-right">
                             <img alt="image" class="img-circle" src="{{{asset('/assets/img/backgrounds/3.jpg')}}}">
                         </div>
                         <div class="ibox-content profile-content">
-                            <h4><strong>Hayato Matsuzawa</strong></h4>
+                            <h4><strong>{{ $user->name }}</strong></h4>
                             <p><i class="fa fa-map-marker"></i> Seoul, S.Korea</p>
                             <h5>
                                 自己紹介
