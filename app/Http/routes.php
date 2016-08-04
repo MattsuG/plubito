@@ -34,7 +34,10 @@
 	});
 
 	//ユーザー詳細表示
+	Route::get('user', 'UserController@index');
 	Route::get('/user/show/{id}', 'UserController@show');
+	Route::get('/user/edit/{id}', 'UserController@edit');
+	Route::patch('/user/edit/{id}', 'UserController@update');
 
 	
 	    
