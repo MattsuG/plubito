@@ -1,6 +1,7 @@
+
 @extends('common.layout')
 @section('TitleAndCss')
-<title>show.php | トーク一覧</title>
+<title>show.php | トーク詳細</title>
 
 <link rel="stylesheet" href="{{{asset('/assets/bootstrap/css/bootstrap.min.css')}}}">
 <link rel="stylesheet" href="{{{asset('/assets/font-awesome/css/font-awesome.min.css')}}}">
@@ -27,14 +28,14 @@
                         <a class="dropdown-toggle" href="#">
                             <span class="clear"> 
                                 <span class="block m-t-xs"> 
-                                    <strong class="font-bold">お名前</strong>
+                                    <strong class="font-bold">松澤隼人</strong>
                                 </span> 
-                                <span class="text-muted text-xs block">職業とか自己紹介など。長い文章をここに書いたらどうらなるかな。職業とか自己紹介など。長い文章をここに書いたらどうらなるかな。職業とか自己紹介など。長い文章をここに書いたらどうらなるかな。職業とか自己紹介など。長い文章をここに書いたらどうらなるかな。</span>
+                                <span class="text-muted text-xs block">スポーツメーカーを退職後、大阪にて教育系ウェブサービスの立ち上げ準備中。2016年4月から6月までセブ島留学をしてプログラミングを学び、その時のルームメートと個人間で進路情報をシェアできるサービスを構築中。</span>
                             </span>
                         </a>                        
                     </div>                    
                     <div class="logo-element">
-                        <a href="/mentor"><img alt="image" class="img" src="{{{asset('/assets/img/plus.png')}}}" width="25px" height="50px" /></a>
+                        <a href="/"><img alt="image" class="img" src="{{{asset('/assets/img/plus.png')}}}" width="25px" height="50px" /></a>
                     </div>
                 </li>
                  <li>
@@ -46,7 +47,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="{{ url('mentor/create')}}"><i class="fa fa-bullhorn"></i> <span class="nav-label">トーク作成</span></a>
+                    <a href="add"><i class="fa fa-bullhorn"></i> <span class="nav-label">トーク作成</span></a>
                 </li>
                 <li>
                     <a href="/user/mypage"><i class="fa fa-calendar"></i> <span class="nav-label">マイページ</span></a>
@@ -63,7 +64,7 @@
                 </div>
                 <ul class="nav navbar-top-links navbar-right">
                     <li>
-                        <span class="m-r-sm text-muted welcome-message">トーク一覧ページへようこそ</span>
+                        <span class="m-r-sm text-muted welcome-message">トーク詳細ページへようこそ</span>
                     </li>
                     <li>
                         <a  class="dropdown-toggle count-info" href="/mentor">
@@ -168,7 +169,7 @@
 
 
                     <li>
-                        <a href="/auth/logout">
+                        <a href="login.html">
                             <i class="fa fa-sign-out"></i> ログアウト
                         </a>
                     </li>
@@ -176,50 +177,88 @@
 
             </nav>
         </div>
-        <div class="row wrapper border-bottom white-bg page-heading inbox-title">
+        <div class="row wrapper border-bottom white-bg page-heading">
             <div class="col-lg-9ƒ">
-                <h2>トーク一覧</h2>
+                <h2>トーク詳細</h2>
                 <ol class="breadcrumb">
+                    <li>
+                        <a href="/mentor">トーク一覧</a>
+                    </li>
                     <li class="active">
-                        <strong>トーク一覧</strong>
+                        <strong>トーク詳細</strong>
                     </li>
                 </ol>
             </div>
         </div>
-
-
-        <div class="row white-bg">
-            <form role="search" class="navbar-form" action="">
-                <div class="form-group">
-                    <select class="form-control" name="search_category">
-                        <option value="0" selected>カテゴリを選択</option>
-                        @foreach($categories as $category)
-                            <option value="{{ $category->id }}">{{ $category->name }}</option>
-                        @endforeach
-                    </select>
-                    <input type="text" placeholder="検索ワード" class="form-control" name="search_word" id="top-search">
-                </div>
-            </form>
-        </div>
-        <div class="row white-bg"> 
-            @foreach ($talks as $talk)             
-                <div class="col-sm-4 pricing-box pricing-box-best wow fadeInDown">
-                    <div class="pricing-box-inner">
-                        <div class="pricing-box-price">
-                        <a href="{{ url('mentor/'.$talk->id) }}" style="color:#000;text-decoration:none"><img src="{{{asset($talk->pic0_path)}}}" alt="">
+        <div class="row white-bg animated fadeInRight">
+            <div class="col-md-4">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>話し手プロフィール</h5>
+                    </div>
+                    <div>
+                        <div class="ibox-content no-padding border-left-right">
+                            <img alt="image" class="img-circle" src="{{{asset($talk->profile_picture_path)}}}">
                         </div>
-                        <h3>{{ $talk->title }}</h3>
-                        <h4>興味あり:150人 申込者:40人</h4></a>
-                        <div class="pricing-box-features">
-                            <ul>
-                                <li>{{ $talk->name }}</li>
-                                <li>価格:{{ $talk->price }}</li></a>
-                                <li><a href="{{ url('mentor/'.$talk->id) }}"><button type="button" class="btn btn-default btn-sm btn-block">詳細を見る</button></a></li>                           
-                            </ul>
+                        <div class="ibox-content profile-content">
+                            <h4><strong>{{ $talk->name }}</strong></h4>
+                            <p><i class="fa fa-map-marker"></i> Seoul, S.Korea</p>
+                            <h5>
+                                自己紹介
+                            </h5>
+                            <p>
+                                {{ $talk->introduction }}
+                                <a href="{{ url('/user/show/'.$talk->mentor_id) }}">...詳細を見る</a>
+                                }
+                            </p>
+                            <div class="user-button">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <button type="button" class="btn btn-default btn-sm btn-block"><i class="fa fa-envelope"></i> メッセージを送る</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            @endforeach
+            </div>
+            <div class="col-md-8">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>トーク詳細</h5>
+                    </div>
+                    <div class="ibox-content">
+
+                        <div>
+                            <div class="feed-activity-list">
+                                <div class="feed-element">
+                                    <h6>{{ $talk->category_name }}</h6>
+                                    {{ $talk->title }} 
+                                    <div class="photos">
+                                        <img alt="image" class="feed-photo" src="{{{asset($talk->pic0_path)}}}">
+                                        @if (!empty($talk->pic1_path))
+                                        <img alt="image" class="feed-photo" src="{{{asset($talk->pic1_path)}}}">
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="feed-element">
+                                    <h6>詳細</h6>
+                                    {{ $talk->detail }}
+                                </div>
+                                <div class="feed-element">
+                                    <h6>価格</h6>
+                                    {{ $talk->price }} 
+                                </div>
+                            </div>
+
+                            <button  class="btn btn-primary btn-block m">予約リクエスト</button>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
         </div>
         <div class="row">
             <div class="footer">                       
@@ -230,7 +269,7 @@
         </div>
     </div>
 </div>
-
+</div>
 @stop
 
 @section('Js')
