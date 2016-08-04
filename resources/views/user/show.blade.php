@@ -41,7 +41,8 @@
                  <li>
                     <a href="#"><i class="fa fa-pencil"></i> <span class="nav-label">アカウント編集</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse">
-                        <li><a href="/user/edit">プロフィール編集</a></li>
+                        <li><a href="#">プロフィール詳細</a></li>
+                        <li><a href="/user/edit/{{ $user->id }}">プロフィール編集</a></li>
                         <li><a href="graph_morris.html">Email編集</a></li>
                         <li><a href="graph_rickshaw.html">パスワード編集</a></li>
                     </ul>
@@ -199,12 +200,12 @@
                         </div>
                         <div class="ibox-content profile-content">
                             <h4><strong>{{ $user->name }}</strong></h4>
-                            <p><i class="fa fa-map-marker"></i> Seoul, S.Korea</p>
+                            <p><i class="fa fa-map-marker"></i> {{ $user->place }}</p>
                             <h5>
                                 自己紹介
                             </h5>
                             <p>
-                                スポーツアパレルメーカー、デサントにて機能性の高いスポーツウエア、ライフスタイルウエアの欧州営業を担当。２０１５年から新規リテール事業の立ち上げメンバーとして海外出向中。大学卒業までアルペンスキーに熱中し、その後アメリカコロラド州の大学院でスポーツ経営学を学ぶ。帰国後現在の会社へ入る。
+                                {{ $user->introduction }}
                             </p>
 
                             <div class="user-button">
@@ -229,56 +230,39 @@
                             <div class="feed-activity-list">
                                 <div class="feed-element">
                                     <h6>やってみたいこと</h6>
-                                    元々教育分野に興味がある。学生が多様な進路を選択できる仕組み作りに取り組みたい。受験、就活などが現在関心のあるトピック。
+                                    {{ $user->vision }}
                                 </div>
                                 <div class="feed-element">
                                     <h6>現職</h6>
-                                    Descente Global Retail Ltd.
+                                    {{ $user->current_job }}
                                     <h6>ポジション</h6>
-                                        International Sales, HR, Buying MD
+                                        {{ $user->current_position }}
                                     <h6>業務内容</h6>
-                                        DESCENTE ALLTERRAIN Whole sale business 
-                                        -Whole sale business operation guideline set-up, business term revision
-                                        -Account management: order management, collecting payments, participation in multiple sales activities
-                                        -Business develop plan establishment
-
-                                        HR: UK Store Launching Preparation
-                                        -Recruitment agency contact, Employment candidate search, Employment process handling 
-                                        -UK specific employment related issues research, payroll, labor law, benefit etc. 
-
-                                        Product preparation: UK Store Launching Preparation 
-                                        -Product buying, attending conventions, order placement,, reorder, pricing, size assortment
-                                        -Product education to sales staff 
+                                        {!! nl2br(e($user->current_detail)) !!} 
                                 </div>
                                 <div class="feed-element">
                                     <h6>前職</h6>
-                                    株式会社デサント
+                                    {{ $user->past_job }}
                                     <h6>ポジション</h6>
-                                        Global Marketing, International Sales
+                                        {{ $user->past_position }}
                                     <h6>業務内容</h6>
-                                        In charge of Descente brand distribution sales in European and western/central Asian markets with three collections; Ski, Run&Cycling, and Allterrain. 
-
-                                        -Communication and development marketing strategy with 15 distributors in respective market
-                                        -Pricing strategy for the collections cooperating merchandisers and designers
-                                        -Financial analysis of potential distributors
-                                        -Contract negotiation 
-                                        -Promotional uniform supply to the teams in Europe
+                                        {!! nl2br(e($user->past_detail)) !!}
                                 </div>
                                 <div class="feed-element">
                                     <h6>最終学歴</h6>
-                                    University of Northern Colorado
+                                    {{ $user->latest_school }}
                                     <h6>学部・学科</h6>
-                                        Sport Administration
+                                        {{ $user->latest_major }}
                                     <h6>在籍期間</h6>
-                                        2011-2012
+                                        {{ $user->latest_school_period }}
                                 </div>
                                   <div class="feed-element">
                                     <h6>その他学歴</h6>
-                                    北海道教育大学旭川校
+                                    {{ $user->other_school }}
                                     <h6>学部・学科</h6>
-                                    保健体育科
+                                    {{ $user->other_major }}
                                     <h6>在籍期間</h6>
-                                        2005-2009
+                                    {{ $user->other_school_period }}
                                 </div>
                             </div>
                         </div>
