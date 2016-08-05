@@ -227,7 +227,7 @@
                     <div class="ibox-content">
 
                         <div>
-                            <div class="feed-activity-list">
+                            <div class="feed-activity-list" style="text-align: left">
                                 <div class="feed-element">
                                     <h6>やってみたいこと</h6>
                                     {{ $user->vision }}
