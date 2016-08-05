@@ -28,9 +28,9 @@
                         <a class="dropdown-toggle" href="#">
                             <span class="clear"> 
                                 <span class="block m-t-xs"> 
-                                    <strong class="font-bold">松澤隼人</strong>
+                                    <strong class="font-bold">{{ $user->name }}</strong>
                                 </span> 
-                                <span class="text-muted text-xs block">スポーツメーカーを退職後、大阪にて教育系ウェブサービスの立ち上げ準備中。2016年4月から6月までセブ島留学をしてプログラミングを学び、その時のルームメートと個人間で進路情報をシェアできるサービスを構築中。</span>
+                                <span class="text-muted text-xs block">{{ $user->introduction }}</span>
                             </span>
                         </a>                        
                     </div>                    
@@ -41,7 +41,7 @@
                  <li>
                     <a href="#"><i class="fa fa-pencil"></i> <span class="nav-label">アカウント編集</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse">
-                        <li><a href="#">プロフィール詳細</a></li>
+                        <li><a href="#">プロフィール表示</a></li>
                         <li><a href="/user/edit/{{ $user->id }}">プロフィール編集</a></li>
                         <li><a href="graph_morris.html">Email編集</a></li>
                         <li><a href="graph_rickshaw.html">パスワード編集</a></li>

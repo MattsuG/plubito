@@ -28,9 +28,9 @@
                         <a class="dropdown-toggle" href="#">
                             <span class="clear"> 
                                 <span class="block m-t-xs"> 
-                                    <strong class="font-bold">松澤隼人</strong>
+                                    <strong class="font-bold">"{{ $user->name }}" </strong>
                                 </span> 
-                                <span class="text-muted text-xs block">スポーツメーカーを退職後、大阪にて教育系ウェブサービスの立ち上げ準備中。2016年4月から6月までセブ島留学をしてプログラミングを学び、その時のルームメートと個人間で進路情報をシェアできるサービスを構築中。</span>
+                                <span class="text-muted text-xs block">{{ $user->introduction }}</span>
                             </span>
                         </a>                        
                     </div>                    
@@ -42,7 +42,6 @@
                     <a href="#"><i class="fa fa-pencil"></i> <span class="nav-label">アカウント編集</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse">
                         <li><a href="/user/show/{{ $user->id }}">プロフィール表示</a></li>
-                        <li><a href="/user/show/{{ $user->id }}">プロフィール詳細</a></li>
                         <li><a href="#">プロフィール編集</a></li>
                         <li><a href="graph_morris.html">Email編集</a></li>
                         <li><a href="graph_rickshaw.html">パスワード編集</a></li>
@@ -194,7 +193,7 @@
         <div class="row wrapper border-bottom white-bg">
             <div class="col-lg-12">
                 <div class="ibox float-e-margins">
-                    <div class="ibox-content" style="text-align:left">
+                    <div class="ibox-content">
                         <form method="post" class="form-horizontal" action="{{ url('/user/edit', $user->id) }}">
                             {{ csrf_field() }}
                             {{ method_field('patch') }}
@@ -211,19 +210,19 @@
                             <hr>
 
                             <div class="form-group"><label class="col-sm-2 control-label">今後やってみたいこと</label>
-                                <div class="col-sm-10"><textarea type="text" name="vision" placeholder="placeholder" class="form-control">{{ old('vision', $user->vision) }}</textarea></div>
+                                <div class="col-sm-10"><textarea type="text" name="vision" placeholder="今後やってみたいこと" class="form-control">{{ old('vision', $user->vision) }}</textarea></div>
                             </div>
 
                             <hr>
 
                             <div class="form-group"><label class="col-sm-2 control-label">現職</label>
-                                <div class="col-sm-10"><input type="text" name="current_job" placeholder="placeholder" value="{{ old('current_job', $user->current_job) }}" class="form-control"></div>
+                                <div class="col-sm-10"><input type="text" name="current_job" placeholder="会社名など" value="{{ old('current_job', $user->current_job) }}" class="form-control"></div>
                             </div>
                             <div class="form-group"><label class="col-sm-2 control-label">現職のポジション</label>
-                                <div class="col-sm-10"><input type="text" name="current_position" placeholder="placeholder" value="{{ old('current_position', $user->current_position) }}" class="form-control"></div>
+                                <div class="col-sm-10"><input type="text" name="current_position" placeholder="職種、部署など" value="{{ old('current_position', $user->current_position) }}" class="form-control"></div>
                             </div>   
                              <div class="form-group"><label class="col-sm-2 control-label">現職の業務内容詳細</label>
-                                <div class="col-sm-10"><textarea type="text" name="current_detail" placeholder="{{$user->current_detail}}"  class="form-control">{{ old('current_detail', $user->current_detail) }}</textarea></div>
+                                <div class="col-sm-10"><textarea type="text" name="current_detail" placeholder="具体的な業務内容、スキルなど"  class="form-control">{{ old('current_detail', $user->current_detail) }}</textarea></div>
                             </div>
 
                             <hr>
