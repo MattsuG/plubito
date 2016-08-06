@@ -18,7 +18,7 @@
 			Route::get('/', 'TopPageController@index');
 		});
 
-//	Route::group(['middlewareGroups' => 'web'], function() {
+	Route::group(['middlewareGroups' => 'web'], function() {
 		// ログイン
 		Route::get('auth/login', 'Auth\AuthController@getLogin');
 		Route::post('auth/login', 'Auth\AuthController@postLogin');
@@ -28,7 +28,7 @@
 		Route::get('auth/register', 'Auth\AuthController@getRegister');
 		Route::post('auth/register', 'Auth\AuthController@postRegister');
 		Route::get('auth/confirm/{token}', 'Auth\AuthController@getConfirm');
-//	});
+	});
 
 
 	Route::group(['routeMiddleware' => 'auth'], function () {

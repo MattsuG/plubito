@@ -194,7 +194,7 @@
                     <select class="form-control" name="search_category">
                         <option value="0" selected>カテゴリを選択</option>
                         @foreach($categories as $category)
-                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            <option value="{{ $category->id }}">{{ $category->category_name }}</option>
                         @endforeach
                     </select>
                     <input type="text" placeholder="検索ワード" class="form-control" name="search_word" id="top-search">
@@ -202,7 +202,7 @@
             </form>
         </div>
         <div class="row white-bg"> 
-            @foreach ($talks as $talk)             
+            @foreach ($talks as $talk) 
                 <div class="col-sm-4 pricing-box pricing-box-best wow fadeInDown">
                     <div class="pricing-box-inner">
                         <div class="pricing-box-price">
@@ -212,7 +212,7 @@
                         <h4>興味あり:150人 申込者:40人</h4></a>
                         <div class="pricing-box-features">
                             <ul>
-                                <li>{{ $talk->name }}</li>
+                                <li>{{ $talk->category->category_name }}</li>
                                 <li>価格:{{ $talk->price }}</li></a>
                                 <li><a href="{{ url('mentor/'.$talk->id) }}"><button type="button" class="btn btn-default btn-sm btn-block">詳細を見る</button></a></li>                           
                             </ul>
@@ -220,6 +220,9 @@
                     </div>
                 </div>
             @endforeach
+        </div>
+        <div class="row white-bg">
+             {!! $talks->render() !!}
         </div>
         <div class="row">
             <div class="footer">                       

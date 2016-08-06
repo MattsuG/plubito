@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
+use App\Http\Requests\TalkRequest;
 
-use App\Talk;
+use App;
 
 use DB;
 
@@ -17,16 +17,8 @@ use Session;
 class MentorController extends Controller
 {
 
-    public function store(Request $request)
+    public function store(TalkRequest $request)
     {
-      $this->validate($request, [
-        'title' => 'required|max:50',
-        'category' => 'required|integer',
-        'price' => 'required|integer',
-        'detail' => 'required|max:1000',
-        'pic0' => 'mimes:jpeg,png|max:5120',
-        'pic1' => 'mimes:jpeg,png|max:5120',
-      ]);
 
 
       $file0 = $request->file('pic0');
@@ -67,7 +59,7 @@ class MentorController extends Controller
 
       Session::put('id', 1);
 
-      $talk = new Talk();
+      $talk = new App\Talk();
       $talk->title = $request->title;
       $talk->category_id = $request->category;
       $talk->price = $request->price;
@@ -77,55 +69,50 @@ class MentorController extends Controller
       $talk->mentor_id = Session::get('id');
       $talk->save();
 
-      return redirect('mentor');
+
+      $thisTalk = App\Talk::where('mentor_id', Session::get('id'))
+      ->first();
+
+      return redirect("mentor");
     }
 
   public function index() 
   {
-    $talks = DB::table('talks as t')
-    ->select('t.id',
-             't.title',
-             't.category_id',
-             't.price',
-             't.detail',
-             't.pic0_path',
-             'c.category_name')
-    ->leftJoin('categories as c', 't.category_id', '=', 'c.id')
-    ->orderBy('created_at', 'desc')
-    ->get();
-    $categories = DB::table('categories')->get();
+
+    $talks = App\Talk::orderBy('created_at', 'DESC')
+    ->paginate(15);
+    $categories = App\Category::All();
+
     return view("mentor.index", compact('talks', 'categories'));
   }
 
   public function create()
   {
-    $categories = DB::table('categories')->get();
+    $categories = App\Category::All();
     return view("mentor.add", ['categories' => $categories]);
   }
 
   public function show($id)
   {
-    $talk = DB::table('talks as t')
-    ->select('t.title',
-             't.mentor_id',
-             't.category_id',
-             't.price',
-             't.detail',
-             't.pic0_path',
-             't.pic1_path',
-             'c.category_name',
-             'u.name',
-             'u.profile_picture_path',
-             'u.introduction')
-    ->where('t.id', $id)
-    ->leftJoin('categories as c', 't.category_id', '=', 'c.id')
-    ->leftJoin('users as u', 't.mentor_id', '=', 'u.id')
-    ->get();
+    $talk = App\Talk::find($id);
     return view("mentor.show", ['talk' => $talk]);
   }
 
   public function edit($id)
   {
+
+    $talk = App\Talk::find($id);
+    $categories = App\Category::All();
+
+
+    // if (Session::get('id') != $talk->mentor_id) {
+    //   return redirect("mentor");
+    // }
+
+    return view("mentor.edit", compact('talk', 'categories'));
+  }
+
+  public function update($id) {
 
   }
 

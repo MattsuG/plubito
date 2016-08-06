@@ -13,7 +13,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'occupation_id', 'profile_picture_path', 'introduction', 'birthday'
     ];
 
     /**
@@ -48,6 +48,10 @@ class User extends Authenticatable
  
     public function isConfirmed() { // email認証実装時追加⑤ 追加
         return ! empty($this->confirmed_at);
+    }
+
+    public function talks() {
+        return $this->hasMany('App\Talk');
     }
 
 }

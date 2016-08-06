@@ -208,7 +208,7 @@
                                     <select name="category" id="category" class="form-control">
                                         <option value="">カテゴリーを選択</option>
                                         @foreach ($categories as $category)
-                                            <option value="{{ $category->id }}" @if (old('category') === $category->id) selected @endif>{{ $category->name }}</option>
+                                            <option value="{{ $category->id }}" @if (old('category') === $category->id) selected @endif>{{ $category->category_name }}</option>
                                         @endforeach
                                     </select>
                                 </div>

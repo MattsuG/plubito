@@ -198,16 +198,16 @@
                     </div>
                     <div>
                         <div class="ibox-content no-padding border-left-right">
-                            <img alt="image" class="img-circle" src="{{{asset($talk->profile_picture_path)}}}">
+                            <img alt="image" class="img-circle" src="{{{asset($talk->user->profile_picture_path)}}}">
                         </div>
                         <div class="ibox-content profile-content">
-                            <h4><strong></strong></h4>
+                            <h4><strong>{{ $talk->user->name }}</strong></h4>
                             <p><i class="fa fa-map-marker"></i> Seoul, S.Korea</p>
                             <h5>
                                 自己紹介
                             </h5>
                             <p>
-                                {{ $talk->introduction }}
+                                {{ $talk->user->introduction }}
                                 <a href="{{ url('/user/show/'.$talk->mentor_id) }}">...詳細を見る</a>
                                 }
                             </p>
@@ -232,11 +232,13 @@
                         <div>
                             <div class="feed-activity-list">
                                 <div class="feed-element">
-                                    <h6>{{ $talk->category_name }}</h6>
+                                    <h6>{{ $talk->category->category_name }}</h6>
                                     {{ $talk->title }} 
                                     <div class="photos">
                                         <img alt="image" class="feed-photo" src="{{{asset($talk->pic0_path)}}}">
+                                        @if (!empty($talk->pic1_path))
                                         <img alt="image" class="feed-photo" src="{{{asset($talk->pic1_path)}}}">
+                                        @endif
 
                                     </div>
                                 </div>
