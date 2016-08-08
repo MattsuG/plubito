@@ -28,9 +28,9 @@
                         <a class="dropdown-toggle" href="#">
                             <span class="clear"> 
                                 <span class="block m-t-xs"> 
-                                    <strong class="font-bold">松澤隼人</strong>
+                                    <strong class="font-bold">{{ $user->name }}</strong>
                                 </span> 
-                                <span class="text-muted text-xs block">スポーツメーカーを退職後、大阪にて教育系ウェブサービスの立ち上げ準備中。2016年4月から6月までセブ島留学をしてプログラミングを学び、その時のルームメートと個人間で進路情報をシェアできるサービスを構築中。</span>
+                                <span class="text-muted text-xs block">{{ $user->introduction }}</span>
                             </span>
                         </a>                        
                     </div>                    
@@ -41,13 +41,12 @@
                  <li>
                     <a href="#"><i class="fa fa-pencil"></i> <span class="nav-label">アカウント編集</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse">
-                        <li><a href="/user/edit">プロフィール編集</a></li>
-                        <li><a href="graph_morris.html">Email編集</a></li>
-                        <li><a href="graph_rickshaw.html">パスワード編集</a></li>
+                        <li><a href="#">プロフィール表示</a></li>
+                        <li><a href="/user/edit/{{ $user->id }}">プロフィール編集</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="add"><i class="fa fa-bullhorn"></i> <span class="nav-label">トーク作成</span></a>
+                    <a href="/mentor/create"><i class="fa fa-bullhorn"></i> <span class="nav-label">トーク作成</span></a>
                 </li>
                 <li>
                     <a href="/user/mypage"><i class="fa fa-calendar"></i> <span class="nav-label">マイページ</span></a>
@@ -169,7 +168,7 @@
 
 
                     <li>
-                        <a href="login.html">
+                        <a href="/auth/logout">
                             <i class="fa fa-sign-out"></i> ログアウト
                         </a>
                     </li>
@@ -191,20 +190,20 @@
             <div class="col-md-4">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <h5>Hayato Matsuzawaさんのプロフィール</h5>
+                        <h5>{{ $user->name }}さんのプロフィール</h5>
                     </div>
                     <div>
                         <div class="ibox-content no-padding border-left-right">
                             <img alt="image" class="img-circle" src="{{{asset('/assets/img/backgrounds/3.jpg')}}}">
                         </div>
                         <div class="ibox-content profile-content">
-                            <h4><strong>Hayato Matsuzawa</strong></h4>
-                            <p><i class="fa fa-map-marker"></i> Seoul, S.Korea</p>
+                            <h4><strong>{{ $user->name }}</strong></h4>
+                            <p><i class="fa fa-map-marker"></i> {{ $user->place }}</p>
                             <h5>
                                 自己紹介
                             </h5>
                             <p>
-                                スポーツアパレルメーカー、デサントにて機能性の高いスポーツウエア、ライフスタイルウエアの欧州営業を担当。２０１５年から新規リテール事業の立ち上げメンバーとして海外出向中。大学卒業までアルペンスキーに熱中し、その後アメリカコロラド州の大学院でスポーツ経営学を学ぶ。帰国後現在の会社へ入る。
+                                {{ $user->introduction }}
                             </p>
 
                             <div class="user-button">
@@ -226,59 +225,42 @@
                     <div class="ibox-content">
 
                         <div>
-                            <div class="feed-activity-list">
+                            <div class="feed-activity-list" style="text-align: left">
                                 <div class="feed-element">
                                     <h6>やってみたいこと</h6>
-                                    元々教育分野に興味がある。学生が多様な進路を選択できる仕組み作りに取り組みたい。受験、就活などが現在関心のあるトピック。
+                                    {{ $user->vision }}
                                 </div>
                                 <div class="feed-element">
                                     <h6>現職</h6>
-                                    Descente Global Retail Ltd.
+                                    {{ $user->current_job }}
                                     <h6>ポジション</h6>
-                                        International Sales, HR, Buying MD
+                                        {{ $user->current_position }}
                                     <h6>業務内容</h6>
-                                        DESCENTE ALLTERRAIN Whole sale business 
-                                        -Whole sale business operation guideline set-up, business term revision
-                                        -Account management: order management, collecting payments, participation in multiple sales activities
-                                        -Business develop plan establishment
-
-                                        HR: UK Store Launching Preparation
-                                        -Recruitment agency contact, Employment candidate search, Employment process handling 
-                                        -UK specific employment related issues research, payroll, labor law, benefit etc. 
-
-                                        Product preparation: UK Store Launching Preparation 
-                                        -Product buying, attending conventions, order placement,, reorder, pricing, size assortment
-                                        -Product education to sales staff 
+                                        {!! nl2br(e($user->current_detail)) !!} 
                                 </div>
                                 <div class="feed-element">
                                     <h6>前職</h6>
-                                    株式会社デサント
+                                    {{ $user->past_job }}
                                     <h6>ポジション</h6>
-                                        Global Marketing, International Sales
+                                        {{ $user->past_position }}
                                     <h6>業務内容</h6>
-                                        In charge of Descente brand distribution sales in European and western/central Asian markets with three collections; Ski, Run&Cycling, and Allterrain. 
-
-                                        -Communication and development marketing strategy with 15 distributors in respective market
-                                        -Pricing strategy for the collections cooperating merchandisers and designers
-                                        -Financial analysis of potential distributors
-                                        -Contract negotiation 
-                                        -Promotional uniform supply to the teams in Europe
+                                        {!! nl2br(e($user->past_detail)) !!}
                                 </div>
                                 <div class="feed-element">
                                     <h6>最終学歴</h6>
-                                    University of Northern Colorado
+                                    {{ $user->latest_school }}
                                     <h6>学部・学科</h6>
-                                        Sport Administration
+                                        {{ $user->latest_major }}
                                     <h6>在籍期間</h6>
-                                        2011-2012
+                                        {{ $user->latest_school_period }}
                                 </div>
                                   <div class="feed-element">
                                     <h6>その他学歴</h6>
-                                    北海道教育大学旭川校
+                                    {{ $user->other_school }}
                                     <h6>学部・学科</h6>
-                                    保健体育科
+                                    {{ $user->other_major }}
                                     <h6>在籍期間</h6>
-                                        2005-2009
+                                    {{ $user->other_school_period }}
                                 </div>
                             </div>
                         </div>

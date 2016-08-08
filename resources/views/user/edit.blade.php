@@ -28,9 +28,9 @@
                         <a class="dropdown-toggle" href="#">
                             <span class="clear"> 
                                 <span class="block m-t-xs"> 
-                                    <strong class="font-bold">松澤隼人</strong>
+                                    <strong class="font-bold">{{ $user->name }}</strong>
                                 </span> 
-                                <span class="text-muted text-xs block">スポーツメーカーを退職後、大阪にて教育系ウェブサービスの立ち上げ準備中。2016年4月から6月までセブ島留学をしてプログラミングを学び、その時のルームメートと個人間で進路情報をシェアできるサービスを構築中。</span>
+                                <span class="text-muted text-xs block">{{ $user->introduction }}</span>
                             </span>
                         </a>                        
                     </div>                    
@@ -41,17 +41,16 @@
                  <li>
                     <a href="#"><i class="fa fa-pencil"></i> <span class="nav-label">アカウント編集</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse">
-                        <li><a href="/user/edit">プロフィール編集</a></li>
-                        <li><a href="graph_morris.html">Email編集</a></li>
-                        <li><a href="graph_rickshaw.html">パスワード編集</a></li>
+                        <li><a href="/user/show/{{ $user->id }}">プロフィール表示</a></li>
+                        <li><a href="#">プロフィール編集</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="add"><i class="fa fa-bullhorn"></i> <span class="nav-label">トーク作成</span></a>
+                    <a href="/mentor/create"><i class="fa fa-bullhorn"></i> <span class="nav-label">トーク作成</span></a>
                 </li>
                 <li>
                     <a href="/user/mypage"><i class="fa fa-calendar"></i> <span class="nav-label">マイページ</span></a>
-                </li>           
+                </li>              
             </ul>
         </div>
     </nav>
@@ -169,7 +168,7 @@
 
 
                     <li>
-                        <a href="login.html">
+                        <a href="/auth/logout">
                             <i class="fa fa-sign-out"></i> ログアウト
                         </a>
                     </li>
@@ -193,70 +192,74 @@
             <div class="col-lg-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-content">
-                        <form method="get" class="form-horizontal">
+                        <form method="post" class="form-horizontal" action="{{ url('/user/edit', $user->id) }}">
+                            {{ csrf_field() }}
+                            {{ method_field('patch') }}
                             <div class="form-group"><label class="col-sm-2 control-label">お名前</label>
-                                <div class="col-sm-10"><input type="text" placeholder="Hayato Matsuzawa" class="form-control"></div>
+                                <div class="col-sm-10"><input type="text" name="name" placeholder="お名前" value="{{ old('name', $user->name) }}" class="form-control"></div>
                             </div>
                             <div class="form-group"><label class="col-sm-2 control-label">現在地</label>
-                                <div class="col-sm-10"><input type="text" placeholder="Seoul, S.Korea" class="form-control"></div>
+                                <div class="col-sm-10"><input type="text" name="place" placeholder="現在地" value="{{ old('place', $user->place) }}" class="form-control"></div>
                             </div>
                             <div class="form-group"><label class="col-sm-2 control-label">自己紹介</label>
-                                <div class="col-sm-10"><textarea type="text" placeholder="placeholder" class="form-control"></textarea></div>
+                                <div class="col-sm-10"><textarea type="text" name="introduction" placeholder="自己紹介" class="form-control">{{ old('introduction', $user->introduction) }}</textarea></div>
                             </div>
 
                             <hr>
 
                             <div class="form-group"><label class="col-sm-2 control-label">今後やってみたいこと</label>
-                                <div class="col-sm-10"><textarea type="text" placeholder="placeholder" class="form-control"></textarea></div>
+                                <div class="col-sm-10"><textarea type="text" name="vision" placeholder="今後やってみたいこと" class="form-control">{{ old('vision', $user->vision) }}</textarea></div>
                             </div>
 
                             <hr>
 
                             <div class="form-group"><label class="col-sm-2 control-label">現職</label>
-                                <div class="col-sm-10"><input type="text" placeholder="placeholder" class="form-control"></div>
+                                <div class="col-sm-10"><input type="text" name="current_job" placeholder="会社名など" value="{{ old('current_job', $user->current_job) }}" class="form-control"></div>
                             </div>
                             <div class="form-group"><label class="col-sm-2 control-label">現職のポジション</label>
-                                <div class="col-sm-10"><input type="text" placeholder="placeholder" class="form-control"></div>
+                                <div class="col-sm-10"><input type="text" name="current_position" placeholder="職種、部署など" value="{{ old('current_position', $user->current_position) }}" class="form-control"></div>
                             </div>   
                              <div class="form-group"><label class="col-sm-2 control-label">現職の業務内容詳細</label>
-                                <div class="col-sm-10"><textarea type="text" placeholder="placeholder" class="form-control"></textarea></div>
+                                <div class="col-sm-10"><textarea type="text" name="current_detail" placeholder="具体的な業務内容、スキルなど"  class="form-control">{{ old('current_detail', $user->current_detail) }}</textarea></div>
                             </div>
 
                             <hr>
 
                             <div class="form-group"><label class="col-sm-2 control-label">前職</label>
-                                <div class="col-sm-10"><input type="text" placeholder="placeholder" class="form-control"></div>
+                                <div class="col-sm-10"><input type="text" name="past_job"placeholder="placeholder" value="{{ old('past_job', $user->past_job) }}" class="form-control"></div>
                             </div>
                             <div class="form-group"><label class="col-sm-2 control-label">前職のポジション</label>
-                                <div class="col-sm-10"><input type="text" placeholder="placeholder" class="form-control"></div>
+                                <div class="col-sm-10"><input type="text" name="past_position" placeholder="placeholder" value="{{ old('past_position', $user->past_position) }}" class="form-control"></div>
                             </div>   
                              <div class="form-group"><label class="col-sm-2 control-label">前職の業務内容詳細</label>
-                                <div class="col-sm-10"><textarea type="text" placeholder="placeholder" class="form-control"></textarea></div>
+                                <div class="col-sm-10"><textarea type="text" name="past_detail" placeholder="placeholder" class="form-control" >{{ old('past_detail', $user->past_detail) }}</textarea></div>
                             </div>
 
                             <hr>
 
                             <div class="form-group"><label class="col-sm-2 control-label">最終学歴</label>
-                                <div class="col-sm-10"><input type="text" placeholder="placeholder" class="form-control"></div>
+                                <div class="col-sm-10"><input type="text" name="latest_school" placeholder="placeholder" value="{{ old('latest_school', $user->latest_school) }}" class="form-control"></div>
                             </div>
                             <div class="form-group"><label class="col-sm-2 control-label">学部・学科</label>
-                                <div class="col-sm-10"><input type="text" placeholder="placeholder" class="form-control"></div>
+                                <div class="col-sm-10"><input type="text" name="latest_major" placeholder="placeholder" value="{{ old('latest_major', $user->latest_major) }}" class="form-control"></div>
                             </div>   
                              <div class="form-group"><label class="col-sm-2 control-label">在籍期間</label>
-                                <div class="col-sm-10"><input type="text" placeholder="placeholder" class="form-control"></div>
+                                <div class="col-sm-10"><input type="text" name="latest_school_period" placeholder="placeholder" value="{{ old('latest_school_period', $user->latest_school_period) }}" class="form-control"></div>
                             </div>
 
                             <hr>
 
                              <div class="form-group"><label class="col-sm-2 control-label">その他学歴</label>
-                                <div class="col-sm-10"><input type="text" placeholder="placeholder" class="form-control"></div>
+                                <div class="col-sm-10"><input type="text" name="other_school"　placeholder="placeholder" value="{{ old('other_school', $user->other_school) }}" class="form-control"></div>
                             </div>
                             <div class="form-group"><label class="col-sm-2 control-label">学部・学科</label>
-                                <div class="col-sm-10"><input type="text" placeholder="placeholder" class="form-control"></div>
+                                <div class="col-sm-10"><input type="text" name="other_major" placeholder="placeholder" value="{{ old('other_major', $user->other_major) }}" class="form-control"></div>
                             </div>   
                              <div class="form-group"><label class="col-sm-2 control-label">在籍期間</label>
-                                <div class="col-sm-10"><input type="text" placeholder="placeholder" class="form-control"></div>
+                                <div class="col-sm-10"><input type="text" name="other_school_period" placeholder="placeholder" value="{{ old('other_school_period', $user->other_school_period) }}" class="form-control"></div>
                             </div>    
+
+                            <button type="submit" class="btn btn-primary block full-width m-b">更新</button>
 
                         </form>
                     </div>

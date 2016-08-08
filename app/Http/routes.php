@@ -30,6 +30,24 @@
 		Route::get('auth/confirm/{token}', 'Auth\AuthController@getConfirm');
 	});
 
+	//ユーザー詳細表示・編集
+	Route::get('user', 'UserController@index');
+	Route::get('/user/show/{id}', 'UserController@show');
+	Route::get('/user/edit/{id}', 'UserController@edit');
+	Route::patch('/user/edit/{id}', 'UserController@update');
+	Route::get('/user/email_edit/{id}', 'UserController@email_edit');
+	Route::patch('/user/email_edit/{id}', 'UserController@email_update');
+	
+	//パスワードリセット
+	// Password reset link request routes...
+	Route::get('password/email', 'Auth\PasswordController@getEmail');
+	Route::post('password/email', 'Auth\PasswordController@postEmail');
+
+	// Password reset routes...
+	Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
+	Route::post('password/reset', 'Auth\PasswordController@postReset');
+
+
 
 	Route::group(['routeMiddleware' => 'auth'], function () {
 		Route::group(['middlewareGroups' => 'web'], function () {
