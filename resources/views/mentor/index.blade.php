@@ -40,9 +40,8 @@
                  <li>
                     <a href="#"><i class="fa fa-pencil"></i> <span class="nav-label">アカウント編集</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse">
+                        <li><a href="/user/edit">プロフィール表示</a></li>
                         <li><a href="/user/edit">プロフィール編集</a></li>
-                        <li><a href="graph_morris.html">Email編集</a></li>
-                        <li><a href="graph_rickshaw.html">パスワード編集</a></li>
                     </ul>
                 </li>
                 <li>
