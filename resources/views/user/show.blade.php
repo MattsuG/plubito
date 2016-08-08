@@ -43,12 +43,10 @@
                     <ul class="nav nav-second-level collapse">
                         <li><a href="#">プロフィール表示</a></li>
                         <li><a href="/user/edit/{{ $user->id }}">プロフィール編集</a></li>
-                        <li><a href="graph_morris.html">Email編集</a></li>
-                        <li><a href="graph_rickshaw.html">パスワード編集</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="add"><i class="fa fa-bullhorn"></i> <span class="nav-label">トーク作成</span></a>
+                    <a href="/mentor/create"><i class="fa fa-bullhorn"></i> <span class="nav-label">トーク作成</span></a>
                 </li>
                 <li>
                     <a href="/user/mypage"><i class="fa fa-calendar"></i> <span class="nav-label">マイページ</span></a>

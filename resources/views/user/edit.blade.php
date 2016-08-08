@@ -28,7 +28,7 @@
                         <a class="dropdown-toggle" href="#">
                             <span class="clear"> 
                                 <span class="block m-t-xs"> 
-                                    <strong class="font-bold">"{{ $user->name }}" </strong>
+                                    <strong class="font-bold">{{ $user->name }}</strong>
                                 </span> 
                                 <span class="text-muted text-xs block">{{ $user->introduction }}</span>
                             </span>
@@ -43,16 +43,14 @@
                     <ul class="nav nav-second-level collapse">
                         <li><a href="/user/show/{{ $user->id }}">プロフィール表示</a></li>
                         <li><a href="#">プロフィール編集</a></li>
-                        <li><a href="graph_morris.html">Email編集</a></li>
-                        <li><a href="graph_rickshaw.html">パスワード編集</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="add"><i class="fa fa-bullhorn"></i> <span class="nav-label">トーク作成</span></a>
+                    <a href="/mentor/create"><i class="fa fa-bullhorn"></i> <span class="nav-label">トーク作成</span></a>
                 </li>
                 <li>
                     <a href="/user/mypage"><i class="fa fa-calendar"></i> <span class="nav-label">マイページ</span></a>
-                </li>           
+                </li>              
             </ul>
         </div>
     </nav>
@@ -170,7 +168,7 @@
 
 
                     <li>
-                        <a href="login.html">
+                        <a href="/auth/logout">
                             <i class="fa fa-sign-out"></i> ログアウト
                         </a>
                     </li>
