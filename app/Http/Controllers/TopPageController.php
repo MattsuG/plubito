@@ -8,7 +8,7 @@ use App\Http\Requests;
 
 use DB;
 
-use App\talk;
+use App\Talk;
 
 class TopPageController extends Controller
 {
