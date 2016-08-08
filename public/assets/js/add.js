@@ -35,19 +35,7 @@
        //display: none;で隠したinputタグのfile情報をphotoCoverに渡す
          $('#' + photoCoverId).val($('#' + id).val().replace("C:\\fakepath\\", ""));
      }
-//class="form-control"に変化がある度に発動する関数
-//入力必須項目の値が全て入力されていればsubmitのdisabledをfalseにする
-//一つでも空欄ができれば再びdisabledをtrueに
-$('.form-control').change(function() {
-    if (       $('#title').val()         !=='' 
-            && $('#price').val()         !==''
-            && $('#detail').val()        !=='') 
-         {
-         $('#confirm').attr('disabled', false);
-            } else {
-              $('#confirm').attr('disabled', true);
-            }
-        });
+
 
 //文字数チェッカー 規定の文字数を超えると文字色をピンクに
     $('#title').bind('keydown keyup keypress change',function(){
@@ -60,15 +48,6 @@ $('.form-control').change(function() {
         }
     });
 
-    $('#capacity').bind('keydown keyup keypress change',function(){
-        var thisValueLength = $(this).val().length;
-        $('#capacity_count').text(thisValueLength);
-        if(thisValueLength > 5) {
-            $('#capacity_count').addClass('cebroad-pink');
-        } else {
-            $('#capacity_count').removeClass('cebroad-pink');
-        }
-    });
 
     $('#detail').bind('keydown keyup keypress change',function(){
         var thisValueLength = $(this).val().length;

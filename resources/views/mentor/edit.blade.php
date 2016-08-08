@@ -1,12 +1,14 @@
+
 @extends('common.layout')
 @section('TitleAndCss')
-<title>show.php | トーク一覧</title>
+<title>add.php | トーク作成</title>
 
 <link rel="stylesheet" href="{{{asset('/assets/bootstrap/css/bootstrap.min.css')}}}">
 <link rel="stylesheet" href="{{{asset('/assets/font-awesome/css/font-awesome.min.css')}}}">
 <link rel="stylesheet" href="{{{asset('/assets/css/style_pre_index.css')}}}">
 <link rel="stylesheet" href="{{{asset('/assets/css/animate.css')}}}">
 <link rel="stylesheet" href="{{{asset('/assets/css/style.css')}}}">
+<link rel="stylesheet" href="{{{('/assets/css/add.css')}}}">
 
 <!-- <link href="css/style_pre_index.css" rel="stylesheet"> -->
 @stop
@@ -27,14 +29,14 @@
                         <a class="dropdown-toggle" href="#">
                             <span class="clear"> 
                                 <span class="block m-t-xs"> 
-                                    <strong class="font-bold">お名前</strong>
+                                    <strong class="font-bold">松澤隼人</strong>
                                 </span> 
-                                <span class="text-muted text-xs block">職業とか自己紹介など。長い文章をここに書いたらどうらなるかな。職業とか自己紹介など。長い文章をここに書いたらどうらなるかな。職業とか自己紹介など。長い文章をここに書いたらどうらなるかな。職業とか自己紹介など。長い文章をここに書いたらどうらなるかな。</span>
+                                <span class="text-muted text-xs block">スポーツメーカーを退職後、大阪にて教育系ウェブサービスの立ち上げ準備中。2016年4月から6月までセブ島留学をしてプログラミングを学び、その時のルームメートと個人間で進路情報をシェアできるサービスを構築中。</span>
                             </span>
                         </a>                        
                     </div>                    
                     <div class="logo-element">
-                        <a href="/mentor"><img alt="image" class="img" src="{{{asset('/assets/img/plus.png')}}}" width="25px" height="50px" /></a>
+                        <a href="/"><img alt="image" class="img" src="{{{asset('/assets/img/plus.png')}}}" width="25px" height="50px" /></a>
                     </div>
                 </li>
                  <li>
@@ -46,11 +48,11 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="{{ url('mentor/create')}}"><i class="fa fa-bullhorn"></i> <span class="nav-label">トーク作成</span></a>
+                    <a href="add"><i class="fa fa-bullhorn"></i> <span class="nav-label">トーク作成</span></a>
                 </li>
                 <li>
                     <a href="/user/mypage"><i class="fa fa-calendar"></i> <span class="nav-label">マイページ</span></a>
-                </li>                 
+                </li>           
             </ul>
         </div>
     </nav>
@@ -63,7 +65,7 @@
                 </div>
                 <ul class="nav navbar-top-links navbar-right">
                     <li>
-                        <span class="m-r-sm text-muted welcome-message">トーク一覧ページへようこそ</span>
+                        <span class="m-r-sm text-muted welcome-message">ユーザー詳細ページへようこそ</span>
                     </li>
                     <li>
                         <a  class="dropdown-toggle count-info" href="/mentor">
@@ -168,7 +170,7 @@
 
 
                     <li>
-                        <a href="/auth/logout">
+                        <a href="login.html">
                             <i class="fa fa-sign-out"></i> ログアウト
                         </a>
                     </li>
@@ -176,53 +178,103 @@
 
             </nav>
         </div>
-        <div class="row wrapper border-bottom white-bg page-heading inbox-title">
+        <div class="row wrapper white-bg page-heading">
             <div class="col-lg-9ƒ">
-                <h2>トーク一覧</h2>
-                <ol class="breadcrumb">
+                <h2>トーク作成</h2>
+                <ol class="breadcrumb">                  
                     <li class="active">
-                        <strong>トーク一覧</strong>
+                        <strong>トーク作成</strong>
                     </li>
                 </ol>
             </div>
         </div>
 
 
-        <div class="row white-bg">
-            <form role="search" class="navbar-form" action="">
-                <div class="form-group">
-                    <select class="form-control" name="search_category">
-                        <option value="0" selected>カテゴリを選択</option>
-                        @foreach($categories as $category)
-                            <option value="{{ $category->id }}">{{ $category->category_name }}</option>
-                        @endforeach
-                    </select>
-                    <input type="text" placeholder="検索ワード" class="form-control" name="search_word" id="top-search">
-                </div>
-            </form>
-        </div>
-        <div class="row white-bg"> 
-            @foreach ($talks as $talk) 
-                <div class="col-sm-4 pricing-box pricing-box-best wow fadeInDown">
-                    <div class="pricing-box-inner">
-                        <div class="pricing-box-price">
-                        <a href="{{ url('mentor/'.$talk->id) }}" style="color:#000;text-decoration:none"><img src="{{{asset($talk->pic0_path)}}}" alt="">
-                        </div>
-                        <h3>{{ $talk->title }}</h3>
-                        <h4>興味あり:150人 申込者:40人</h4></a>
-                        <div class="pricing-box-features">
-                            <ul>
-                                <li>{{ $talk->category->category_name }}</li>
-                                <li>価格:{{ $talk->price }}</li></a>
-                                <li><a href="{{ url('mentor/'.$talk->id) }}"><button type="button" class="btn btn-default btn-sm btn-block">詳細を見る</button></a></li>                           
-                            </ul>
-                        </div>
+        <div class="row wrapper border-bottom white-bg">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content">
+                        <form method="post" enctype="multipart/form-data" class="form-horizontal" action="{{ url('/mentor') }}">
+                        {{!! csrf_field() !!}}
+                        <input type="hidden" name="MAX_FILE_SIZE" value="10485760">
+
+                            <div class="form-group"><label class="col-sm-2 control-label">タイトル（＊必須）</label>
+                                <div class="col-sm-10"><input type="text" name="title" id="title" placeholder="最大５０文字" class="form-control" value="{{ $talk->title }}"></div>
+                                <p id="title_count"></p>
+                            </div>
+
+                            <div class="form-group"><label class="col-sm-2 control-label">カテゴリー（＊必須）</label>
+                                <div class="col-sm-10">
+                                    <select name="category" id="category" class="form-control">
+                                        <option value="">カテゴリーを選択</option>
+                                        @foreach ($categories as $category)
+                                            <option value="{{ $category->id }}" @if ($talk->category_id === $category->id) selected @endif>{{ $category->category_name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group"><label class="col-sm-2 control-label">価格（＊必須）</label>
+                                <div class="col-sm-10">
+                                    <select name="price" id="price" class="form-control">
+                                        @for ($i = 3; $i < 51; $i++)
+                                            <option value="{{ $i * 1000 }}" @if ($talk->price === $i * 1000) selected @endif>{{ $i * 1000 }}円</option>
+                                        @endfor
+                                    </select>
+                                </div>
+                            </div>
+
+                            <hr>
+
+                            <div class="form-group"><label class="col-sm-2 control-label">詳細（＊必須）</label>
+                                <div class="col-sm-10">
+                                    <textarea name="detail" id="detail" class="form-control" rows="20" required placeholder="最大1000文字">{{ $talk->detail }}</textarea>
+                                    <p id="detail_count"></p>
+                                </div>
+                            </div>
+
+                            <hr>
+
+                            <div class="form-group"><label class="col-sm-2 control-label">挿入画像１</label>
+                                <input class="pic" name="pic0" id="pic0" type="file" style="display:none">
+                                <div class="input-group">
+                                  <input type="text" id="photoCover0" class="form-control" placeholder="jpgもしくはpng(5MBまで)">
+                                  <span class="input-group-btn"><button type="button" class="btn btn-primary" onclick="$('#pic0').click();">ファイル選択</button></span>
+                                </div>
+                                <label id="label0" class="cebroad-pink"></label>
+                                <div class="events-pad">
+                                  <img src="" id="preview0" style="display:none; width: 300px;">
+                                </div>
+                            </div>
+                            <div class="form-group"><label class="col-sm-2 control-label">挿入画像２</label>
+                                <input class="pic" name="pic1" id="pic1" type="file" style="display:none">
+                                <div class="input-group">
+                                  <input type="text" id="photoCover0" class="form-control" placeholder="jpgもしくはpng(5MBまで)">
+                                  <span class="input-group-btn"><button type="button" class="btn btn-primary" onclick="$('#pic1').click();">ファイル選択</button></span>
+                                </div>
+                                <label id="label1" class="cebroad-pink"></label>
+                                <div class="events-pad">
+                                  <img src="" id="preview1" style="display:none; width: 300px;">
+                                </div>
+                            </div>
+                            @if (count($errors) > 0)
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+                              <div class="" class="events-pad">
+                                    <div class="form-group">
+                                        <input type="submit" id="confirm" class="btn btn-primary" value="トーク作成s">
+                                    </div>
+                              </div>
+                        </form>
                     </div>
                 </div>
-            @endforeach
-        </div>
-        <div class="row white-bg">
-             {!! $talks->render() !!}
+            </div>            
         </div>
         <div class="row">
             <div class="footer">                       
@@ -233,7 +285,6 @@
         </div>
     </div>
 </div>
-
 @stop
 
 @section('Js')
@@ -245,4 +296,5 @@
 
 <script src="{{{asset('/assets/js/inspinia.js')}}}"></script>
 <script src="{{{asset('/assets/js/plugins/pace/pace.min.js')}}}"></script>
+<script src="{{{asset('/assets/js/add.js')}}}"></script>
 @stop
