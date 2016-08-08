@@ -199,7 +199,7 @@
                         <input type="hidden" name="MAX_FILE_SIZE" value="10485760">
 
                             <div class="form-group"><label class="col-sm-2 control-label">タイトル（＊必須）</label>
-                                <div class="col-sm-10"><input type="text" name="title" id="title" placeholder="最大５０文字" class="form-control"></div>
+                                <div class="col-sm-10"><input type="text" name="title" id="title" placeholder="最大５０文字" class="form-control" value="{{ old('title') }}"></div>
                                 <p id="title_count"></p>
                             </div>
 
@@ -208,7 +208,7 @@
                                     <select name="category" id="category" class="form-control">
                                         <option value="">カテゴリーを選択</option>
                                         @foreach ($categories as $category)
-                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                            <option value="{{ $category->id }}" @if (old('category') === $category->id) selected @endif>{{ $category->category_name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -218,7 +218,7 @@
                                 <div class="col-sm-10">
                                     <select name="price" id="price" class="form-control">
                                         @for ($i = 3; $i < 51; $i++)
-                                            <option value="{{ $i * 1000 }}">{{ $i * 1000 }}円</option>
+                                            <option value="{{ $i * 1000 }}" @if (old('price') === $i * 1000) selected @endif>{{ $i * 1000 }}円</option>
                                         @endfor
                                     </select>
                                 </div>
@@ -228,7 +228,7 @@
 
                             <div class="form-group"><label class="col-sm-2 control-label">詳細（＊必須）</label>
                                 <div class="col-sm-10">
-                                    <textarea name="detail" id="detail" class="form-control" rows="20" required placeholder="最大1000文字"></textarea>
+                                    <textarea name="detail" id="detail" class="form-control" rows="20" required placeholder="最大1000文字">{{ old('detail') }}</textarea>
                                     <p id="detail_count"></p>
                                 </div>
                             </div>

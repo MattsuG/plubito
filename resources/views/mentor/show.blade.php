@@ -198,16 +198,18 @@
                     </div>
                     <div>
                         <div class="ibox-content no-padding border-left-right">
-                            <img alt="image" class="img-circle" src="{{{asset('/assets/img/backgrounds/3.jpg')}}}">
+                            <img alt="image" class="img-circle" src="{{{asset($talk->user->profile_picture_path)}}}">
                         </div>
                         <div class="ibox-content profile-content">
-                            <h4><strong>Hayato Matsuzawa</strong></h4>
+                            <h4><strong>{{ $talk->user->name }}</strong></h4>
                             <p><i class="fa fa-map-marker"></i> Seoul, S.Korea</p>
                             <h5>
                                 自己紹介
                             </h5>
                             <p>
-                                スポーツアパレルメーカー、デサントにて機能性の高いスポーツウエア、ライフスタイルウエアの欧州営業を担当。２０１５年から新規リテール事業の立ち上げメンバーとして海外出向中。大学卒業までアルペンスキーに熱中し、その後アメリカコロラド州の大学院でスポーツ経営学を学ぶ。帰国後現在の会社へ入る。<a href="/user/show">...詳細を見る</a>
+                                {{ $talk->user->introduction }}
+                                <a href="{{ url('/user/show/'.$talk->mentor_id) }}">...詳細を見る</a>
+                                }
                             </p>
                             <div class="user-button">
                                 <div class="row">
@@ -230,47 +232,27 @@
                         <div>
                             <div class="feed-activity-list">
                                 <div class="feed-element">
-                                    <h6>タイトル</h6>
-                                    宇船 
+                                    <h6>{{ $talk->category->category_name }}</h6>
+                                    {{ $talk->title }} 
                                     <div class="photos">
-                                        <img alt="image" class="feed-photo" src="{{{asset('/assets/img/p1.jpg')}}}">
-                                        <img alt="image" class="feed-photo" src="{{{asset('/assets/img/p3.jpg')}}}">
+                                        <img alt="image" class="feed-photo" src="{{{asset($talk->pic0_path)}}}">
+                                        @if (!empty($talk->pic1_path))
+                                        <img alt="image" class="feed-photo" src="{{{asset($talk->pic1_path)}}}">
+                                        @endif
+
                                     </div>
                                 </div>
                                 <div class="feed-element">
                                     <h6>詳細</h6>
-                                    その船は今どこに ふらふらと浮かんでいるのか 
-                                    その船は今どこで ボロボロで進んでいるのか 
-                                    流されまいと逆らいながら 
-                                    船は挑み 船は傷み 
-                                    すべての水夫が恐れをなして逃げ去っても 
-                                    その船を漕いでゆけ お前の手で漕いでゆけ 
-                                    お前が消えて喜ぶ者に お前のオールをまかせるな 
-
-                                    その船は自らを 宙船と忘れているのか 
-                                    その船は舞い上がる その時を忘れているのか 
-                                    地平の果て 水平の果て 
-                                    そこが船の離陸地点 
-                                    すべての港が灯りを消して黙りこんでも 
-                                    その船を漕いでゆけ お前の手で漕いでゆけ 
-                                    お前が消えて喜ぶ者に お前のオールをまかせるな 
-
-                                    何の試験の時間なんだ 何を裁く秤なんだ 
-                                    何を狙って付き合うんだ 何が船を動かすんだ 
-                                    何の試験の時間なんだ 何を裁く秤なんだ 
-                                    何を狙って付き合うんだ 何が船を動かすんだ 
-                                    その船を漕いでゆけ お前の手で漕いでゆけ 
-                                    お前が消えて喜ぶ者に お前のオールをまかせるな 
-                                    その船を漕いでゆけ お前の手で漕いでゆけ 
-                                    お前が消えて喜ぶ者に お前のオールをまかせるな
+                                    {{ $talk->detail }}
                                 </div>
                                 <div class="feed-element">
                                     <h6>価格</h6>
-                                    xxxxxxxxxxxxxxxxxxxxxxxx  
+                                    {{ $talk->price }} 
                                 </div>
                             </div>
 
-                            <button class="btn btn-primary btn-block m">予約リクエスト</button>
+                            <button  class="btn btn-primary btn-block m">予約リクエスト</button>
 
                         </div>
 

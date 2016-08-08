@@ -11,6 +11,7 @@
 @stop
 
 @section('content')
+
     	<div class="loader">
     		<div class="loader-img"></div>
     	</div>
@@ -145,125 +146,25 @@
 	                </div>
 	            </div>
 
-	            <div class="row">              
-                    <div class="col-sm-4 pricing-box pricing-box-best wow fadeInDown">
-                        <div class="pricing-box-inner">
-                            <div class="pricing-box-price">
-                            <img src="img/headphones.jpg" alt="">
-                            </div>
-                            <h3>タイトル</h3>
-                            <h4>概要を記入。文章が長くなった場合はどうなるか。文章が長くなった場合はどうなるか文章が長くなった場合はどうなるか。</h4>
-                            <div class="pricing-box-features">
-                                <ul>
-                                    <li>カテゴリ</li>
-                                    <li>価格</li>
-                                    <li><a href="/mentor/show"><button type="button" class="btn btn-default btn-sm btn-block"><i class="fa fa-envelope"></i>メッセージ</button></a></li>                           
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                         
-                    <div class="col-sm-4 pricing-box pricing-box-best wow fadeInDown">
-                        <div class="pricing-box-inner">
-                            <div class="pricing-box-price">
-                            <img src="img/headphones.jpg" alt="">
-                            </div>
-                            <h3>タイトル</h3>
-                            <h4>概要を記入。文章が長くなった場合はどうなるか。文章が長くなった場合はどうなるか文章が長くなった場合はどうなるか。</h4>
-                            <div class="pricing-box-features">
-                                <ul>
-                                    <li>カテゴリ</li>
-                                    <li>価格</li>
-                                    <li><a href="/mentor/show"><button type="button" class="btn btn-default btn-sm btn-block"><i class="fa fa-envelope"></i>メッセージ</button></a></li>                          
-                                </ul>
+	            <div class="row"> 
+                    @foreach ($talks as $talk)         
+                        <div class="col-sm-4 pricing-box pricing-box-best wow fadeInDown">
+                            <div class="pricing-box-inner">
+                                <div class="pricing-box-price">
+                                <img src="{{{asset($talk->pic0_path)}}}" alt="">
+                                </div>
+                                <h3>{{ $talk->title }}</h3>
+                                <h4>興味あり:150人 申込者:40人</h4>
+                                <div class="pricing-box-features">
+                                    <ul>
+                                        <li>{{ $talk->name }}</li>
+                                        <li>価格:{{ $talk->price }}</li>
+                                        <li><a href="{{ url('auth/login') }}"><button type="button" class="btn btn-default btn-sm btn-block">詳細を見る</button></a></li>                           
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                         
-                    <div class="col-sm-4 pricing-box pricing-box-best wow fadeInDown">
-                        <div class="pricing-box-inner">
-                            <div class="pricing-box-price">
-                            <img src="img/headphones.jpg" alt="">
-                            </div>
-                            <h3>タイトル</h3>
-                            <h4>概要を記入。文章が長くなった場合はどうなるか。文章が長くなった場合はどうなるか文章が長くなった場合はどうなるか。</h4>
-                            <div class="pricing-box-features">
-                                <ul>
-                                    <li>カテゴリ</li>
-                                    <li>価格</li>
-                                    <li><a href="/mentor/show"><button type="button" class="btn btn-default btn-sm btn-block"><i class="fa fa-envelope"></i>メッセージ</button></a></li>                              
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                            
-                    <div class="col-sm-4 pricing-box pricing-box-best wow fadeInDown">
-                        <div class="pricing-box-inner">
-                            <div class="pricing-box-price">
-                            <img src="img/headphones.jpg" alt="">
-                            </div>
-                            <h3>タイトル</h3>
-                            <h4>概要を記入。文章が長くなった場合はどうなるか。文章が長くなった場合はどうなるか文章が長くなった場合はどうなるか。</h4>
-                            <div class="pricing-box-features">
-                                <ul>
-                                    <li>カテゴリ</li>
-                                    <li>価格</li>
-                                    <li><a href="/mentor/show"><button type="button" class="btn btn-default btn-sm btn-block"><i class="fa fa-envelope"></i>メッセージ</button></a></li>                            
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                              
-                    <div class="col-sm-4 pricing-box pricing-box-best wow fadeInDown">
-                        <div class="pricing-box-inner">
-                            <div class="pricing-box-price">
-                            <img src="img/headphones.jpg" alt="">
-                            </div>
-                            <h3>タイトル</h3>
-                            <h4>概要を記入。文章が長くなった場合はどうなるか。文章が長くなった場合はどうなるか文章が長くなった場合はどうなるか。</h4>
-                            <div class="pricing-box-features">
-                                <ul>
-                                    <li>カテゴリ</li>
-                                    <li>価格</li>
-                                    <li><a href="/mentor/show"><button type="button" class="btn btn-default btn-sm btn-block"><i class="fa fa-envelope"></i>メッセージ</button></a></li>                           
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                              
-                    <div class="col-sm-4 pricing-box pricing-box-best wow fadeInDown">
-                        <div class="pricing-box-inner">
-                            <div class="pricing-box-price">
-                            <img src="img/headphones.jpg" alt="">
-                            </div>
-                            <h3>タイトル</h3>
-                            <h4>概要を記入。文章が長くなった場合はどうなるか。文章が長くなった場合はどうなるか文章が長くなった場合はどうなるか。</h4>
-                            <div class="pricing-box-features">
-                                <ul>
-                                    <li>カテゴリ</li>
-                                    <li>価格</li>
-                                    <li><a href="/mentor/show"><button type="button" class="btn btn-default btn-sm btn-block"><i class="fa fa-envelope"></i>メッセージ</button></a></li>                              
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                               
-                    <div class="col-sm-4 pricing-box pricing-box-best wow fadeInDown">
-                        <div class="pricing-box-inner">
-                            <div class="pricing-box-price">
-                            <img src="img/headphones.jpg" alt="">
-                            </div>
-                            <h3>タイトル</h3>
-                            <h4>概要を記入。文章が長くなった場合はどうなるか。文章が長くなった場合はどうなるか文章が長くなった場合はどうなるか。</h4>
-                            <div class="pricing-box-features">
-                                <ul>
-                                    <li>カテゴリ</li>
-                                    <li>価格</li>
-                                    <li><a href="/mentor/show"><button type="button" class="btn btn-default btn-sm btn-block"><i class="fa fa-envelope"></i>メッセージ</button></a></li>                           
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach  
                 </div>
 	        </div>
 	    </div>
