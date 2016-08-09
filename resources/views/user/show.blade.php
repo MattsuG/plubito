@@ -23,14 +23,14 @@
                     </div>
                     <div class="dropdown profile-element"> 
                         <span>
-                            <img alt="image" class="img-circle" src="{{{asset('/assets/img/about/1.jpg')}}}" />
+                            <img alt="image" class="img" src="{{{asset(Auth::user()->pic3_path)}}}" />
                         </span>
                         <a class="dropdown-toggle" href="#">
                             <span class="clear"> 
                                 <span class="block m-t-xs"> 
-                                    <strong class="font-bold">{{ $user->name }}</strong>
+                                    <strong class="font-bold">{{ Auth::user()->name }}</strong>
                                 </span> 
-                                <span class="text-muted text-xs block">{{ $user->introduction }}</span>
+                                <span class="text-muted text-xs block">{{ Auth::user()->introduction }}</span>
                             </span>
                         </a>                        
                     </div>                    
@@ -41,8 +41,8 @@
                  <li>
                     <a href="#"><i class="fa fa-pencil"></i> <span class="nav-label">アカウント編集</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse">
-                        <li><a href="#">プロフィール表示</a></li>
-                        <li><a href="/user/edit/{{ $user->id }}">プロフィール編集</a></li>
+                        <li><a href="/user/show/{{ Auth::user()->id }}">プロフィール表示</a></li>
+                        <li><a href="/user/edit/{{ Auth::user()->id }}">プロフィール編集</a></li>
                     </ul>
                 </li>
                 <li>
@@ -194,7 +194,7 @@
                     </div>
                     <div>
                         <div class="ibox-content no-padding border-left-right">
-                            <img alt="image" class="img-circle" src="{{{asset('/assets/img/backgrounds/3.jpg')}}}">
+                            <img alt="image" class="img-circle" src="{{{asset(Auth::user()->pic3_path)}}}">
                         </div>
                         <div class="ibox-content profile-content">
                             <h4><strong>{{ $user->name }}</strong></h4>

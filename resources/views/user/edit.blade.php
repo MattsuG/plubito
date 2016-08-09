@@ -23,14 +23,14 @@
                     </div>
                     <div class="dropdown profile-element"> 
                         <span>
-                            <img alt="image" class="img-circle" src="{{{asset('/assets/img/about/1.jpg')}}}" />
+                            <img alt="image" class="img-circle" src="{{{asset(Auth::user()->pic3_path)}}}" />
                         </span>
                         <a class="dropdown-toggle" href="#">
                             <span class="clear"> 
                                 <span class="block m-t-xs"> 
-                                    <strong class="font-bold">{{ $user->name }}</strong>
+                                    <strong class="font-bold">{{ Auth::user()->name }}</strong>
                                 </span> 
-                                <span class="text-muted text-xs block">{{ $user->introduction }}</span>
+                                <span class="text-muted text-xs block">{{ Auth::user()->introduction }}</span>
                             </span>
                         </a>                        
                     </div>                    
@@ -41,8 +41,8 @@
                  <li>
                     <a href="#"><i class="fa fa-pencil"></i> <span class="nav-label">アカウント編集</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse">
-                        <li><a href="/user/show/{{ $user->id }}">プロフィール表示</a></li>
-                        <li><a href="#">プロフィール編集</a></li>
+                        <li><a href="/user/show/{{ Auth::user()->id }}">プロフィール表示</a></li>
+                        <li><a href="/user/edit/{{ Auth::user()->id }}">プロフィール編集</a></li>
                     </ul>
                 </li>
                 <li>
@@ -192,9 +192,24 @@
             <div class="col-lg-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-content">
-                        <form method="post" class="form-horizontal" action="{{ url('/user/edit', $user->id) }}">
+                        <form method="post" class="form-horizontal" action="{{ url('/user/edit', $user->id) }}" enctype="multipart/form-data" >
                             {{ csrf_field() }}
                             {{ method_field('patch') }}
+
+                            <!-- プロフィール画像 -->
+                            <div class="form-group"><label class="col-sm-2 control-label">プロフィール画像</label>
+                                <input class="pic" name="pic3" id="pic3" type="file" style="display:none" enctype="multipart/form-data">
+                                <div class="input-group">
+                                  <input type="text" id="photoCover0" class="form-control" placeholder="jpgもしくはpng(5MBまで)">
+                                  <span class="input-group-btn"><button type="button" class="btn btn-primary" onclick="$('#pic3').click();">ファイル選択</button></span>
+                                </div>
+                                <label id="label3" class="cebroad-pink"></label>
+                                <div class="events-pad">
+                                  <img src="" id="preview3" style="display:none; width: 300px;">
+                            </div>
+
+                             <hr>
+
                             <div class="form-group"><label class="col-sm-2 control-label">お名前</label>
                                 <div class="col-sm-10"><input type="text" name="name" placeholder="お名前" value="{{ old('name', $user->name) }}" class="form-control"></div>
                             </div>
@@ -286,4 +301,5 @@
 
 <script src="{{{asset('/assets/js/inspinia.js')}}}"></script>
 <script src="{{{asset('/assets/js/plugins/pace/pace.min.js')}}}"></script>
+<script src="{{{asset('/assets/js/add.js')}}}"></script>
 @stop
