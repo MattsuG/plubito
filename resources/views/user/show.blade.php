@@ -23,7 +23,7 @@
                     </div>
                     <div class="dropdown profile-element"> 
                         <span>
-                            <img alt="image" class="img-circle" src="{{{asset('/assets/img/about/1.jpg')}}}" />
+                            <img alt="image" class="img" src="{{{asset($user->pic3_path)}}}" />
                         </span>
                         <a class="dropdown-toggle" href="#">
                             <span class="clear"> 
@@ -194,7 +194,7 @@
                     </div>
                     <div>
                         <div class="ibox-content no-padding border-left-right">
-                            <img alt="image" class="img-circle" src="{{{asset('/assets/img/backgrounds/3.jpg')}}}">
+                            <img alt="image" class="img" src="{{{asset($user->pic3_path)}}}">
                         </div>
                         <div class="ibox-content profile-content">
                             <h4><strong>{{ $user->name }}</strong></h4>

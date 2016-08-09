@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use Image;
 
 use App\User;
 
@@ -52,10 +53,28 @@ class UserController extends Controller
         $user->other_school = $request->other_school; 
         $user->other_major = $request->other_major;
         $user->other_school_period = $request->other_school_period;
+        $file3 = $request->file('pic3');
+
+        if(!empty($file3))
+            {   
+                $filename = str_random(20).'.'.$file3->getClientOriginalExtension();
+                $path = 'profile_pictures';
+                $img = Image::make($file3->getRealPath());
+                chmod($path, 0777);
+                $img->resize(800, 600)->save($path.'/'.$filename);
+                chmod($path, 0744);
+                $pic3_path = '/'.$path.'/'.$filename;
+            }
+            else
+            {
+                //ファイルアップロードが無いときは変数を初期化（viewでのエラー防止）
+                $pic3_path = '/assets/img/default_thumbnail.jpg';
+            }
+
+        $user->pic3_path = $pic3_path;
 
         $user->save();
         return view("user/show")->with('user',$user);
     }
-
 
 }

@@ -192,9 +192,24 @@
             <div class="col-lg-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-content">
-                        <form method="post" class="form-horizontal" action="{{ url('/user/edit', $user->id) }}">
+                        <form method="post" class="form-horizontal" action="{{ url('/user/edit', $user->id) }}" enctype="multipart/form-data" >
                             {{ csrf_field() }}
                             {{ method_field('patch') }}
+
+                            <!-- プロフィール画像 -->
+                            <div class="form-group"><label class="col-sm-2 control-label">プロフィール画像</label>
+                                <input class="pic" name="pic3" id="pic3" type="file" style="display:none" enctype="multipart/form-data">
+                                <div class="input-group">
+                                  <input type="text" id="photoCover0" class="form-control" placeholder="jpgもしくはpng(5MBまで)">
+                                  <span class="input-group-btn"><button type="button" class="btn btn-primary" onclick="$('#pic3').click();">ファイル選択</button></span>
+                                </div>
+                                <label id="label3" class="cebroad-pink"></label>
+                                <div class="events-pad">
+                                  <img src="" id="preview3" style="display:none; width: 300px;">
+                            </div>
+
+                             <hr>
+
                             <div class="form-group"><label class="col-sm-2 control-label">お名前</label>
                                 <div class="col-sm-10"><input type="text" name="name" placeholder="お名前" value="{{ old('name', $user->name) }}" class="form-control"></div>
                             </div>
@@ -286,4 +301,5 @@
 
 <script src="{{{asset('/assets/js/inspinia.js')}}}"></script>
 <script src="{{{asset('/assets/js/plugins/pace/pace.min.js')}}}"></script>
+<script src="{{{asset('/assets/js/add.js')}}}"></script>
 @stop
