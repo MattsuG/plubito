@@ -202,13 +202,13 @@
         </div>
         <div class="row white-bg"> 
             @foreach ($talks as $talk) 
-                <div class="col-sm-4 pricing-box pricing-box-best wow fadeInDown">
+                <div class="col-sm-3 pricing-box pricing-box-best wow fadeInDown">
                     <div class="pricing-box-inner">
                         <div class="pricing-box-price">
                         <a href="{{ url('mentor/'.$talk->id) }}" style="color:#000;text-decoration:none"><img src="{{{asset($talk->pic0_path)}}}" alt="">
                         </div>
-                        <h3>{{ $talk->title }}</h3>
-                        <h4>興味あり:150人 申込者:40人</h4></a>
+                        <h3 class="abbreviation3">{{ $talk->title }}</h3>
+                        <h5>興味あり:150人 申込者:40人</h5></a>
                         <div class="pricing-box-features">
                             <ul>
                                 <li>{{ $talk->category->category_name }}</li>
@@ -244,4 +244,22 @@
 
 <script src="{{{asset('/assets/js/inspinia.js')}}}"></script>
 <script src="{{{asset('/assets/js/plugins/pace/pace.min.js')}}}"></script>
+<script>
+$(function(){
+    var $setElm = $('h3.abbreviation3');
+    var cutFigure = '11'; // カットする文字数
+    var afterTxt = ' …'; // 文字カット後に表示するテキスト
+
+    $setElm.each(function(){
+        var textLength = $(this).text().length;
+        var textTrim = $(this).text().substr(0,(cutFigure))
+
+        if(cutFigure < textLength) {
+            $(this).html(textTrim + afterTxt).css({visibility:'visible'});
+        } else if(cutFigure >= textLength) {
+            $(this).css({visibility:'visible'});
+        }
+    });
+});
+</script>
 @stop
