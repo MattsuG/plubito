@@ -29,7 +29,7 @@
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="/">Marco - Bootstrap Landing Page</a>
+						<a class="navbar-brand" href="/">+ヒト landing page</a>
 					</div>
 					<!-- Collect the nav links, forms, and other content for toggling -->
 					<div class="collapse navbar-collapse" id="top-navbar-1">
@@ -107,19 +107,19 @@
 	                    <h3>トークを検索</h3>
 	                    <p>カテゴリ検索やキーワード検索で聞いてみたいトークを検索</p>
                     </div>
-                    <div class="col-sm-3  how-it-works-box wow fadeInDown">
-	                	<div class="how-it-works-box-icon">
-	                		<i class="fa fa-paper-plane fa-5x" aria-hidden="true"></i>
-	                	</div>
-	                    <h3>予約リクエスト</h3>
-	                    <p>聞いてみたいトークが見つかったら詳細ページから予約リクエスト</p>
-                    </div>
                     <div class="col-sm-3  how-it-works-box wow fadeInUp">
 	                	<div class="how-it-works-box-icon">
 	                		<i class="fa fa-commenting fa-5x" aria-hidden="true"></i>
 	                	</div>
 	                    <h3>メッセージ</h3>
 	                    <p>話し手とのメッセージで事前にオンライン通話サービスのIDを交換</p>
+                    </div>
+                    <div class="col-sm-3  how-it-works-box wow fadeInDown">
+	                	<div class="how-it-works-box-icon">
+	                		<i class="fa fa-paper-plane fa-5x" aria-hidden="true"></i>
+	                	</div>
+	                    <h3>予約リクエスト</h3>
+	                    <p>聞いてみたいトークが見つかったら詳細ページから予約リクエスト</p>
                     </div>
                     <div class="col-sm-3 how-it-works-box wow fadeInDown">
 	                	<div class="how-it-works-box-icon">
@@ -148,13 +148,13 @@
 
 	            <div class="row"> 
                     @foreach ($talks as $talk)         
-                        <div class="col-sm-4 pricing-box pricing-box-best wow fadeInDown">
+                        <div class="col-sm-3 pricing-box pricing-box-best wow fadeInDown">
                             <div class="pricing-box-inner">
                                 <div class="pricing-box-price">
                                 <img src="{{{asset($talk->pic0_path)}}}" alt="">
                                 </div>
-                                <h3>{{ $talk->title }}</h3>
-                                <h4>興味あり:150人 申込者:40人</h4>
+                                <h3 class="abbreviation3">{{ $talk->title }}</h3>
+                                <h5>興味あり:150人 申込者:40人</h5>
                                 <div class="pricing-box-features">
                                     <ul>
                                         <li>{{ $talk->name }}</li>
@@ -168,82 +168,6 @@
                 </div>
 	        </div>
 	    </div>
-        
-        
-        <!-- Call to action -->
-        <!-- <div class="call-to-action-container section-container section-container-image-bg">
-	        <div class="container">
-	            <div class="row">
-	                <div class="col-sm-12 call-to-action section-description wow fadeInLeftBig">
-	                    <h2>Call to action</h2>
-	                    <div class="divider-1 wow fadeInUp"><span></span></div>
-	                    <p>
-	                    	Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut 
-	                    	aliquip ex ea commodo consequat. Ut wisi enim ad minim veniam, quis nostrud.
-	                    </p>
-	                </div>
-	            </div>
-	            <div class="row">
-	            	<div class="col-sm-12 section-bottom-button wow fadeInUp">
-                        <a class="btn btn-link-1 scroll-link" href="#pricing">Choose your package</a>
-	            	</div>
-	            </div>
-	        </div>
-        </div> -->
-        
-        <!-- About us -->
-     <!--    <div class="about-us-container section-container">
-	        <div class="container">
-	            <div class="row">
-	                <div class="col-sm-12 about-us section-description wow fadeIn">
-	                    <h2>About us</h2>
-	                    <div class="divider-1 wow fadeInUp"><span></span></div>
-	                </div>
-	            </div>
-	            <div class="row">
-	                <div class="col-sm-4 about-us-box wow fadeInUp">
-		                <div class="about-us-photo">
-		                	<img src="{{{asset('/assets/img/about/1.jpg')}}}" alt="" data-at2x="assets/img/about/1.jpg')}}}">
-		                	<div class="about-us-role">Marketing</div>
-		                </div>
-	                    <h3>John Doe</h3>
-	                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p>
-	                    <div class="about-us-social">
-		                	<a href="#"><span class="typcn typcn-social-facebook"></span></a>
-		                	<a href="#"><span class="typcn typcn-social-dribbble"></span></a>
-		                    <a href="#"><span class="typcn typcn-social-twitter"></span></a>
-		                </div>
-	                </div>
-	                <div class="col-sm-4 about-us-box wow fadeInDown">
-		                <div class="about-us-photo">
-		                	<img src="{{{asset('/assets/img/about/2.jpg')}}}" alt="" data-at2x="assets/img/about/2.jpg')}}}">
-		                	<div class="about-us-role">Designer</div>
-		                </div>
-	                    <h3>Tim Brown</h3>
-	                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p>
-	                    <div class="about-us-social">
-		                	<a href="#"><span class="typcn typcn-social-facebook"></span></a>
-		                	<a href="#"><span class="typcn typcn-social-dribbble"></span></a>
-		                    <a href="#"><span class="typcn typcn-social-twitter"></span></a>
-		                </div>
-	                </div>
-	                <div class="col-sm-4 about-us-box wow fadeInUp">
-		                <div class="about-us-photo">
-		                	<img src="{{{asset('/assets/img/about/3.jpg')}}}" alt="" data-at2x="assets/img/about/3.jpg')}}}">
-		                	<div class="about-us-role">Developer</div>
-		                </div>
-	                    <h3>Sarah Red</h3>
-	                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p>
-	                    <div class="about-us-social">
-		                	<a href="#"><span class="typcn typcn-social-facebook"></span></a>
-		                	<a href="#"><span class="typcn typcn-social-dribbble"></span></a>
-		                    <a href="#"><span class="typcn typcn-social-twitter"></span></a>
-		                </div>
-	                </div>
-	            </div>
-	        </div>
-        </div> -->
-
         <!-- Testimonials -->
         <div class="testimonials-container section-container section-container-image-bg">
 	        <div class="container">
@@ -351,7 +275,8 @@
                     	<ul>
                     		<li><a class="scroll-link" href="#top-content">トップ</a></li>
 							<li><a href="#">利用規約</a></li>
-							<li><a href="#">個人情報</a></li>
+							<li><a href="#">プライバシーポリシー</a></li>
+							<li><a href="#">特定商取引法に基づく表記</a></li>
 						</ul>
                     </div>
            		</div>
@@ -388,4 +313,22 @@
 <script src="{{{asset('/assets/js/wow.min.js')}}}"></script>
 <script src="{{{asset('/assets/js/retina-1.1.0.min.js')}}}"></script>
 <script src="{{{asset('assets/js/scripts.js')}}}"></script>
+<script>
+$(function(){
+    var $setElm = $('h3.abbreviation3');
+    var cutFigure = '11'; // カットする文字数
+    var afterTxt = ' …'; // 文字カット後に表示するテキスト
+
+    $setElm.each(function(){
+        var textLength = $(this).text().length;
+        var textTrim = $(this).text().substr(0,(cutFigure))
+
+        if(cutFigure < textLength) {
+            $(this).html(textTrim + afterTxt).css({visibility:'visible'});
+        } else if(cutFigure >= textLength) {
+            $(this).css({visibility:'visible'});
+        }
+    });
+});
+</script>
 @stop
