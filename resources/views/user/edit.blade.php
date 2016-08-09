@@ -217,13 +217,13 @@
                                 <div class="col-sm-10"><input type="text" name="place" placeholder="現在地" value="{{ old('place', $user->place) }}" class="form-control"></div>
                             </div>
                             <div class="form-group"><label class="col-sm-2 control-label">自己紹介</label>
-                                <div class="col-sm-10"><textarea type="text" name="introduction" placeholder="自己紹介" class="form-control">{{ old('introduction', $user->introduction) }}</textarea></div>
+                                <div class="col-sm-10"><textarea type="text" name="introduction" placeholder="自己紹介" rows="4" class="form-control">{{ old('introduction', $user->introduction) }}</textarea></div>
                             </div>
 
                             <hr>
 
                             <div class="form-group"><label class="col-sm-2 control-label">今後やってみたいこと</label>
-                                <div class="col-sm-10"><textarea type="text" name="vision" placeholder="今後やってみたいこと" class="form-control">{{ old('vision', $user->vision) }}</textarea></div>
+                                <div class="col-sm-10"><textarea type="text" name="vision" placeholder="今後やってみたいこと" rows="4" class="form-control">{{ old('vision', $user->vision) }}</textarea></div>
                             </div>
 
                             <hr>
@@ -235,7 +235,7 @@
                                 <div class="col-sm-10"><input type="text" name="current_position" placeholder="職種、部署など" value="{{ old('current_position', $user->current_position) }}" class="form-control"></div>
                             </div>   
                              <div class="form-group"><label class="col-sm-2 control-label">現職の業務内容詳細</label>
-                                <div class="col-sm-10"><textarea type="text" name="current_detail" placeholder="具体的な業務内容、スキルなど"  class="form-control">{{ old('current_detail', $user->current_detail) }}</textarea></div>
+                                <div class="col-sm-10"><textarea type="text" name="current_detail" placeholder="具体的な業務内容、スキルなど"  rows="7" class="form-control">{{ old('current_detail', $user->current_detail) }}</textarea></div>
                             </div>
 
                             <hr>
@@ -247,7 +247,7 @@
                                 <div class="col-sm-10"><input type="text" name="past_position" placeholder="placeholder" value="{{ old('past_position', $user->past_position) }}" class="form-control"></div>
                             </div>   
                              <div class="form-group"><label class="col-sm-2 control-label">前職の業務内容詳細</label>
-                                <div class="col-sm-10"><textarea type="text" name="past_detail" placeholder="placeholder" class="form-control" >{{ old('past_detail', $user->past_detail) }}</textarea></div>
+                                <div class="col-sm-10"><textarea type="text" name="past_detail" placeholder="placeholder" rows="7" class="form-control" >{{ old('past_detail', $user->past_detail) }}</textarea></div>
                             </div>
 
                             <hr>
