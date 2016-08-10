@@ -54,12 +54,12 @@ h5 {
 
 
 .nav > li > a {
-  color: #a7b1c2;
+  color: #000000;
   font-weight: 100;
   padding: 14px 20px 14px 25px;
 }
 .nav.navbar-right > li > a {
-  color: #999c9e;
+  color: #000000;
 }
 .nav > li.active > a {
   color: #ffffff;
@@ -85,7 +85,7 @@ h5 {
   border: 0;
 }
 .navbar-default {
-  background-color: gray;
+  background-color: white;
   border-color: #2f4050;
 }
 .navbar-top-links li {
@@ -192,10 +192,10 @@ h5 {
   height: auto !important;
 }
 .nav-header a {
-  color: #DFE4ED;
+  color: #000000;
 }
 .nav-header .text-muted {
-  color: #ffffff;
+  color: #000000;
 }
 .minimalize-styl-2 {
   padding: 4px 12px;
@@ -313,7 +313,7 @@ body.mini-navbar .navbar-default .nav > li > .nav-second-level li a {
   text-align: center;
   font-size: 18px;
   font-weight: 600;
-  background-color: #21ced7;
+  background-color: #d7d8dc;
   display: none;
   padding: 18px 0;
 }
@@ -335,7 +335,7 @@ body.mini-navbar .navbar-default .nav > li > .nav-second-level li a {
 }
 .navbar-fixed-top,
 .navbar-static-top {
-  background: #f3f3f4;
+  background: #ffffff;
 }
 .fixed-nav #wrapper {
   margin-top: 0;
@@ -634,8 +634,8 @@ body.canvas-menu.mini-navbar nav.navbar-static-side {
   color: #fff;
 }
 .btn-primary {
-  background-color: #999c9e;
-  border-color: #999c9e;
+  background-color: #d7d8dc;;
+  border-color: #ffffff;
   color: #FFFFFF;
 }
 .btn-primary:hover,
@@ -3862,7 +3862,7 @@ table.table-mail tr td {
 }
 /* BACKGROUNDS */
 .gray-bg {
-  background-color: #dddddd;
+  background-color: #ffffff;
 }
 .white-bg {
   background-color: #ffffff;
@@ -3990,7 +3990,7 @@ table.table-mail tr td {
   color: #ed5565;
 }
 .text-muted {
-  color: #888888;
+  color: #000000;
 }
 .text-white {
   color: #ffffff;

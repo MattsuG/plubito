@@ -175,7 +175,7 @@
 
             </nav>
         </div>
-        <div class="row wrapper border-bottom white-bg page-heading inbox-title">
+      <!--   <div class="row wrapper border-bottom white-bg page-heading inbox-title">
             <div class="col-lg-9ƒ">
                 <h2>トーク一覧</h2>
                 <ol class="breadcrumb">
@@ -184,35 +184,35 @@
                     </li>
                 </ol>
             </div>
-        </div>
+        </div> -->
 
 
         <div class="row white-bg">
             <form role="search" class="navbar-form" action="">
                 <div class="form-group">
-                    <select class="form-control" name="search_category">
+                   <!--  <select class="form-control" name="search_category">
                         <option value="0" selected>カテゴリを選択</option>
                         @foreach($categories as $category)
                             <option value="{{ $category->id }}">{{ $category->category_name }}</option>
                         @endforeach
-                    </select>
+                    </select> -->
                     <input type="text" placeholder="検索ワード" class="form-control" name="search_word" id="top-search">
                 </div>
             </form>
         </div>
-        <div class="row white-bg"> 
+        <div class="row-index white-bg"> 
             @foreach ($talks as $talk) 
-                <div class="col-sm-3 pricing-box pricing-box-best wow fadeInDown">
+                <div class="col-sm-6 pricing-box pricing-box-best wow fadeInDown">
                     <div class="pricing-box-inner">
                         <div class="pricing-box-price">
                         <a href="{{ url('mentor/'.$talk->id) }}" style="color:#000;text-decoration:none"><img src="{{{asset($talk->pic0_path)}}}" alt="">
                         </div>
                         <h3 class="abbreviation3">{{ $talk->title }}</h3>
-                        <h5>興味あり:150人 申込者:40人</h5></a>
+                        <h5>申込者:40人</h5></a>
                         <div class="pricing-box-features">
                             <ul>
                                 <li>{{ $talk->category->category_name }}</li>
-                                <li>価格:{{ $talk->price }}</li></a>
+                                <!-- <li>価格:{{ $talk->price }}</li></a> -->
                                 <li><a href="{{ url('mentor/'.$talk->id) }}"><button type="button" class="btn btn-default btn-sm btn-block">詳細を見る</button></a></li>                           
                             </ul>
                         </div>
