@@ -175,7 +175,7 @@
 
             </nav>
         </div>
-        <div class="row wrapper border-bottom white-bg page-heading inbox-title">
+        <!-- <div class="row wrapper border-bottom white-bg page-heading inbox-title">
             <div class="col-lg-9ƒ">
                 <h2>トーク一覧</h2>
                 <ol class="breadcrumb">
@@ -184,7 +184,7 @@
                     </li>
                 </ol>
             </div>
-        </div>
+        </div> -->
 
 
         <div class="row white-bg">
@@ -202,13 +202,13 @@
         </div>
         <div class="row white-bg"> 
             @foreach ($talks as $talk) 
-                <div class="col-sm-3 pricing-box pricing-box-best wow fadeInDown">
+                <div class="col-sm-4 pricing-box pricing-box-best wow fadeInDown">
                     <div class="pricing-box-inner">
                         <div class="pricing-box-price">
                         <a href="{{ url('mentor/'.$talk->id) }}" style="color:#000;text-decoration:none"><img src="{{{asset($talk->pic0_path)}}}" alt="">
                         </div>
                         <h3 class="abbreviation3">{{ $talk->title }}</h3>
-                        <h5>興味あり:150人 申込者:40人</h5></a>
+                        <h4>興味あり:150人 申込者:40人</h4></a>
                         <div class="pricing-box-features">
                             <ul>
                                 <li>{{ $talk->category->category_name }}</li>
