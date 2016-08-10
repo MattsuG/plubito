@@ -51,7 +51,14 @@ class User extends Authenticatable
     }
 
     public function talks() {
-        return $this->hasMany('App\Talk');
+        return $this->belongsToMany('App\Talk');
     }
 
+    public function likes() {
+        return $this->belongsToMany('App\Talk', 'likes');
+    }
+
+    public function applications() {
+        return $this->belongsToMany('App\Talk', 'applications');
+    }
 }

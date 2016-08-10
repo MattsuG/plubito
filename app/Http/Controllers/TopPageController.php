@@ -8,15 +8,15 @@ use App\Http\Requests;
 
 use DB;
 
-use App\talk;
+use App;
 
 class TopPageController extends Controller
 {
     public function index() {
-    	$talks = Talk::orderBy('created_at', 'desc')
+    	$talks = App\Talk::orderBy('created_at', 'desc')
 	    ->take(6)
 	    ->get();
-	    $categories = DB::table('categories')->get();
+	    $categories = App\Category::All();
 	    return view("index", compact('talks', 'categories'));
     }
 }

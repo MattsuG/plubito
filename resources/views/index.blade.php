@@ -153,8 +153,9 @@
                                 <div class="pricing-box-price">
                                 <img src="{{{asset($talk->pic0_path)}}}" alt="">
                                 </div>
+                                
                                 <h3>{{ $talk->title }}</h3>
-                                <h4>興味あり:150人 申込者:40人</h4>
+                                <h4>興味あり:{{ count($talk->likes) }}人 申込者:{{ $talk->applications }}人</h4>
                                 <div class="pricing-box-features">
                                     <ul>
                                         <li>{{ $talk->name }}</li>
