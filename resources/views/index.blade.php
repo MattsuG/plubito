@@ -42,19 +42,19 @@
 					</div>
 				</div>
 			</nav>
-        	
+        
             <div class="inner-bg">
                 <div class="container">
                 	
                     <div class="row">
-                        <div class="col-sm-8 col-sm-offset-2 text">
-                            <h1 class="wow fadeInLeftBig">+ヒト</h1>
+                        <div class="col-sm-12 text">
+                            <!-- <h1 class="wow fadeInLeftBig">+ヒト</h1> -->
                             <div class="description wow fadeInLeftBig">
                             	<p>
-	                            ヒトからの情報を足していく
+	                            その進路のこと話します。
                             	</p>
                             </div>
-                            <div class="subscribe wow fadeInUp">
+                            <!-- <div class="subscribe wow fadeInUp">
 	                			<form class="form-inline" role="form" action="assets/subscribe.php" method="post">
 			                    	<div class="form-group">
 			                    		<label class="sr-only" for="subscribe-email"></label>
@@ -63,18 +63,18 @@
 			                        <button type="submit" class="btn">検索</button>
 			                    </form>
 			                    <div class="success-message"></div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                     
-                    <div class="row">
+                    <!-- <div class="row">
 	                	<div class="col-sm-8 col-sm-offset-2 top-video-link medium-paragraph wow fadeInUp">
-	                		<!-- <a href="#" class="launch-modal" data-modal-id="modal-how-it-works">
+	                		<a href="#" class="launch-modal" data-modal-id="modal-how-it-works">
 		                		<span class="top-video-link-icon"><i class="fa fa-play"></i></span>
 		            			<span class="top-video-link-text">See how it works</span>
-	                		</a> -->
+	                		</a>
 	                	</div>
-	                </div>
+	                </div> -->
 	                
 	                <div class="row">
 	                	<div class="col-sm-12 top-social wow fadeInUp">
