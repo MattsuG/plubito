@@ -231,7 +231,7 @@ ul.navbar-nav {
 
 .inner-bg { padding: 10px 0 20px 0; }
 
-.top-content .text {color: #000000; font-size: 36px;  margin-left: 42%; @font-face {
+.top-content .text {color: #000000; font-size: 45px;  margin-left: 43%; @font-face {
   font-family: "Hiragino Sans";
   src: local(HiraginoSans-W0);
   font-weight: 100;}; }
@@ -326,7 +326,7 @@ ul.navbar-nav {
 .top-content a:hover .top-video-link-icon,
 .top-content a:focus .top-video-link-icon { outline: 0; background: #fff; color: #42bfc2; }
 
-.top-social { padding-top: 200px; font-size: 24px; line-height: 38px; text-align: right; }
+.top-social { padding-top: 100px; font-size: 24px; line-height: 38px; text-align: right; }
 .top-social a { margin: 5px 15px; color: #fff; color: rgb(0, 0, 0); vertical-align: middle; }
 .top-social a:hover, .top-social a:focus { outline: 0; color: rgb(0, 0, 0); }
 .top-social .divider-2 { display: inline-block; width: 1px; height: 14px; background: #fff; background: rgb(0, 0, 0); vertical-align: middle; }
