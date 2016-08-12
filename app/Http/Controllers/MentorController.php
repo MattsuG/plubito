@@ -33,7 +33,7 @@ class MentorController extends Controller
     $talks = $query->with('category');
 
     if(!empty($category_id)) {
-      $query->where('category_id', '=', $category_id);
+      $query->where('category_id', $category_id);
     }
 
     if(!empty($word)) {
@@ -114,8 +114,9 @@ class MentorController extends Controller
   public function show($id)
   {
     $talk = App\Talk::find($id);
-    $check = $talk->applications->contains(Auth::user()->id);
-    return view("mentor.show", compact('talk', 'check'));
+    $check_like = $talk->likes->contains(Auth::user()->id);
+    $check_application = $talk->applications->contains(Auth::user()->id);
+    return view("mentor.show", compact('talk', 'check_like', 'check_application'));
   }
 
   public function edit($id)
@@ -206,19 +207,53 @@ class MentorController extends Controller
 
   public function apply(Request $request) {
 
-      $user = App\User::find(Auth::user()->id);
-      $check = $user->applications->contains(Auth::user()->id);
-
-      if ($check) {
-        \Session::flash('flash_message', '既に申し込んだトークです');
+      $talk = App\Talk::find($request->talk_id);
+      if ((int)$talk->mentor_id === (int)Auth::user()->id) {
+        \Session::flash('flash_message', '自分のトークには申し込みできません');
       }
       else
       {
-        $user->applications()->attach($request->talk_id);
-        \Session::flash('flash_message', '申し込みが完了しました'); 
+          $check = $talk->applications->contains(Auth::user()->id);
+
+          if ($check) {
+            $talk->likes()->detach(Auth::user()->id);
+            $talk->decrement('applications_count');
+            \Session::flash('flash_message', '申し込みを取り消しました。');
+          }
+          else
+          {
+            $talk->applications()->attach(Auth::user()->id);
+            $talk->increment('applications_count');
+            \Session::flash('flash_message', '申し込みが完了しました'); 
+          }
       }
 
       return redirect('mentor/'.$request->talk_id);
+  }
+
+  public function like($id) {
+
+      $talk = App\Talk::find($id);
+      if ((int)$talk->mentor_id === (int)Auth::user()->id) {
+        \Session::flash('flash_message', '自分のトークには申し込みできません');
+      } else {
+
+          $check = $talk->likes->contains(Auth::user()->id);
+
+          if ($check) {
+            $talk->likes()->detach(Auth::user()->id);
+            $talk->decrement('likes_count');
+            \Session::flash('flash_message', '興味あり！を取り消しました'); 
+          }
+          else
+          {
+            $talk->likes()->attach(Auth::user()->id);
+            $talk->increment('likes_count');
+            \Session::flash('flash_message', '興味あり！しました'); 
+          }
+      }
+
+      return redirect('mentor/'.$id);
   }
 }
 

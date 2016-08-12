@@ -209,7 +209,7 @@
                         <a href="{{ url('mentor/'.$talk->id) }}" style="color:#000;text-decoration:none"><img src="{{{asset($talk->pic0_path)}}}" alt="">
                         </div>
                         <h3>{{ $talk->title }}</h3>
-                        <h4>興味あり:人 申込者:人</h4></a>
+                        <h4>興味あり:{{ $talk->likes_count }}人 申込者:{{ $talk->applications_count }}人</h4></a>
                         <div class="pricing-box-features">
                             <ul>
                                 <li>{{ $talk->category->category_name }}</li>

@@ -250,14 +250,21 @@
                                     {{ $talk->price }}円
                                 </div>
                                 <div class="feed-element">
-                                    興味あり:人
-                                    申込者数:人
+                                    興味あり:{{ $talk->likes_count }}人
+                                    申込者数:{{ $talk->applications_count }}人
                                 </div>
                             </div>
-                                <button  class="btn btn-primary btn-block m" onClick="location.href=''">興味あり！</button>
+                            @if ((int)$talk->mentor_id !== (int)Auth::user()->id)
+                                @if ($check_like)
+                                    <button  class="btn btn-secondary btn-block m" onClick="location.href='{{ url('mentor/like/'.$talk->id) }}'">興味あり！</button>
+                                @else
+                                    <button  class="btn btn-primary btn-block m" onClick="location.href='{{ url('mentor/like/'.$talk->id) }}'">興味あり！</button>
+                                @endif
+                            @endif
+
                             @if ((int)$talk->mentor_id === (int)Auth::user()->id)
                                 <button  class="btn btn-primary btn-block m" onClick="location.href='{{ url('mentor/'.$talk->id.'/edit') }}'">編集する</button>
-                            @elseif ($check)
+                            @elseif ($check_application)
                                 <button class="btn btn-primary btn-block m" data-toggle="modal" data-target="#request-modal" disabled="disabled">予約済み</button>
                             @else
                                 <button class="btn btn-primary btn-block m" data-toggle="modal" data-target="#request-modal">予約リクエスト</button>
@@ -284,7 +291,36 @@
         </div>
     </div>
 
-    @if (!$check)
+    @if ($check_application)
+        <div class="modal" id="request-modal" tabindex="-1">
+            <div class="modal-dialog">
+            <!-- 3.モーダルのコンテンツ -->
+                <div class="modal-content">
+                    <!-- 4.モーダルのヘッダ -->
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title" id="modal-label">このトークの申し込みを取り消しますか？？</h4>
+                    </div>
+                    <!-- 5.モーダルのボディ -->
+                    <div class="modal-body">
+                        <p>{{ $talk->title }}</p>
+                        <p>{{ $talk->price }}円</p>
+                    </div>
+                    <!-- 6.モーダルのフッタ -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">やめる</button>
+                        <form method="post" action="{{ url('/mentor/apply') }}">
+                            <input name="talk_id" value="{{ $talk->id }}" type="hidden">
+                            {{ csrf_field() }}
+                            <input type="submit" class="btn btn-primary" value="取り消す">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @else
         <div class="modal" id="request-modal" tabindex="-1">
             <div class="modal-dialog">
             <!-- 3.モーダルのコンテンツ -->

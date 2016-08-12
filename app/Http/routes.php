@@ -33,6 +33,7 @@
 
 	Route::group(['routeMiddleware' => 'auth'], function () {
 		Route::group(['middlewareGroups' => 'web'], function () {
+			Route::get('mentor/like/{id}', 'MentorController@like');
 			Route::post('mentor/apply', 'MentorController@apply');
 			Route::resource('mentor', 'MentorController');
 			Route::get('user/edit', 'UserController@edit');
