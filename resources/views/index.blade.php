@@ -154,7 +154,7 @@
                                 <img src="{{{asset($talk->pic0_path)}}}" alt="">
                                 </div>
                                 <h3 class="abbreviation3">{{ $talk->title }}</h3>
-                                <h5>興味あり:150人 申込者:40人</h5>
+                                <h4>興味あり:{{ count($talk->likes) }}人 申込者:{{ $talk->applications }}人</h4>
                                 <div class="pricing-box-features">
                                     <ul>
                                         <li>{{ $talk->name }}</li>

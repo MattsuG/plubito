@@ -197,27 +197,28 @@
 
 
         <div class="row white-bg">
-            <form role="search" class="navbar-form" action="">
+            <form method="get" role="search" class="navbar-form" action="">
                 <div class="form-group">
-                    <select class="form-control" name="search_category">
-                        <option value="0" selected>カテゴリを選択</option>
+                    <select class="form-control" name="category_id">
+                        <option value="" selected>カテゴリを選択</option>
                         @foreach($categories as $category)
-                            <option value="{{ $category->id }}">{{ $category->category_name }}</option>
+                            <option value="{{ $category->id }}" @if((int)$category->id===(int)$category_id)selected @endif>{{ $category->category_name }}</option>
                         @endforeach
                     </select>
-                    <input type="text" placeholder="検索ワード" class="form-control" name="search_word" id="top-search">
+                    <input type="text" placeholder="検索ワード" class="form-control" name="word" id="top-search" value="{{ $word }}">
                 </div>
             </form>
         </div>
         <div class="row white-bg"> 
-            @foreach ($talks as $talk) 
+            @foreach ($talks as $talk)
                 <div class="col-sm-4 pricing-box pricing-box-best wow fadeInDown">
                     <div class="pricing-box-inner">
                         <div class="pricing-box-price">
                         <a href="{{ url('mentor/'.$talk->id) }}" style="color:#000;text-decoration:none"><img src="{{{asset($talk->pic0_path)}}}" alt="">
                         </div>
+
                         <h3 class="abbreviation3">{{ $talk->title }}</h3>
-                        <h4>興味あり:150人 申込者:40人</h4></a>
+                        <h4>興味あり:{{ $talk->likes_count }}人 申込者:{{ $talk->applications_count }}人</h4></a>
                         <div class="pricing-box-features">
                             <ul>
                                 <li>{{ $talk->category->category_name }}</li>
@@ -230,7 +231,7 @@
             @endforeach
         </div>
         <div class="row white-bg">
-             {!! $talks->render() !!}
+             {!! $talks->appends(['category'=>$category_id, 'word'=>$word])->render() !!}
         </div>
         <div class="row">
             <div class="footer">                       

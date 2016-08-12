@@ -1,7 +1,7 @@
 
 @extends('common.layout')
 @section('TitleAndCss')
-<title>add.php | トーク作成</title>
+<title>トーク編集</title>
 
 <link rel="stylesheet" href="{{{asset('/assets/bootstrap/css/bootstrap.min.css')}}}">
 <link rel="stylesheet" href="{{{asset('/assets/font-awesome/css/font-awesome.min.css')}}}">
@@ -64,7 +64,7 @@
                 </div>
                 <ul class="nav navbar-top-links navbar-right">
                     <li>
-                        <span class="m-r-sm text-muted welcome-message">ユーザー詳細ページへようこそ</span>
+                        <span class="m-r-sm text-muted welcome-message">トーク編集ページへようこそ</span>
                     </li>
                     <li>
                         <a  class="dropdown-toggle count-info" href="/mentor">
@@ -179,10 +179,10 @@
         </div>
         <div class="row wrapper white-bg page-heading">
             <div class="col-lg-9ƒ">
-                <h2>トーク作成</h2>
+                <h2>トーク編集</h2>
                 <ol class="breadcrumb">                  
                     <li class="active">
-                        <strong>トーク作成</strong>
+                        <strong>トーク編集</strong>
                     </li>
                 </ol>
             </div>
@@ -193,9 +193,10 @@
             <div class="col-lg-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-content">
-                        <form method="post" enctype="multipart/form-data" class="form-horizontal" action="{{ url('/mentor') }}">
-                        {{!! csrf_field() !!}}
-                        <input type="hidden" name="MAX_FILE_SIZE" value="10485760">
+                        <form method="post" enctype="multipart/form-data" class="form-horizontal" action="{{ url('/mentor/'.$talk->id) }}">
+                            <input name="_method" type="hidden" value="PUT">
+                            {{!! csrf_field() !!}}
+                            <input type="hidden" name="MAX_FILE_SIZE" value="10485760">
 
                             <div class="form-group"><label class="col-sm-2 control-label">タイトル（＊必須）</label>
                                 <div class="col-sm-10"><input type="text" name="title" id="title" placeholder="最大５０文字" class="form-control" value="{{ $talk->title }}"></div>
@@ -239,9 +240,15 @@
                                 <div class="input-group">
                                   <input type="text" id="photoCover0" class="form-control" placeholder="jpgもしくはpng(5MBまで)">
                                   <span class="input-group-btn"><button type="button" class="btn btn-primary" onclick="$('#pic0').click();">ファイル選択</button></span>
+                                  @if ($talk->pic0_path !== '/assets/img/default_thumbnail.jpg')
+                                    <input type="checkbox" name="pic0_delete" value="1">この画像を削除
+                                  @endif
                                 </div>
                                 <label id="label0" class="cebroad-pink"></label>
                                 <div class="events-pad">
+                                  @if ($talk->pic0_path !== '/assets/ing/default_thumbnail.jpg')
+                                    <img src="{{{asset($talk->pic0_path)}}}" id="view0" style="width: 300px">
+                                  @endif
                                   <img src="" id="preview0" style="display:none; width: 300px;">
                                 </div>
                             </div>
@@ -250,9 +257,15 @@
                                 <div class="input-group">
                                   <input type="text" id="photoCover0" class="form-control" placeholder="jpgもしくはpng(5MBまで)">
                                   <span class="input-group-btn"><button type="button" class="btn btn-primary" onclick="$('#pic1').click();">ファイル選択</button></span>
+                                  @if ($talk->pic1_path !== '')
+                                    <input type="checkbox" name="pic1_delete" value="1">この画像を削除
+                                  @endif
                                 </div>
                                 <label id="label1" class="cebroad-pink"></label>
                                 <div class="events-pad">
+                                  @if (!empty($talk->pic1_path))
+                                    <img src="{{{asset($talk->pic1_path)}}}" id="view1" style="width: 300px">
+                                  @endif
                                   <img src="" id="preview1" style="display:none; width: 300px;">
                                 </div>
                             </div>
@@ -267,7 +280,7 @@
                             @endif
                               <div class="" class="events-pad">
                                     <div class="form-group">
-                                        <input type="submit" id="confirm" class="btn btn-primary" value="トーク作成s">
+                                        <input type="submit" id="confirm" class="btn btn-primary" value="トーク作成">
                                     </div>
                               </div>
                         </form>
