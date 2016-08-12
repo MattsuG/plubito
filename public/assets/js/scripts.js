@@ -25,9 +25,9 @@ jQuery(document).ready(function() {
     /*
         Background slideshow
     */
-    $('.top-content').backstretch("assets/img/backgrounds/1.jpg");
+    // $('.top-content').backstretch("assets/img/backgrounds/1.jpg");
     // $('.testimonials-container').backstretch("assets/img/backgrounds/3.jpg");
-    // $('.how-it-works-container').backstretch("assets/img/backgrounds/1.jpg");
+    $('.how-it-works-container').backstretch("assets/img/backgrounds/1.jpg");
     // $('.call-to-action-container').backstretch("assets/img/backgrounds/1.jpg");
     // $('.contact-container').backstretch("assets/img/backgrounds/2.jpg");
     

@@ -16,6 +16,7 @@
 
 	Route::group(['routeMiddleware' => 'guest'], function() {
 			Route::get('/', 'TopPageController@index');
+			Route::get('/terms', 'TopPageController@terms');
 		});
 
 	Route::group(['middlewareGroups' => 'web'], function() {

@@ -196,7 +196,7 @@ img { max-width: 100%; }
 	border: 0;
 	-o-transition: all .3s; -moz-transition: all .3s; -webkit-transition: all .3s; -ms-transition: all .3s; transition: all .3s;
 }
-.navbar.navbar-no-bg { background: none; }
+.navbar.navbar-no-bg { background: gainsboro; }
 
 ul.navbar-nav {
 	font-size: 16px;
@@ -229,9 +229,9 @@ ul.navbar-nav {
 
 /***** Top content *****/
 
-.inner-bg { padding: 120px 0 20px 0; }
+.inner-bg { padding: 10px 0 20px 0; }
 
-.top-content .text {color: rgba(255, 255, 255, 1);font-size: 36px; @font-face {
+.top-content .text {color: #000000; font-size: 45px;  margin-left: 43%; @font-face {
   font-family: "Hiragino Sans";
   src: local(HiraginoSans-W0);
   font-weight: 100;}; }
@@ -241,8 +241,9 @@ ul.navbar-nav {
   src: local(HiraginoSans-W0);
   font-weight: 100;}}
 
-.top-content .description { margin: 60px 0 10px 0; }
-.top-content .description p { opacity: 0.8; }
+
+.top-content .description { margin: 60px 0 10px 0; writing-mode: vertical-rl;}
+.top-content .description p { opacity: 1.0;}
 
 .subscribe { margin-top: 35px; }
 .subscribe .success-message { display: none; opacity: 0.8; }
@@ -325,10 +326,10 @@ ul.navbar-nav {
 .top-content a:hover .top-video-link-icon,
 .top-content a:focus .top-video-link-icon { outline: 0; background: #fff; color: #42bfc2; }
 
-.top-social { padding-top: 200px; font-size: 24px; line-height: 38px; text-align: right; }
-.top-social a { margin: 5px 15px; color: #fff; color: rgba(255, 255, 255, 0.8); vertical-align: middle; }
-.top-social a:hover, .top-social a:focus { outline: 0; color: #fff; }
-.top-social .divider-2 { display: inline-block; width: 1px; height: 14px; background: #fff; background: rgba(255, 255, 255, 0.4); vertical-align: middle; }
+.top-social { padding-top: 100px; font-size: 24px; line-height: 38px; text-align: right; }
+.top-social a { margin: 5px 15px; color: #fff; color: rgb(0, 0, 0); vertical-align: middle; }
+.top-social a:hover, .top-social a:focus { outline: 0; color: rgb(0, 0, 0); }
+.top-social .divider-2 { display: inline-block; width: 1px; height: 14px; background: #fff; background: rgb(0, 0, 0); vertical-align: middle; }
 
 
 /***** Features *****/
@@ -543,7 +544,7 @@ ul.navbar-nav {
 
 footer {
 	padding: 60px 0 35px 0;
-	background: #b0b0b0;
+	background: #f2f2f2;
 	color: #000;
 	text-align: left;
 }
