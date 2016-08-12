@@ -46,7 +46,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="add"><i class="fa fa-bullhorn"></i> <span class="nav-label">トーク作成</span></a>
+                    <a href="/mentor/create"><i class="fa fa-bullhorn"></i> <span class="nav-label">トーク作成</span></a>
                 </li>
                 <li>
                     <a href="/user/mypage"><i class="fa fa-calendar"></i> <span class="nav-label">マイページ</span></a>
@@ -197,18 +197,17 @@
                     </div>
                     <div>
                         <div class="ibox-content no-padding border-left-right">
-                            <img alt="image" class="img-circle" src="{{{asset($talk->user->profile_picture_path)}}}">
+                            <img alt="image" class="img-circle" src="{{{asset($talk->mentor->profile_picture_path)}}}">
                         </div>
                         <div class="ibox-content profile-content">
-                            <h4><strong>{{ $talk->user->name }}</strong></h4>
+                            <h4><strong>{{ $talk->mentor->name }}</strong></h4>
                             <p><i class="fa fa-map-marker"></i> Seoul, S.Korea</p>
                             <h5>
                                 自己紹介
                             </h5>
                             <p>
-                                {{ $talk->user->introduction }}
+                                {{ $talk->mentor->introduction }}
                                 <a href="{{ url('/user/show/'.$talk->mentor_id) }}">...詳細を見る</a>
-                                }
                             </p>
                             <div class="user-button">
                                 <div class="row">
@@ -241,17 +240,39 @@
 
                                     </div>
                                 </div>
-                                <div class="feed-element">
+                                <div class="feed-element" style="text-align: left;">
                                     <h6>詳細</h6>
-                                    {{ $talk->detail }}
+                                    {!! nl2br(e($talk->detail)) !!}
                                 </div>
                                 <div class="feed-element">
                                     <h6>価格</h6>
-                                    {{ $talk->price }} 
+                                    {{ $talk->price }}円
+                                </div>
+                                <div class="feed-element">
+                                    興味あり:{{ $talk->likes_count }}人
+                                    申込者数:{{ $talk->applications_count }}人
                                 </div>
                             </div>
+                            @if ((int)$talk->mentor_id !== (int)Auth::user()->id)
+                                @if ($check_like)
+                                    <button  class="btn btn-secondary btn-block m" onClick="location.href='{{ url('mentor/like/'.$talk->id) }}'">興味あり！</button>
+                                @else
+                                    <button  class="btn btn-primary btn-block m" onClick="location.href='{{ url('mentor/like/'.$talk->id) }}'">興味あり！</button>
+                                @endif
+                            @endif
 
-                            <button  class="btn btn-primary btn-block m">予約リクエスト</button>
+                            @if ((int)$talk->mentor_id === (int)Auth::user()->id)
+                                <button  class="btn btn-primary btn-block m" onClick="location.href='{{ url('mentor/'.$talk->id.'/edit') }}'">編集する</button>
+                            @elseif ($check_application)
+                                <button class="btn btn-primary btn-block m" data-toggle="modal" data-target="#request-modal" disabled="disabled">予約済み</button>
+                            @else
+                                <button class="btn btn-primary btn-block m" data-toggle="modal" data-target="#request-modal">予約リクエスト</button>
+                            @endif
+
+                            @if (Session::has('flash_message'))
+                                <div class="alert alert-success">{{ Session::get('flash_message') }}</div>
+                            @endif
+
 
                         </div>
 
@@ -268,7 +289,66 @@
             </div>
         </div>
     </div>
-</div>
+
+    @if ($check_application)
+        <div class="modal" id="request-modal" tabindex="-1">
+            <div class="modal-dialog">
+            <!-- 3.モーダルのコンテンツ -->
+                <div class="modal-content">
+                    <!-- 4.モーダルのヘッダ -->
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title" id="modal-label">このトークの申し込みを取り消しますか？？</h4>
+                    </div>
+                    <!-- 5.モーダルのボディ -->
+                    <div class="modal-body">
+                        <p>{{ $talk->title }}</p>
+                        <p>{{ $talk->price }}円</p>
+                    </div>
+                    <!-- 6.モーダルのフッタ -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">やめる</button>
+                        <form method="post" action="{{ url('/mentor/apply') }}">
+                            <input name="talk_id" value="{{ $talk->id }}" type="hidden">
+                            {{ csrf_field() }}
+                            <input type="submit" class="btn btn-primary" value="取り消す">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @else
+        <div class="modal" id="request-modal" tabindex="-1">
+            <div class="modal-dialog">
+            <!-- 3.モーダルのコンテンツ -->
+                <div class="modal-content">
+                    <!-- 4.モーダルのヘッダ -->
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title" id="modal-label">このトークに申し込みますか？</h4>
+                    </div>
+                    <!-- 5.モーダルのボディ -->
+                    <div class="modal-body">
+                        <p>{{ $talk->title }}</p>
+                        <p>{{ $talk->price }}円</p>
+                    </div>
+                    <!-- 6.モーダルのフッタ -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">やめる</button>
+                        <form method="post" action="{{ url('/mentor/apply') }}">
+                            <input name="talk_id" value="{{ $talk->id }}" type="hidden">
+                            {{ csrf_field() }}
+                            <input type="submit" class="btn btn-primary" value="申し込む">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
 </div>
 @stop
 

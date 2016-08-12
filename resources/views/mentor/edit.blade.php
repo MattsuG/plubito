@@ -1,7 +1,7 @@
 
 @extends('common.layout')
 @section('TitleAndCss')
-<title>add.php | トーク作成</title>
+<title>トーク編集</title>
 
 <link rel="stylesheet" href="{{{asset('/assets/bootstrap/css/bootstrap.min.css')}}}">
 <link rel="stylesheet" href="{{{asset('/assets/font-awesome/css/font-awesome.min.css')}}}">
@@ -24,34 +24,43 @@
                     </div>
                     <div class="dropdown profile-element"> 
                         <span>
-                            <img alt="image" class="img-circle" src="{{{asset('/assets/img/about/1.jpg')}}}" />
+                            <img alt="image" class="img-circle" src="{{{asset(Auth::user()->pic3_path)}}}" />
                         </span>
                         <a class="dropdown-toggle" href="#">
                             <span class="clear"> 
                                 <span class="block m-t-xs"> 
-                                    <strong class="font-bold">{{ $user->name }}</strong>
+                                    <strong class="font-bold">{{ Auth::user()->name }}</strong>
                                 </span> 
-                                <span class="text-muted text-xs block">{{ $user->introduction }}</span>
+                                <span class="text-muted text-xs block">{{ Auth::user()->introduction }}</span>
                             </span>
                         </a>                        
                     </div>                    
                     <div class="logo-element">
-                        <a href="/"><img alt="image" class="img" src="{{{asset('/assets/img/plus.png')}}}" width="25px" height="50px" /></a>
+                        <a href="/mentor"><img alt="image" class="img" src="{{{asset('/assets/img/plus.png')}}}" width="25px" height="50px" /></a>
                     </div>
                 </li>
-                 <li>
+                <!--  <li>
                     <a href="#"><i class="fa fa-pencil"></i> <span class="nav-label">アカウント編集</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse">
-                        <li><a href="#">プロフィール表示</a></li>
-                        <li><a href="/user/edit/{{ $user->id }}">プロフィール編集</a></li>
+                        <li><a href="/user/show/{{ Auth::user()->id }}">プロフィール表示</a></li>
+                        <li><a href="/user/edit/{{ Auth::user()->id }}">プロフィール編集</a></li>
                     </ul>
+                </li> -->
+                <li>
+                    <a href="/user/show/{{ Auth::user()->id }}"><i class="fa fa-user"></i> <span class="nav-label">プロフィール表示</span></a>
                 </li>
                 <li>
-                    <a href="/mentor/create"><i class="fa fa-bullhorn"></i> <span class="nav-label">トーク作成</span></a>
+                    <a href="/user/edit/{{ Auth::user()->id }}"><i class="fa fa-pencil"></i> <span class="nav-label">プロフィール編集</span></a>
                 </li>
+                <li>
+                    <a href="{{ url('mentor/create')}}"><i class="fa fa-bullhorn"></i> <span class="nav-label">トーク作成</span></a>
+                </li>
+                 <li>
+                    <a href="/user/mypage"><i class="fa fa-comment"></i> <span class="nav-label">メッセージ</span></a>
+                </li>  
                 <li>
                     <a href="/user/mypage"><i class="fa fa-calendar"></i> <span class="nav-label">マイページ</span></a>
-                </li>              
+                </li>                 
             </ul>
         </div>
     </nav>
@@ -64,9 +73,9 @@
                 </div>
                 <ul class="nav navbar-top-links navbar-right">
                     <li>
-                        <span class="m-r-sm text-muted welcome-message">ユーザー詳細ページへようこそ</span>
+                        <span class="m-r-sm text-muted welcome-message">トーク一覧ページへようこそ</span>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a  class="dropdown-toggle count-info" href="/mentor">
                             <i class="fa fa-home"></i>
                         </a>
@@ -165,7 +174,7 @@
                                 </div>
                             </li>
                         </ul>
-                    </li>
+                    </li> -->
 
 
                     <li>
@@ -177,25 +186,25 @@
 
             </nav>
         </div>
-        <div class="row wrapper white-bg page-heading">
+        <!-- <div class="row wrapper border-bottom white-bg page-heading inbox-title">
             <div class="col-lg-9ƒ">
-                <h2>トーク作成</h2>
-                <ol class="breadcrumb">                  
+                <h2>トーク一覧</h2>
+                <ol class="breadcrumb">
                     <li class="active">
-                        <strong>トーク作成</strong>
+                        <strong>トーク一覧</strong>
                     </li>
                 </ol>
             </div>
-        </div>
+        </div> -->
 
 
         <div class="row wrapper border-bottom white-bg">
             <div class="col-lg-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-content">
-                        <form method="post" enctype="multipart/form-data" class="form-horizontal" action="{{ url('/mentor') }}">
-                        {{!! csrf_field() !!}}
-                        <input type="hidden" name="MAX_FILE_SIZE" value="10485760">
+                        <form method="post" enctype="multipart/form-data" class="form-horizontal" action="{{ url('/mentor/'.$talk->id) }}">
+                            <input name="_method" type="hidden" value="PUT">
+                            <input type="hidden" name="MAX_FILE_SIZE" value="10485760">
 
                             <div class="form-group"><label class="col-sm-2 control-label">タイトル（＊必須）</label>
                                 <div class="col-sm-10"><input type="text" name="title" id="title" placeholder="最大５０文字" class="form-control" value="{{ $talk->title }}"></div>
@@ -239,9 +248,15 @@
                                 <div class="input-group">
                                   <input type="text" id="photoCover0" class="form-control" placeholder="jpgもしくはpng(5MBまで)">
                                   <span class="input-group-btn"><button type="button" class="btn btn-primary" onclick="$('#pic0').click();">ファイル選択</button></span>
+                                  @if ($talk->pic0_path !== '/assets/img/default_thumbnail.jpg')
+                                    <input type="checkbox" name="pic0_delete" value="1">この画像を削除
+                                  @endif
                                 </div>
                                 <label id="label0" class="cebroad-pink"></label>
                                 <div class="events-pad">
+                                  @if ($talk->pic0_path !== '/assets/ing/default_thumbnail.jpg')
+                                    <img src="{{{asset($talk->pic0_path)}}}" id="view0" style="width: 300px">
+                                  @endif
                                   <img src="" id="preview0" style="display:none; width: 300px;">
                                 </div>
                             </div>
@@ -250,9 +265,15 @@
                                 <div class="input-group">
                                   <input type="text" id="photoCover0" class="form-control" placeholder="jpgもしくはpng(5MBまで)">
                                   <span class="input-group-btn"><button type="button" class="btn btn-primary" onclick="$('#pic1').click();">ファイル選択</button></span>
+                                  @if ($talk->pic1_path !== '')
+                                    <input type="checkbox" name="pic1_delete" value="1">この画像を削除
+                                  @endif
                                 </div>
                                 <label id="label1" class="cebroad-pink"></label>
                                 <div class="events-pad">
+                                  @if (!empty($talk->pic1_path))
+                                    <img src="{{{asset($talk->pic1_path)}}}" id="view1" style="width: 300px">
+                                  @endif
                                   <img src="" id="preview1" style="display:none; width: 300px;">
                                 </div>
                             </div>
@@ -265,9 +286,10 @@
                                     </ul>
                                 </div>
                             @endif
+                            {{ csrf_field() }}
                               <div class="" class="events-pad">
                                     <div class="form-group">
-                                        <input type="submit" id="confirm" class="btn btn-primary" value="トーク作成s">
+                                        <input type="submit" id="confirm" class="btn btn-primary" value="トーク編集">
                                     </div>
                               </div>
                         </form>
