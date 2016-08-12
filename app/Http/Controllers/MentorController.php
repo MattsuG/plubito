@@ -126,9 +126,9 @@ class MentorController extends Controller
     $categories = App\Category::All();
 
 
-    if ($talk->mentor_id !== Auth::user()->id) {
-      return redirect("mentor");
-    }
+    // if ($talk->mentor_id !== Auth::user()->id) {
+    //   return redirect("mentor");
+    // }
 
     return view("mentor.edit", compact('talk', 'categories'));
   }

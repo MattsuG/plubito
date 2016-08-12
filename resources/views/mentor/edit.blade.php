@@ -24,34 +24,43 @@
                     </div>
                     <div class="dropdown profile-element"> 
                         <span>
-                            <img alt="image" class="img-circle" src="{{{asset('/assets/img/about/1.jpg')}}}" />
+                            <img alt="image" class="img-circle" src="{{{asset(Auth::user()->pic3_path)}}}" />
                         </span>
                         <a class="dropdown-toggle" href="#">
                             <span class="clear"> 
                                 <span class="block m-t-xs"> 
-                                    <strong class="font-bold">{{ $user->name }}</strong>
+                                    <strong class="font-bold">{{ Auth::user()->name }}</strong>
                                 </span> 
-                                <span class="text-muted text-xs block">{{ $user->introduction }}</span>
+                                <span class="text-muted text-xs block">{{ Auth::user()->introduction }}</span>
                             </span>
                         </a>                        
                     </div>                    
                     <div class="logo-element">
-                        <a href="/"><img alt="image" class="img" src="{{{asset('/assets/img/plus.png')}}}" width="25px" height="50px" /></a>
+                        <a href="/mentor"><img alt="image" class="img" src="{{{asset('/assets/img/plus.png')}}}" width="25px" height="50px" /></a>
                     </div>
                 </li>
-                 <li>
+                <!--  <li>
                     <a href="#"><i class="fa fa-pencil"></i> <span class="nav-label">アカウント編集</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse">
-                        <li><a href="#">プロフィール表示</a></li>
-                        <li><a href="/user/edit/{{ $user->id }}">プロフィール編集</a></li>
+                        <li><a href="/user/show/{{ Auth::user()->id }}">プロフィール表示</a></li>
+                        <li><a href="/user/edit/{{ Auth::user()->id }}">プロフィール編集</a></li>
                     </ul>
+                </li> -->
+                <li>
+                    <a href="/user/show/{{ Auth::user()->id }}"><i class="fa fa-user"></i> <span class="nav-label">プロフィール表示</span></a>
                 </li>
                 <li>
-                    <a href="/mentor/create"><i class="fa fa-bullhorn"></i> <span class="nav-label">トーク作成</span></a>
+                    <a href="/user/edit/{{ Auth::user()->id }}"><i class="fa fa-pencil"></i> <span class="nav-label">プロフィール編集</span></a>
                 </li>
+                <li>
+                    <a href="{{ url('mentor/create')}}"><i class="fa fa-bullhorn"></i> <span class="nav-label">トーク作成</span></a>
+                </li>
+                 <li>
+                    <a href="/user/mypage"><i class="fa fa-comment"></i> <span class="nav-label">メッセージ</span></a>
+                </li>  
                 <li>
                     <a href="/user/mypage"><i class="fa fa-calendar"></i> <span class="nav-label">マイページ</span></a>
-                </li>              
+                </li>                 
             </ul>
         </div>
     </nav>
@@ -64,9 +73,9 @@
                 </div>
                 <ul class="nav navbar-top-links navbar-right">
                     <li>
-                        <span class="m-r-sm text-muted welcome-message">トーク編集ページへようこそ</span>
+                        <span class="m-r-sm text-muted welcome-message">トーク一覧ページへようこそ</span>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a  class="dropdown-toggle count-info" href="/mentor">
                             <i class="fa fa-home"></i>
                         </a>
@@ -165,7 +174,7 @@
                                 </div>
                             </li>
                         </ul>
-                    </li>
+                    </li> -->
 
 
                     <li>
@@ -177,16 +186,16 @@
 
             </nav>
         </div>
-        <div class="row wrapper white-bg page-heading">
+        <!-- <div class="row wrapper border-bottom white-bg page-heading inbox-title">
             <div class="col-lg-9ƒ">
-                <h2>トーク編集</h2>
-                <ol class="breadcrumb">                  
+                <h2>トーク一覧</h2>
+                <ol class="breadcrumb">
                     <li class="active">
-                        <strong>トーク編集</strong>
+                        <strong>トーク一覧</strong>
                     </li>
                 </ol>
             </div>
-        </div>
+        </div> -->
 
 
         <div class="row wrapper border-bottom white-bg">
@@ -195,7 +204,6 @@
                     <div class="ibox-content">
                         <form method="post" enctype="multipart/form-data" class="form-horizontal" action="{{ url('/mentor/'.$talk->id) }}">
                             <input name="_method" type="hidden" value="PUT">
-                            {{!! csrf_field() !!}}
                             <input type="hidden" name="MAX_FILE_SIZE" value="10485760">
 
                             <div class="form-group"><label class="col-sm-2 control-label">タイトル（＊必須）</label>
@@ -278,9 +286,10 @@
                                     </ul>
                                 </div>
                             @endif
+                            {{ csrf_field() }}
                               <div class="" class="events-pad">
                                     <div class="form-group">
-                                        <input type="submit" id="confirm" class="btn btn-primary" value="トーク作成">
+                                        <input type="submit" id="confirm" class="btn btn-primary" value="トーク編集">
                                     </div>
                               </div>
                         </form>
