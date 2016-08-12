@@ -19,4 +19,8 @@ class TopPageController extends Controller
 	    $categories = DB::table('categories')->get();
 	    return view("index", compact('talks', 'categories'));
     }
+
+    public function terms() {
+	    return view("/terms");
+    }
 }
