@@ -189,7 +189,31 @@
 	            </div>
 	        </div>
         </div>
-
+        <div class="more-features-2-container section-container section-container-gray-bg">
+	        <div class="container">
+	            <div class="row">
+	            	<div class="col-sm-12 how-it-works section-description wow fadeIn">
+	                </div>
+	            	<div class="col-sm-3 more-features-2-box wow fadeInLeft">
+	                    <img src="assets/img/about/1.jpg" alt="" with="50%">
+	                </div>
+	                <div class="col-sm-9 more-features-2-box more-features-2-box-right wow fadeInUp">
+	                	<h3>Many options to choose from:</h3>
+                    	<p>
+                    		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et.
+                    		Ut wisi enim ad minim veniam, quis nostrud.
+                    	</p>
+                    	<p>
+                    		Exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. 
+                    		Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl. 
+                    	</p>
+                    	<p>
+                    		<a class="learn-more scroll-link" href="#features">Learn More</a>
+                    	</p>
+	                </div>
+	            </div>
+	        </div>
+        </div>
 		<!-- Pricing -->
         <div class="pricing-container section-container">
 	        <div class="container">
@@ -206,8 +230,8 @@
                                 <div class="pricing-box-price">
                                 <img src="{{{asset($talk->pic0_path)}}}" alt="">
                                 </div>
-                                <h3 class="abbreviation3">{{ $talk->title }}</h3>
-                                <h4>興味あり:{{ count($talk->likes) }}人 申込者:{{ $talk->applications }}人</h4>
+                                <p class="abbreviation3">{{ $talk->title }}</p>
+                                <p>興味あり:{{ count($talk->likes) }}人 申込者:{{ $talk->applications }}人</p>
                                 <div class="pricing-box-features">
                                     <ul>
                                         <li>{{ $talk->name }}</li>

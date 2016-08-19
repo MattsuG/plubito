@@ -55,7 +55,7 @@
             </ul>
         </div>
     </nav>
-    <div id="page-wrapper" class="gray-bg">
+    <div id="page-wrapper" class="white-bg">
         <div class="row border-bottom">
             <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
                 <div class="navbar-header">
@@ -110,8 +110,8 @@
                                  @foreach ($talks as $talk)
                                     <li>
                                     <a href="{{ url('mentor/'.$talk->id) }}" style="color:#000;text-decoration:none"><img src="{{{asset($talk->pic0_path)}}}" alt="">
-                                    <h3>{{ $talk->title }}</h3>
-                                    <h4>興味あり:{{ $talk->likes_count }}人 申込者:{{ $talk->applications_count }}人</h4>
+                                    <h4>{{ $talk->title }}</h4>
+                                    <h4>いいね:{{ $talk->likes_count }}人 トーク:{{ $talk->applications_count }}人</h4>
                                     <h4>{{ $talk->category->category_name }}</h4>
                                     <h4></a>
                                     <a href="{{ url('mentor/'.$talk->id) }}"><button type="button" class="btn2 btn-default btn-sm btn-block">詳細を見る</button></a>
