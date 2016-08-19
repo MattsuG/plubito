@@ -37,13 +37,6 @@
                         <a href="/mentor"><img alt="image" class="img" src="{{{asset('/assets/img/plus.png')}}}" width="25px" height="50px" /></a>
                     </div>
                 </li>
-                <!--  <li>
-                    <a href="#"><i class="fa fa-pencil"></i> <span class="nav-label">アカウント編集</span><span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level collapse">
-                        <li><a href="/user/show/{{ Auth::user()->id }}">プロフィール表示</a></li>
-                        <li><a href="/user/edit/{{ Auth::user()->id }}">プロフィール編集</a></li>
-                    </ul>
-                </li> -->
                 <li>
                     <a href="/user/show/{{ Auth::user()->id }}"><i class="fa fa-user"></i> <span class="nav-label">プロフィール表示</span></a>
                 </li>
@@ -73,108 +66,6 @@
                     <li>
                         <span class="m-r-sm text-muted welcome-message">トーク一覧ページへようこそ</span>
                     </li>
-                    <!-- <li>
-                        <a  class="dropdown-toggle count-info" href="/mentor">
-                            <i class="fa fa-home"></i>
-                        </a>
-                    </li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-                            <i class="fa fa-envelope"></i>  <span class="label label-warning">16</span>
-                        </a>
-                        <ul class="dropdown-menu dropdown-messages">
-                            <li>
-                                <div class="dropdown-messages-box">
-                                    <a href="profile.html" class="pull-left">
-                                        <img alt="image" class="img-circle" src="img/a7.jpg">
-                                    </a>
-                                    <div class="media-body">
-                                        <small class="pull-right">46h ago</small>
-                                        <strong>Mike Loreipsum</strong> started following <strong>Monica Smith</strong>. <br>
-                                        <small class="text-muted">3 days ago at 7:58 pm - 10.06.2014</small>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <div class="dropdown-messages-box">
-                                    <a href="profile.html" class="pull-left">
-                                        <img alt="image" class="img-circle" src="img/a4.jpg">
-                                    </a>
-                                    <div class="media-body ">
-                                        <small class="pull-right text-navy">5h ago</small>
-                                        <strong>Chris Johnatan Overtunk</strong> started following <strong>Monica Smith</strong>. <br>
-                                        <small class="text-muted">Yesterday 1:21 pm - 11.06.2014</small>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <div class="dropdown-messages-box">
-                                    <a href="profile.html" class="pull-left">
-                                        <img alt="image" class="img-circle" src="img/profile.jpg">
-                                    </a>
-                                    <div class="media-body ">
-                                        <small class="pull-right">23h ago</small>
-                                        <strong>Monica Smith</strong> love <strong>Kim Smith</strong>. <br>
-                                        <small class="text-muted">2 days ago at 2:30 am - 11.06.2014</small>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <div class="text-center link-block">
-                                    <a href="mailbox.html">
-                                        <i class="fa fa-envelope"></i> <strong>Read All Messages</strong>
-                                    </a>
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-                            <i class="fa fa-bell"></i>  <span class="label label-primary">8</span>
-                        </a>
-                        <ul class="dropdown-menu dropdown-alerts">
-                            <li>
-                                <a href="mailbox.html">
-                                    <div>
-                                        <i class="fa fa-envelope fa-fw"></i> You have 16 messages
-                                        <span class="pull-right text-muted small">4 minutes ago</span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a href="profile.html">
-                                    <div>
-                                        <i class="fa fa-twitter fa-fw"></i> 3 New Followers
-                                        <span class="pull-right text-muted small">12 minutes ago</span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a href="grid_options.html">
-                                    <div>
-                                        <i class="fa fa-upload fa-fw"></i> Server Rebooted
-                                        <span class="pull-right text-muted small">4 minutes ago</span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <div class="text-center link-block">
-                                    <a href="notifications.html">
-                                        <strong>See All Alerts</strong>
-                                        <i class="fa fa-angle-right"></i>
-                                    </a>
-                                </div>
-                            </li>
-                        </ul>
-                    </li> -->
-
-
                     <li>
                         <a href="/auth/logout">
                             <i class="fa fa-sign-out"></i> ログアウト
@@ -209,29 +100,29 @@
                 </div>
             </form>
         </div>
-        <div class="row white-bg"> 
-            @foreach ($talks as $talk)
-                <div class="col-sm-4 pricing-box pricing-box-best wow fadeInDown">
-                    <div class="pricing-box-inner">
-                        <div class="pricing-box-price">
-                        <a href="{{ url('mentor/'.$talk->id) }}" style="color:#000;text-decoration:none"><img src="{{{asset($talk->pic0_path)}}}" alt="">
-                        </div>
-
-                        <h3 class="abbreviation3">{{ $talk->title }}</h3>
-                        <h4>興味あり:{{ $talk->likes_count }}人 申込者:{{ $talk->applications_count }}人</h4></a>
-                        <div class="pricing-box-features">
-                            <ul>
-                                <li>{{ $talk->category->category_name }}</li>
-                                <li>価格:{{ $talk->price }}</li></a>
-                                <li><a href="{{ url('mentor/'.$talk->id) }}"><button type="button" class="btn btn-default btn-sm btn-block">詳細を見る</button></a></li>                           
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-        </div>
-        <div class="row white-bg">
-             {!! $talks->appends(['category'=>$category_id, 'word'=>$word])->render() !!}
+        <div class="row">
+            <div id="contents">
+                <main id="main">
+                    <article>
+                        <section>
+                            <div class="grid-items">
+                                <ul>
+                                 @foreach ($talks as $talk)
+                                    <li>
+                                    <a href="{{ url('mentor/'.$talk->id) }}" style="color:#000;text-decoration:none"><img src="{{{asset($talk->pic0_path)}}}" alt="">
+                                    <h3>{{ $talk->title }}</h3>
+                                    <h4>興味あり:{{ $talk->likes_count }}人 申込者:{{ $talk->applications_count }}人</h4>
+                                    <h4>{{ $talk->category->category_name }}</h4>
+                                    <h4></a>
+                                    <a href="{{ url('mentor/'.$talk->id) }}"><button type="button" class="btn2 btn-default btn-sm btn-block">詳細を見る</button></a>
+                                    </li>
+                                @endforeach
+                                </ul>
+                            </div>
+                        </section>
+                    </article>
+                </main>
+            </div>
         </div>
         <div class="row">
             <div class="footer">                       
@@ -242,7 +133,6 @@
         </div>
     </div>
 </div>
-
 @stop
 
 @section('Js')
@@ -272,4 +162,14 @@ $(function(){
     });
 });
 </script>
+<!-- jQueryの読み込み(CDN)-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.3.min.js"><\/script>')</script>
+<!-- jQuery Easing Pluginの読み込み(CDN)-->
+<!-- ローカルで動作するように本書とは一部記述を変えています -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+<script>window.jQuery.easing.def || document.write('<script src="js/vendor/jquery.easing.1.3.js"><\/script>')</script>
+<!-- jquery.vgrid.min.jsの読み込み -->
+<script src="{{{asset('/assets/js/jquery.vgrid.min.js')}}}"></script>
+<script src="{{{asset('/assets/js/script.js')}}}"></script>
 @stop
