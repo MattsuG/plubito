@@ -154,7 +154,7 @@
                                 <img src="{{{asset($talk->pic0_path)}}}" alt="">
                                 </div>
                                 <h3 class="abbreviation3">{{ $talk->title }}</h3>
-                                <h4>興味あり:{{ count($talk->likes) }}人 申込者:{{ $talk->applications }}人</h4>
+                                <h4>興味あり:{{ count($talk->likes) }}人 申込者:{{ count($talk->applications) }}人</h4>
                                 <div class="pricing-box-features">
                                     <ul>
                                         <li>{{ $talk->name }}</li>
@@ -276,7 +276,7 @@
                     		<li><a class="scroll-link" href="#top-content">トップ</a></li>
 							<li><a href="#">利用規約</a></li>
 							<li><a href="#">プライバシーポリシー</a></li>
-							<li><a href="#">特定商取引法に基づく表記</a></li>
+							<li><a href="#">特定商取引法</a></li>
 						</ul>
                     </div>
            		</div>
