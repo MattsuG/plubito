@@ -163,7 +163,7 @@ $(function(){
 });
 </script>
 <!-- jQueryの読み込み(CDN)-->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
 <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.3.min.js"><\/script>')</script>
 <!-- jQuery Easing Pluginの読み込み(CDN)-->
 <!-- ローカルで動作するように本書とは一部記述を変えています -->

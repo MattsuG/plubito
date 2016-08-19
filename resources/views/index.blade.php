@@ -29,7 +29,7 @@
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="/">+ヒト landing page</a>
+						<a href="#"><img alt="image" class="img" src="{{{asset('/assets/img/plus.png')}}}" width="25px" height="50px" /></a>
 					</div>
 					<!-- Collect the nav links, forms, and other content for toggling -->
 					<div class="collapse navbar-collapse" id="top-navbar-1">
@@ -136,6 +136,59 @@
 	            </div>
 	        </div>
         </div>
+     	
+     	<!-- More features 2 -->
+        <div class="more-features-2-container section-container section-container-gray-bg">
+	        <div class="container">
+	            <div class="row">
+	            	<div class="col-sm-12 how-it-works section-description wow fadeIn">
+	                    <h2>カテゴリ</h2>
+	                </div>
+	            	<div class="col-sm-3 more-features-2-box wow fadeInLeft">
+	                    <img src="assets/img/about/1.jpg" alt="" with="50%">
+	                </div>
+	                <div class="col-sm-9 more-features-2-box more-features-2-box-right wow fadeInUp">
+	                	<h3>Many options to choose from:</h3>
+                    	<p>
+                    		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et.
+                    		Ut wisi enim ad minim veniam, quis nostrud.
+                    	</p>
+                    	<p>
+                    		Exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. 
+                    		Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl. 
+                    	</p>
+                    	<p>
+                    		<a class="learn-more scroll-link" href="#features">Learn More</a>
+                    	</p>
+	                </div>
+	            </div>
+	        </div>
+        </div>
+        
+        <!-- Many options -->
+        <div class="many-options-container section-container-gray-bg">
+	        <div class="container">
+	            <div class="row">
+	            	<div class="col-sm-9 many-options-box wow fadeInLeft">
+	                    <h3>Many options to choose from:</h3>
+                    	<p>
+                    		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et.
+                    		Ut wisi enim ad minim veniam, quis nostrud.
+                    	</p>
+                    	<p>
+                    		Exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. 
+                    		Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl. 
+                    	</p>
+                    	<p>
+                    		<a class="learn-more scroll-link" href="#features">Learn More</a>
+                    	</p>
+	                </div>
+	                <div class="col-sm-3 many-options-box many-options-box-right wow fadeInUp">
+	                    <img src="assets/img/about/1.jpg" alt="">
+	                </div>
+	            </div>
+	        </div>
+        </div>
 
 		<!-- Pricing -->
         <div class="pricing-container section-container">
@@ -158,8 +211,8 @@
                                 <div class="pricing-box-features">
                                     <ul>
                                         <li>{{ $talk->name }}</li>
-                                        <li>価格:{{ $talk->price }}</li>
-                                        <li><a href="{{ url('auth/login') }}"><button type="button" class="btn btn-default btn-sm btn-block">詳細を見る</button></a></li>                           
+                                        <!-- <li>価格:{{ $talk->price }}</li> -->
+                                        <li><a href="{{ url('auth/login') }}"><button type="button" class="btn btn-default btn-sm btn-block">詳細を見る</button></a></li>                 
                                     </ul>
                                 </div>
                             </div>
@@ -169,7 +222,7 @@
 	        </div>
 	    </div>
         <!-- Testimonials -->
-        <div class="testimonials-container section-container section-container-image-bg">
+        <!-- <div class="testimonials-container section-container section-container-image-bg">
 	        <div class="container">
 	            <div class="row">
 	                <div class="col-sm-12 testimonials section-description wow fadeIn">
@@ -179,9 +232,9 @@
 	            </div>
 	            <div class="row">
 	                <div class="col-sm-10 col-sm-offset-1 testimonial-list wow fadeInUp">
-	                	<div role="tabpanel">
+	                	<div role="tabpanel"> -->
 	                		<!-- Tab panes -->
-	                		<div class="tab-content">
+	                	<!-- 	<div class="tab-content">
 	                			<div role="tabpanel" class="tab-pane fade in active" id="tab1">
 	                				<div class="testimonial-image">
 	                					<img src="{{{asset('/assets/img/testimonials/1.jpg')}}}" alt="" data-at2x="assets/img/testimonials/1.jpg')}}}">
@@ -221,9 +274,9 @@
 		                                </p>
 	                                </div>
 	                			</div>
-	                		</div>
+	                		</div> -->
 	                		<!-- Nav tabs -->
-	                		<ul class="nav nav-tabs" role="tablist">
+	                		<!-- <ul class="nav nav-tabs" role="tablist">
 	                			<li role="presentation" class="active">
 	                				<a href="#tab1" aria-controls="tab1" role="tab" data-toggle="tab"></a>
 	                			</li>
@@ -238,7 +291,7 @@
 	                </div>
 	            </div>
 	        </div>
-        </div>    
+        </div> -->    
         <!-- Footer -->
         <footer>
 	        <div class="container">
