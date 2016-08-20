@@ -167,8 +167,8 @@
 	            	<div class="col-sm-9 many-options-box wow fadeInLeft">
 	                    <h3>海外へ出ようと思う人へ:</h3>
                     	<p>
-                    	海外大学・大学院へ留学した人、現地で就職した人、放浪している人など。
-                    	実際に行ってみないと分からない情報や、飛び出した人たちの熱は刺激的。
+                    	海外大学・大学院へ留学した人、現地で就職した人など。
+                    	実際に行ってみないと分からない情報や準備でしたことなど実践的な話。
                     	</p>
 	                </div>
 	                <div class="col-sm-3 many-options-box many-options-box-right wow fadeInUp">
