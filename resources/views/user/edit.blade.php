@@ -14,7 +14,7 @@
 
 @section('content')
 <div id="wrapper">
-    <nav class="navbar-default navbar-static-side" role="navigation">
+     <nav class="navbar-default navbar-static-side" role="navigation">
         <div class="sidebar-collapse">
             <ul class="nav metismenu" id="side-menu">
                 <li class="nav-header">
@@ -35,22 +35,24 @@
                         </a>                        
                     </div>                    
                     <div class="logo-element">
-                        <a href="/"><img alt="image" class="img" src="{{{asset('/assets/img/plus.png')}}}" width="25px" height="50px" /></a>
+                        <a href="/mentor"><img alt="image" class="img" src="{{{asset('/assets/img/plus.png')}}}" width="25px" height="50px" /></a>
                     </div>
                 </li>
-                 <li>
-                    <a href="#"><i class="fa fa-pencil"></i> <span class="nav-label">アカウント編集</span><span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level collapse">
-                        <li><a href="/user/show/{{ Auth::user()->id }}">プロフィール表示</a></li>
-                        <li><a href="/user/edit/{{ Auth::user()->id }}">プロフィール編集</a></li>
-                    </ul>
+                <li>
+                    <a href="/user/show/{{ Auth::user()->id }}"><i class="fa fa-user"></i> <span class="nav-label">プロフィール表示</span></a>
                 </li>
                 <li>
-                    <a href="/mentor/create"><i class="fa fa-bullhorn"></i> <span class="nav-label">トーク作成</span></a>
+                    <a href="/user/edit/{{ Auth::user()->id }}"><i class="fa fa-pencil"></i> <span class="nav-label">プロフィール編集</span></a>
                 </li>
+                <li>
+                    <a href="{{ url('mentor/create')}}"><i class="fa fa-bullhorn"></i> <span class="nav-label">トーク作成</span></a>
+                </li>
+                 <li>
+                    <a href="/user/mypage"><i class="fa fa-comment"></i> <span class="nav-label">メッセージ</span></a>
+                </li>  
                 <li>
                     <a href="/user/mypage"><i class="fa fa-calendar"></i> <span class="nav-label">マイページ</span></a>
-                </li>              
+                </li>                 
             </ul>
         </div>
     </nav>
