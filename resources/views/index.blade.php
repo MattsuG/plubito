@@ -145,20 +145,15 @@
 	                    <h2>カテゴリ</h2>
 	                </div>
 	            	<div class="col-sm-3 more-features-2-box wow fadeInLeft">
-	                    <img src="assets/img/about/1.jpg" alt="" with="50%">
+	                    <img src="assets/img/about/job.jpg" alt="" with="50%">
 	                </div>
 	                <div class="col-sm-9 more-features-2-box more-features-2-box-right wow fadeInUp">
-	                	<h3>Many options to choose from:</h3>
+	                	<h3>就職・転職・起業。仕事について考えるとき:</h3>
                     	<p>
-                    		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et.
-                    		Ut wisi enim ad minim veniam, quis nostrud.
+                    	大学3年から就職活動をして就職、長い間その企業でつとめる、そんな人生からすこし外れた経歴を持った人たちの話。
                     	</p>
                     	<p>
-                    		Exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. 
-                    		Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl. 
-                    	</p>
-                    	<p>
-                    		<a class="learn-more scroll-link" href="#features">Learn More</a>
+                    	転職を複数回した経験のある人、起業経験者、大企業とスタートアップをどちらも経験した人、就活せずフリーランスで生きている人など。
                     	</p>
 	                </div>
 	            </div>
@@ -170,21 +165,14 @@
 	        <div class="container">
 	            <div class="row">
 	            	<div class="col-sm-9 many-options-box wow fadeInLeft">
-	                    <h3>Many options to choose from:</h3>
+	                    <h3>海外へ出ようと思う人へ:</h3>
                     	<p>
-                    		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et.
-                    		Ut wisi enim ad minim veniam, quis nostrud.
-                    	</p>
-                    	<p>
-                    		Exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. 
-                    		Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl. 
-                    	</p>
-                    	<p>
-                    		<a class="learn-more scroll-link" href="#features">Learn More</a>
+                    	海外大学・大学院へ留学した人、現地で就職した人、放浪している人など。
+                    	実際に行ってみないと分からない情報や、飛び出した人たちの熱は刺激的。
                     	</p>
 	                </div>
 	                <div class="col-sm-3 many-options-box many-options-box-right wow fadeInUp">
-	                    <img src="assets/img/about/1.jpg" alt="">
+	                    <img src="assets/img/about/studyabroad.jpg" alt="">
 	                </div>
 	            </div>
 	        </div>
@@ -195,22 +183,20 @@
 	            	<div class="col-sm-12 how-it-works section-description wow fadeIn">
 	                </div>
 	            	<div class="col-sm-3 more-features-2-box wow fadeInLeft">
-	                    <img src="assets/img/about/1.jpg" alt="" with="50%">
+	                    <img src="assets/img/about/study.jpg" alt="" with="50%">
 	                </div>
 	                <div class="col-sm-9 more-features-2-box more-features-2-box-right wow fadeInUp">
-	                	<h3>Many options to choose from:</h3>
+	                	<h3>大学受験以外の選択肢が気になったら:</h3>
                     	<p>
-                    		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et.
-                    		Ut wisi enim ad minim veniam, quis nostrud.
-                    	</p>
-                    	<p>
-                    		Exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. 
-                    		Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl. 
-                    	</p>
-                    	<p>
-                    		<a class="learn-more scroll-link" href="#features">Learn More</a>
+                    	受験勉強して大学へ行くことが当たり前だったこれまで。今は、もっといろんな選択肢がある。
+                    	大学受験せずに他の進路を走っている人、大学へ入学したけれど中退して別の道を選んだ人など。
                     	</p>
 	                </div>
+	            </div>
+	            <div class="row">
+	            	<div class="col-sm-12 section-bottom-button wow fadeInUp">
+                        <a class="btn btn-link-1 scroll-link fa-5x" href="#pricing">トーク検索</a>
+	            	</div>
 	            </div>
 	        </div>
         </div>
@@ -231,7 +217,7 @@
                                 <img src="{{{asset($talk->pic0_path)}}}" alt="">
                                 </div>
                                 <p class="abbreviation3">{{ $talk->title }}</p>
-                                <p>興味あり:{{ count($talk->likes) }}人 申込者:{{ $talk->applications }}人</p>
+                                <p>いいね:{{ count($talk->likes) }}人 トーク:{{ $talk->applications_count }}人</p>
                                 <div class="pricing-box-features">
                                     <ul>
                                         <li>{{ $talk->name }}</li>
@@ -243,79 +229,13 @@
                         </div>
                     @endforeach  
                 </div>
+                <div class="row">
+	            	<div class="col-sm-12 section-bottom-button wow fadeInUp">
+                        <a class="btn btn-link-1 scroll-link fa-5x" href="#pricing">トーク検索</a>
+	            	</div>
+	            </div>
 	        </div>
 	    </div>
-        <!-- Testimonials -->
-        <!-- <div class="testimonials-container section-container section-container-image-bg">
-	        <div class="container">
-	            <div class="row">
-	                <div class="col-sm-12 testimonials section-description wow fadeIn">
-	                    <h2>ユーザーの声</h2>
-	                    <div class="divider-1 wow fadeInUp"><span></span></div>
-	                </div>
-	            </div>
-	            <div class="row">
-	                <div class="col-sm-10 col-sm-offset-1 testimonial-list wow fadeInUp">
-	                	<div role="tabpanel"> -->
-	                		<!-- Tab panes -->
-	                	<!-- 	<div class="tab-content">
-	                			<div role="tabpanel" class="tab-pane fade in active" id="tab1">
-	                				<div class="testimonial-image">
-	                					<img src="{{{asset('/assets/img/testimonials/1.jpg')}}}" alt="" data-at2x="assets/img/testimonials/1.jpg')}}}">
-	                					<div class="testimonial-icon">
-	                						<span aria-hidden="true" class="typcn typcn-pin"></span>
-	                					</div>
-	                				</div>
-	                				<div class="testimonial-text">
-		                                <p>
-		                                	"ブログでは手に入らない生の情報が聞けてよかったです"<br>
-		                                </p>
-	                                </div>
-	                			</div>
-	                			<div role="tabpanel" class="tab-pane fade" id="tab2">
-	                				<div class="testimonial-image">
-	                					<img src="{{{asset('/assets/img/testimonials/2.jpg')}}}" alt="" data-at2x="assets/img/testimonials/2.jpg')}}}">
-	                					<div class="testimonial-icon">
-	                						<span aria-hidden="true" class="typcn typcn-pin"></span>
-	                					</div>
-	                				</div>
-	                				<div class="testimonial-text">
-		                                <p>
-		                                	"進路選択で失敗した経験、どの様に取り戻していったか、そんなセンシティブな話は他ではなかなか聞けなかったので利用しました。"<br>
-		                                </p>
-	                                </div>
-	                			</div>
-	                			<div role="tabpanel" class="tab-pane fade" id="tab3">
-	                				<div class="testimonial-image">
-	                					<img src="{{{asset('/assets/img/testimonials/3.jpg')}}}" alt="" data-at2x="assets/img/testimonials/3.jpg')}}}">
-	                					<div class="testimonial-icon">
-	                						<span aria-hidden="true" class="typcn typcn-pin"></span>
-	                					</div>
-	                				</div>
-	                				<div class="testimonial-text">
-		                                <p>
-		                                	"実践した本人の話は、説得力がありました。"<br>
-		                                </p>
-	                                </div>
-	                			</div>
-	                		</div> -->
-	                		<!-- Nav tabs -->
-	                		<!-- <ul class="nav nav-tabs" role="tablist">
-	                			<li role="presentation" class="active">
-	                				<a href="#tab1" aria-controls="tab1" role="tab" data-toggle="tab"></a>
-	                			</li>
-	                			<li role="presentation">
-	                				<a href="#tab2" aria-controls="tab2" role="tab" data-toggle="tab"></a>
-	                			</li>
-	                			<li role="presentation">
-	                				<a href="#tab3" aria-controls="tab3" role="tab" data-toggle="tab"></a>
-	                			</li>
-	                		</ul>
-	                	</div>
-	                </div>
-	            </div>
-	        </div>
-        </div> -->    
         <!-- Footer -->
         <footer>
 	        <div class="container">
@@ -327,14 +247,10 @@
                             <a>使い方</a><br>
                             <a>運営会社</a><br>		
 	        			</p>
-	        			<p>
-                    		<a class="scroll-link" href="#about-us">Learn More</a>
-                    	</p>
                     </div>
 	        		<div class="col-sm-4 footer-contact-info wow fadeInDown">
 	        			<h4>コンタクト</h4>
-	                	<p><i class="fa fa-map-marker"></i> xxxxxxxxxxxxx</p>
-	                	<p><i class="fa fa-envelope"></i> Email: <a href="xxxx@gmail.com">xxxxxxxxx@timelag.com</a></p>	             
+	                	<p><i class="fa fa-envelope"></i> Email: <a href="xxxx@gmail.com">info@timelag.co.jp</a></p>	             
                     </div>
                     <div class="col-sm-4 footer-social wow fadeInUp">
                     	<h4>ソーシャルメディア</h4>
@@ -353,7 +269,7 @@
                     		<li><a class="scroll-link" href="#top-content">トップ</a></li>
 							<li><a href="#">利用規約</a></li>
 							<li><a href="#">プライバシーポリシー</a></li>
-							<li><a href="#">特定商取引法に基づく表記</a></li>
+							<li><a href="#">特定商取引法</a></li>
 						</ul>
                     </div>
            		</div>
