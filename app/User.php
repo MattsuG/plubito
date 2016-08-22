@@ -61,4 +61,8 @@ class User extends Authenticatable
     public function applications() {
         return $this->belongsToMany('App\Talk', 'applications');
     }
+
+    public function mails() {
+        return $this->belongsToMany('App\Talk', 'mails');
+    }
 }

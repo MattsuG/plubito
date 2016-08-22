@@ -13,13 +13,17 @@ class Talk extends Model
 	}
 
 	public function applications() {
-		return $this->belongsToMany('App\User', 'applications');
+		return $this->belongsToMany('App\User', 'applications')->withPivot('approved_flag', 'paid_flag', 'finished_flag', 'applied_at', 'approved_at', 'paid_at', 'finished_at');
 
 	}
 
 	public function likes() {
 		return $this->belongsToMany('App\User', 'likes');
 	}
+
+    public function mails() {
+        return $this->belongsToMany('App\User', 'mails')->withPivot('body', 'sent_at');
+    }
 
 	public function category() {
 		return $this->belongsTo('App\Category');

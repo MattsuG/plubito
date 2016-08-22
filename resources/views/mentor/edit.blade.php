@@ -3,11 +3,11 @@
 @section('TitleAndCss')
 <title>トーク編集</title>
 
-<link rel="stylesheet" href="{{{asset('/assets/bootstrap/css/bootstrap.min.css')}}}">
-<link rel="stylesheet" href="{{{asset('/assets/font-awesome/css/font-awesome.min.css')}}}">
-<link rel="stylesheet" href="{{{asset('/assets/css/style_pre_index.css')}}}">
-<link rel="stylesheet" href="{{{asset('/assets/css/animate.css')}}}">
-<link rel="stylesheet" href="{{{asset('/assets/css/style.css')}}}">
+<link rel="stylesheet" href="{{{secure_asset('/assets/bootstrap/css/bootstrap.min.css')}}}">
+<link rel="stylesheet" href="{{{secure_asset('/assets/font-awesome/css/font-awesome.min.css')}}}">
+<link rel="stylesheet" href="{{{secure_asset('/assets/css/style_pre_index.css')}}}">
+<link rel="stylesheet" href="{{{secure_asset('/assets/css/animate.css')}}}">
+<link rel="stylesheet" href="{{{secure_asset('/assets/css/style.css')}}}">
 <link rel="stylesheet" href="{{{('/assets/css/add.css')}}}">
 
 <!-- <link href="css/style_pre_index.css" rel="stylesheet"> -->
@@ -20,11 +20,11 @@
             <ul class="nav metismenu" id="side-menu">
                 <li class="nav-header">
                     <div class="dropdown profile-element">                         
-                            <a href="/mentor"><img alt="image" class="img" src="{{{asset('/assets/img/plus.png')}}}" width="25px" height="50px" /></a>
+                            <a href="/mentor"><img alt="image" class="img" src="{{{secure_asset('/assets/img/plus.png')}}}" width="25px" height="50px" /></a>
                     </div>
                     <div class="dropdown profile-element"> 
                         <span>
-                            <img alt="image" class="img-circle" src="{{{asset(Auth::user()->pic3_path)}}}" />
+                            <img alt="image" class="img-circle" src="{{{secure_asset(Auth::user()->pic3_path)}}}" />
                         </span>
                         <a class="dropdown-toggle" href="#">
                             <span class="clear"> 
@@ -36,7 +36,7 @@
                         </a>                        
                     </div>                    
                     <div class="logo-element">
-                        <a href="/mentor"><img alt="image" class="img" src="{{{asset('/assets/img/plus.png')}}}" width="25px" height="50px" /></a>
+                        <a href="/mentor"><img alt="image" class="img" src="{{{secure_asset('/assets/img/plus.png')}}}" width="25px" height="50px" /></a>
                     </div>
                 </li>
                 <!--  <li>
@@ -222,16 +222,6 @@
                                 </div>
                             </div>
 
-                            <div class="form-group"><label class="col-sm-2 control-label">価格（＊必須）</label>
-                                <div class="col-sm-10">
-                                    <select name="price" id="price" class="form-control">
-                                        @for ($i = 3; $i < 51; $i++)
-                                            <option value="{{ $i * 1000 }}" @if ($talk->price === $i * 1000) selected @endif>{{ $i * 1000 }}円</option>
-                                        @endfor
-                                    </select>
-                                </div>
-                            </div>
-
                             <hr>
 
                             <div class="form-group"><label class="col-sm-2 control-label">詳細（＊必須）</label>
@@ -255,7 +245,7 @@
                                 <label id="label0" class="cebroad-pink"></label>
                                 <div class="events-pad">
                                   @if ($talk->pic0_path !== '/assets/ing/default_thumbnail.jpg')
-                                    <img src="{{{asset($talk->pic0_path)}}}" id="view0" style="width: 300px">
+                                    <img src="{{{secure_asset($talk->pic0_path)}}}" id="view0" style="width: 300px">
                                   @endif
                                   <img src="" id="preview0" style="display:none; width: 300px;">
                                 </div>
@@ -272,7 +262,7 @@
                                 <label id="label1" class="cebroad-pink"></label>
                                 <div class="events-pad">
                                   @if (!empty($talk->pic1_path))
-                                    <img src="{{{asset($talk->pic1_path)}}}" id="view1" style="width: 300px">
+                                    <img src="{{{secure_asset($talk->pic1_path)}}}" id="view1" style="width: 300px">
                                   @endif
                                   <img src="" id="preview1" style="display:none; width: 300px;">
                                 </div>
@@ -309,13 +299,13 @@
 @stop
 
 @section('Js')
-<script src="{{{asset('/assets/js/jquery-2.1.1.js')}}}"></script>
-<script src="{{{asset('/assets/bootstrap/js/bootstrap.min.js')}}}"></script>
+<script src="{{{secure_asset('/assets/js/jquery-2.1.1.js')}}}"></script>
+<script src="{{{secure_asset('/assets/bootstrap/js/bootstrap.min.js')}}}"></script>
 
-<script src="{{{asset('/assets/js/plugins/metisMenu/jquery.metisMenu.js')}}}"></script>
-<script src="{{{asset('/assets/js/plugins/slimscroll/jquery.slimscroll.min.js')}}}"></script>
+<script src="{{{secure_asset('/assets/js/plugins/metisMenu/jquery.metisMenu.js')}}}"></script>
+<script src="{{{secure_asset('/assets/js/plugins/slimscroll/jquery.slimscroll.min.js')}}}"></script>
 
-<script src="{{{asset('/assets/js/inspinia.js')}}}"></script>
-<script src="{{{asset('/assets/js/plugins/pace/pace.min.js')}}}"></script>
-<script src="{{{asset('/assets/js/add.js')}}}"></script>
+<script src="{{{secure_asset('/assets/js/inspinia.js')}}}"></script>
+<script src="{{{secure_asset('/assets/js/plugins/pace/pace.min.js')}}}"></script>
+<script src="{{{secure_asset('/assets/js/add.js')}}}"></script>
 @stop
