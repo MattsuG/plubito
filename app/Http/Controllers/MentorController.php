@@ -6,7 +6,11 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests\TalkRequest;
 
-use App;
+use App\Talk;
+
+use App\User;
+
+use App\Category;
 
 use Image;
 
@@ -16,9 +20,9 @@ use Input;
 
 use File;
 
-use DB;
-
 use Auth;
+
+use Carbon\Carbon;
 
 class MentorController extends Controller
 {
@@ -28,7 +32,7 @@ class MentorController extends Controller
     $category_id = Input::get('category_id');
     $word     = Input::get('word');
 
-    $query = App\Talk::query();
+    $query = Talk::query();
 
     $talks = $query->with('category');
 
@@ -42,14 +46,14 @@ class MentorController extends Controller
 
     $talks = $talks->orderBy('created_at', 'DESC')
     ->paginate(15);
-    $categories = App\Category::All();
+    $categories = Category::All();
 
     return view("mentor.index", compact('talks', 'categories', 'category_id', 'word'));
   }
 
   public function create()
   {
-    $categories = App\Category::All();
+    $categories = Category::All();
     return view("mentor.add", ['categories' => $categories]);
   }
 
@@ -94,9 +98,10 @@ class MentorController extends Controller
         }
 
 
-      $talk = new App\Talk();
+      $talk = new Talk();
       $talk->title = $request->title;
       $talk->category_id = $request->category;
+      $talk->talk_time = $request->time;
       $talk->price = $request->price;
       $talk->detail = $request->detail;
       $talk->pic0_path = $pic0_path;
@@ -105,7 +110,7 @@ class MentorController extends Controller
       $talk->save();
 
 
-      $thisTalk = App\Talk::where('mentor_id', Session::get('id'))
+      $thisTalk = Talk::where('mentor_id', Session::get('id'))
       ->first();
 
       return redirect("mentor");
@@ -113,7 +118,7 @@ class MentorController extends Controller
 
   public function show($id)
   {
-    $talk = App\Talk::find($id);
+    $talk = Talk::findOrFail($id);
     $check_like = $talk->likes->contains(Auth::user()->id);
     $check_application = $talk->applications->contains(Auth::user()->id);
     return view("mentor.show", compact('talk', 'check_like', 'check_application'));
@@ -122,8 +127,8 @@ class MentorController extends Controller
   public function edit($id)
   {
 
-    $talk = App\Talk::find($id);
-    $categories = App\Category::All();
+    $talk = Talk::findOrFail($id);
+    $categories = Category::All();
 
 
     // if ($talk->mentor_id !== Auth::user()->id) {
@@ -135,7 +140,7 @@ class MentorController extends Controller
 
   public function update(TalkRequest $request, $id) {
     
-    $thisTalk = App\Talk::find($id);
+    $thisTalk = Talk::findOrFail($id);
 
     if ((int)$thisTalk->mentor_id !== (int)Auth::user()->id) {
       return redirect('mentor/index');
@@ -192,11 +197,10 @@ class MentorController extends Controller
         }
 
 
-      $talk = App\Talk::find($id);
+      $talk = Talk::findOrFail($id);
       $talk->title = $request->title;
       $talk->mentor_id = Auth::user()->id;
       $talk->category_id = $request->category;
-      $talk->price = $request->price;
       $talk->detail = $request->detail;
       $talk->pic0_path = $pic0_path;
       $talk->pic1_path = $pic1_path;
@@ -207,7 +211,7 @@ class MentorController extends Controller
 
   public function apply(Request $request) {
 
-      $talk = App\Talk::find($request->talk_id);
+      $talk = Talk::findOrFail($request->talk_id);
       if ((int)$talk->mentor_id === (int)Auth::user()->id) {
         \Session::flash('flash_message', '自分のトークには申し込みできません');
       }
@@ -233,7 +237,7 @@ class MentorController extends Controller
 
   public function like($id) {
 
-      $talk = App\Talk::find($id);
+      $talk = Talk::findOrFail($id);
       if ((int)$talk->mentor_id === (int)Auth::user()->id) {
         \Session::flash('flash_message', '自分のトークには申し込みできません');
       } else {
@@ -255,8 +259,28 @@ class MentorController extends Controller
 
       return redirect('mentor/'.$id);
   }
-}
 
+  public function getMessage($id) {
+    $talk = Talk::findOrFail($id);
+    if ((int)$talk->mentor_id === (int)Auth::user()->id) {
+      \Session::flash('flash_message', '自分にメッセージを送ることはできません');
+    }
+    return view('mentor/message', ['talk'=> $talk]);
+  }
+
+  public function postMessage(Request $request) {
+
+    $this->validate($request, [
+      'body' => 'required|max:1000'
+    ]);
+    $talk = Talk::findOrFail($request->talk_id);
+    $talk->mails()->attach(Auth::user()->id, ['body' => $request->body, 'sent_at' => Carbon::now()]);
+    \Session::flash('flash_nessage', 'メッセージを送信しました');
+
+    return redirect('mentor/'.$request->talk_id);
+
+  }
+}
 
   
 

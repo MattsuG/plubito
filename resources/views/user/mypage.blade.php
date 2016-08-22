@@ -3,11 +3,11 @@
 @section('TitleAndCss')
 <title>mypage.php | マイページ</title>
 
-<link rel="stylesheet" href="{{{asset('/assets/bootstrap/css/bootstrap.min.css')}}}">
-<link rel="stylesheet" href="{{{asset('/assets/font-awesome/css/font-awesome.min.css')}}}">
-<link rel="stylesheet" href="{{{asset('/assets/css/style_pre_index.css')}}}">
-<link rel="stylesheet" href="{{{asset('/assets/css/animate.css')}}}">
-<link rel="stylesheet" href="{{{asset('/assets/css/style.css')}}}">
+<link rel="stylesheet" href="{{{secure_asset('/assets/bootstrap/css/bootstrap.min.css')}}}">
+<link rel="stylesheet" href="{{{secure_asset('/assets/font-awesome/css/font-awesome.min.css')}}}">
+<link rel="stylesheet" href="{{{secure_asset('/assets/css/style_pre_index.css')}}}">
+<link rel="stylesheet" href="{{{secure_asset('/assets/css/animate.css')}}}">
+<link rel="stylesheet" href="{{{secure_asset('/assets/css/style.css')}}}">
 
 <!-- <link href="css/style_pre_index.css" rel="stylesheet"> -->
 @stop
@@ -19,11 +19,11 @@
             <ul class="nav metismenu" id="side-menu">
                 <li class="nav-header">
                     <div class="dropdown profile-element">                         
-                            <a href="/mentor"><img alt="image" class="img" src="{{{asset('/assets/img/plus.png')}}}" width="25px" height="50px" /></a>
+                            <a href="/mentor"><img alt="image" class="img" src="{{{secure_asset('/assets/img/plus.png')}}}" width="25px" height="50px" /></a>
                     </div>
                     <div class="dropdown profile-element"> 
                         <span>
-                            <img alt="image" class="img-circle" src="{{{asset('/assets/img/about/1.jpg')}}}" />
+                            <img alt="image" class="img-circle" src="{{{secure_asset('/assets/img/about/1.jpg')}}}" />
                         </span>
                         <a class="dropdown-toggle" href="#">
                             <span class="clear"> 
@@ -35,7 +35,7 @@
                         </a>                        
                     </div>                    
                     <div class="logo-element">
-                        <a href="/"><img alt="image" class="img" src="{{{asset('/assets/img/plus.png')}}}" width="25px" height="50px" /></a>
+                        <a href="/"><img alt="image" class="img" src="{{{secure_asset('/assets/img/plus.png')}}}" width="25px" height="50px" /></a>
                     </div>
                 </li>
                 <li>
@@ -198,10 +198,11 @@
                         <div class="panel-heading">
                             <div class="panel-options">
                                 <ul class="nav nav-tabs">
-                                    <li class="active"><a href="#tab-1" data-toggle="tab">メッセージ一覧</a></li>
-                                    <li class=""><a href="#tab-2" data-toggle="tab">予約リクエスト一覧</a></li>
-                                    <li class=""><a href="#tab-3" data-toggle="tab">トーク履歴一覧</a></li>
-                                    <li class=""><a href="#tab-4" data-toggle="tab">開設したトーク一覧</a></li>
+                                    <li class="active"><a href="#tab-1" data-toggle="tab">予約リクエスト一覧</a></li>
+                                    <li class=""><a href="#tab-2" data-toggle="tab">興味あり一覧</a></li>
+                                    @if ((int)$user->role === 1)
+                                    <li class=""><a href="#tab-3" data-toggle="tab">開設したトーク一覧</a></li>
+                                    @endif
                                 </ul>
                             </div>
                         </div>
@@ -209,324 +210,112 @@
                         <div class="panel-body">
 
                         <div class="tab-content" style="text-align: left">
-                        <div class="tab-pane active" id="tab-1">
-                            <div class="feed-activity-list">
-                                <div class="feed-element">
-                                    <a href="#" class="pull-left">
-                                        <img alt="image" class="img-circle" src="img/a2.jpg">
-                                    </a>
-                                    <div class="media-body">
-                                        <small class="pull-right">2h ago</small>
-                                        <a href="/user/message"><strong>Kon Rikuto</strong> さんからのメッセージ <br></a>
-                                        <small class="text-muted">今日 2:10 pm - 12.06.2014</small>
-                                        <div class="well">
-                                            閉ざされたドアの向こうに新しい何かが待っていて
-                                            きっときっとって僕を動かしてる
-                                            いいことばかりでは無いさ でも次の扉をノックしたい
-                                            もっと大きなはずの自分を探す終わりなき旅.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="feed-element">
-                                    <a href="#" class="pull-left">
-                                        <img alt="image" class="img-circle" src="img/a2.jpg">
-                                    </a>
-                                    <div class="media-body">
-                                        <small class="pull-right">2h ago</small>
-                                        <a href="/user/message"><strong>Kon Rikuto</strong> さんからのメッセージ <br></a>
-                                        <small class="text-muted">今日 2:10 pm - 12.06.2014</small>
-                                        <div class="well">
-                                            閉ざされたドアの向こうに新しい何かが待っていて
-                                            きっときっとって僕を動かしてる
-                                            いいことばかりでは無いさ でも次の扉をノックしたい
-                                            もっと大きなはずの自分を探す終わりなき旅.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="feed-element">
-                                    <a href="#" class="pull-left">
-                                        <img alt="image" class="img-circle" src="img/a2.jpg">
-                                    </a>
-                                    <div class="media-body">
-                                        <small class="pull-right">2h ago</small>
-                                        <a href="/user/message"><strong>Kon Rikuto</strong> さんからのメッセージ <br></a>
-                                        <small class="text-muted">今日 2:10 pm - 12.06.2014</small>
-                                        <div class="well">
-                                            閉ざされたドアの向こうに新しい何かが待っていて
-                                            きっときっとって僕を動かしてる
-                                            いいことばかりでは無いさ でも次の扉をノックしたい
-                                            もっと大きなはずの自分を探す終わりなき旅.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="feed-element">
-                                    <a href="#" class="pull-left">
-                                        <img alt="image" class="img-circle" src="img/a2.jpg">
-                                    </a>
-                                    <div class="media-body">
-                                        <small class="pull-right">2h ago</small>
-                                        <a href="/user/message"><strong>Kon Rikuto</strong> さんからのメッセージ <br></a>
-                                        <small class="text-muted">今日 2:10 pm - 12.06.2014</small>
-                                        <div class="well">
-                                            閉ざされたドアの向こうに新しい何かが待っていて
-                                            きっときっとって僕を動かしてる
-                                            いいことばかりでは無いさ でも次の扉をノックしたい
-                                            もっと大きなはずの自分を探す終わりなき旅.
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane" id="tab-2">
+                        <div class="tab-pane" id="tab-1">
                             <table class="table table-striped">
                                 <thead>
                                 <tr>
                                     <th>ステータス</th>
                                     <th>タイトル</th>
                                     <th>開始時間</th>
-                                    <th>終了時間</th>
-                                    <th>ユーザー</th>
+                                    <th>所要時間</th>
+                                    <th>トーカー</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>
-                                        <!-- <span class="label label-primary"><i class="fa fa-check"></i> 承認済</span> -->
-                                    </td>
-                                    <td>
-                                       世界一周を世界一安く実行する方法
-                                    </td>
-                                    <td>
-                                       12.07.2014 10:10:1
-                                    </td>
-                                    <td>
-                                        14.07.2014 10:16:36
-                                    </td>
-                                    <td>
-                                    <p class="small">
-                                        松澤隼人
-                                    </p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <!-- <span class="label label-primary"><i class="fa fa-check"></i> 承認済</span> -->
-                                    </td>
-                                    <td>
-                                       世界一周を世界一安く実行する方法
-                                    </td>
-                                    <td>
-                                       12.07.2014 10:10:1
-                                    </td>
-                                    <td>
-                                        14.07.2014 10:16:36
-                                    </td>
-                                    <td>
-                                    <p class="small">
-                                        松澤隼人
-                                    </p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <!-- <span class="label label-primary"><i class="fa fa-check"></i> 承認済</span> -->
-                                    </td>
-                                    <td>
-                                       世界一周を世界一安く実行する方法
-                                    </td>
-                                    <td>
-                                       12.07.2014 10:10:1
-                                    </td>
-                                    <td>
-                                        14.07.2014 10:16:36
-                                    </td>
-                                    <td>
-                                    <p class="small">
-                                        松澤隼人
-                                    </p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <!-- <span class="label label-primary"><i class="fa fa-check"></i> 承認済</span> -->
-                                    </td>
-                                    <td>
-                                       世界一周を世界一安く実行する方法
-                                    </td>
-                                    <td>
-                                       12.07.2014 10:10:1
-                                    </td>
-                                    <td>
-                                        14.07.2014 10:16:36
-                                    </td>
-                                    <td>
-                                    <p class="small">
-                                        松澤隼人
-                                    </p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <!-- <span class="label label-primary"><i class="fa fa-check"></i> 承認済</span> -->
-                                    </td>
-                                    <td>
-                                       世界一周を世界一安く実行する方法
-                                    </td>
-                                    <td>
-                                       12.07.2014 10:10:1
-                                    </td>
-                                    <td>
-                                        14.07.2014 10:16:36
-                                    </td>
-                                    <td>
-                                    <p class="small">
-                                        松澤隼人
-                                    </p>
-                                    </td>
-                                </tr>
-                                </tbody>
+                                @foreach($user->applications as $app)
+                                    <tr>
+                                        <td>
+                                        @if ((int)$app->pivot->approved_flag === 1)
+                                            <span class="label label-primary"><i class="fa fa-check"></i> 承認済</span>
+                                        @elseif ((int)$app->pivot->paid_flag === 1)
+                                            <span class="label label-primary"><i class="fa fa-check"></i> 支払い済</span>
+                                        @elseif ((int)$app->pivot->finished_flag === 1)
+                                            <span class="label label-primary"><i class="fa fa-check"></i> 終了</span>
+                                        @else
+                                            <p>承認中</p>
+                                        @endif
+                                        </td>
+                                        <td>
+                                           {{ $app->title }}
+                                        </td>
+                                        <td>
+                                           <!-- 開始時間 -->
+                                        </td>
+                                        <td>
+                                            {{ $app->talk_time }}分
+                                        </td>
+                                        <td>
+                                        <p class="small">
+                                            {{ $app->mentor->name }}
+                                        </p>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>        
                             </table>
 
                         </div>
 
-                         <div class="tab-pane" id="tab-3">
+                         <div class="tab-pane" id="tab-2">
                             <table class="table table-striped">
                                 <thead>
                                 <tr>
                                     <th>タイトル</th>
-                                    <th>開始時間</th>
-                                    <th>終了時間</th>
-                                    <th>ユーザー</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>
-                                       世界一周を世界一安く実行する方法
-                                    </td>
-                                    <td>
-                                       12.07.2014 10:10:1
-                                    </td>
-                                    <td>
-                                        14.07.2014 10:16:36
-                                    </td>
-                                    <td>
-                                    <p class="small">
-                                        松澤隼人
-                                    </p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                       世界一周を世界一安く実行する方法
-                                    </td>
-                                    <td>
-                                       12.07.2014 10:10:1
-                                    </td>
-                                    <td>
-                                        14.07.2014 10:16:36
-                                    </td>
-                                    <td>
-                                    <p class="small">
-                                        松澤隼人
-                                    </p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                       世界一周を世界一安く実行する方法
-                                    </td>
-                                    <td>
-                                       12.07.2014 10:10:1
-                                    </td>
-                                    <td>
-                                        14.07.2014 10:16:36
-                                    </td>
-                                    <td>
-                                    <p class="small">
-                                        松澤隼人
-                                    </p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                       世界一周を世界一安く実行する方法
-                                    </td>
-                                    <td>
-                                       12.07.2014 10:10:1
-                                    </td>
-                                    <td>
-                                        14.07.2014 10:16:36
-                                    </td>
-                                    <td>
-                                    <p class="small">
-                                        松澤隼人
-                                    </p>
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <div class="tab-pane" id="tab-4">
-                            <table class="table table-striped">
-                                <thead>
-                                <tr>
-                                    <th>タイトル</th>
-                                    <th>カテゴリ</th>
                                     <th>価格</th>
+                                    <th>時間</th>
+                                    <th>トーカー</th>
                                 </tr>
                                 </thead>
                                 <tbody>
+                                @foreach ($user->likes as $like)
                                 <tr>
                                     <td>
-                                       世界一周を世界一安く実行する方法
+                                       {{ $like->title }}
                                     </td>
                                     <td>
-                                       旅：世界一周
+                                       {{ $like->price }}
                                     </td>
                                     <td>
-                                        2千円/30分
+                                        {{ $like->talk_time }}
+                                    </td>
+                                    <td>
+                                    <p class="small">
+                                        {{ $like->mentor->name }}
+                                    </p>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>
-                                       世界一周を世界一安く実行する方法
-                                    </td>
-                                    <td>
-                                       旅：世界一周
-                                    </td>
-                                    <td>
-                                        2千円/30分
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                       世界一周を世界一安く実行する方法
-                                    </td>
-                                    <td>
-                                       旅：世界一周
-                                    </td>
-                                    <td>
-                                        2千円/30分
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                       世界一周を世界一安く実行する方法
-                                    </td>
-                                    <td>
-                                       旅：世界一周
-                                    </td>
-                                    <td>
-                                        2千円/30分
-                                    </td>
-                                </tr>
-                                
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>
-
+                        @if ((int)$user->role === 1)
+                            <div class="tab-pane" id="tab-3">
+                                <table class="table table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>タイトル</th>
+                                        <th>カテゴリ</th>
+                                        <th>価格</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach ($my_talks as $my_talk)
+                                        <tr>
+                                            <td>
+                                                {{ $my_talk->title }}
+                                            </td>
+                                            <td>
+                                                {{ $my_talk->category->name }}
+                                            </td>
+                                            <td>
+                                                {{ $my_talk->price }}円/{{ $my_talk->talk_time }}分
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        @endif
                         </div>
                         </div>
                         </div>
@@ -548,12 +337,12 @@
 @stop
 
 @section('Js')
-<script src="{{{asset('/assets/js/jquery-2.1.1.js')}}}"></script>
-<script src="{{{asset('/assets/bootstrap/js/bootstrap.min.js')}}}"></script>
+<script src="{{{secure_asset('/assets/js/jquery-2.1.1.js')}}}"></script>
+<script src="{{{secure_asset('/assets/bootstrap/js/bootstrap.min.js')}}}"></script>
 
-<script src="{{{asset('/assets/js/plugins/metisMenu/jquery.metisMenu.js')}}}"></script>
-<script src="{{{asset('/assets/js/plugins/slimscroll/jquery.slimscroll.min.js')}}}"></script>
+<script src="{{{secure_asset('/assets/js/plugins/metisMenu/jquery.metisMenu.js')}}}"></script>
+<script src="{{{secure_asset('/assets/js/plugins/slimscroll/jquery.slimscroll.min.js')}}}"></script>
 
-<script src="{{{asset('/assets/js/inspinia.js')}}}"></script>
-<script src="{{{asset('/assets/js/plugins/pace/pace.min.js')}}}"></script>
+<script src="{{{secure_asset('/assets/js/inspinia.js')}}}"></script>
+<script src="{{{secure_asset('/assets/js/plugins/pace/pace.min.js')}}}"></script>
 @stop

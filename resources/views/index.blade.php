@@ -3,11 +3,11 @@
 <title>TopPage</title>
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100italic,300,300italic,400,400italic,500,500italic">
-<link rel="stylesheet" href="{{{asset('/assets/bootstrap/css/bootstrap.min.css')}}}">
-<link rel="stylesheet" href="{{{asset('/assets/font-awesome/css/font-awesome.min.css')}}}">
-<link rel="stylesheet" href="{{{asset('/assets/css/animate.css')}}}">
-<link rel="stylesheet" href="{{{asset('/assets/css/style_pre_index.css')}}}">
-<link rel="stylesheet" href="{{{asset('/assets/css/media-queries.css')}}}">
+<link rel="stylesheet" href="{{{secure_asset('/assets/bootstrap/css/bootstrap.min.css')}}}">
+<link rel="stylesheet" href="{{{secure_asset('/assets/font-awesome/css/font-awesome.min.css')}}}">
+<link rel="stylesheet" href="{{{secure_asset('/assets/css/animate.css')}}}">
+<link rel="stylesheet" href="{{{secure_asset('/assets/css/style_pre_index.css')}}}">
+<link rel="stylesheet" href="{{{secure_asset('/assets/css/media-queries.css')}}}">
 @stop
 
 @section('content')
@@ -214,10 +214,15 @@
                         <div class="col-sm-3 pricing-box pricing-box-best wow fadeInDown">
                             <div class="pricing-box-inner">
                                 <div class="pricing-box-price">
-                                <img src="{{{asset($talk->pic0_path)}}}" alt="">
+                                <img src="{{{secure_asset($talk->pic0_path)}}}" alt="">
                                 </div>
+<<<<<<< HEAD
                                 <p class="abbreviation3">{{ $talk->title }}</p>
                                 <p>いいね:{{ count($talk->likes) }}人 トーク:{{ $talk->applications_count }}人</p>
+=======
+                                <h3 class="abbreviation3">{{ $talk->title }}</h3>
+                                <h4>興味あり:{{ count($talk->likes) }}人 申込者:{{ count($talk->applications) }}人</h4>
+>>>>>>> master
                                 <div class="pricing-box-features">
                                     <ul>
                                         <li>{{ $talk->name }}</li>
@@ -229,10 +234,83 @@
                         </div>
                     @endforeach  
                 </div>
+<<<<<<< HEAD
                 <div class="row">
 	            	<div class="col-sm-12 section-bottom-button wow fadeInUp">
                         <a class="btn btn-link-1 scroll-link fa-5x" href="#pricing">トーク検索</a>
 	            	</div>
+=======
+	        </div>
+	    </div>
+        <!-- Testimonials -->
+        <div class="testimonials-container section-container section-container-image-bg">
+	        <div class="container">
+	            <div class="row">
+	                <div class="col-sm-12 testimonials section-description wow fadeIn">
+	                    <h2>ユーザーの声</h2>
+	                    <div class="divider-1 wow fadeInUp"><span></span></div>
+	                </div>
+	            </div>
+	            <div class="row">
+	                <div class="col-sm-10 col-sm-offset-1 testimonial-list wow fadeInUp">
+	                	<div role="tabpanel">
+	                		<!-- Tab panes -->
+	                		<div class="tab-content">
+	                			<div role="tabpanel" class="tab-pane fade in active" id="tab1">
+	                				<div class="testimonial-image">
+	                					<img src="{{{secure_asset('/assets/img/testimonials/1.jpg')}}}" alt="" data-at2x="assets/img/testimonials/1.jpg')}}}">
+	                					<div class="testimonial-icon">
+	                						<span aria-hidden="true" class="typcn typcn-pin"></span>
+	                					</div>
+	                				</div>
+	                				<div class="testimonial-text">
+		                                <p>
+		                                	"ブログでは手に入らない生の情報が聞けてよかったです"<br>
+		                                </p>
+	                                </div>
+	                			</div>
+	                			<div role="tabpanel" class="tab-pane fade" id="tab2">
+	                				<div class="testimonial-image">
+	                					<img src="{{{secure_asset('/assets/img/testimonials/2.jpg')}}}" alt="" data-at2x="assets/img/testimonials/2.jpg')}}}">
+	                					<div class="testimonial-icon">
+	                						<span aria-hidden="true" class="typcn typcn-pin"></span>
+	                					</div>
+	                				</div>
+	                				<div class="testimonial-text">
+		                                <p>
+		                                	"進路選択で失敗した経験、どの様に取り戻していったか、そんなセンシティブな話は他ではなかなか聞けなかったので利用しました。"<br>
+		                                </p>
+	                                </div>
+	                			</div>
+	                			<div role="tabpanel" class="tab-pane fade" id="tab3">
+	                				<div class="testimonial-image">
+	                					<img src="{{{secure_asset('/assets/img/testimonials/3.jpg')}}}" alt="" data-at2x="assets/img/testimonials/3.jpg')}}}">
+	                					<div class="testimonial-icon">
+	                						<span aria-hidden="true" class="typcn typcn-pin"></span>
+	                					</div>
+	                				</div>
+	                				<div class="testimonial-text">
+		                                <p>
+		                                	"実践した本人の話は、説得力がありました。"<br>
+		                                </p>
+	                                </div>
+	                			</div>
+	                		</div>
+	                		<!-- Nav tabs -->
+	                		<ul class="nav nav-tabs" role="tablist">
+	                			<li role="presentation" class="active">
+	                				<a href="#tab1" aria-controls="tab1" role="tab" data-toggle="tab"></a>
+	                			</li>
+	                			<li role="presentation">
+	                				<a href="#tab2" aria-controls="tab2" role="tab" data-toggle="tab"></a>
+	                			</li>
+	                			<li role="presentation">
+	                				<a href="#tab3" aria-controls="tab3" role="tab" data-toggle="tab"></a>
+	                			</li>
+	                		</ul>
+	                	</div>
+	                </div>
+>>>>>>> master
 	            </div>
 	        </div>
 	    </div>
@@ -300,12 +378,12 @@
 @stop
 
 @section('Js')
-<script src="{{{asset('/assets/js/jquery-1.11.1.min.js')}}}"></script>
-<script src="{{{asset('/assets/bootstrap/js/bootstrap.min.js')}}}"></script>
-<script src="{{{asset('assets/js/jquery.backstretch.min.js')}}}"></script>
-<script src="{{{asset('/assets/js/wow.min.js')}}}"></script>
-<script src="{{{asset('/assets/js/retina-1.1.0.min.js')}}}"></script>
-<script src="{{{asset('assets/js/scripts.js')}}}"></script>
+<script src="{{{secure_asset('/assets/js/jquery-1.11.1.min.js')}}}"></script>
+<script src="{{{secure_asset('/assets/bootstrap/js/bootstrap.min.js')}}}"></script>
+<script src="{{{secure_asset('assets/js/jquery.backstretch.min.js')}}}"></script>
+<script src="{{{secure_asset('/assets/js/wow.min.js')}}}"></script>
+<script src="{{{secure_asset('/assets/js/retina-1.1.0.min.js')}}}"></script>
+<script src="{{{secure_asset('assets/js/scripts.js')}}}"></script>
 <script>
 $(function(){
     var $setElm = $('h3.abbreviation3');

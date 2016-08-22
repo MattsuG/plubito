@@ -10,24 +10,34 @@ use Image;
 
 use App\User;
 
+use App\Talk;
+
+use Auth;
+
+use DB;
+
 class UserController extends Controller
 {
-	//メールやトーク一覧が見れる　自分のuseridに関連するデータを全部引っ張りだす
+	//メールやトーク一覧が見れる 自分のuseridに関連するデータを全部引っ張りだす
 	//処理が複雑になるのでRikuto担当
     public function index() {
-
+        $user = User::findOrFail(Auth::user()->id);
+        $my_talks = Talk::query()
+        ->where('mentor_id', Auth::user()->id)
+        ->get();
+        return view("user/mypage", compact('user', 'my_talks'));
     }
 
     //show/idの形で飛んできたときの処理
     //$idが自分のuseridと一致するときは全ての情報を表示、更に編集ボタンを表示
     public function show($id) {
-        $user = User::findOrFail($id);
+        $user = User::find($id);
         // dd($user->toArray());//dump die
         return view("user/show")->with('user',$user);    	
     }
 
     //自分のshowページ、もしくはサイドバーから飛んできたときの処理
-    //sessionに格納されたuseridと一致するuserデータをDBより取得　viewに渡す
+    //sessionに格納されたuseridと一致するuserデータをDBより取得 viewに渡す
     public function edit($id) {
         $user = User::findOrFail($id);
         // dd($user->toArray());//dump die

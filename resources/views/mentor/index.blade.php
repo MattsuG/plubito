@@ -2,11 +2,11 @@
 @section('TitleAndCss')
 <title>show.php | トーク一覧</title>
 
-<link rel="stylesheet" href="{{{asset('/assets/bootstrap/css/bootstrap.min.css')}}}">
-<link rel="stylesheet" href="{{{asset('/assets/font-awesome/css/font-awesome.min.css')}}}">
-<link rel="stylesheet" href="{{{asset('/assets/css/style_pre_index.css')}}}">
-<link rel="stylesheet" href="{{{asset('/assets/css/animate.css')}}}">
-<link rel="stylesheet" href="{{{asset('/assets/css/style.css')}}}">
+<link rel="stylesheet" href="{{{secure_asset('/assets/bootstrap/css/bootstrap.min.css')}}}">
+<link rel="stylesheet" href="{{{secure_asset('/assets/font-awesome/css/font-awesome.min.css')}}}">
+<link rel="stylesheet" href="{{{secure_asset('/assets/css/style_pre_index.css')}}}">
+<link rel="stylesheet" href="{{{secure_asset('/assets/css/animate.css')}}}">
+<link rel="stylesheet" href="{{{secure_asset('/assets/css/style.css')}}}">
 
 <!-- <link href="css/style_pre_index.css" rel="stylesheet"> -->
 @stop
@@ -18,11 +18,11 @@
             <ul class="nav metismenu" id="side-menu">
                 <li class="nav-header">
                     <div class="dropdown profile-element">                         
-                            <a href="/mentor"><img alt="image" class="img" src="{{{asset('/assets/img/plus.png')}}}" width="25px" height="50px" /></a>
+                            <a href="/mentor"><img alt="image" class="img" src="{{{secure_asset('/assets/img/plus.png')}}}" width="25px" height="50px" /></a>
                     </div>
                     <div class="dropdown profile-element"> 
                         <span>
-                            <img alt="image" class="img-circle" src="{{{asset(Auth::user()->pic3_path)}}}" />
+                            <img alt="image" class="img-circle" src="{{{secure_asset(Auth::user()->pic3_path)}}}" />
                         </span>
                         <a class="dropdown-toggle" href="#">
                             <span class="clear"> 
@@ -34,7 +34,7 @@
                         </a>                        
                     </div>                    
                     <div class="logo-element">
-                        <a href="/mentor"><img alt="image" class="img" src="{{{asset('/assets/img/plus.png')}}}" width="25px" height="50px" /></a>
+                        <a href="/mentor"><img alt="image" class="img" src="{{{secure_asset('/assets/img/plus.png')}}}" width="25px" height="50px" /></a>
                     </div>
                 </li>
                 <li>
@@ -100,6 +100,7 @@
                 </div>
             </form>
         </div>
+<<<<<<< HEAD
         <div class="row">
             <div id="contents">
                 <main id="main">
@@ -123,6 +124,31 @@
                     </article>
                 </main>
             </div>
+=======
+        <div class="row white-bg"> 
+            @foreach ($talks as $talk)
+                <div class="col-sm-4 pricing-box pricing-box-best wow fadeInDown">
+                    <div class="pricing-box-inner">
+                        <div class="pricing-box-price">
+                        <a href="{{ url('mentor/'.$talk->id) }}" style="color:#000;text-decoration:none"><img src="{{{secure_asset($talk->pic0_path)}}}" alt="">
+                        </div>
+
+                        <h3 class="abbreviation3">{{ $talk->title }}</h3>
+                        <h4>興味あり:{{ $talk->likes_count }}人 申込者:{{ $talk->applications_count }}人</h4></a>
+                        <div class="pricing-box-features">
+                            <ul>
+                                <li>{{ $talk->category->category_name }}</li>
+                                <li>価格:{{ $talk->price }}円 時間:{{ $talk->talk_time }}分</li></a>
+                                <li><a href="{{ url('mentor/'.$talk->id) }}"><button type="button" class="btn btn-default btn-sm btn-block">詳細を見る</button></a></li>                           
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+        <div class="row white-bg">
+             {!! $talks->appends(['category'=>$category_id, 'word'=>$word])->render() !!}
+>>>>>>> master
         </div>
         <div class="row">
             <div class="footer">                       
@@ -138,14 +164,14 @@
 @stop
 
 @section('Js')
-<script src="{{{asset('/assets/js/jquery-2.1.1.js')}}}"></script>
-<script src="{{{asset('/assets/bootstrap/js/bootstrap.min.js')}}}"></script>
+<script src="{{{secure_asset('/assets/js/jquery-2.1.1.js')}}}"></script>
+<script src="{{{secure_asset('/assets/bootstrap/js/bootstrap.min.js')}}}"></script>
 
-<script src="{{{asset('/assets/js/plugins/metisMenu/jquery.metisMenu.js')}}}"></script>
-<script src="{{{asset('/assets/js/plugins/slimscroll/jquery.slimscroll.min.js')}}}"></script>
+<script src="{{{secure_asset('/assets/js/plugins/metisMenu/jquery.metisMenu.js')}}}"></script>
+<script src="{{{secure_asset('/assets/js/plugins/slimscroll/jquery.slimscroll.min.js')}}}"></script>
 
-<script src="{{{asset('/assets/js/inspinia.js')}}}"></script>
-<script src="{{{asset('/assets/js/plugins/pace/pace.min.js')}}}"></script>
+<script src="{{{secure_asset('/assets/js/inspinia.js')}}}"></script>
+<script src="{{{secure_asset('/assets/js/plugins/pace/pace.min.js')}}}"></script>
 <script>
 $(function(){
     var $setElm = $('h3.abbreviation3');

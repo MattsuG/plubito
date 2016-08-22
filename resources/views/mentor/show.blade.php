@@ -3,11 +3,11 @@
 @section('TitleAndCss')
 <title>show.php | トーク詳細</title>
 
-<link rel="stylesheet" href="{{{asset('/assets/bootstrap/css/bootstrap.min.css')}}}">
-<link rel="stylesheet" href="{{{asset('/assets/font-awesome/css/font-awesome.min.css')}}}">
-<link rel="stylesheet" href="{{{asset('/assets/css/style_pre_index.css')}}}">
-<link rel="stylesheet" href="{{{asset('/assets/css/animate.css')}}}">
-<link rel="stylesheet" href="{{{asset('/assets/css/style.css')}}}">
+<link rel="stylesheet" href="{{{secure_asset('/assets/bootstrap/css/bootstrap.min.css')}}}">
+<link rel="stylesheet" href="{{{secure_asset('/assets/font-awesome/css/font-awesome.min.css')}}}">
+<link rel="stylesheet" href="{{{secure_asset('/assets/css/style_pre_index.css')}}}">
+<link rel="stylesheet" href="{{{secure_asset('/assets/css/animate.css')}}}">
+<link rel="stylesheet" href="{{{secure_asset('/assets/css/style.css')}}}">
 
 <!-- <link href="css/style_pre_index.css" rel="stylesheet"> -->
 @stop
@@ -19,11 +19,11 @@
             <ul class="nav metismenu" id="side-menu">
                 <li class="nav-header">
                     <div class="dropdown profile-element">                         
-                            <a href="/mentor"><img alt="image" class="img" src="{{{asset('/assets/img/plus.png')}}}" width="25px" height="50px" /></a>
+                            <a href="/mentor"><img alt="image" class="img" src="{{{secure_asset('/assets/img/plus.png')}}}" width="25px" height="50px" /></a>
                     </div>
                     <div class="dropdown profile-element"> 
                         <span>
-                            <img alt="image" class="img-circle" src="{{{asset(Auth::user()->pic3_path)}}}" />
+                            <img alt="image" class="img-circle" src="{{{secure_asset(Auth::user()->pic3_path)}}}" />
                         </span>
                         <a class="dropdown-toggle" href="#">
                             <span class="clear"> 
@@ -35,9 +35,22 @@
                         </a>                        
                     </div>                    
                     <div class="logo-element">
+<<<<<<< HEAD
                         <a href="/mentor"><img alt="image" class="img" src="{{{asset('/assets/img/plus.png')}}}" width="25px" height="50px" /></a>
                     </div>
                 </li>
+=======
+                        <a href="/mentor"><img alt="image" class="img" src="{{{secure_asset('/assets/img/plus.png')}}}" width="25px" height="50px" /></a>
+                    </div>
+                </li>
+                <!--  <li>
+                    <a href="#"><i class="fa fa-pencil"></i> <span class="nav-label">アカウント編集</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse">
+                        <li><a href="/user/show/{{ Auth::user()->id }}">プロフィール表示</a></li>
+                        <li><a href="/user/edit/{{ Auth::user()->id }}">プロフィール編集</a></li>
+                    </ul>
+                </li> -->
+>>>>>>> master
                 <li>
                     <a href="/user/show/{{ Auth::user()->id }}"><i class="fa fa-user"></i> <span class="nav-label">プロフィール表示</span></a>
                 </li>
@@ -199,7 +212,11 @@
                     </div>
                     <div>
                         <div class="ibox-content no-padding border-left-right">
+<<<<<<< HEAD
                             <img alt="image" class="img-circle" src="{{{asset(Auth::user()->pic3_path)}}}">
+=======
+                            <img alt="image" class="img-circle" src="{{{secure_asset(Auth::user()->pic3_path)}}}">
+>>>>>>> master
                         </div>
                         <div class="ibox-content profile-content">
                             <h4><strong>{{ $talk->mentor->name }}</strong></h4>
@@ -211,13 +228,15 @@
                                 {{ $talk->mentor->introduction }}
                                 <a href="{{ url('/user/show/'.$talk->mentor_id) }}">...詳細を見る</a>
                             </p>
-                            <div class="user-button">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <button type="button" class="btn btn-default btn-sm btn-block"><i class="fa fa-envelope"></i> メッセージを送る</button>
+                            @if ((int)$talk->mentor_id !== (int)Auth::user()->id)
+                                <div class="user-button">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <button type="button" class="btn btn-default btn-sm btn-block" onclick="location.href='{{ url('mentor/message/'.$talk->id) }}'"><i class="fa fa-envelope"></i> メッセージを送る</button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -235,9 +254,9 @@
                                     <h6>{{ $talk->category->category_name }}</h6>
                                     {{ $talk->title }} 
                                     <div class="photos">
-                                        <img alt="image" class="feed-photo" src="{{{asset($talk->pic0_path)}}}">
+                                        <img alt="image" class="feed-photo" src="{{{secure_asset($talk->pic0_path)}}}">
                                         @if (!empty($talk->pic1_path))
-                                        <img alt="image" class="feed-photo" src="{{{asset($talk->pic1_path)}}}">
+                                        <img alt="image" class="feed-photo" src="{{{secure_asset($talk->pic1_path)}}}">
                                         @endif
 
                                     </div>
@@ -249,6 +268,10 @@
                                 <div class="feed-element">
                                     <h6>価格</h6>
                                     {{ $talk->price }}円
+                                </div>
+                                <div class="feed-element">
+                                    <h6>所要時間</h6>
+                                    {{ $talk->talk_time }}分
                                 </div>
                                 <div class="feed-element">
                                     興味あり:{{ $talk->likes_count }}人
@@ -337,6 +360,7 @@
                     <div class="modal-body">
                         <p>{{ $talk->title }}</p>
                         <p>{{ $talk->price }}円</p>
+                        <!-- <input type=""> -->
                     </div>
                     <!-- 6.モーダルのフッタ -->
                     <div class="modal-footer">
@@ -355,12 +379,12 @@
 @stop
 
 @section('Js')
-<script src="{{{asset('/assets/js/jquery-2.1.1.js')}}}"></script>
-<script src="{{{asset('/assets/bootstrap/js/bootstrap.min.js')}}}"></script>
+<script src="{{{secure_asset('/assets/js/jquery-2.1.1.js')}}}"></script>
+<script src="{{{secure_asset('/assets/bootstrap/js/bootstrap.min.js')}}}"></script>
 
-<script src="{{{asset('/assets/js/plugins/metisMenu/jquery.metisMenu.js')}}}"></script>
-<script src="{{{asset('/assets/js/plugins/slimscroll/jquery.slimscroll.min.js')}}}"></script>
+<script src="{{{secure_asset('/assets/js/plugins/metisMenu/jquery.metisMenu.js')}}}"></script>
+<script src="{{{secure_asset('/assets/js/plugins/slimscroll/jquery.slimscroll.min.js')}}}"></script>
 
-<script src="{{{asset('/assets/js/inspinia.js')}}}"></script>
-<script src="{{{asset('/assets/js/plugins/pace/pace.min.js')}}}"></script>
+<script src="{{{secure_asset('/assets/js/inspinia.js')}}}"></script>
+<script src="{{{secure_asset('/assets/js/plugins/pace/pace.min.js')}}}"></script>
 @stop
