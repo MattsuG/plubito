@@ -8,7 +8,6 @@ use App\Http\Requests;
 
 use DB;
 
-
 use App\Talk;
 
 use App;
@@ -22,7 +21,6 @@ class TopPageController extends Controller
 	    $categories = App\Category::All();
 	    return view("index", compact('talks', 'categories'));
     }
-
     public function terms() {
 	    return view("/terms");
     }

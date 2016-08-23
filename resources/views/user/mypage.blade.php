@@ -3,11 +3,11 @@
 @section('TitleAndCss')
 <title>mypage.php | マイページ</title>
 
-<link rel="stylesheet" href="{{{secure_asset('/assets/bootstrap/css/bootstrap.min.css')}}}">
-<link rel="stylesheet" href="{{{secure_asset('/assets/font-awesome/css/font-awesome.min.css')}}}">
-<link rel="stylesheet" href="{{{secure_asset('/assets/css/style_pre_index.css')}}}">
-<link rel="stylesheet" href="{{{secure_asset('/assets/css/animate.css')}}}">
-<link rel="stylesheet" href="{{{secure_asset('/assets/css/style.css')}}}">
+<link rel="stylesheet" href="{{{asset('/assets/bootstrap/css/bootstrap.min.css')}}}">
+<link rel="stylesheet" href="{{{asset('/assets/font-awesome/css/font-awesome.min.css')}}}">
+<link rel="stylesheet" href="{{{asset('/assets/css/style_pre_index.css')}}}">
+<link rel="stylesheet" href="{{{asset('/assets/css/animate.css')}}}">
+<link rel="stylesheet" href="{{{asset('/assets/css/style.css')}}}">
 
 <!-- <link href="css/style_pre_index.css" rel="stylesheet"> -->
 @stop
@@ -19,39 +19,45 @@
             <ul class="nav metismenu" id="side-menu">
                 <li class="nav-header">
                     <div class="dropdown profile-element">                         
-                            <a href="/mentor"><img alt="image" class="img" src="{{{secure_asset('/assets/img/plus.png')}}}" width="25px" height="50px" /></a>
+                            <a href="/mentor"><img alt="image" class="img" src="{{{asset('/assets/img/plus.png')}}}" width="25px" height="50px" /></a>
                     </div>
                     <div class="dropdown profile-element"> 
                         <span>
-                            <img alt="image" class="img-circle" src="{{{secure_asset('/assets/img/about/1.jpg')}}}" />
+                            @if (!empty(Auth::user()->profile_picture_path))
+                            <img alt="image" class="img-circle" src="{{{asset(Auth::user()->profile_picture_path)}}}">
+                            @endif
+                            @if (empty(Auth::user()->profile_picture_path))
+                            <img alt="image" class="img-circle" src="/assets/img/default_thumbnail.jpg">
+                            @endif
                         </span>
                         <a class="dropdown-toggle" href="#">
                             <span class="clear"> 
                                 <span class="block m-t-xs"> 
-                                    <strong class="font-bold">松澤隼人</strong>
+                                    <strong class="font-bold">{{ Auth::user()->name }}</strong>
                                 </span> 
-                                <span class="text-muted text-xs block">スポーツメーカーを退職後、大阪にて教育系ウェブサービスの立ち上げ準備中。2016年4月から6月までセブ島留学をしてプログラミングを学び、その時のルームメートと個人間で進路情報をシェアできるサービスを構築中。</span>
+                                <span class="text-muted text-xs block">{{ Auth::user()->introduction }}</span>
                             </span>
                         </a>                        
                     </div>                    
                     <div class="logo-element">
-                        <a href="/"><img alt="image" class="img" src="{{{secure_asset('/assets/img/plus.png')}}}" width="25px" height="50px" /></a>
+                        <a href="/mentor"><img alt="image" class="img" src="{{{asset('/assets/img/plus.png')}}}" width="25px" height="50px" /></a>
                     </div>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-pencil"></i> <span class="nav-label">アカウント編集</span><span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level collapse">
-                        <li><a href="/user/edit">プロフィール編集</a></li>
-                        <li><a href="graph_morris.html">Email編集</a></li>
-                        <li><a href="graph_rickshaw.html">パスワード編集</a></li>
-                    </ul>
+                    <a href="/user/show/{{ Auth::user()->id }}"><i class="fa fa-user"></i> <span class="nav-label">プロフィール表示</span></a>
                 </li>
                 <li>
-                    <a href="add"><i class="fa fa-bullhorn"></i> <span class="nav-label">トーク作成</span></a>
+                    <a href="/user/edit/{{ Auth::user()->id }}"><i class="fa fa-pencil"></i> <span class="nav-label">プロフィール編集</span></a>
                 </li>
+                <li>
+                    <a href="{{ url('mentor/create')}}"><i class="fa fa-bullhorn"></i> <span class="nav-label">トーク作成</span></a>
+                </li>
+                 <li>
+                    <a href="/user/mypage"><i class="fa fa-comment"></i> <span class="nav-label">メッセージ</span></a>
+                </li>  
                 <li>
                     <a href="/user/mypage"><i class="fa fa-calendar"></i> <span class="nav-label">マイページ</span></a>
-                </li>               
+                </li>                 
             </ul>
         </div>
     </nav>
@@ -337,12 +343,12 @@
 @stop
 
 @section('Js')
-<script src="{{{secure_asset('/assets/js/jquery-2.1.1.js')}}}"></script>
-<script src="{{{secure_asset('/assets/bootstrap/js/bootstrap.min.js')}}}"></script>
+<script src="{{{asset('/assets/js/jquery-2.1.1.js')}}}"></script>
+<script src="{{{asset('/assets/bootstrap/js/bootstrap.min.js')}}}"></script>
 
-<script src="{{{secure_asset('/assets/js/plugins/metisMenu/jquery.metisMenu.js')}}}"></script>
-<script src="{{{secure_asset('/assets/js/plugins/slimscroll/jquery.slimscroll.min.js')}}}"></script>
+<script src="{{{asset('/assets/js/plugins/metisMenu/jquery.metisMenu.js')}}}"></script>
+<script src="{{{asset('/assets/js/plugins/slimscroll/jquery.slimscroll.min.js')}}}"></script>
 
-<script src="{{{secure_asset('/assets/js/inspinia.js')}}}"></script>
-<script src="{{{secure_asset('/assets/js/plugins/pace/pace.min.js')}}}"></script>
+<script src="{{{asset('/assets/js/inspinia.js')}}}"></script>
+<script src="{{{asset('/assets/js/plugins/pace/pace.min.js')}}}"></script>
 @stop

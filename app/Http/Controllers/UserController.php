@@ -73,15 +73,15 @@ class UserController extends Controller
                 chmod($path, 0777);
                 $img->resize(800, 600)->save($path.'/'.$filename);
                 chmod($path, 0744);
-                $pic3_path = '/'.$path.'/'.$filename;
+                $profile_picture_path = '/'.$path.'/'.$filename;
             }
             else
             {
                 //ファイルアップロードが無いときは変数を初期化（viewでのエラー防止）
-                $pic3_path = '/assets/img/default_thumbnail.jpg';
+                $profile_picture_path = asset(Auth::user()->profile_picture_path);
             }
 
-        $user->pic3_path = $pic3_path;
+        $user->profile_picture_path = $profile_picture_path;
 
         $user->save();
         return view("user/show")->with('user',$user);

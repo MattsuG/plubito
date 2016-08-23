@@ -3,27 +3,32 @@
 @section('TitleAndCss')
 <title>show.php | ユーザー詳細</title>
 
-<link rel="stylesheet" href="{{{secure_asset('/assets/bootstrap/css/bootstrap.min.css')}}}">
-<link rel="stylesheet" href="{{{secure_asset('/assets/font-awesome/css/font-awesome.min.css')}}}">
-<link rel="stylesheet" href="{{{secure_asset('/assets/css/style_pre_index.css')}}}">
-<link rel="stylesheet" href="{{{secure_asset('/assets/css/animate.css')}}}">
-<link rel="stylesheet" href="{{{secure_asset('/assets/css/style.css')}}}">
+<link rel="stylesheet" href="{{{asset('/assets/bootstrap/css/bootstrap.min.css')}}}">
+<link rel="stylesheet" href="{{{asset('/assets/font-awesome/css/font-awesome.min.css')}}}">
+<link rel="stylesheet" href="{{{asset('/assets/css/style_pre_index.css')}}}">
+<link rel="stylesheet" href="{{{asset('/assets/css/animate.css')}}}">
+<link rel="stylesheet" href="{{{asset('/assets/css/style.css')}}}">
 
 <!-- <link href="css/style_pre_index.css" rel="stylesheet"> -->
 @stop
 
 @section('content')
 <div id="wrapper">
-    <nav class="navbar-default navbar-static-side" role="navigation">
+     <nav class="navbar-default navbar-static-side" role="navigation">
         <div class="sidebar-collapse">
             <ul class="nav metismenu" id="side-menu">
                 <li class="nav-header">
                     <div class="dropdown profile-element">                         
-                            <a href="/mentor"><img alt="image" class="img" src="{{{secure_asset('/assets/img/plus.png')}}}" width="25px" height="50px" /></a>
+                            <a href="/mentor"><img alt="image" class="img" src="{{{asset('/assets/img/plus.png')}}}" width="25px" height="50px" /></a>
                     </div>
                     <div class="dropdown profile-element"> 
                         <span>
-                            <img alt="image" class="img-circle" src="{{{secure_asset(Auth::user()->pic3_path)}}}" />
+                            @if (!empty(Auth::user()->profile_picture_path))
+                            <img alt="image" class="img-circle" src="{{{asset(Auth::user()->profile_picture_path)}}}">
+                            @endif
+                            @if (empty(Auth::user()->profile_picture_path))
+                            <img alt="image" class="img-circle" src="/assets/img/default_thumbnail.jpg">
+                            @endif
                         </span>
                         <a class="dropdown-toggle" href="#">
                             <span class="clear"> 
@@ -35,22 +40,24 @@
                         </a>                        
                     </div>                    
                     <div class="logo-element">
-                        <a href="/"><img alt="image" class="img" src="{{{secure_asset('/assets/img/plus.png')}}}" width="25px" height="50px" /></a>
+                        <a href="/mentor"><img alt="image" class="img" src="{{{asset('/assets/img/plus.png')}}}" width="25px" height="50px" /></a>
                     </div>
                 </li>
-                 <li>
-                    <a href="#"><i class="fa fa-pencil"></i> <span class="nav-label">アカウント編集</span><span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level collapse">
-                        <li><a href="/user/show/{{ Auth::user()->id }}">プロフィール表示</a></li>
-                        <li><a href="/user/edit/{{ Auth::user()->id }}">プロフィール編集</a></li>
-                    </ul>
+                <li>
+                    <a href="/user/show/{{ Auth::user()->id }}"><i class="fa fa-user"></i> <span class="nav-label">プロフィール表示</span></a>
                 </li>
                 <li>
-                    <a href="/mentor/create"><i class="fa fa-bullhorn"></i> <span class="nav-label">トーク作成</span></a>
+                    <a href="/user/edit/{{ Auth::user()->id }}"><i class="fa fa-pencil"></i> <span class="nav-label">プロフィール編集</span></a>
                 </li>
+                <li>
+                    <a href="{{ url('mentor/create')}}"><i class="fa fa-bullhorn"></i> <span class="nav-label">トーク作成</span></a>
+                </li>
+                 <li>
+                    <a href="/user/mypage"><i class="fa fa-comment"></i> <span class="nav-label">メッセージ</span></a>
+                </li>  
                 <li>
                     <a href="/user/mypage"><i class="fa fa-calendar"></i> <span class="nav-label">マイページ</span></a>
-                </li>              
+                </li>                 
             </ul>
         </div>
     </nav>
@@ -200,7 +207,7 @@
                             <div class="form-group"><label class="col-sm-2 control-label">プロフィール画像</label>
                                 <input class="pic" name="pic3" id="pic3" type="file" style="display:none" enctype="multipart/form-data">
                                 <div class="input-group">
-                                  <input type="text" id="photoCover0" class="form-control" placeholder="jpgもしくはpng(5MBまで)">
+                                  <input type="text" id="photoCover0" class="form-control" placeholder="jpgもしくはpng(5MBまで)" value="{{ old('profile_picture_path', $user->profile_picture_path) }}">
                                   <span class="input-group-btn"><button type="button" class="btn btn-primary" onclick="$('#pic3').click();">ファイル選択</button></span>
                                 </div>
                                 <label id="label3" class="cebroad-pink"></label>
@@ -293,13 +300,13 @@
 @stop
 
 @section('Js')
-<script src="{{{secure_asset('/assets/js/jquery-2.1.1.js')}}}"></script>
-<script src="{{{secure_asset('/assets/bootstrap/js/bootstrap.min.js')}}}"></script>
+<script src="{{{asset('/assets/js/jquery-2.1.1.js')}}}"></script>
+<script src="{{{asset('/assets/bootstrap/js/bootstrap.min.js')}}}"></script>
 
-<script src="{{{secure_asset('/assets/js/plugins/metisMenu/jquery.metisMenu.js')}}}"></script>
-<script src="{{{secure_asset('/assets/js/plugins/slimscroll/jquery.slimscroll.min.js')}}}"></script>
+<script src="{{{asset('/assets/js/plugins/metisMenu/jquery.metisMenu.js')}}}"></script>
+<script src="{{{asset('/assets/js/plugins/slimscroll/jquery.slimscroll.min.js')}}}"></script>
 
-<script src="{{{secure_asset('/assets/js/inspinia.js')}}}"></script>
-<script src="{{{secure_asset('/assets/js/plugins/pace/pace.min.js')}}}"></script>
-<script src="{{{secure_asset('/assets/js/add.js')}}}"></script>
+<script src="{{{asset('/assets/js/inspinia.js')}}}"></script>
+<script src="{{{asset('/assets/js/plugins/pace/pace.min.js')}}}"></script>
+<script src="{{{asset('/assets/js/add.js')}}}"></script>
 @stop
