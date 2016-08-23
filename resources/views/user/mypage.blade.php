@@ -23,10 +23,10 @@
                     </div>
                     <div class="dropdown profile-element"> 
                         <span>
-                            @if (!empty($user->profile_picture_path))
+                            @if (!empty(Auth::user()->profile_picture_path))
                             <img alt="image" class="img-circle" src="{{{asset(Auth::user()->profile_picture_path)}}}">
                             @endif
-                            @if (empty($user->profile_picture_path))
+                            @if (empty(Auth::user()->profile_picture_path))
                             <img alt="image" class="img-circle" src="/assets/img/default_thumbnail.jpg">
                             @endif
                         </span>
