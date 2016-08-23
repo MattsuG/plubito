@@ -87,4 +87,4 @@ class UserController extends Controller
         return view("user/show")->with('user',$user);
     }
 
-}
+} 

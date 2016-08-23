@@ -22,8 +22,8 @@
 	<!-- Top menu -->
 	<nav class="navbar navbar-inverse navbar-no-bg" role="navigation">
 		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-navbar-1">
+			<div class="navbar-header" style="background: white";>
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-navbar-1" style="background-color: #000000";>
 					<span class="sr-only">Toggle navigation</span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
