@@ -23,7 +23,12 @@
                     </div>
                     <div class="dropdown profile-element"> 
                         <span>
-                            <img alt="image" class="img-circle" src="{{{asset(Auth::user()->pic3_path)}}}" />
+                            @if (!empty(Auth::user()->profile_picture_path))
+                            <img alt="image" class="img-circle" src="{{{asset(Auth::user()->profile_picture_path)}}}">
+                            @endif
+                            @if (empty(Auth::user()->profile_picture_path))
+                            <img alt="image" class="img-circle" src="/assets/img/default_thumbnail.jpg">
+                            @endif
                         </span>
                         <a class="dropdown-toggle" href="#">
                             <span class="clear"> 
@@ -35,22 +40,9 @@
                         </a>                        
                     </div>                    
                     <div class="logo-element">
-<<<<<<< HEAD
                         <a href="/mentor"><img alt="image" class="img" src="{{{asset('/assets/img/plus.png')}}}" width="25px" height="50px" /></a>
                     </div>
                 </li>
-=======
-                        <a href="/mentor"><img alt="image" class="img" src="{{{asset('/assets/img/plus.png')}}}" width="25px" height="50px" /></a>
-                    </div>
-                </li>
-                <!--  <li>
-                    <a href="#"><i class="fa fa-pencil"></i> <span class="nav-label">アカウント編集</span><span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level collapse">
-                        <li><a href="/user/show/{{ Auth::user()->id }}">プロフィール表示</a></li>
-                        <li><a href="/user/edit/{{ Auth::user()->id }}">プロフィール編集</a></li>
-                    </ul>
-                </li> -->
->>>>>>> master
                 <li>
                     <a href="/user/show/{{ Auth::user()->id }}"><i class="fa fa-user"></i> <span class="nav-label">プロフィール表示</span></a>
                 </li>
@@ -212,11 +204,7 @@
                     </div>
                     <div>
                         <div class="ibox-content no-padding border-left-right">
-<<<<<<< HEAD
-                            <img alt="image" class="img-circle" src="{{{asset(Auth::user()->pic3_path)}}}">
-=======
-                            <img alt="image" class="img-circle" src="{{{asset(Auth::user()->pic3_path)}}}">
->>>>>>> master
+                            <img alt="image" class="img-circle" src="{{{asset(Auth::user()->profile_picture_path)}}}">
                         </div>
                         <div class="ibox-content profile-content">
                             <h4><strong>{{ $talk->mentor->name }}</strong></h4>

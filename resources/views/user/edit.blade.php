@@ -23,7 +23,12 @@
                     </div>
                     <div class="dropdown profile-element"> 
                         <span>
-                            <img alt="image" class="img-circle" src="{{{asset(Auth::user()->pic3_path)}}}" />
+                            @if (!empty($user->profile_picture_path))
+                            <img alt="image" class="img-circle" src="{{{asset(Auth::user()->profile_picture_path)}}}">
+                            @endif
+                            @if (empty($user->profile_picture_path))
+                            <img alt="image" class="img-circle" src="/assets/img/default_thumbnail.jpg">
+                            @endif
                         </span>
                         <a class="dropdown-toggle" href="#">
                             <span class="clear"> 
@@ -35,11 +40,7 @@
                         </a>                        
                     </div>                    
                     <div class="logo-element">
-<<<<<<< HEAD
                         <a href="/mentor"><img alt="image" class="img" src="{{{asset('/assets/img/plus.png')}}}" width="25px" height="50px" /></a>
-=======
-                        <a href="/"><img alt="image" class="img" src="{{{asset('/assets/img/plus.png')}}}" width="25px" height="50px" /></a>
->>>>>>> master
                     </div>
                 </li>
                 <li>
@@ -206,7 +207,7 @@
                             <div class="form-group"><label class="col-sm-2 control-label">プロフィール画像</label>
                                 <input class="pic" name="pic3" id="pic3" type="file" style="display:none" enctype="multipart/form-data">
                                 <div class="input-group">
-                                  <input type="text" id="photoCover0" class="form-control" placeholder="jpgもしくはpng(5MBまで)">
+                                  <input type="text" id="photoCover0" class="form-control" placeholder="jpgもしくはpng(5MBまで)" value="{{ old('profile_picture_path', $user->profile_picture_path) }}">
                                   <span class="input-group-btn"><button type="button" class="btn btn-primary" onclick="$('#pic3').click();">ファイル選択</button></span>
                                 </div>
                                 <label id="label3" class="cebroad-pink"></label>
