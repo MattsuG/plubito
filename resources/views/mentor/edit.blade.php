@@ -228,6 +228,7 @@
                                 <div class="col-sm-10">
                                     <textarea name="detail" id="detail" class="form-control" rows="20" required placeholder="最大1000文字">{{ $talk->detail }}</textarea>
                                     <p id="detail_count"></p>
+                                    <p>※時間相談のやり取りをスムーズにするため、この詳細欄にあなたがトークをすることができる曜日や時間帯を書くことをオススメします。</p>
                                 </div>
                             </div>
 

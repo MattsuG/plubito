@@ -198,11 +198,12 @@
                         <div class="panel-heading">
                             <div class="panel-options">
                                 <ul class="nav nav-tabs">
-                                    <li class="active"><a href="#tab-1" data-toggle="tab">予約リクエスト一覧</a></li>
-                                    <li class=""><a href="#tab-2" data-toggle="tab">興味あり一覧</a></li>
                                     @if ((int)$user->role === 1)
-                                    <li class=""><a href="#tab-3" data-toggle="tab">開設したトーク一覧</a></li>
+                                    <li class=""><a href="#tab-1" data-toggle="tab">予約リクエスト一覧</a></li>
+                                    <li class=""><a href="#tab-2" data-toggle="tab">開設したトーク一覧</a></li>
                                     @endif
+                                    <li class=""><a href="#tab-3" data-toggle="tab">予約したトーク一覧</a></li>
+                                    <li class=""><a href="#tab-4" data-toggle="tab">興味ありトーク一覧</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -210,92 +211,91 @@
                         <div class="panel-body">
 
                         <div class="tab-content" style="text-align: left">
-                        <div class="tab-pane" id="tab-1">
-                            <table class="table table-striped">
-                                <thead>
-                                <tr>
-                                    <th>ステータス</th>
-                                    <th>タイトル</th>
-                                    <th>開始時間</th>
-                                    <th>所要時間</th>
-                                    <th>トーカー</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @foreach($user->applications as $app)
-                                    <tr>
-                                        <td>
-                                        @if ((int)$app->pivot->approved_flag === 1)
-                                            <span class="label label-primary"><i class="fa fa-check"></i> 承認済</span>
-                                        @elseif ((int)$app->pivot->paid_flag === 1)
-                                            <span class="label label-primary"><i class="fa fa-check"></i> 支払い済</span>
-                                        @elseif ((int)$app->pivot->finished_flag === 1)
-                                            <span class="label label-primary"><i class="fa fa-check"></i> 終了</span>
-                                        @else
-                                            <p>承認中</p>
-                                        @endif
-                                        </td>
-                                        <td>
-                                           {{ $app->title }}
-                                        </td>
-                                        <td>
-                                           <!-- 開始時間 -->
-                                        </td>
-                                        <td>
-                                            {{ $app->talk_time }}分
-                                        </td>
-                                        <td>
-                                        <p class="small">
-                                            {{ $app->mentor->name }}
-                                        </p>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                                </tbody>        
-                            </table>
-
-                        </div>
-
-                         <div class="tab-pane" id="tab-2">
-                            <table class="table table-striped">
-                                <thead>
-                                <tr>
-                                    <th>タイトル</th>
-                                    <th>価格</th>
-                                    <th>時間</th>
-                                    <th>トーカー</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @foreach ($user->likes as $like)
-                                <tr>
-                                    <td>
-                                       {{ $like->title }}
-                                    </td>
-                                    <td>
-                                       {{ $like->price }}
-                                    </td>
-                                    <td>
-                                        {{ $like->talk_time }}
-                                    </td>
-                                    <td>
-                                    <p class="small">
-                                        {{ $like->mentor->name }}
-                                    </p>
-                                    </td>
-                                </tr>
-                                @endforeach
-                                </tbody>
-                            </table>
-                        </div>
                         @if ((int)$user->role === 1)
-                            <div class="tab-pane" id="tab-3">
+                            <div class="tab-pane" id="tab-1">
+                                <table class="table table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>ステータス</th>
+                                        <th>タイトル</th>
+                                        <th>申込者</th>
+                                        <th>所要時間</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach($my_apps as $my_app)
+                                        <tr>
+                                            <td>
+                                            @if ((int)$my_app->finished_flag === 1)
+                                                <span class="label label-primary"><i class="fa fa-check"></i> 終了</span>
+                                            @elseif ((int)$my_app->paid_flag === 1)
+                                                <span class="label label-primary"><i class="fa fa-check"></i> 支払い済</span>
+                                            @elseif ((int)$my_app->approved_flag === 1)
+                                                <span class="label label-primary"><i class="fa fa-check"></i> 承認済</span>
+                                            @else
+                                                <p>未承認</p>
+                                            @endif
+                                            </td>
+                                            <td>
+                                               {{ $my_app->talk->title }}
+                                            </td>
+                                            <td>
+                                               {{ $my_app->user->name }}
+                                            </td>
+                                            <td>
+                                                {{ $my_app->talk->talk_time }}分
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-primary btn-block m" data-toggle="modal" data-target="#approval-modal">承認する</button>
+                                            </td>
+                                        </tr>
+                                        <div class="modal" id="approval-modal" tabindex="-1">
+                                            <div class="modal-dialog">
+                                            <!-- 3.モーダルのコンテンツ -->
+                                                <div class="modal-content">
+                                                    <!-- 4.モーダルのヘッダ -->
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                        <h4 class="modal-title" id="modal-label">日時を入力してリクエストを承認してください。</h4>
+                                                    </div>
+                                                    <form method="post" action="{{ url('/user/approve') }}">
+                                                        <div class="form-group">
+                                                        <!-- 5.モーダルのボディ -->
+                                                            <div class="modal-body">
+
+                                                                <p>{{ $my_app->talk->title }}</p>
+                                                                <p>申込者:{{ $my_app->user->name }}</p>
+                                                                <input type="date" name="date" class="form-control">
+                                                                <input type="time" name="time" class="form-control">
+                                                            </div>
+                                                            <!-- 6.モーダルのフッタ -->
+                                                            <div class="modal-footer">
+                                                                <p>申込者との時間の相談が終わっていない場合は、先に相談し予定を合わせてください。</p>
+                                                                <button type="button" class="btn btn-default" data-dismiss="modal">やめる</button>
+                                                                    <input name="talk_id" value="{{ $my_app->talk->id }}" type="hidden">
+                                                                    <input name="user_id" value="{{ $my_app->user_id }}" type="hidden">
+                                                                    {{ csrf_field() }}
+                                                                    <input type="submit" class="" value="承認する">
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                    </tbody>        
+                                </table>
+                            </div>
+                            <div class="tab-pane" id="tab-2">
                                 <table class="table table-striped">
                                     <thead>
                                     <tr>
                                         <th>タイトル</th>
                                         <th>カテゴリ</th>
                                         <th>価格</th>
+                                        <th></th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -305,18 +305,117 @@
                                                 {{ $my_talk->title }}
                                             </td>
                                             <td>
-                                                {{ $my_talk->category->name }}
+                                                {{ $my_talk->category->category_name }}
                                             </td>
                                             <td>
                                                 {{ $my_talk->price }}円/{{ $my_talk->talk_time }}分
+                                            </td>
+                                            <td>
+                                                <a href="{{ url('/mentor/'.$my_talk->id) }}">詳細を見る</a>
                                             </td>
                                         </tr>
                                     @endforeach
                                     </tbody>
                                 </table>
                             </div>
+                            
+
                         @endif
+
+                        <div class="tab-pane" id="tab-3">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>ステータス</th>
+                                    <th>タイトル</th>
+                                    <th>価格</th>
+                                    <th>開始時間</th>
+                                    <th>所要時間</th>
+                                    <th>話し手</th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($user->applications as $app)
+                                    <tr>
+                                        <td>
+                                        @if ((int)$app->pivot->finished_flag === 1)
+                                            <span class="label label-primary"><i class="fa fa-check"></i> 終了</span>
+                                        @elseif ((int)$app->pivot->paid_flag === 1)
+                                            <span class="label label-primary"><i class="fa fa-check"></i> 支払い済</span>
+                                        @elseif ((int)$app->pivot->approved_flag === 1)
+                                            <span class="label label-primary"><i class="fa fa-check"></i> 承認済</span>
+                                        @else
+                                            <p>未承認</p>
+                                        @endif
+                                        </td>
+                                        <td>
+                                           {{ $app->title }}
+                                        </td>
+                                        <td>
+                                            {{ $app->price }}円
+                                        </td>
+                                        <td>
+                                           未定
+                                        </td>
+                                        <td>
+                                            {{ $app->talk_time }}分
+                                        </td>
+                                        <td>
+                                        <p class="small">
+                                            {{ $app->mentor->name }}
+                                        </p>
+                                        </td>
+                                        <td>
+                                            <a href="{{ url('/mentor/'.$app->id) }}">詳細を見る</a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>        
+                            </table>
+
                         </div>
+
+                         <div class="tab-pane" id="tab-4">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>タイトル</th>
+                                    <th>価格</th>
+                                    <th>所要時間</th>
+                                    <th>話し手</th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach ($user->likes as $like)
+                                <tr>
+                                    <td>
+                                       {{ $like->title }}
+                                    </td>
+                                    <td>
+                                       {{ $like->price }}円
+                                    </td>
+                                    <td>
+                                        {{ $like->talk_time }}分
+                                    </td>
+                                    <td>
+                                    <p class="small">
+                                        {{ $like->mentor->name }}
+                                    </p>
+                                    </td>
+                                    <td>
+                                        <a href="{{ url('/mentor/'.$like->id) }}">詳細を見る</a>
+                                    </td>
+                                </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                        </div>
+                        @if (Session::has('flash_message'))
+                            <div class="alert alert-success">{{ Session::get('flash_message') }}</div>
+                        @endif
                         </div>
                         </div>
                         </div>

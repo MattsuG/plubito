@@ -1,14 +1,22 @@
 
 @extends('common.layout')
 @section('TitleAndCss')
-<title>mypage.php | メッセージページ</title>
+<title>mypage.php | マイページ</title>
 
 <link rel="stylesheet" href="{{{secure_asset('/assets/bootstrap/css/bootstrap.min.css')}}}">
 <link rel="stylesheet" href="{{{secure_asset('/assets/font-awesome/css/font-awesome.min.css')}}}">
 <link rel="stylesheet" href="{{{secure_asset('/assets/css/style_pre_index.css')}}}">
 <link rel="stylesheet" href="{{{secure_asset('/assets/css/animate.css')}}}">
 <link rel="stylesheet" href="{{{secure_asset('/assets/css/style.css')}}}">
-
+<style>
+    p{
+      width: 100px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      -o-text-overflow: ellipsis; /* Opera9,10対応 */
+    }
+</style>
 <!-- <link href="css/style_pre_index.css" rel="stylesheet"> -->
 @stop
 
@@ -64,7 +72,7 @@
                 </div>
                 <ul class="nav navbar-top-links navbar-right">
                     <li>
-                        <span class="m-r-sm text-muted welcome-message">メッセージページへようこそ</span>
+                        <span class="m-r-sm text-muted welcome-message">メッセージ画面へようこそ</span>
                     </li>
                     <li>
                         <a  class="dropdown-toggle count-info" href="/mentor">
@@ -179,73 +187,137 @@
         </div>
         <div class="row wrapper border-bottom white-bg page-heading">
             <div class="col-lg-9ƒ">
-                <h2>メッセージページ</h2>
+                <h2>メッセージ</h2>
                 <ol class="breadcrumb">                  
                     <li class="active">
-                        <strong>メッセージページ</strong>
+                        <strong>メッセージ</strong>
                     </li>
                 </ol>
             </div>
         </div>
-        <div class="row white-bg">
-            <div class="ibox float-e-margins">
+
+        <div class="row wrapper wrapper-content white-bg animated fadeInUp">
+            <div class="ibox">
                 <div class="ibox-content">
-                    <div>
-                        <div class="chat-activity-list">
-
-                            <div class="chat-element" style="text-align: left">
-                                <a href="#" class="pull-left">
-                                    <img alt="image" class="img-circle" src="img/a2.jpg">
-                                </a>
-                                <div class="media-body ">
-                                    <small class="pull-right text-navy">1m ago</small>
-                                    <strong>Mike Smith</strong>
-                                    <p class="m-b-xs">
-                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                                    </p>
-                                    <small class="text-muted">Today 4:21 pm - 12.06.2014</small>
-                                </div>
-                            </div>
-
-                            <div class="chat-element right">
-                                <a href="#" class="pull-right">
-                                    <img alt="image" class="img-circle" src="img/a4.jpg">
-                                </a>
-                                <div class="media-body text-right ">
-                                    <small class="pull-left">5m ago</small>
-                                    <strong>John Smith</strong>
-                                    <p class="m-b-xs">
-                                        Lorem Ipsum is simply dummy text of the printing.
-                                    </p>
-                                    <small class="text-muted">Today 4:21 pm - 12.06.2014</small>
-                                </div>
-                            </div>
-
-                            <div class="chat-element" style="text-align: left">
-                                <a href="#" class="pull-left">
-                                    <img alt="image" class="img-circle" src="img/a2.jpg">
-                                </a>
-                                <div class="media-body ">
-                                    <small class="pull-right">2h ago</small>
-                                    <strong>Mike Smith</strong>
-                                    <p class="m-b-xs">
-                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                                    </p>
-                                    <small class="text-muted">Today 4:21 pm - 12.06.2014</small>
-                                </div>
+                    
+                    <div class="row m-t-sm">
+                        <div class="col-lg-12">
+                        <div class="panel blank-panel">
+                        <div class="panel-heading">
+                            <div class="panel-options">
+                                <ul class="nav nav-tabs">
+                                    <li class="active"><a href="#tab-1" data-toggle="tab">受信</a></li>
+                                    <li class=""><a href="#tab-2" data-toggle="tab">送信</a></li>
+                                </ul>
                             </div>
                         </div>
-                    </div>
-                    <br>
-                    <div class="chat-form">
-                        <form role="form" method="post">
-                            <div class="form-group">
-                                <textarea name="body" class="form-control" placeholder="Message"></textarea>
-                            </div>
-                            <div class="text-right">
-                                <button type="submit" class="btn btn-sm btn-primary m-t-n-xs"><strong>Send message</strong></button>
-                            </div>
-                        </form>
+
+                        <div class="panel-body">
+
+                        <div class="tab-content" style="text-align: left">
+                        <div class="tab-pane" id="tab-1">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>送信者</th>
+                                    <th>トーク名</th>
+                                    <th>本文</th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($received_mails as $received_mail)
+                                    <tr>
+                                        <td>
+                                            <img alt="profile_image" class="img-circle" src="{{ secure_asset($received_mail->sender->profile_picture_path) }}">
+                                        </td>
+                                        <td>
+                                            {{ $received_mail->sender->name }}
+                                        </td>
+                                        <td>
+                                            {{ $received_mail->talk->title }}
+                                        </td>
+                                        <td>
+                                            <p>{{ $received_mail->body }}</p>
+                                        </td>
+                                        <td>
+                                            <a href="{{ url('/user/message/'.$received_mail->talk_id) }}">詳細を見る</a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>        
+                            </table>
+
+                        </div>
+
+                         <div class="tab-pane" id="tab-2">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>送信先</th>
+                                    <th>トーク名</th>
+                                    <th>本文</th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach ($sent_mails as $sent_mail)
+                                <tr>
+                                    <td>
+                                        <img alt="profile_image" class="img-circle" src="{{ secure_asset($sent_mail->receiver->profile_picture_path) }}">
+                                    </td>
+                                    <td>
+                                        {{ $sent_mail->receiver->name }}
+                                    </td>
+                                    <td>
+                                       {{ $sent_mail->talk->title }}
+                                    </td>
+                                    <td>
+                                       <p>{{ $sent_mail->body }}</p>
+                                    </td>
+                                    <td>
+                                        <a href="{{ url('/user/message/'.$sent_mail->talk_id) }}">詳細を見る</a>
+                                    </td>
+                                </tr>
+                                <div class="modal" id="request-modal" tabindex="-1">
+                                    <div class="modal-dialog">
+                                    <!-- 3.モーダルのコンテンツ -->
+                                        <div class="modal-content">
+                                            <!-- 4.モーダルのヘッダ -->
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                                <h4 class="modal-title" id="modal-label">日時を入力してリクエストを承認してください。</h4>
+                                            </div>
+                                            <!-- 5.モーダルのボディ -->
+                                            <div class="modal-body">
+                                                <p>{{  }}</p>
+                                                <p>{{  }}</p>
+                                                <!-- <input type=""> -->
+                                            </div>
+                                            <!-- 6.モーダルのフッタ -->
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">やめる</button>
+                                                <form method="post" action="{{ url('/mentor/apply') }}">
+                                                    <input name="talk_id" value="{{ $talk->id }}" type="hidden">
+                                                    {{ csrf_field() }}
+                                                    <input type="submit" class="btn btn-primary" value="申し込む">
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -258,7 +330,6 @@
             </div>
         </div>
     </div>
-</div>
 </div>
 @stop
 

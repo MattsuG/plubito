@@ -38,14 +38,16 @@ Route::group(['routeMiddleware' => 'auth'], function () {
 		//トーク関係ページ
 		Route::get('mentor/like/{id}', 'MentorController@like');
 		Route::post('mentor/apply', 'MentorController@apply');
-		Route::get('mentor/message/{id}', 'MentorController@getMessage');
-		Route::post('mentor/message', 'MentorController@postMessage');
 		Route::resource('mentor', 'MentorController');
 
 
 		//ユーザーページ
 		Route::get('user/mypage', 'UserController@index');
+		Route::post('user/approve', 'UserController@approve');
 		Route::get('user/edit', 'UserController@edit');
+		Route::get('user/message', 'UserController@getMessage');
+		Route::get('user/message/{id}', 'UserController@getMessageDetail');
+		Route::post('user/message', 'UserController@postMessage');
 		Route::get('/user/show/{id}', 'UserController@show');
 		Route::post('user', 'UserController@update');
 		Route::get('/user/edit/{id}', 'UserController@edit');

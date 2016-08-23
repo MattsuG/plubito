@@ -62,7 +62,14 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Talk', 'applications');
     }
 
-    public function mails() {
-        return $this->belongsToMany('App\Talk', 'mails');
+    public function myApps() {
+        return $this->hasManyThrough('App\Application', 'App\Talk', 'mentor_id');
+    }
+
+    public function sendMails() {
+        return $this->belongsToMany('App\Talk', 'mails', 'sender_id');
+    }
+    public function receivedMails() {
+        return $this->belongsToMany('App\Talk', 'mails', 'received_id');
     }
 }
