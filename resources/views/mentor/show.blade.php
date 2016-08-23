@@ -204,7 +204,7 @@
                     </div>
                     <div>
                         <div class="ibox-content no-padding border-left-right">
-                            <img alt="image" class="img-circle" src="{{{asset(Auth::user()->profile_picture_path)}}}">
+                            <img alt="image" class="img-circle" src="{{ $talk->mentor->profile_picture_path }}">
                         </div>
                         <div class="ibox-content profile-content">
                             <h4><strong>{{ $talk->mentor->name }}</strong></h4>

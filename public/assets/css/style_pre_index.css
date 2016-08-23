@@ -335,7 +335,7 @@ ul.navbar-nav {
 .top-content a:focus .top-video-link-icon { outline: 0; background: #fff; color: #42bfc2; }
 
 
-.top-social { padding-top: 20px; font-size: 24px; line-height: 38px; text-align: right; }
+.top-social { padding-top: 0px; padding-right: 30px; font-size: 24px; line-height: 38px; text-align: right; }
 .top-social a { margin: 5px 15px; color: #fff; color: rgb(0, 0, 0); vertical-align: middle; }
 .top-social a:hover, .top-social a:focus { outline: 0; color: rgb(0, 0, 0); }
 .top-social .divider-2 { display: inline-block; width: 1px; height: 14px; background: #fff; background: rgb(0, 0, 0); vertical-align: middle; }
