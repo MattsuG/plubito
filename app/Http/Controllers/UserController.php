@@ -36,7 +36,7 @@ class UserController extends Controller
     //メンターがユーザーの申し込みを承認する
     public function approve(Request $request) { 
         $user = User::findOrFail($request->user_id);
-        $user->applications()->sync([$request->talk_id => ['approved_flag' => 1, 'approved_at' => Carbon::now()]], false);
+        $user->applications()->sync([$request->talk_id => ['approved_flag' => 1, 'approved_at' => Carbon::now(), 'talk_date' => $request->date, 'starting_time' => $request->time]], false);
         \Session::flash('flash_message', 'リクエストを承認しました。支払いをお待ちください。');
         return redirect("user/mypage");
     }

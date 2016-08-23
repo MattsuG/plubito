@@ -219,6 +219,7 @@
                                         <th>ステータス</th>
                                         <th>タイトル</th>
                                         <th>申込者</th>
+                                        <th>開始時間</th>
                                         <th>所要時間</th>
                                     </tr>
                                     </thead>
@@ -243,12 +244,22 @@
                                                {{ $my_app->user->name }}
                                             </td>
                                             <td>
+                                            @if (empty($my_app->talk_date))
+                                                 未定
+                                            @else
+                                                {{ date('Y/m/j', strtotime($my_app->talk_date)) }} {{ date('H:i', strtotime($my_app->starting_time)) }}
+                                            @endif
+                                            </td>
+                                            <td>
                                                 {{ $my_app->talk->talk_time }}分
                                             </td>
                                             <td>
+                                            @if ((int)$my_app->approved_flag === 0)
                                                 <button class="btn btn-primary btn-block m" data-toggle="modal" data-target="#approval-modal">承認する</button>
+                                            @endif
                                             </td>
                                         </tr>
+                                        @if ((int)$my_app->approved_flag === 0)
                                         <div class="modal" id="approval-modal" tabindex="-1">
                                             <div class="modal-dialog">
                                             <!-- 3.モーダルのコンテンツ -->
@@ -267,8 +278,8 @@
 
                                                                 <p>{{ $my_app->talk->title }}</p>
                                                                 <p>申込者:{{ $my_app->user->name }}</p>
-                                                                <input type="date" name="date" class="form-control">
-                                                                <input type="time" name="time" class="form-control">
+                                                                <input type="date" name="date" class="form-control" required>
+                                                                <input type="time" name="time" class="form-control" required>
                                                             </div>
                                                             <!-- 6.モーダルのフッタ -->
                                                             <div class="modal-footer">
@@ -284,6 +295,7 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        @endif
                                     @endforeach
                                     </tbody>        
                                 </table>
@@ -356,7 +368,11 @@
                                             {{ $app->price }}円
                                         </td>
                                         <td>
-                                           未定
+                                        @if (empty($app->pivot->talk_date))
+                                             未定
+                                        @else
+                                            {{ $app->pivot->talk_date.$app->pivot->starting_time }}
+                                        @endif
                                         </td>
                                         <td>
                                             {{ $app->talk_time }}分
