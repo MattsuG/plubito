@@ -22,8 +22,6 @@ use File;
 
 use Auth;
 
-use Carbon\Carbon;
-
 class MentorController extends Controller
 {
 
@@ -53,13 +51,21 @@ class MentorController extends Controller
 
   public function create()
   {
+    if ((int)Auth::user()->role === 0) {
+      redirect("mentor/index");
+      die();
+    }
+
     $categories = Category::All();
     return view("mentor.add", ['categories' => $categories]);
   }
 
   public function store(TalkRequest $request)
   {
-
+    if ((int)Auth::user()->role === 0) {
+      redirect("mentor/index");
+      die();
+    }
 
     $file0 = $request->file('pic0');
 
@@ -126,24 +132,32 @@ class MentorController extends Controller
 
   public function edit($id)
   {
-
+    if ((int)Auth::user()->role === 0) {
+      redirect("mentor/index");
+      die();
+    }
     $talk = Talk::findOrFail($id);
     $categories = Category::All();
 
 
-    // if ($talk->mentor_id !== Auth::user()->id) {
-    //   return redirect("mentor");
-    // }
+    if ((int)$talk->mentor_id !== (int)Auth::user()->id) {
+      return redirect("mentor/".$id);
+      die();
+    }
 
     return view("mentor.edit", compact('talk', 'categories'));
   }
 
-  public function update(TalkRequest $request, $id) {
-    
+  public function update(TalkRequest $request, $id) {   
+    if ((int)Auth::user()->role === 0) {
+      redirect("mentor/index");
+      die();
+    }
     $thisTalk = Talk::findOrFail($id);
 
     if ((int)$thisTalk->mentor_id !== (int)Auth::user()->id) {
       return redirect('mentor/index');
+      die();
     }
     $file0 = $request->file('pic0');
 
@@ -228,7 +242,7 @@ class MentorController extends Controller
           {
             $talk->applications()->attach(Auth::user()->id);
             $talk->increment('applications_count');
-            \Session::flash('flash_message', '申し込みが完了しました'); 
+            \Session::flash('flash_message', '申し込みが完了しました。話し手にメッセージを送り、日時を相談してください。'); 
           }
       }
 
@@ -258,27 +272,6 @@ class MentorController extends Controller
       }
 
       return redirect('mentor/'.$id);
-  }
-
-  public function getMessage($id) {
-    $talk = Talk::findOrFail($id);
-    if ((int)$talk->mentor_id === (int)Auth::user()->id) {
-      \Session::flash('flash_message', '自分にメッセージを送ることはできません');
-    }
-    return view('mentor/message', ['talk'=> $talk]);
-  }
-
-  public function postMessage(Request $request) {
-
-    $this->validate($request, [
-      'body' => 'required|max:1000'
-    ]);
-    $talk = Talk::findOrFail($request->talk_id);
-    $talk->mails()->attach(Auth::user()->id, ['body' => $request->body, 'sent_at' => Carbon::now()]);
-    \Session::flash('flash_nessage', 'メッセージを送信しました');
-
-    return redirect('mentor/'.$request->talk_id);
-
   }
 }
 

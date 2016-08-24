@@ -1,7 +1,7 @@
 
 @extends('common.layout')
 @section('TitleAndCss')
-<title>トーク編集</title>
+<title>add.php | トーク作成</title>
 
 <link rel="stylesheet" href="{{{asset('/assets/bootstrap/css/bootstrap.min.css')}}}">
 <link rel="stylesheet" href="{{{asset('/assets/font-awesome/css/font-awesome.min.css')}}}">
@@ -71,9 +71,9 @@
                 </div>
                 <ul class="nav navbar-top-links navbar-right">
                     <li>
-                        <span class="m-r-sm text-muted welcome-message">トーク一覧ページへようこそ</span>
+                        <span class="m-r-sm text-muted welcome-message">メッセージ詳細ページへようこそ</span>
                     </li>
-                    <!-- <li>
+                    <li>
                         <a  class="dropdown-toggle count-info" href="/mentor">
                             <i class="fa fa-home"></i>
                         </a>
@@ -172,7 +172,7 @@
                                 </div>
                             </li>
                         </ul>
-                    </li> -->
+                    </li>
 
 
                     <li>
@@ -184,86 +184,30 @@
 
             </nav>
         </div>
-        <!-- <div class="row wrapper border-bottom white-bg page-heading inbox-title">
+        <div class="row wrapper white-bg page-heading">
             <div class="col-lg-9ƒ">
-                <h2>トーク一覧</h2>
-                <ol class="breadcrumb">
+                <h2>メッセージ詳細</h2>
+                <ol class="breadcrumb">                  
                     <li class="active">
-                        <strong>トーク一覧</strong>
+                        <strong>メッセージ詳細</strong>
                     </li>
                 </ol>
             </div>
-        </div> -->
+        </div>
 
 
         <div class="row wrapper border-bottom white-bg">
             <div class="col-lg-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-content">
-                        <form method="post" enctype="multipart/form-data" class="form-horizontal" action="{{ url('/mentor/'.$talk->id) }}">
-                            <input name="_method" type="hidden" value="PUT">
-                            <input type="hidden" name="MAX_FILE_SIZE" value="10485760">
+                        <form method="post" class="form-horizontal" action="{{ url('/user/message') }}">
+                            <h2>{{ $talk->title }} {{ $talk->price }}円/{{ $talk->talk_time }}分</h2>
+                            <h2>送信先:{{ $receiver->name }}</h2>
 
-                            <div class="form-group"><label class="col-sm-2 control-label">タイトル（＊必須）</label>
-                                <div class="col-sm-10"><input type="text" name="title" id="title" placeholder="最大５０文字" class="form-control" value="{{ $talk->title }}"></div>
-                                <p id="title_count"></p>
-                            </div>
-
-                            <div class="form-group"><label class="col-sm-2 control-label">カテゴリー（＊必須）</label>
+                            <div class="form-group"><label class="col-sm-2 control-label">本文（＊必須）</label>
                                 <div class="col-sm-10">
-                                    <select name="category" id="category" class="form-control">
-                                        <option value="">カテゴリーを選択</option>
-                                        @foreach ($categories as $category)
-                                            <option value="{{ $category->id }}" @if ($talk->category_id === $category->id) selected @endif>{{ $category->category_name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-
-                            <hr>
-
-                            <div class="form-group"><label class="col-sm-2 control-label">詳細（＊必須）</label>
-                                <div class="col-sm-10">
-                                    <textarea name="detail" id="detail" class="form-control" rows="20" required placeholder="最大1000文字">{{ $talk->detail }}</textarea>
+                                    <textarea name="body" id="body" class="form-control" rows="10" required placeholder="最大500文字">{{ old('body') }}</textarea>
                                     <p id="detail_count"></p>
-                                    <p>※時間相談のやり取りをスムーズにするため、この詳細欄にあなたがトークをすることができる曜日や時間帯を書くことをオススメします。</p>
-                                </div>
-                            </div>
-
-                            <hr>
-
-                            <div class="form-group"><label class="col-sm-2 control-label">挿入画像１</label>
-                                <input class="pic" name="pic0" id="pic0" type="file" style="display:none">
-                                <div class="input-group">
-                                  <input type="text" id="photoCover0" class="form-control" placeholder="jpgもしくはpng(5MBまで)">
-                                  <span class="input-group-btn"><button type="button" class="btn btn-primary" onclick="$('#pic0').click();">ファイル選択</button></span>
-                                  @if ($talk->pic0_path !== '/assets/img/default_thumbnail.jpg')
-                                    <input type="checkbox" name="pic0_delete" value="1">この画像を削除
-                                  @endif
-                                </div>
-                                <label id="label0" class="cebroad-pink"></label>
-                                <div class="events-pad">
-                                  @if ($talk->pic0_path !== '/assets/ing/default_thumbnail.jpg')
-                                    <img src="{{{asset($talk->pic0_path)}}}" id="view0" style="width: 300px">
-                                  @endif
-                                  <img src="" id="preview0" style="display:none; width: 300px;">
-                                </div>
-                            </div>
-                            <div class="form-group"><label class="col-sm-2 control-label">挿入画像２</label>
-                                <input class="pic" name="pic1" id="pic1" type="file" style="display:none">
-                                <div class="input-group">
-                                  <input type="text" id="photoCover0" class="form-control" placeholder="jpgもしくはpng(5MBまで)">
-                                  <span class="input-group-btn"><button type="button" class="btn btn-primary" onclick="$('#pic1').click();">ファイル選択</button></span>
-                                  @if ($talk->pic1_path !== '')
-                                    <input type="checkbox" name="pic1_delete" value="1">この画像を削除
-                                  @endif
-                                </div>
-                                <label id="label1" class="cebroad-pink"></label>
-                                <div class="events-pad">
-                                  @if (!empty($talk->pic1_path))
-                                    <img src="{{{asset($talk->pic1_path)}}}" id="view1" style="width: 300px">
-                                  @endif
-                                  <img src="" id="preview1" style="display:none; width: 300px;">
                                 </div>
                             </div>
                             @if (count($errors) > 0)
@@ -276,16 +220,44 @@
                                 </div>
                             @endif
                             {{ csrf_field() }}
-                              <div class="" class="events-pad">
-                                    <div class="form-group">
-                                        <input type="submit" id="confirm" class="btn btn-primary" value="トーク編集">
-                                    </div>
-                              </div>
+                            <div class="" class="events-pad">
+                                <div class="form-group">
+                                    <input type="hidden" name="talk_id" value="{{ $talk->id }}">
+                                    <input type="hidden" name="receiver_id" value="{{ $send_to_id }}">
+                                    <input type="submit" id="confirm" class="btn btn-primary" value="メッセージを送信">
+                                </div>
+                            </div>
                         </form>
+                    </div>
+                </div>
+                @if (Session::has('flash_message'))
+                    <div class="alert alert-success">{{ Session::get('flash_message') }}</div>
+                @endif
+            </div>            
+        </div>
+
+        <div class="row wrapper border-bottom white-bg">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content">
+                    @foreach($mails as $mail)
+                        <div>
+                            <div>
+                                <img alt="profile_image" class="img-circle" src="{{ secure_asset($mail->sender->profile_picture_path) }}">
+                                To {{$mail->receiver->name}} From {{ $mail->sender->name }}
+                                {{ $mail->sent_at }}
+                            </div>
+                            <div>
+                                {!! nl2br(e($mail->body)) !!}
+                            </div>
+                        </div>
+                        <hr>
+                    @endforeach
                     </div>
                 </div>
             </div>            
         </div>
+
         <div class="row">
             <div class="footer">                       
                 <div>

@@ -1,14 +1,13 @@
 
 @extends('common.layout')
 @section('TitleAndCss')
-<title>add.php | トーク作成</title>
+<title>mypage.php | メッセージページ</title>
 
-<link rel="stylesheet" href="{{{asset('/assets/bootstrap/css/bootstrap.min.css')}}}">
-<link rel="stylesheet" href="{{{asset('/assets/font-awesome/css/font-awesome.min.css')}}}">
-<link rel="stylesheet" href="{{{asset('/assets/css/style_pre_index.css')}}}">
-<link rel="stylesheet" href="{{{asset('/assets/css/animate.css')}}}">
-<link rel="stylesheet" href="{{{asset('/assets/css/style.css')}}}">
-<link rel="stylesheet" href="{{{('/assets/css/add.css')}}}">
+<link rel="stylesheet" href="{{{secure_asset('/assets/bootstrap/css/bootstrap.min.css')}}}">
+<link rel="stylesheet" href="{{{secure_asset('/assets/font-awesome/css/font-awesome.min.css')}}}">
+<link rel="stylesheet" href="{{{secure_asset('/assets/css/style_pre_index.css')}}}">
+<link rel="stylesheet" href="{{{secure_asset('/assets/css/animate.css')}}}">
+<link rel="stylesheet" href="{{{secure_asset('/assets/css/style.css')}}}">
 
 <!-- <link href="css/style_pre_index.css" rel="stylesheet"> -->
 @stop
@@ -20,45 +19,39 @@
             <ul class="nav metismenu" id="side-menu">
                 <li class="nav-header">
                     <div class="dropdown profile-element">                         
-                            <a href="/mentor"><img alt="image" class="img" src="{{{asset('/assets/img/plus.png')}}}" width="25px" height="50px" /></a>
+                            <a href="/mentor"><img alt="image" class="img" src="{{{secure_asset('/assets/img/plus.png')}}}" width="25px" height="50px" /></a>
                     </div>
                     <div class="dropdown profile-element"> 
                         <span>
-                            @if (!empty(Auth::user()->profile_picture_path))
-                            <img alt="image" class="img-circle" src="{{{asset(Auth::user()->profile_picture_path)}}}">
-                            @endif
-                            @if (empty(Auth::user()->profile_picture_path))
-                            <img alt="image" class="img-circle" src="/assets/img/default_thumbnail.jpg">
-                            @endif
+                            <img alt="image" class="img-circle" src="{{{secure_asset('/assets/img/about/1.jpg')}}}" />
                         </span>
                         <a class="dropdown-toggle" href="#">
                             <span class="clear"> 
                                 <span class="block m-t-xs"> 
-                                    <strong class="font-bold">{{ Auth::user()->name }}</strong>
+                                    <strong class="font-bold">松澤隼人</strong>
                                 </span> 
-                                <span class="text-muted text-xs block">{{ Auth::user()->introduction }}</span>
+                                <span class="text-muted text-xs block">スポーツメーカーを退職後、大阪にて教育系ウェブサービスの立ち上げ準備中。2016年4月から6月までセブ島留学をしてプログラミングを学び、その時のルームメートと個人間で進路情報をシェアできるサービスを構築中。</span>
                             </span>
                         </a>                        
                     </div>                    
                     <div class="logo-element">
-                        <a href="/mentor"><img alt="image" class="img" src="{{{asset('/assets/img/plus.png')}}}" width="25px" height="50px" /></a>
+                        <a href="/"><img alt="image" class="img" src="{{{secure_asset('/assets/img/plus.png')}}}" width="25px" height="50px" /></a>
                     </div>
                 </li>
                 <li>
-                    <a href="/user/show/{{ Auth::user()->id }}"><i class="fa fa-user"></i> <span class="nav-label">プロフィール表示</span></a>
+                    <a href="#"><i class="fa fa-pencil"></i> <span class="nav-label">アカウント編集</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse">
+                        <li><a href="/user/edit">プロフィール編集</a></li>
+                        <li><a href="graph_morris.html">Email編集</a></li>
+                        <li><a href="graph_rickshaw.html">パスワード編集</a></li>
+                    </ul>
                 </li>
                 <li>
-                    <a href="/user/edit/{{ Auth::user()->id }}"><i class="fa fa-pencil"></i> <span class="nav-label">プロフィール編集</span></a>
+                    <a href="add"><i class="fa fa-bullhorn"></i> <span class="nav-label">トーク作成</span></a>
                 </li>
-                <li>
-                    <a href="{{ url('mentor/create')}}"><i class="fa fa-bullhorn"></i> <span class="nav-label">トーク作成</span></a>
-                </li>
-                 <li>
-                    <a href="/user/mypage"><i class="fa fa-comment"></i> <span class="nav-label">メッセージ</span></a>
-                </li>  
                 <li>
                     <a href="/user/mypage"><i class="fa fa-calendar"></i> <span class="nav-label">マイページ</span></a>
-                </li>                 
+                </li>               
             </ul>
         </div>
     </nav>
@@ -71,7 +64,7 @@
                 </div>
                 <ul class="nav navbar-top-links navbar-right">
                     <li>
-                        <span class="m-r-sm text-muted welcome-message">メッセージ送信ページへようこそ</span>
+                        <span class="m-r-sm text-muted welcome-message">メッセージページへようこそ</span>
                     </li>
                     <li>
                         <a  class="dropdown-toggle count-info" href="/mentor">
@@ -176,7 +169,7 @@
 
 
                     <li>
-                        <a href="/auth/logout">
+                        <a href="login.html">
                             <i class="fa fa-sign-out"></i> ログアウト
                         </a>
                     </li>
@@ -184,51 +177,78 @@
 
             </nav>
         </div>
-        <div class="row wrapper white-bg page-heading">
+        <div class="row wrapper border-bottom white-bg page-heading">
             <div class="col-lg-9ƒ">
-                <h2>トーク作成</h2>
+                <h2>メッセージページ</h2>
                 <ol class="breadcrumb">                  
                     <li class="active">
-                        <strong>トーク作成</strong>
+                        <strong>メッセージページ</strong>
                     </li>
                 </ol>
             </div>
         </div>
+        <div class="row white-bg">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+                    <div>
+                        <div class="chat-activity-list">
 
-
-        <div class="row wrapper border-bottom white-bg">
-            <div class="col-lg-12">
-                <div class="ibox float-e-margins">
-                    <div class="ibox-content">
-                        <form method="post" class="form-horizontal" action="{{ url('/mentor/message') }}">
-                            <h2>{{ $talk->title }}</h2>
-
-                            <div class="form-group"><label class="col-sm-2 control-label">本文（＊必須）</label>
-                                <div class="col-sm-10">
-                                    <textarea name="body" id="body" class="form-control" rows="10" required placeholder="最大1000文字">{{ old('body') }}</textarea>
-                                    <p id="detail_count"></p>
+                            <div class="chat-element" style="text-align: left">
+                                <a href="#" class="pull-left">
+                                    <img alt="image" class="img-circle" src="img/a2.jpg">
+                                </a>
+                                <div class="media-body ">
+                                    <small class="pull-right text-navy">1m ago</small>
+                                    <strong>Mike Smith</strong>
+                                    <p class="m-b-xs">
+                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                                    </p>
+                                    <small class="text-muted">Today 4:21 pm - 12.06.2014</small>
                                 </div>
                             </div>
-                            @if (count($errors) > 0)
-                                <div class="alert alert-danger">
-                                    <ul>
-                                        @foreach ($errors->all() as $error)
-                                            <li>{{ $error }}</li>
-                                        @endforeach
-                                    </ul>
+
+                            <div class="chat-element right">
+                                <a href="#" class="pull-right">
+                                    <img alt="image" class="img-circle" src="img/a4.jpg">
+                                </a>
+                                <div class="media-body text-right ">
+                                    <small class="pull-left">5m ago</small>
+                                    <strong>John Smith</strong>
+                                    <p class="m-b-xs">
+                                        Lorem Ipsum is simply dummy text of the printing.
+                                    </p>
+                                    <small class="text-muted">Today 4:21 pm - 12.06.2014</small>
                                 </div>
-                            @endif
-                            {{ csrf_field() }}
-                            <div class="" class="events-pad">
-                                <div class="form-group">
-                                    <input type="hidden" name="talk_id" value="{{ $talk->id }}">
-                                    <input type="submit" id="confirm" class="btn btn-primary" value="メッセージを送信">
+                            </div>
+
+                            <div class="chat-element" style="text-align: left">
+                                <a href="#" class="pull-left">
+                                    <img alt="image" class="img-circle" src="img/a2.jpg">
+                                </a>
+                                <div class="media-body ">
+                                    <small class="pull-right">2h ago</small>
+                                    <strong>Mike Smith</strong>
+                                    <p class="m-b-xs">
+                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                                    </p>
+                                    <small class="text-muted">Today 4:21 pm - 12.06.2014</small>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="chat-form">
+                        <form role="form" method="post">
+                            <div class="form-group">
+                                <textarea name="body" class="form-control" placeholder="Message"></textarea>
+                            </div>
+                            <div class="text-right">
+                                <button type="submit" class="btn btn-sm btn-primary m-t-n-xs"><strong>Send message</strong></button>
                             </div>
                         </form>
                     </div>
                 </div>
-            </div>            
+            </div>
         </div>
         <div class="row">
             <div class="footer">                       
@@ -239,16 +259,16 @@
         </div>
     </div>
 </div>
+</div>
 @stop
 
 @section('Js')
-<script src="{{{asset('/assets/js/jquery-2.1.1.js')}}}"></script>
-<script src="{{{asset('/assets/bootstrap/js/bootstrap.min.js')}}}"></script>
+<script src="{{{secure_asset('/assets/js/jquery-2.1.1.js')}}}"></script>
+<script src="{{{secure_asset('/assets/bootstrap/js/bootstrap.min.js')}}}"></script>
 
-<script src="{{{asset('/assets/js/plugins/metisMenu/jquery.metisMenu.js')}}}"></script>
-<script src="{{{asset('/assets/js/plugins/slimscroll/jquery.slimscroll.min.js')}}}"></script>
+<script src="{{{secure_asset('/assets/js/plugins/metisMenu/jquery.metisMenu.js')}}}"></script>
+<script src="{{{secure_asset('/assets/js/plugins/slimscroll/jquery.slimscroll.min.js')}}}"></script>
 
-<script src="{{{asset('/assets/js/inspinia.js')}}}"></script>
-<script src="{{{asset('/assets/js/plugins/pace/pace.min.js')}}}"></script>
-<script src="{{{asset('/assets/js/add.js')}}}"></script>
+<script src="{{{secure_asset('/assets/js/inspinia.js')}}}"></script>
+<script src="{{{secure_asset('/assets/js/plugins/pace/pace.min.js')}}}"></script>
 @stop

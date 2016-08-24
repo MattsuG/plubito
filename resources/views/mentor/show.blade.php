@@ -220,7 +220,7 @@
                                 <div class="user-button">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <button type="button" class="btn btn-default btn-sm btn-block" onclick="location.href='{{ url('mentor/message/'.$talk->id) }}'"><i class="fa fa-envelope"></i> メッセージを送る</button>
+                                            <button type="button" class="btn btn-default btn-sm btn-block" onclick="location.href='{{ url('user/message/'.$talk->id) }}'"><i class="fa fa-envelope"></i> メッセージを送る</button>
                                         </div>
                                     </div>
                                 </div>
@@ -303,36 +303,7 @@
         </div>
     </div>
 
-    @if ($check_application)
-        <div class="modal" id="request-modal" tabindex="-1">
-            <div class="modal-dialog">
-            <!-- 3.モーダルのコンテンツ -->
-                <div class="modal-content">
-                    <!-- 4.モーダルのヘッダ -->
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        <h4 class="modal-title" id="modal-label">このトークの申し込みを取り消しますか？？</h4>
-                    </div>
-                    <!-- 5.モーダルのボディ -->
-                    <div class="modal-body">
-                        <p>{{ $talk->title }}</p>
-                        <p>{{ $talk->price }}円</p>
-                    </div>
-                    <!-- 6.モーダルのフッタ -->
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">やめる</button>
-                        <form method="post" action="{{ url('/mentor/apply') }}">
-                            <input name="talk_id" value="{{ $talk->id }}" type="hidden">
-                            {{ csrf_field() }}
-                            <input type="submit" class="btn btn-primary" value="取り消す">
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    @else
+    @if (!$check_application)
         <div class="modal" id="request-modal" tabindex="-1">
             <div class="modal-dialog">
             <!-- 3.モーダルのコンテンツ -->
