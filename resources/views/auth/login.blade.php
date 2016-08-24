@@ -33,12 +33,12 @@
                     <input id="password" name="password" type="password" class="form-control" placeholder="パスワード" required="">
                 </div>
 
-          <!--   {{-- remember me（継続ログイン）の有効無効指定チェックボックス --}}
+            {{-- remember me（継続ログイン）の有効無効指定チェックボックス --}}
                 <label for="remember" class="pure-checkbox">
                     <input id="remember" type="checkbox" name="remember"
                       {{-- remember入力項目が存在しているならば、チェックされている --}}
                       {!! old('remember') ? 'checked="checked"' : '' !!} > 継続ログイン
-                </label> -->
+                </label>
 
             {{-- ログインボタン --}}
             <button type="submit" class="btn btn-primary block full-width m-b">ログイン</button>
