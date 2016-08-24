@@ -43,9 +43,12 @@
                 <li>
                     <a href="/user/edit/{{ Auth::user()->id }}"><i class="fa fa-pencil"></i> <span class="nav-label">プロフィール編集</span></a>
                 </li>
+
+                @if ((int)Auth::user()->role === 1)
                 <li>
                     <a href="{{ url('mentor/create')}}"><i class="fa fa-bullhorn"></i> <span class="nav-label">トーク作成</span></a>
                 </li>
+                @endif
                  <li>
                     <a href="/user/message"><i class="fa fa-comment"></i> <span class="nav-label">メッセージ</span></a>
                 </li>  
