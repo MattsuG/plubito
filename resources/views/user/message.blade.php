@@ -206,7 +206,7 @@
                         <div class="panel-heading">
                             <div class="panel-options">
                                 <ul class="nav nav-tabs">
-                                    <li class="active"><a href="#tab-1" data-toggle="tab">受信</a></li>
+                                    <li class=""><a href="#tab-1" data-toggle="tab">受信</a></li>
                                     <li class=""><a href="#tab-2" data-toggle="tab">送信</a></li>
                                 </ul>
                             </div>
@@ -281,35 +281,6 @@
                                         <a href="{{ url('/user/message/'.$sent_mail->talk_id) }}">詳細を見る</a>
                                     </td>
                                 </tr>
-                                <div class="modal" id="request-modal" tabindex="-1">
-                                    <div class="modal-dialog">
-                                    <!-- 3.モーダルのコンテンツ -->
-                                        <div class="modal-content">
-                                            <!-- 4.モーダルのヘッダ -->
-                                            <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                                <h4 class="modal-title" id="modal-label">日時を入力してリクエストを承認してください。</h4>
-                                            </div>
-                                            <!-- 5.モーダルのボディ -->
-                                            <div class="modal-body">
-                                                <p>{{  }}</p>
-                                                <p>{{  }}</p>
-                                                <!-- <input type=""> -->
-                                            </div>
-                                            <!-- 6.モーダルのフッタ -->
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">やめる</button>
-                                                <form method="post" action="{{ url('/mentor/apply') }}">
-                                                    <input name="talk_id" value="{{ $talk->id }}" type="hidden">
-                                                    {{ csrf_field() }}
-                                                    <input type="submit" class="btn btn-primary" value="申し込む">
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                                 @endforeach
                                 </tbody>
                             </table>
