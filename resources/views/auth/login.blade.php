@@ -12,13 +12,7 @@
 @section('content')
     <div class="middle-box text-center loginscreen animated fadeInDown">
         <div>
-            <div>
-
-                <h1 class="logo-name">+ヒト</h1>
-
-            </div>
             <h3>ログイン</h3>
-            <p>welcome back to +ヒト</p>
             <form method="post" class="m-t" role="form" action="/auth/login">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
  
@@ -39,17 +33,17 @@
                     <input id="password" name="password" type="password" class="form-control" placeholder="パスワード" required="">
                 </div>
 
-            {{-- remember me（継続ログイン）の有効無効指定チェックボックス --}}
+          <!--   {{-- remember me（継続ログイン）の有効無効指定チェックボックス --}}
                 <label for="remember" class="pure-checkbox">
                     <input id="remember" type="checkbox" name="remember"
                       {{-- remember入力項目が存在しているならば、チェックされている --}}
                       {!! old('remember') ? 'checked="checked"' : '' !!} > 継続ログイン
-                </label>
+                </label> -->
 
             {{-- ログインボタン --}}
             <button type="submit" class="btn btn-primary block full-width m-b">ログイン</button>
 
-                <a href="#"><small>パスワードをお忘れの場合</small></a>
+                <a href="#"><small>パスワードをお忘れの場合</small></a><br>
                 <p class="text-muted text-center"><small>アカウントをお持ちでない方</small></p>
                 <a class="btn btn-sm btn-white btn-block" href="/auth/register">サインアップ</a>
             </form>

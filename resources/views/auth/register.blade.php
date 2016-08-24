@@ -12,13 +12,7 @@
 
     <div class="middle-box text-center loginscreen   animated fadeInDown">
         <div>
-            <div>
-
-                <h1 class="logo-name">+ヒト</h1>
-
-            </div>
             <h3>ユーザー登録</h3>
-            <p>hello new user^^</p>
             <form method="post" class="m-t" role="form" action="/auth/register">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             

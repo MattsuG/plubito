@@ -36,7 +36,7 @@
 				<a href="#"><img alt="image" class="img" src="{{{asset('/assets/img/plus.png')}}}" width="25px" height="50px" /></a>
 			</div>
 			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="collapse navbar-collapse" id="top-navbar-1">
+			<div class="collapse navbar-collapse" id="top-navbar-1" style="background-color: #fff">
 				<ul class="nav navbar-nav navbar-right">
 					<li><a class="scroll-link" href="#features">＋ヒトについて</a></li>
 					<li><a class="" href="/mentor">トーク検索</a></li>
