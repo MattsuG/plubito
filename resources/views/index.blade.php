@@ -1,5 +1,9 @@
-@extends('common.layout')
-@section('TitleAndCss')
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>TopPage</title>
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100italic,300,300italic,400,400italic,500,500italic">
@@ -8,9 +12,9 @@
 <link rel="stylesheet" href="{{{asset('/assets/css/animate.css')}}}">
 <link rel="stylesheet" href="{{{asset('/assets/css/style_pre_index.css')}}}">
 <link rel="stylesheet" href="{{{asset('/assets/css/media-queries.css')}}}">
-@stop
 
-@section('content')
+</head>
+<body class="gray-bg">
 
 <div class="loader">
 	<div class="loader-img"></div>
@@ -263,9 +267,7 @@
 		</div>
 	</div>
 </footer>
-@stop
 
-@section('Js')
 <script src="{{{asset('/assets/js/jquery-1.11.1.min.js')}}}"></script>
 <script src="{{{asset('/assets/bootstrap/js/bootstrap.min.js')}}}"></script>
 <script src="{{{asset('assets/js/jquery.backstretch.min.js')}}}"></script>
@@ -290,4 +292,5 @@ $(function(){
     });
 });
 </script>
-@stop
+</body>
+</html>
