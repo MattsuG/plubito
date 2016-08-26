@@ -88,7 +88,7 @@
     (1) 本規約に違反するおそれがあると当社が判断した場合<br>
     (2) 当社に提供された情報の全部又は一部につき虚偽、誤記又は記載漏れがあった場合<br>
     (3) その他、当社が登録を適当でないと判断した場合<br><br>
-    第９条（パスワード及び会員IDの管理）<br><br>
+    第９条（パスワード及び会員IDの管理）<br>
     1. 会員は、自己の責任において、パスワード及び会員IDを管理及び保管するものとし、これを第三者に利用させたり、貸与、譲渡、名義変更、売買等をしてはならないものとします。<br>
     2. パスワード又は会員IDの管理不十分、使用上の過誤、第三者の使用等による損害の責任は会員が負うものとし、当社は一切の責任を負いません。<br>
     3. 会員は、パスワード又は会員IDが盗まれたり、第三者に使用されていることが判明した場合には、直ちにその旨を当社に通知するとともに、当社からの指示に従うものとします。<br><br>
@@ -218,14 +218,10 @@
                     <a>使い方</a><br>
                     <a>運営会社</a><br>		
     			</p>
-    			<p>
-            		<a class="scroll-link" href="#about-us">Learn More</a>
-            	</p>
             </div>
     		<div class="col-sm-4 footer-contact-info wow fadeInDown">
     			<h4>コンタクト</h4>
-            	<p><i class="fa fa-map-marker"></i> xxxxxxxxxxxxx</p>
-            	<p><i class="fa fa-envelope"></i> Email: <a href="xxxx@gmail.com">xxxxxxxxx@timelag.com</a></p>	             
+            	<p><i class="fa fa-envelope"></i> Email: <a href="info@timelag.co.jp">info@timelag.co.jp</a></p>	             
             </div>
             <div class="col-sm-4 footer-social wow fadeInUp">
             	<h4>ソーシャルメディア</h4>

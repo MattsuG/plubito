@@ -115,28 +115,24 @@
 <footer>
     <div class="container">
     	<div class="row">
-    		<div class="col-sm-4 footer-about wow fadeInUp">
-    			<h4>+ヒトについて</h4>
-    			<p>
+            <div class="col-sm-4 footer-about wow fadeInUp">
+                <h4>+ヒトについて</h4>
+                <p>
                     <a>よくある質問</a><br>
                     <a>使い方</a><br>
-                    <a>運営会社</a><br>		
-    			</p>
-    			<p>
-            		<a class="scroll-link" href="#about-us">Learn More</a>
-            	</p>
+                    <a>運営会社</a><br>     
+                </p>
             </div>
-    		<div class="col-sm-4 footer-contact-info wow fadeInDown">
-    			<h4>コンタクト</h4>
-            	<p><i class="fa fa-map-marker"></i> xxxxxxxxxxxxx</p>
-            	<p><i class="fa fa-envelope"></i> Email: <a href="xxxx@gmail.com">xxxxxxxxx@timelag.com</a></p>	             
+            <div class="col-sm-4 footer-contact-info wow fadeInDown">
+                <h4>コンタクト</h4>
+                <p><i class="fa fa-envelope"></i> Email: <a href="info@timelag.co.jp">info@timelag.co.jp</a></p>                 
             </div>
             <div class="col-sm-4 footer-social wow fadeInUp">
-            	<h4>ソーシャルメディア</h4>
-            	<p>
-                	<a href="#"><i class="fa fa-facebook"></i></a> 
-					<a href="#"><i class="fa fa-twitter"></i></a>  
-				</p>
+                <h4>ソーシャルメディア</h4>
+                <p>
+                    <a href="#"><i class="fa fa-facebook"></i></a> 
+                    <a href="#"><i class="fa fa-twitter"></i></a>  
+                </p>
             </div>
         </div>
         <div class="row">
