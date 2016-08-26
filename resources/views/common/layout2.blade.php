@@ -37,7 +37,7 @@
 			<div class="col-sm-4 footer-about wow fadeInUp">
 				<h4>+ヒトについて</h4>
 				<p>
-					<a>Q & A</a><br>
+					<a href="qa">Q & A</a><br>
 					<a href="howtouse">使い方</a><br>
 					<a href="becometalker">話し手になる</a><br>
 					<!-- <a>運営会社</a><br> -->		
