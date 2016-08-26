@@ -30,4 +30,16 @@ class TopPageController extends Controller
     public function tradeterm() {
 	    return view("/tradeterm");
     }
+    public function howtouse() {
+        return view("/howtouse");
+    }
+    public function qa() {
+        return view("/qa");
+    }
+    public function about() {
+        return view("/about");
+    }
+    public function becometalker() {
+        return view("/becometalker");
+    }
 }

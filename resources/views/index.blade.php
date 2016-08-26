@@ -98,19 +98,19 @@
 				<h3>トークを検索</h3>
 				<p>カテゴリ検索やキーワード検索で聞いてみたいトークを検索</p>
 			</div>
-			<div class="col-sm-3  how-it-works-box wow fadeInUp">
-				<div class="how-it-works-box-icon">
-					<i class="fa fa-commenting fa-5x" aria-hidden="true"></i>
-				</div>
-				<h3>メッセージ</h3>
-				<p>話し手とのメッセージで事前にオンライン通話サービスのIDを交換</p>
-			</div>
 			<div class="col-sm-3  how-it-works-box wow fadeInDown">
 				<div class="how-it-works-box-icon">
 					<i class="fa fa-paper-plane fa-5x" aria-hidden="true"></i>
 				</div>
 				<h3>予約リクエスト</h3>
 				<p>聞いてみたいトークが見つかったら詳細ページから予約リクエスト</p>
+			</div>
+			<div class="col-sm-3  how-it-works-box wow fadeInUp">
+				<div class="how-it-works-box-icon">
+					<i class="fa fa-commenting fa-5x" aria-hidden="true"></i>
+				</div>
+				<h3>メッセージ</h3>
+				<p>話し手とのメッセージで事前にオンライン通話サービスのIDを交換</p>
 			</div>
 			<div class="col-sm-3 how-it-works-box wow fadeInDown">
 				<div class="how-it-works-box-icon">
@@ -122,7 +122,7 @@
 		</div>
 		<div class="row">
 			<div class="col-sm-12 section-bottom-button wow fadeInUp">
-				<a class="btn btn-link-1 scroll-link fa-5x" href="#pricing">詳しい使い方</a>
+				<a class="btn btn-link-1 fa-5x" href="howtouse">詳しい使い方</a>
 			</div>
 		</div>
 	</div>
@@ -207,7 +207,7 @@
 						<img src="{{{asset($talk->pic0_path)}}}" alt="">
 					</div>
 					<p class="abbreviation3">{{ $talk->title }}</p>
-					<p>いいね:{{ count($talk->likes) }}人 トーク:{{ $talk->applications_count }}人</p>
+					<p>{{ count($talk->likes) }}&nbsp;<i class="fa fa-thumbs-up" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;{{ $talk->applications_count }}&nbsp;<i class="fa fa-headphones" aria-hidden="true"></i></p>
 					<div class="pricing-box-features">
 						<ul>
 							<li>{{ $talk->name }}</li>
@@ -233,19 +233,20 @@
 			<div class="col-sm-4 footer-about wow fadeInUp">
 				<h4>+ヒトについて</h4>
 				<p>
-					<a>よくある質問</a><br>
-					<a>使い方</a><br>
+					<a>Q & A</a><br>
+					<a href="howtouse">使い方</a><br>
+					<a href="becometalker">話し手になる</a><br>
 					<!-- <a>運営会社</a><br> -->		
 				</p>
 			</div>
 			<div class="col-sm-4 footer-contact-info wow fadeInDown">
 				<h4>コンタクト</h4>
-				<p><i class="fa fa-envelope"></i> Email: <a href="xxxx@gmail.com">info@timelag.co.jp</a></p>	             
+				<p><i class="fa fa-envelope"></i> Email:　info@timelag.co.jp</a></p>	             
 			</div>
 			<div class="col-sm-4 footer-social wow fadeInUp">
 				<h4>ソーシャルメディア</h4>
 				<p>
-					<a href="#"><i class="fa fa-facebook"></i></a> 
+					<a href="https://www.facebook.com/Timelag%E3%83%96%E3%83%AD%E3%82%B0-1000788249945274/?fref=ts"><i class="fa fa-facebook"></i></a> 
 					<a href="#"><i class="fa fa-twitter"></i></a>  
 				</p>
 			</div>

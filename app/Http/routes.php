@@ -20,6 +20,10 @@ Route::group(['routeMiddleware' => 'guest'], function() {
 	Route::get('/terms', 'TopPageController@terms');
 	Route::get('/privacy', 'TopPageController@privacy');
 	Route::get('/tradeterm', 'TopPageController@tradeterm');
+	Route::get('/howtouse', 'TopPageController@howtouse');
+	Route::get('/qa', 'TopPageController@qa');
+	Route::get('/about', 'TopPageController@about');
+	Route::get('/becometalker', 'TopPageController@becometalker');
 });
 
 Route::group(['middlewareGroups' => 'web'], function() {

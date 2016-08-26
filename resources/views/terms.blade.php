@@ -11,30 +11,6 @@
 @stop
 
 @section('content')
-<!-- Top menu -->
-<nav class="navbar navbar-inverse navbar-no-bg" role="navigation">
-        <div class="container">
-            <div class="navbar-header" style="background: white";>
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-navbar-1" style="background-color: #000000";>
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="/">Plubito Landing Page</a>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="top-navbar-1" style="background-color: #fff">
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a class="scroll-link" href="#features">＋ヒトについて</a></li>
-                    <li><a class="" href="/mentor">トーク検索</a></li>
-                    <li><a class="" href="/auth/login">ログイン</a></li>
-                    <li><a class="btn btn-link-2" href="/auth/register">サインアップ</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
 <div class="terms_title">
     <h3>利用規約</h3>
 </div>
@@ -97,7 +73,7 @@
     本サービスは、必ず会員本人が利用するものとします。<br><br>
     第11条（本サービスの内容）<br>
     1. 当社は本サービスによる情報提供を通じて、進路情報の提供に関する取引を行なうためのツール及びプラットフォーム及びこれに付随または関連するサービスを提供します。<br>
-    2. 本サービスは、進路情報の提供に関する取引を行なうことを目的とし、当社は本取引の当事者とはなりません。但し、本取引に基づく聞き手から話し手に対する謝礼の支払事務は、第12条に定めるところにより、当社が聞き手から委託を受けて代行します。<br>
+    2. 本サービスは、進路情報の提供に関する取引を行なうことを目的とし、当社は本取引の当事者とはなりません。但し、本取引に基づく聞き手から話し手に対する謝礼の支払事務は、第13条に定めるところにより、当社が聞き手から委託を受けて代行します。<br>
     3. 本サービスは、聞き手と話し手の双方が自らの責任・判断で必要な情報を確認し、同意し、聞き手が決済を行なった時点で、進路情報の提供を受ける契約が成立するものとします。<br>
     4. 会員はマッチングに必要な情報を本サイトに投稿できるものとします。当社は、会員の投稿内容が以下のいずれかに該当すると判断した場合、会員に何ら通知することなく投稿を削除し、また当該会員に対して利用停止を含む必要な措置を採る事ができるものとします。<br>
     (1) 法令その他公序良俗に反する場合<br>
@@ -106,7 +82,7 @@
     (4) その他当社が不適切と判断した場合<br><br>
     第12条（キャンセルの取扱い）<br>
     1. 話し手は、情報またはアドバイス提供の実施前にキャンセルを希望する場合、当社所定の方法で聞き手及び当社に対して進路情報の提供の中止を通知します。その場合の謝礼は全額が聞き手に返金されるものとします。聞き手がキャンセルを希望する場合は原則として返金されないものとします。<br>
-    2. 話し手または聞き手の合意がある場合に限り、進路情報の提供の日時の変更が可能なものとし、変更された場合はキャンセルとみなされないものとします。ただし、進路情報の提供を行う実際の日時が変更された場合においても、第3条第7項で定義された登録実施日時は変更されないものとします。<br><br>
+    2. 話し手または聞き手の合意がある場合に限り、進路情報の提供の日時の変更が可能なものとし、日時変更の場合はキャンセルに該当しないものとします。ただし、進路情報の提供を行う実際の日時が変更された場合においても、第3条第7項で定義された登録実施日時は変更されないものとします。<br><br>
     <h3>第5章 決済</h3><br><br>
     第13条（決済方法）<br>
     当社は話し手への謝礼支払事務を聞き手の預託を受けて代行します。聞き手は、当社が別途指定する場合を除き、PayPal社の決済サービスを利用して当社に対し話し手への謝礼を支払うものとします。<br><br>
@@ -116,7 +92,7 @@
     3. 聞き手は、登録実施日時から1週間以内に限り、進路情報の提供についての異議を当社に対して述べることができるものとします（以下当該期間を「異議申出期間」といいます。）。聞き手がかかる異議を述べた場合において、話し手が進路情報の提供を怠っていた等、当社が聞き手の異議に理由があると認める場合には、当社が別途定めるところに従い、聞き手が支払った謝礼を聞き手に返還します。この場合、聞き手は、返還される金額から返還に際して当社が負担した費用が控除される場合があることに、予め同意するものとします。異議申出期間中に聞き手から異議が述べられなかった場合には、話し手が適切な進路情報の提供を行ったものとみなし、以後聞き手は異議を述べることはできないものとします。<br><br>
     第15条（謝礼の支払および利用手数料）<br>
     1. 話し手は、謝礼の受領業務を当社に委託するものとします。当社は、当社が話し手に代わり受領した謝礼から、本サービスの利用手数料（聞き手が支払う謝礼の30％とします。）を差し引くことにより、話し手から利用手数料を受領するものとします。<br>
-    2. 当社は、当社が話し手に代わり受領した謝礼から利用手数料を差し引いた金額を、PayPal社の決済サービスを利用して支払うものとします。支払の時期は、登録実施日時の翌月末（当日が金融機関営業日でない場合は翌営業日）とします。なお、かかる支払について、利息は一切発生しないものとします。<br>
+    2. 当社は、当社が話し手に代わり受領した謝礼から利用手数料を差し引いた金額を、当社が指定する方法により支払うものとします。支払の時期は、登録実施日時の翌月末（当日が金融機関営業日でない場合は翌営業日）とします。なお、かかる支払について、利息は一切発生しないものとします。<br>
     3. 当社から話し手への支払にかかる決済手数料は、話し手が負担するものとします。<br>
     4. 天災等不可抗力による事情があったと当社が判断し、聞き手のペナルティ無しでのキャンセルを認める場合、話し手はキャンセル料なしでのキャンセルを受け入れる義務があるものとします。その場合、話し手の当社に対する利用手数料もキャンセルされるものとします。<br>
     5. 当社は、 当社が通知したにもかかわらず、登録実施日時より一年以内に、話し手が第2項の規定により定めた方法で支払を受ける登録等を行わない場合、話し手が第2項の規定による謝礼の支払を受領する権利を放棄したものとみなすことができます。<br><br>
@@ -206,65 +182,6 @@
     1. 本規約は、日本国の法律に基づいて解釈されるものとします。<br>
     2. 本サービスや規約に関連して生じた一切の紛争については、東京地方裁判所を第一審の専属的合意管轄裁判所とします。<br><br>
     </p>
-</div>
-<!-- Footer -->
-<footer>
-    <div class="container">
-    	<div class="row">
-    		<div class="col-sm-4 footer-about wow fadeInUp">
-    			<h4>+ヒトについて</h4>
-    			<p>
-                    <a>よくある質問</a><br>
-                    <a>使い方</a><br>
-                    <a>運営会社</a><br>		
-    			</p>
-            </div>
-    		<div class="col-sm-4 footer-contact-info wow fadeInDown">
-    			<h4>コンタクト</h4>
-            	<p><i class="fa fa-envelope"></i> Email: <a href="info@timelag.co.jp">info@timelag.co.jp</a></p>	             
-            </div>
-            <div class="col-sm-4 footer-social wow fadeInUp">
-            	<h4>ソーシャルメディア</h4>
-            	<p>
-                	<a href="#"><i class="fa fa-facebook"></i></a> 
-					<a href="#"><i class="fa fa-twitter"></i></a>  
-				</p>
-            </div>
-        </div>
-        <div class="row">
-   			<div class="col-sm-6 footer-copyright">
-            	&copy; All right reserved by <a href="">TIMELAG Inc.</a>
-            </div>
-   			<div class="col-sm-6 footer-menu">
-            	<ul>
-            		<li><a class="scroll-link" href="#top-content">ページトップ</a></li>
-                    <li><a href="terms">利用規約</a></li>
-                    <li><a href="privacy">個人情報</a></li>
-                    <li><a href="tradeterm">特定商取引法</a></li>
-				</ul>
-            </div>
-   		</div>
-    </div>
-</footer>
-<!-- MODAL: How it works -->
-<div class="modal fade" id="modal-how-it-works" tabindex="-1" role="dialog" aria-labelledby="modal-how-it-works-label" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">
-					<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
-				</button>
-			</div>
-			<div class="modal-body">
-				<div class="modal-video">
-    				<div class="embed-responsive embed-responsive-16by9">
-	                    <iframe class="embed-responsive-item" src="https://player.vimeo.com/video/84910153?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;color=42bfc2" 
-	                    			webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-	                </div>
-                </div>
-			</div>
-		</div>
-	</div>
 </div>
 @stop
 @section('Js')
