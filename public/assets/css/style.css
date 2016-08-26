@@ -54,6 +54,10 @@ h5 {
   margin-right: 5%;
 }
 
+.terms{
+  background-color: gray;
+  text-align: left;
+}
 
 .nav > li > a {
   color: #000000;

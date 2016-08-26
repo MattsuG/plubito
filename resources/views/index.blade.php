@@ -22,7 +22,6 @@
 				
 <!-- Top content -->
 <div class="top-content">
-
 	<!-- Top menu -->
 	<nav class="navbar navbar-inverse navbar-no-bg" role="navigation">
 		<div class="container">
@@ -46,7 +45,6 @@
 			</div>
 		</div>
 	</nav>
-
 	<div class="inner-bg">
 		<div class="container">
 			<div class="row">
@@ -259,9 +257,9 @@
 			<div class="col-sm-6 footer-menu">
 				<ul>
 					<li><a class="scroll-link" href="#top-content">トップ</a></li>
-					<li><a href="#">利用規約</a></li>
-					<li><a href="#">プライバシーポリシー</a></li>
-					<li><a href="#">特定商取引法</a></li>
+					<li><a href="terms">利用規約</a></li>
+					<li><a href="privacy">個人情報</a></li>
+					<li><a href="tradeterm">特定商取引法</a></li>
 				</ul>
 			</div>
 		</div>

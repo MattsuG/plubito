@@ -18,6 +18,8 @@ Route::group(['routeMiddleware' => 'guest'], function() {
 
 	Route::get('/', 'TopPageController@index');
 	Route::get('/terms', 'TopPageController@terms');
+	Route::get('/privacy', 'TopPageController@privacy');
+	Route::get('/tradeterm', 'TopPageController@tradeterm');
 });
 
 Route::group(['middlewareGroups' => 'web'], function() {
