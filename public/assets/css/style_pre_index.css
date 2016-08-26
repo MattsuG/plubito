@@ -103,7 +103,7 @@ img { max-width: 100%; }
 .section-container-image-bg, 
 .section-container-image-bg h2, 
 .section-container-image-bg h3 {
-	color: rgba(0, 0, 0, 0.8);
+	color: rgba(0, 0, 0, 1);
 }
 
 .section-container-image-bg .divider-1 span {
