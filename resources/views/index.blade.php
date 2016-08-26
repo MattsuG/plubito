@@ -24,27 +24,27 @@
 <div class="top-content">
 	<!-- Top menu -->
 	<nav class="navbar navbar-inverse navbar-no-bg" role="navigation">
-				<div class="container">
-					<div class="navbar-header" style="background: white";>
-						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-navbar-1" style="background-color: #000000";>
-							<span class="sr-only">Toggle navigation</span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</button>
-						<a class="navbar-brand" href="index.html">Marco - Bootstrap Landing Page</a>
-					</div>
-					<!-- Collect the nav links, forms, and other content for toggling -->
-					<div class="collapse navbar-collapse" id="top-navbar-1" style="background-color: #fff">
-						<ul class="nav navbar-nav navbar-right">
-							<li><a class="scroll-link" href="#features">＋ヒトについて</a></li>
-							<li><a class="" href="/mentor">トーク検索</a></li>
-							<li><a class="" href="/auth/login">ログイン</a></li>
-							<li><a class="btn btn-link-2" href="/auth/register">サインアップ</a></li>
-						</ul>
-					</div>
-				</div>
-			</nav>
+		<div class="container">
+			<div class="navbar-header" style="background: white";>
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-navbar-1" style="background-color: #000000";>
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="/">Plubito Landing Page</a>
+			</div>
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="top-navbar-1" style="background-color: #fff">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a class="scroll-link" href="#features">＋ヒトについて</a></li>
+					<li><a class="" href="/mentor">トークをみる</a></li>
+					<li><a class="" href="/auth/login">ログイン</a></li>
+					<li><a class="btn btn-link-2" href="/auth/register">サインアップ</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
 	<div class="inner-bg">
 		<div class="container">
 			<div class="row">
@@ -186,7 +186,7 @@
 		</div>
 		<div class="row">
 			<div class="col-sm-12 section-bottom-button wow fadeInUp">
-				<a class="btn btn-link-1 scroll-link fa-5x" href="#pricing">トーク検索</a>
+				<a class="btn btn-link-1 scroll-link fa-5x" href="#pricing">トークをみる</a>
 			</div>
 		</div>
 	</div>
@@ -221,7 +221,7 @@
 		</div>
 		<div class="row">
 			<div class="col-sm-12 section-bottom-button wow fadeInUp">
-				<a class="btn btn-link-1 scroll-link fa-5x" href="#pricing">トーク検索</a>
+				<a class="btn btn-link-1 scroll-link fa-5x" href="#pricing">トークをみる</a>
 			</div>
 		</div>
 	</div>
@@ -235,7 +235,7 @@
 				<p>
 					<a>よくある質問</a><br>
 					<a>使い方</a><br>
-					<a>運営会社</a><br>		
+					<!-- <a>運営会社</a><br> -->		
 				</p>
 			</div>
 			<div class="col-sm-4 footer-contact-info wow fadeInDown">
@@ -252,11 +252,11 @@
 		</div>
 		<div class="row">
 			<div class="col-sm-6 footer-copyright">
-				&copy; All right reserved by <a href="">TIMELAG Inc.</a>
+				&copy; All right reserved by TIMELAG Inc.
 			</div>
 			<div class="col-sm-6 footer-menu">
 				<ul>
-					<li><a class="scroll-link" href="#top-content">トップ</a></li>
+					<li><a class="scroll-link" href="#top-content">ページトップ</a></li>
 					<li><a href="terms">利用規約</a></li>
 					<li><a href="privacy">個人情報</a></li>
 					<li><a href="tradeterm">特定商取引法</a></li>

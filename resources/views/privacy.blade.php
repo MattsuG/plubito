@@ -13,27 +13,27 @@
 @section('content')
 <!-- Top menu -->
 <nav class="navbar navbar-inverse navbar-no-bg" role="navigation">
-    <div class="container">
-        <div class="navbar-header" style="background: white";>
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-navbar-1" style="background-color: #000000";>
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a href="#"><img alt="image" class="img" src="{{{asset('/assets/img/plus0.png')}}}" width="50px" height="50px" /></a>
+        <div class="container">
+            <div class="navbar-header" style="background: white";>
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-navbar-1" style="background-color: #000000";>
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Plubito Landing Page</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="top-navbar-1" style="background-color: #fff">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a class="scroll-link" href="#features">＋ヒトについて</a></li>
+                    <li><a class="" href="/mentor">トーク検索</a></li>
+                    <li><a class="" href="/auth/login">ログイン</a></li>
+                    <li><a class="btn btn-link-2" href="/auth/register">サインアップ</a></li>
+                </ul>
+            </div>
         </div>
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="top-navbar-1" style="background-color: #fff">
-            <ul class="nav navbar-nav navbar-right">
-                <li><a class="scroll-link" href="#features">＋ヒトについて</a></li>
-                <li><a class="" href="/mentor">トーク検索</a></li>
-                <li><a class="" href="/auth/login">ログイン</a></li>
-                <li><a class="btn btn-link-2" href="/auth/register">サインアップ</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
+    </nav>
 
 <div class="terms_title">
     <h3>個人情報保護方針・個人情報の取り扱い</h3>
