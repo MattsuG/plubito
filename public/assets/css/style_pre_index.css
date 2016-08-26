@@ -240,9 +240,16 @@ ul.navbar-nav {
 .navbar-inverse ul.navbar-nav li a.btn-link-2:active:focus { outline: 0; opacity: 0.6; background: rgba(0, 0, 0, 0.3); color: #fff; }
 
 .navbar-brand {
-	width: 25px;
+	width: 60px;
 	height: 50px;
 	background: url(../img/plus.png) left center no-repeat;
+	text-indent: -99999px;
+}
+
+.navbar-brand0 {
+	width: 60px;
+	height: 50px;
+	background: url(../img/plus0.png) left center no-repeat;
 	text-indent: -99999px;
 }
 
