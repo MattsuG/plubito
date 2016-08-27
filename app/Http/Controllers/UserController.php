@@ -174,6 +174,9 @@ class UserController extends Controller
                 })
         ->orderBy('sent_at', 'DESC')
         ->paginate(10);
+        if (count($mails) < 1 && (int)$talk->mentor_id === (int)Auth::user()->id) {
+
+        }
         //受信主が自分のメール1件のみ取得(送信先のid取得用)
         $mail = Mail::where('receiver_id', Auth::user()->id)
         ->where('talk_id', $id)
@@ -182,14 +185,15 @@ class UserController extends Controller
         $send_to_id = $talk->mentor_id;
         //自分がこのトークのメンターだったら
         if ((int)$send_to_id === (int)Auth::user()->id) {
-                //受信主が自分のメールの送信主が、自分から見た送信相手になる
-                $send_to_id = $mail->sender_id;
+            //receiverが自分であるメールのsenderが、自分から見た送信相手になる
+            $send_to_id = $mail->sender_id;
+            //このトークに対する
+            if (!$talk->applications->contains('user_id', $send_to_id)) {
+                return redirect('user/message');
+                die();
+        }   
         }
-        
-        if (!$talk->applications->contains($send_to_id)) {
-            return redirect('user/message');
-            die();
-        }
+
         $receiver = User::find($send_to_id);
 
         return view('user/message_detail', compact('talk', 'mails', 'send_to_id', 'receiver'));
