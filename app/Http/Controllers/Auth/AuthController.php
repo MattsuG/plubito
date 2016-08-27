@@ -36,6 +36,8 @@ class AuthController extends Controller
      */
     protected $redirectTo = '/mentor';
 
+    protected $loginPath = '/auth/login';
+
     /**
      * Create a new authentication controller instance.
      *
@@ -58,6 +60,7 @@ class AuthController extends Controller
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
+            'term' => 'required',
         ]);
     }
 

@@ -55,14 +55,14 @@ class User extends Authenticatable
     }
 
     public function likes() {
-        return $this->belongsToMany('App\Talk', 'likes');
+        return $this->belongsToMany('App\Talk', 'likes')->withPivot('liked_at');
     }
 
     public function applications() {
-        return $this->belongsToMany('App\Talk', 'applications');
+        return $this->belongsToMany('App\Talk', 'applications')->withPivot('approved_flag', 'paid_flag', 'finished_flag', 'applied_at', 'approved_at', 'paid_at', 'finished_at');
     }
 
-    public function myApps() {
+    public function appsToMe() {
         return $this->hasManyThrough('App\Application', 'App\Talk', 'mentor_id');
     }
 

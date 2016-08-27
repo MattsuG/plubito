@@ -24,13 +24,56 @@ class UserController extends Controller
 {
 	//メールやトーク一覧が見れる 自分のuseridに関連するデータを全部引っ張りだす
 	//処理が複雑になるのでRikuto担当
-    public function index() {
+    public function index(Request $request) {
+        
         $user = User::find(Auth::user()->id);
+
+        $likes = $user
+        ->likes()
+        ->orderBy('pivot_liked_at', 'DESC')
+        ->paginate(10, ['*'], 'l_page');
+
+        $applications = $user
+        ->applications()
+        ->orderBy('pivot_applied_at', 'DESC')
+        ->paginate(10, ['*'], 'a_page');
+
+        $apps_to_me = $user
+        ->appsToMe()
+        ->orderBy('applied_at', 'DESC')
+        ->paginate(10, ['*'], 'm_page');
+
         $my_talks = Talk::where('mentor_id', Auth::user()->id)
-        ->get();
-        $my_apps = User::find(Auth::user()->id)
-        ->myApps;
-        return view("user/mypage", compact('user', 'my_talks', 'my_apps'));
+        ->paginate(10, ['*'], 't_page');
+
+        $like_active = '';
+        $app_active = 'active';
+        $app_to_me_active = '';
+        $my_talk_active = '';
+
+        //pageNameに応じてactiveタブを切り替え
+        if (isset($request->l_page)) {
+            $like_active = 'active';
+            $app_active = '';
+        }
+        elseif (isset($request->app_to_me_active)) {
+            $app_to_me_active ='active';
+            $app_active = '';
+        }
+        elseif (isset($request->my_talk_active)) {
+            $my_talk_active = 'active';
+            $app_active = '';
+        }
+        else {
+            //メンターの場合初期activeタブを自分宛て予約一覧に
+            if ((int)Auth::user()->role === 1) {
+                $app_to_me_active = 'active';
+                $app_active = '';  
+            }
+        }
+
+
+        return view("user/mypage", compact('user', 'likes', 'applications', 'my_talks', 'apps_to_me', 'like_active', 'app_active', 'app_to_me_active', 'my_talk_active'));
     }
 
     //メンターがユーザーの申し込みを承認する
@@ -100,12 +143,25 @@ class UserController extends Controller
         return view("user/show")->with('user',$user);
     }
 
-    public function getMessage() {
+    public function getMessage(Request $request) {
         $sent_mails = Mail::where('sender_id', Auth::user()->id)
-        ->get();
+        ->paginate(10);
+        $sent_mails->setPageName('s_page');
+
         $received_mails = Mail::where('receiver_id', Auth::user()->id)
-        ->get();
-        return view('user/message', compact('sent_mails', 'received_mails'));
+        ->paginate(10);
+        $received_mails->setpageName('r_page');
+
+        //pageNameに応じてactiveタブを切り替え
+        $received_active = 'active';
+        $sent_active = '';
+
+        if (isset($request->s_page)) {
+            $sent_active = 'active';
+            $received_active = '';
+        }
+
+        return view('user/message', compact('sent_mails', 'received_mails', 'received_active', 'sent_active'));
     }
 
     public function getMessageDetail($id) {
@@ -117,7 +173,7 @@ class UserController extends Controller
                             ->orWhere('sender_id', Auth::user()->id);
                 })
         ->orderBy('sent_at', 'DESC')
-        ->get();
+        ->paginate(10);
         //受信主が自分のメール1件のみ取得(送信先のid取得用)
         $mail = Mail::where('receiver_id', Auth::user()->id)
         ->where('talk_id', $id)
@@ -125,10 +181,11 @@ class UserController extends Controller
         //送信先のidをこのトークのメンターidと仮定
         $send_to_id = $talk->mentor_id;
         //自分がこのトークのメンターだったら
-        if ($send_to_id === Auth::user()->id) {
+        if ((int)$send_to_id === (int)Auth::user()->id) {
                 //受信主が自分のメールの送信主が、自分から見た送信相手になる
                 $send_to_id = $mail->sender_id;
         }
+        
         if (!$talk->applications->contains($send_to_id)) {
             return redirect('user/message');
             die();

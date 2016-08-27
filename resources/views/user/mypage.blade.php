@@ -199,11 +199,11 @@
                             <div class="panel-options">
                                 <ul class="nav nav-tabs">
                                     @if ((int)$user->role === 1)
-                                    <li class=""><a href="#tab-1" data-toggle="tab">予約リクエスト一覧</a></li>
-                                    <li class=""><a href="#tab-2" data-toggle="tab">開設したトーク一覧</a></li>
+                                    <li class="{{$app_to_me_active}}"><a href="#tab-1" data-toggle="tab">予約リクエスト一覧</a></li>
+                                    <li class="{{$my_talk_active}}"><a href="#tab-2" data-toggle="tab">開設したトーク一覧</a></li>
                                     @endif
-                                    <li class=""><a href="#tab-3" data-toggle="tab">予約したトーク一覧</a></li>
-                                    <li class=""><a href="#tab-4" data-toggle="tab">興味ありトーク一覧</a></li>
+                                    <li class="{{$app_active}}"><a href="#tab-3" data-toggle="tab">予約したトーク一覧</a></li>
+                                    <li class="{{$like_active}}"><a href="#tab-4" data-toggle="tab">興味ありトーク一覧</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -212,7 +212,7 @@
 
                         <div class="tab-content" style="text-align: left">
                         @if ((int)$user->role === 1)
-                            <div class="tab-pane" id="tab-1">
+                            <div class="tab-pane {{$app_to_me_active}}" id="tab-1">
                                 <table class="table table-striped">
                                     <thead>
                                     <tr>
@@ -224,42 +224,42 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($my_apps as $my_app)
+                                    @foreach($apps_to_me as $app_to_me)
                                         <tr>
                                             <td>
-                                            @if ((int)$my_app->finished_flag === 1)
+                                            @if ((int)$app_to_me->finished_flag === 1)
                                                 <span class="label label-primary"><i class="fa fa-check"></i> 終了</span>
-                                            @elseif ((int)$my_app->paid_flag === 1)
+                                            @elseif ((int)$app_to_me->paid_flag === 1)
                                                 <span class="label label-primary"><i class="fa fa-check"></i> 支払い済</span>
-                                            @elseif ((int)$my_app->approved_flag === 1)
+                                            @elseif ((int)$app_to_me->approved_flag === 1)
                                                 <span class="label label-primary"><i class="fa fa-check"></i> 承認済</span>
                                             @else
                                                 <p>未承認</p>
                                             @endif
                                             </td>
                                             <td>
-                                               {{ $my_app->talk->title }}
+                                               {{ $app_to_me->talk->title }}
                                             </td>
                                             <td>
-                                               {{ $my_app->user->name }}
+                                               {{ $app_to_me->user->name }}
                                             </td>
                                             <td>
-                                            @if (empty($my_app->talk_date))
+                                            @if (empty($app_to_me->talk_date))
                                                  未定
                                             @else
-                                                {{ date('Y/m/j', strtotime($my_app->talk_date)) }} {{ date('H:i', strtotime($my_app->starting_time)) }}
+                                                {{ date('Y/m/j', strtotime($app_to_me->talk_date)) }} {{ date('H:i', strtotime($app_to_me->starting_time)) }}
                                             @endif
                                             </td>
                                             <td>
-                                                {{ $my_app->talk->talk_time }}分
+                                                {{ $app_to_me->talk->talk_time }}分
                                             </td>
                                             <td>
-                                            @if ((int)$my_app->approved_flag === 0)
+                                            @if ((int)$app_to_me->approved_flag === 0)
                                                 <button class="btn btn-primary btn-block m" data-toggle="modal" data-target="#approval-modal">承認する</button>
                                             @endif
                                             </td>
                                         </tr>
-                                        @if ((int)$my_app->approved_flag === 0)
+                                        @if ((int)$app_to_me->approved_flag === 0)
                                         <div class="modal" id="approval-modal" tabindex="-1">
                                             <div class="modal-dialog">
                                             <!-- 3.モーダルのコンテンツ -->
@@ -276,8 +276,8 @@
                                                         <!-- 5.モーダルのボディ -->
                                                             <div class="modal-body">
 
-                                                                <p>{{ $my_app->talk->title }}</p>
-                                                                <p>申込者:{{ $my_app->user->name }}</p>
+                                                                <p>{{ $app_to_me->talk->title }}</p>
+                                                                <p>申込者:{{ $app_to_me->user->name }}</p>
                                                                 <input type="date" name="date" class="form-control" required>
                                                                 <input type="time" name="time" class="form-control" required>
                                                             </div>
@@ -285,8 +285,8 @@
                                                             <div class="modal-footer">
                                                                 <p>申込者との時間の相談が終わっていない場合は、先に相談し予定を合わせてください。</p>
                                                                 <button type="button" class="btn btn-default" data-dismiss="modal">やめる</button>
-                                                                    <input name="talk_id" value="{{ $my_app->talk->id }}" type="hidden">
-                                                                    <input name="user_id" value="{{ $my_app->user_id }}" type="hidden">
+                                                                    <input name="talk_id" value="{{ $app_to_me->talk->id }}" type="hidden">
+                                                                    <input name="user_id" value="{{ $app_to_me->user_id }}" type="hidden">
                                                                     {{ csrf_field() }}
                                                                     <input type="submit" class="" value="承認する">
                                                             </div>
@@ -299,8 +299,11 @@
                                     @endforeach
                                     </tbody>        
                                 </table>
+                            <div id="pagenate">
+                                {!! $apps_to_me->render() !!}
                             </div>
-                            <div class="tab-pane" id="tab-2">
+                            </div>
+                            <div class="tab-pane {{$my_talk_active}}" id="tab-2">
                                 <table class="table table-striped">
                                     <thead>
                                     <tr>
@@ -329,12 +332,15 @@
                                     @endforeach
                                     </tbody>
                                 </table>
+                            <div id="pagenate">
+                                {!! $my_talks->render() !!}
+                            </div>
                             </div>
                             
 
                         @endif
 
-                        <div class="tab-pane" id="tab-3">
+                        <div class="tab-pane {{$app_active}}" id="tab-3">
                             <table class="table table-striped">
                                 <thead>
                                 <tr>
@@ -348,7 +354,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($user->applications as $app)
+                                @foreach($applications as $app)
                                     <tr>
                                         <td>
                                         @if ((int)$app->pivot->finished_flag === 1)
@@ -389,10 +395,12 @@
                                 @endforeach
                                 </tbody>        
                             </table>
-
+                        <div id="pagenate">
+                            {!! $applications->render() !!}
+                        </div>
                         </div>
 
-                         <div class="tab-pane" id="tab-4">
+                         <div class="tab-pane {{$like_active}}" id="tab-4">
                             <table class="table table-striped">
                                 <thead>
                                 <tr>
@@ -404,7 +412,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach ($user->likes as $like)
+                                @foreach ($likes as $like)
                                 <tr>
                                     <td>
                                        {{ $like->title }}
@@ -427,6 +435,9 @@
                                 @endforeach
                                 </tbody>
                             </table>
+                        <div id="pagenate">
+                            {!! $likes->render() !!}
+                        </div>
                         </div>
                         </div>
                         @if (Session::has('flash_message'))

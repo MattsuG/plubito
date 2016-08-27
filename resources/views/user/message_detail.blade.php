@@ -246,6 +246,9 @@
                         </div>
                         <hr>
                     @endforeach
+                    <div id="pagenate">
+                            {!! $mails->render() !!}
+                    </div>
                     </div>
                 </div>
             </div>            

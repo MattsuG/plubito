@@ -13,7 +13,7 @@ class Talk extends Model
 	}
 
 	public function applications() {
-		return $this->belongsToMany('App\User', 'applications')->withPivot('approved_flag', 'paid_flag', 'finished_flag', 'applied_at', 'approved_at', 'paid_at', 'finished_at');
+		return $this->belongsToMany('App\User', 'applications');
 
 	}
 
