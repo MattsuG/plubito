@@ -42,8 +42,8 @@
                         <div class="panel-heading">
                             <div class="panel-options">
                                 <ul class="nav nav-tabs">
-                                    <li class=""><a href="#tab-1" data-toggle="tab">受信</a></li>
-                                    <li class=""><a href="#tab-2" data-toggle="tab">送信</a></li>
+                                    <li class="{{$received_active}}"><a href="#tab-1" data-toggle="tab">受信</a></li>
+                                    <li class="{{$sent_active}}"><a href="#tab-2" data-toggle="tab">送信</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -51,7 +51,7 @@
                         <div class="panel-body">
 
                         <div class="tab-content" style="text-align: left">
-                        <div class="tab-pane" id="tab-1">
+                        <div class="tab-pane {{$received_active}}" id="tab-1">
                             <table class="table table-striped">
                                 <thead>
                                 <tr>
@@ -84,10 +84,12 @@
                                 @endforeach
                                 </tbody>        
                             </table>
-
+                        <div id="pagenate">
+                            {!! $received_mails->render() !!}
+                        </div>
                         </div>
 
-                         <div class="tab-pane" id="tab-2">
+                         <div class="tab-pane {{$sent_active}}" id="tab-2">
                             <table class="table table-striped">
                                 <thead>
                                 <tr>
@@ -120,6 +122,9 @@
                                 @endforeach
                                 </tbody>
                             </table>
+                        <div id="pagenate">
+                            {!! $sent_mails->render() !!}
+                        </div>
                         </div>
                         </div>
                         </div>

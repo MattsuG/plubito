@@ -25,7 +25,7 @@ use Auth;
 class MentorController extends Controller
 {
 
-  public function index() 
+  public function index()
   {
     $category_id = Input::get('category_id');
     $word     = Input::get('word');
@@ -44,6 +44,7 @@ class MentorController extends Controller
 
     $talks = $talks->orderBy('created_at', 'DESC')
     ->paginate(15);
+
     $categories = Category::All();
 
     return view("mentor.index", compact('talks', 'categories', 'category_id', 'word'));
@@ -267,11 +268,12 @@ class MentorController extends Controller
           {
             $talk->likes()->attach(Auth::user()->id);
             $talk->increment('likes_count');
-            \Session::flash('flash_message', '興味あり！しました'); 
+            \Session::flash('flash_message', '興味あり！しました');
           }
       }
 
       return redirect('mentor/'.$id);
+      exit();
   }
 }
 

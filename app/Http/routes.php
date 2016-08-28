@@ -14,7 +14,7 @@
 
 	 
 
-Route::group(['routeMiddleware' => 'guest'], function() {
+Route::group(['middleware' => 'guest'], function() {
 
 	Route::get('/', 'TopPageController@index');
 	Route::get('/terms', 'TopPageController@terms');
@@ -26,7 +26,7 @@ Route::group(['routeMiddleware' => 'guest'], function() {
 	Route::get('/becometalker', 'TopPageController@becometalker');
 });
 
-Route::group(['middlewareGroups' => 'web'], function() {
+Route::group(['middleware' => 'web'], function() {
 	// ログイン
 	Route::get('auth/login', 'Auth\AuthController@getLogin');
 	Route::post('auth/login', 'Auth\AuthController@postLogin');
@@ -38,9 +38,9 @@ Route::group(['middlewareGroups' => 'web'], function() {
 	Route::get('auth/confirm/{token}', 'Auth\AuthController@getConfirm');
 });
 
-Route::group(['routeMiddleware' => 'auth'], function () {
+Route::group(['middleware' => 'auth'], function () {
 
-	Route::group(['middlewareGroups' => 'web'], function () {
+	Route::group(['middleware' => 'web'], function () {
 		//トーク関係ページ
 		Route::get('mentor/like/{id}', 'MentorController@like');
 		Route::post('mentor/apply', 'MentorController@apply');
