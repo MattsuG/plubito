@@ -1,4 +1,4 @@
-@extends('common.layout2')
+@extends('common.layout3')
 @section('TitleAndCss')
 <title>TopPage</title>
 
@@ -6,9 +6,7 @@
 <link rel="stylesheet" href="{{{asset('/assets/font-awesome/css/font-awesome.min.css')}}}">
 <link rel="stylesheet" href="{{{asset('/assets/css/animate.css')}}}">
 <link rel="stylesheet" href="{{{asset('/assets/css/style.css')}}}">
-
 @stop
-
 @section('content')
     <div class="middle-box text-center loginscreen animated fadeInDown">
         <div>

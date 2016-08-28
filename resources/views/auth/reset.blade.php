@@ -1,5 +1,5 @@
 
-@extends('common.layout2')
+@extends('common.layout3')
 @section('TitleAndCss')
 <title>show.php | ユーザー詳細</title>
 
