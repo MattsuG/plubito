@@ -24,10 +24,10 @@ class TalkRequest extends Request
     public function rules()
     {
         return [
-            'title' => 'required|max:50',
+            'title' => 'required|string|max:50',
             'category' => 'required|integer',
             'price' => 'required|integer',
-            'detail' => 'required|max:1000',
+            'detail' => 'required|string|max:1000',
             'time' => 'required|integer',
             'pic0' => 'mimes:jpeg,png|max:5120',
             'pic1' => 'mimes:jpeg,png|max:5120',

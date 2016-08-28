@@ -59,7 +59,7 @@ class User extends Authenticatable
     }
 
     public function applications() {
-        return $this->belongsToMany('App\Talk', 'applications')->withPivot('approved_flag', 'paid_flag', 'finished_flag', 'applied_at', 'approved_at', 'paid_at', 'finished_at');
+        return $this->belongsToMany('App\Talk', 'applications')->withPivot('approved_flag', 'paid_flag', 'user_finished_flag', 'mentor_finished_flag', 'applied_at', 'approved_at', 'paid_at', 'finished_at');
     }
 
     public function appsToMe() {

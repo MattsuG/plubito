@@ -221,13 +221,15 @@
                                         <th>申込者</th>
                                         <th>開始時間</th>
                                         <th>所要時間</th>
+                                        <th></th>
+                                        <th></th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     @foreach($apps_to_me as $app_to_me)
                                         <tr>
                                             <td>
-                                            @if ((int)$app_to_me->finished_flag === 1)
+                                            @if ((int)$app_to_me->user_finished_flag === 1 && (int)$app_to_me->mentor_finished_flag === 1)
                                                 <span class="label label-primary"><i class="fa fa-check"></i> 終了</span>
                                             @elseif ((int)$app_to_me->paid_flag === 1)
                                                 <span class="label label-primary"><i class="fa fa-check"></i> 支払い済</span>
@@ -254,8 +256,17 @@
                                                 {{ $app_to_me->talk->talk_time }}分
                                             </td>
                                             <td>
+                                                <form method="post" action="{{url('/user/message/'.$app_to_me->talk->id)}}">
+                                                    <input type="hidden" name="receiver_id" value="{{$app_to_me->user->id}}">
+                                                    <input type="submit" class="btn" value="メッセージを送る">
+                                                    {{ csrf_field() }}
+                                                </form>
+                                            </td>
+                                            <td>
                                             @if ((int)$app_to_me->approved_flag === 0)
                                                 <button class="btn btn-primary btn-block m" data-toggle="modal" data-target="#approval-modal">承認する</button>
+                                            @elseif ((int)$app_to_me->user_finished_flag === 1 && (int)$app_to_me->mentor_finished_flag === 1)
+                                                <!-- 終了ボタン -->
                                             @endif
                                             </td>
                                         </tr>
@@ -351,13 +362,14 @@
                                     <th>所要時間</th>
                                     <th>話し手</th>
                                     <th></th>
+                                    <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($applications as $app)
                                     <tr>
                                         <td>
-                                        @if ((int)$app->pivot->finished_flag === 1)
+                                        @if ((int)$app->pivot->user_finished_flag === 1 && $app->pivot->mentor_finished_flag === 1)
                                             <span class="label label-primary"><i class="fa fa-check"></i> 終了</span>
                                         @elseif ((int)$app->pivot->paid_flag === 1)
                                             <span class="label label-primary"><i class="fa fa-check"></i> 支払い済</span>
@@ -390,6 +402,13 @@
                                         </td>
                                         <td>
                                             <a href="{{ url('/mentor/'.$app->id) }}">詳細を見る</a>
+                                        </td>
+                                        <td>
+                                            @if ((int)$app->pivot->approved_flag === 1 && (int)$app->pivot->paid_flag === 0)
+                                                <!-- PayPalボタン -->
+                                            @elseif ((int)$app->pivot->paid_flag === 1)
+                                                <!-- 終了ボタン -->
+                                            @endif
                                         </td>
                                     </tr>
                                 @endforeach

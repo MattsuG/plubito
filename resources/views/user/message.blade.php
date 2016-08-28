@@ -242,7 +242,11 @@
                                             <p>{{ $received_mail->body }}</p>
                                         </td>
                                         <td>
-                                            <a href="{{ url('/user/message/'.$received_mail->talk_id) }}">詳細を見る</a>
+                                            <form method="post" action="{{url('/user/message/'.$received_mail->talk->id)}}">
+                                                <input type="hidden" name="receiver_id" value="{{$received_mail->sender->id}}">
+                                                <input type="submit" value="詳細を見る">
+                                                {{ csrf_field() }}
+                                            </form>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -280,7 +284,11 @@
                                        <p>{{ $sent_mail->body }}</p>
                                     </td>
                                     <td>
-                                        <a href="{{ url('/user/message/'.$sent_mail->talk_id) }}">詳細を見る</a>
+                                        <form method="post" action="{{url('/user/message/'.$sent_mail->talk->id)}}">
+                                            <input type="hidden" name="receiver_id" value="{{$sent_mail->receiver->id}}">
+                                            <input type="submit" value="詳細を見る">
+                                            {{ csrf_field() }}
+                                        </form>
                                     </td>
                                 </tr>
                                 @endforeach

@@ -47,6 +47,7 @@ Route::group(['middleware' => 'auth'], function () {
 		Route::get('user/edit', 'UserController@edit');
 		Route::get('user/message', 'UserController@getMessage');
 		Route::get('user/message/{id}', 'UserController@getMessageDetail');
+		Route::post('user/message/{id}', 'UserController@getMessageDetail');
 		Route::post('user/message', 'UserController@postMessage');
 		Route::get('/user/show/{id}', 'UserController@show');
 		Route::post('user', 'UserController@update');

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use App\Http\Requests\UserRequest;
+
 use Image;
 
 use App\User;
@@ -101,7 +103,8 @@ class UserController extends Controller
     }
 
     //editからpostで飛んできたときの処理
-    public function update(Request $request, $id) {
+    public function update(UserRequest $request, $id) {
+
         $user = User::findOrFail($id);
         $user->name = $request->name;
         $user->place = $request->place; 
@@ -144,6 +147,10 @@ class UserController extends Controller
     }
 
     public function getMessage(Request $request) {
+        $this->validate($request, [
+          's_page' => 'integer',
+        ]);
+
         $sent_mails = Mail::where('sender_id', Auth::user()->id)
         ->paginate(10);
         $sent_mails->setPageName('s_page');
@@ -164,7 +171,7 @@ class UserController extends Controller
         return view('user/message', compact('sent_mails', 'received_mails', 'received_active', 'sent_active'));
     }
 
-    public function getMessageDetail($id) {
+    public function getMessageDetail(Request $request, $id) {
         $talk = Talk::FindOrFail($id);
         //idが$idであるトークに結びついた、自分に関連するメールを降順で全件取得する
         $query = Mail::where('talk_id', $id);
@@ -174,24 +181,14 @@ class UserController extends Controller
                 })
         ->orderBy('sent_at', 'DESC')
         ->paginate(10);
-        if (count($mails) < 1 && (int)$talk->mentor_id === (int)Auth::user()->id) {
-
-        }
-        //受信主が自分のメール1件のみ取得(送信先のid取得用)
-        $mail = Mail::where('receiver_id', Auth::user()->id)
-        ->where('talk_id', $id)
-        ->first();
-        //送信先のidをこのトークのメンターidと仮定
         $send_to_id = $talk->mentor_id;
-        //自分がこのトークのメンターだったら
-        if ((int)$send_to_id === (int)Auth::user()->id) {
-            //receiverが自分であるメールのsenderが、自分から見た送信相手になる
-            $send_to_id = $mail->sender_id;
-            //このトークに対する
-            if (!$talk->applications->contains('user_id', $send_to_id)) {
-                return redirect('user/message');
-                die();
-        }   
+
+        if (isset($request->receiver_id)) {
+            $send_to_id = $request->receiver_id;
+        }
+        //メンターはreceiver_idなしでは送信できないのでリダイレクト
+        elseif ((int)$talk->mentor_id === (int)Auth::user()->id) {
+            return redirect('user/message');
         }
 
         $receiver = User::find($send_to_id);
@@ -206,6 +203,7 @@ class UserController extends Controller
           'receiver_id' => 'required|integer',
           'talk_id' => 'required|integer'
         ]);
+
         $mail = new Mail();
         $mail->sender_id = Auth::user()->id;
         $mail->receiver_id = $request->receiver_id;
