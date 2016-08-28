@@ -26,9 +26,9 @@ class TalkRequest extends Request
         return [
             'title' => 'required|string|max:50',
             'category' => 'required|integer',
-            'price' => 'required|integer',
+            'price' => 'integer',
             'detail' => 'required|string|max:1000',
-            'time' => 'required|integer',
+            'time' => 'integer',
             'pic0' => 'mimes:jpeg,png|max:5120',
             'pic1' => 'mimes:jpeg,png|max:5120',
         ];
