@@ -94,13 +94,13 @@
                                             <td>
                                                 <form method="post" action="{{url('/user/message/'.$app_to_me->talk->id)}}">
                                                     <input type="hidden" name="receiver_id" value="{{$app_to_me->user->id}}">
-                                                    <input type="submit" class="btn" value="メッセージを送る">
+                                                    <input type="submit" class="btn btn-sm" value="メッセージ">
                                                     {{ csrf_field() }}
                                                 </form>
                                             </td>
                                             <td>
                                             @if ((int)$app_to_me->approved_flag === 0)
-                                                <button class="btn btn-primary btn-block m" data-toggle="modal" data-target="#approval-modal">承認する</button>
+                                                <button class="btn btn-sm" data-toggle="modal" data-target="#approval-modal">承認</button>
                                             @elseif ((int)$app_to_me->user_finished_flag === 1 && (int)$app_to_me->mentor_finished_flag === 1)
                                                 <!-- 終了ボタン -->
                                             @endif
