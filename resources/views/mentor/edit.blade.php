@@ -36,7 +36,7 @@
                             <input type="hidden" name="MAX_FILE_SIZE" value="10485760">
 
                             <div class="form-group"><label class="col-sm-2 control-label">タイトル（＊必須）</label>
-                                <div class="col-sm-10"><input type="text" name="title" id="title" placeholder="最大５０文字" class="form-control" value="{{ $talk->title }}"></div>
+                                <div class="col-sm-10"><input type="text" name="title" id="title" placeholder="最大５０文字" class="form-control" value="{{ old('title') or $talk->title }}"></div>
                                 <p id="title_count"></p>
                             </div>
 
@@ -45,7 +45,7 @@
                                     <select name="category" id="category" class="form-control">
                                         <option value="">カテゴリーを選択</option>
                                         @foreach ($categories as $category)
-                                            <option value="{{ $category->id }}" @if ($talk->category_id === $category->id) selected @endif>{{ $category->category_name }}</option>
+                                            <option value="{{  $category->id }}" @if ((int)$talk->category_id === (int)$category->id) selected @endif>{{ $category->category_name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -55,7 +55,7 @@
 
                             <div class="form-group"><label class="col-sm-2 control-label">詳細（＊必須）</label>
                                 <div class="col-sm-10">
-                                    <textarea name="detail" id="detail" class="form-control" rows="20" required placeholder="最大1000文字">{{ $talk->detail }}</textarea>
+                                    <textarea name="detail" id="detail" class="form-control" rows="20" required placeholder="最大1000文字">{{ old('detail') or $talk->detail }}</textarea>
                                     <p id="detail_count"></p>
                                     <p>※時間相談のやり取りをスムーズにするため、この詳細欄にあなたがトークをすることができる曜日や時間帯を書くことをオススメします。</p>
                                 </div>
