@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class TalkRequest extends Request
+class UserRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,21 +25,21 @@ class TalkRequest extends Request
     {
         return [
           'name' => 'required|string|max:20',
-          'place' => 'string',
-          'introduction' => 'string',
-          'vision' => 'string',
-          'current_job' => 'string',
-          'current_position' => 'string',
-          'current_detail' => 'string',
-          'past_job' => 'string',
-          'past_position' => 'string',
-          'past_detail' => 'string',
-          'latest_school' => 'string',
-          'latest_major' => 'string',
-          'latest_school_period' => 'string',
-          'other_school' => 'string',
-          'other_major' => 'string',
-          'other_school_period' => 'string',
+          'place' => 'string|max:5120',
+          'introduction' => 'string|max:5120',
+          'vision' => 'string|max:5120',
+          'current_job' => 'string|max:5120',
+          'current_position' => 'string|max:5120',
+          'current_detail' => 'string|max:5120',
+          'past_job' => 'string|max:5120',
+          'past_position' => 'string|max:5120',
+          'past_detail' => 'string|max:5120',
+          'latest_school' => 'string|max:5120',
+          'latest_major' => 'string|max:5120',
+          'latest_school_period' => 'string|max:5120',
+          'other_school' => 'string|max:5120',
+          'other_major' => 'string|max:5120',
+          'other_school_period' => 'string|max:5120',
           'pic3' => 'mimes:jpeg,png|max:5120',
         ];
     }
