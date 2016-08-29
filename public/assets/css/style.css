@@ -54,6 +54,12 @@ h5 {
   margin-right: 5%;
 }
 
+.name{
+  padding-left: 0px;
+  padding-right: 0px;
+  margin-bottom: 15px;
+}
+
 .terms{
   background-color: gray;
   text-align: left;

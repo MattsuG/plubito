@@ -17,10 +17,20 @@
             
                 {{-- nameフィールド --}}
                 <div class="form-group">
-                     @if ($errors->has('name'))
-                    <div class="errors"><p>{{ $errors->first('name') }}</p></div>
-                    @endif
-                    <input id="name" type="text" name="name" class="form-control" placeholder="名前" required value="{{ old('name') }}">
+                    <div class="col-md-6 name">
+                         @if ($errors->has('name'))
+                        <div class="errors"><p>{{ $errors->first('name') }}</p></div>
+                        @endif
+                        <input id="name" type="text" name="name" class="form-control" placeholder="姓" required value="{{ old('name') }}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-6 name">
+                         @if ($errors->has('name'))
+                        <div class="errors"><p>{{ $errors->first('name') }}</p></div>
+                        @endif
+                        <input id="name" type="text" name="name" class="form-control" placeholder="名" required value="{{ old('name') }}">
+                    </div>
                 </div>
 
                 {{-- emailフィールド --}}
