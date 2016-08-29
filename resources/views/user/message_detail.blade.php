@@ -73,7 +73,7 @@
                     @foreach($mails as $mail)
                         <div>
                             <div>
-                                <img alt="profile_image" class="img-circle" src="{{ secure_asset($mail->sender->profile_picture_path) }}">
+                                <img alt="profile_image" class="img-circle" src="{{ asset($mail->sender->profile_picture_path) }}">
                                 To {{$mail->receiver->name}} From {{ $mail->sender->name }}
                                 {{ $mail->sent_at }}
                             </div>
