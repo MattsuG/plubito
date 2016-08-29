@@ -97,13 +97,20 @@ class UserController extends Controller
     //自分のshowページ、もしくはサイドバーから飛んできたときの処理
     //sessionに格納されたuseridと一致するuserデータをDBより取得 viewに渡す
     public function edit($id) {
+
         $user = User::findOrFail($id);
+
+        if ((int)$user->id !== (int)Auth::user()->id) {
+          return redirect("mentor");
+          die();
+        }
         // dd($user->toArray());//dump die
         return view("user/edit")->with('user',$user);
     }
 
     //editからpostで飛んできたときの処理
     public function update(UserRequest $request, $id) {
+         
 
         $user = User::findOrFail($id);
         $user->name = $request->name;
