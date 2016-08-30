@@ -32,7 +32,7 @@
                     <div class="ibox-content">
                         <form method="post" class="form-horizontal" action="{{ url('/user/message') }}">
                             <h2>{{ $talk->title }} {{ $talk->price }}円/{{ $talk->talk_time }}分</h2>
-                            <h2>送信先:{{ $receiver->name }}</h2>
+                            <h2>送信先:{{ $receiver->lastname }}&nbsp{{ $receiver->firstname }}</h2>
 
                             <div class="form-group"><label class="col-sm-2 control-label">本文（＊必須）</label>
                                 <div class="col-sm-10">
@@ -74,7 +74,7 @@
                         <div>
                             <div>
                                 <img alt="profile_image" class="img-circle" src="{{ asset($mail->sender->profile_picture_path) }}">
-                                To {{$mail->receiver->name}} From {{ $mail->sender->name }}
+                                To {{$mail->receiver->lastname}}&nbsp{{$mail->receiver->firstname}} From {{ $mail->sender->lastname }}&nbsp{{$mail->sender->firstname}}
                                 {{ $mail->sent_at }}
                             </div>
                             <div>

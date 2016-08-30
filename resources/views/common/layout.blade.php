@@ -27,7 +27,7 @@
                         <a class="dropdown-toggle" href="#">
                             <span class="clear"> 
                                 <span class="block m-t-xs"> 
-                                    <strong class="font-bold">{{ Auth::user()->name }}</strong>
+                                    <strong class="font-bold">{{ Auth::user()->lastname }}&nbsp{{ Auth::user()->firstname }}</strong>
                                 </span> 
                                 <span class="text-muted text-xs block">{{ Auth::user()->introduction }}</span>
                             </span>

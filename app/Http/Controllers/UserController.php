@@ -113,7 +113,8 @@ class UserController extends Controller
          
 
         $user = User::findOrFail($id);
-        $user->name = $request->name;
+        $user->lastname = $request->lastname;
+        $user->firstname = $request->firstname;
         $user->place = $request->place; 
         $user->introduction = $request->introduction;
         $user->vision = $request->vision;

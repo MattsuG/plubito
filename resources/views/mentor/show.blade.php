@@ -37,7 +37,7 @@
                             <img alt="image" class="img-circle" src="{{ $talk->mentor->profile_picture_path }}">
                         </div>
                         <div class="ibox-content profile-content">
-                            <h4><strong>{{ $talk->mentor->name }}</strong></h4>
+                            <h4><strong>{{ $talk->mentor->lastname }}&nbsp{{ $talk->mentor->firstname }}</strong></h4>
                             <p><i class="fa fa-map-marker"></i> Seoul, S.Korea</p>
                             <h5>
                                 自己紹介

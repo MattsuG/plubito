@@ -48,7 +48,8 @@
                              <hr>
 
                             <div class="form-group"><label class="col-sm-2 control-label">お名前</label>
-                                <div class="col-sm-10"><input type="text" name="name" placeholder="お名前" value="{{ old('name', $user->name) }}" class="form-control"></div>
+                                <div class="col-sm-5"><input type="text" name="lastname" placeholder="姓" value="{{ old('lastname', $user->lastname) }}" class="form-control"></div>
+                                <div class="col-sm-5"><input type="text" name="firstname" placeholder="名" value="{{ old('firstname', $user->firstname) }}" class="form-control"></div>
                             </div>
                             <div class="form-group"><label class="col-sm-2 control-label">現在地</label>
                                 <div class="col-sm-10"><input type="text" name="place" placeholder="現在地" value="{{ old('place', $user->place) }}" class="form-control"></div>

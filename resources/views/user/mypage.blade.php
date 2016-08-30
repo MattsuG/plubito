@@ -79,7 +79,7 @@
                                                {{ $app_to_me->talk->title }}
                                             </td>
                                             <td>
-                                               {{ $app_to_me->user->name }}
+                                               {{ $app_to_me->user->lastname }}&nbsp{{ $app_to_me->user->firstname }}
                                             </td>
                                             <td>
                                             @if (empty($app_to_me->talk_date))
@@ -124,7 +124,7 @@
                                                             <div class="modal-body">
 
                                                                 <p>{{ $app_to_me->talk->title }}</p>
-                                                                <p>申込者:{{ $app_to_me->user->name }}</p>
+                                                                <p>申込者:{{ $app_to_me->user->lastname }}{{ $app_to_me->user->firstname }}</p>
                                                                 <input type="date" name="date" class="form-control" required>
                                                                 <input type="time" name="time" class="form-control" required>
                                                             </div>
@@ -233,7 +233,7 @@
                                         </td>
                                         <td>
                                         <p class="small">
-                                            {{ $app->mentor->name }}
+                                            {{ $app->mentor->lastname }}&nbsp{{ $app->mentor->firstname }}
                                         </p>
                                         </td>
                                         <td>
@@ -280,7 +280,7 @@
                                     </td>
                                     <td>
                                     <p class="small">
-                                        {{ $like->mentor->name }}
+                                        {{ $like->mentor->lastname }}&nbsp{{ $like->mentor->firstname }}
                                     </p>
                                     </td>
                                     <td>

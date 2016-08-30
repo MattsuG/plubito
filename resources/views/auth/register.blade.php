@@ -21,7 +21,7 @@
                          @if ($errors->has('name'))
                         <div class="errors"><p>{{ $errors->first('name') }}</p></div>
                         @endif
-                        <input id="name" type="text" name="name" class="form-control" placeholder="姓" required value="{{ old('name') }}">
+                        <input id="name" type="text" name="lastname" class="form-control" placeholder="姓" required value="{{ old('lastname') }}">
                     </div>
                 </div>
                 <div class="form-group">
@@ -29,7 +29,7 @@
                          @if ($errors->has('name'))
                         <div class="errors"><p>{{ $errors->first('name') }}</p></div>
                         @endif
-                        <input id="name" type="text" name="name" class="form-control" placeholder="名" required value="{{ old('name') }}">
+                        <input id="name" type="text" name="firstname" class="form-control" placeholder="名" required value="{{ old('firstname') }}">
                     </div>
                 </div>
 

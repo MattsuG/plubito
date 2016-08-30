@@ -69,7 +69,7 @@
                                             <img alt="profile_image" class="img-circle" src="{{ asset($received_mail->sender->profile_picture_path) }}">
                                         </td>
                                         <td>
-                                            {{ $received_mail->sender->name }}
+                                            {{ $received_mail->sender->lastname }}&nbsp{{ $received_mail->sender->firstname }}
                                         </td>
                                         <td>
                                             {{ $received_mail->talk->title }}
@@ -111,7 +111,8 @@
                                         <img alt="profile_image" class="img-circle" src="{{ asset($sent_mail->receiver->profile_picture_path) }}">
                                     </td>
                                     <td>
-                                        {{ $sent_mail->receiver->name }}
+                                        {{ $sent_mail->receiver->lastname }}
+                                        {{ $sent_mail->receiver->firstname }}
                                     </td>
                                     <td>
                                        {{ $sent_mail->talk->title }}

@@ -24,7 +24,8 @@ class UserRequest extends Request
     public function rules()
     {
         return [
-          'name' => 'required|string|max:20',
+          'lastname' => 'required|string|max:20',
+          'firstname' => 'required|string|max:20',
           'place' => 'string|max:5120',
           'introduction' => 'string|max:5120',
           'vision' => 'string|max:5120',

@@ -27,7 +27,7 @@
             <div class="col-md-4">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <h5>{{ $user->name }}さんのプロフィール</h5>
+                        <h5>{{ $user->lastname }}&nbsp{{ $user->firstname }}さんのプロフィール</h5>
                     </div>
                     <div>
                         <div class="ibox-content no-padding border-left-right">
