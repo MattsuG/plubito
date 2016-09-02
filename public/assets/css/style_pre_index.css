@@ -241,16 +241,16 @@ ul.navbar-nav {
 .navbar-brand {
 	width: 60px;
 	height: 50px;
-	background: url(../img/plus.png) left center no-repeat;
+	background: url(../img/plus0.png) left center no-repeat;
 	text-indent: -99999px;
 }
 
-.navbar-brand0 {
+/*.navbar-brand0 {
 	width: 60px;
 	height: 50px;
 	background: url(../img/plus0.png) left center no-repeat;
 	text-indent: -99999px;
-}
+}*/
 
 
 /***** Top content *****/
@@ -436,7 +436,7 @@ ul.navbar-nav {
 
 .pricing-box { padding-top: 30px; padding-bottom: 70px; }
 
-.pricing-box-inner { border: 1px solid #eee; -moz-border-radius: 2px; -webkit-border-radius: 4px; border-radius: 4px; }
+.pricing-box-inner { border: 1px solid #eee; -moz-border-radius: 2px; -webkit-border-radius: 0px; border-radius: 0px; }
 
 .pricing-box h3 { margin-top: 0; margin-bottom: 0; padding: 25px 20px 10px 20px; color: #555; }
 
