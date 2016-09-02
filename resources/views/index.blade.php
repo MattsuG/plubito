@@ -51,7 +51,10 @@
 				<div class="text">
 					<div class="description wow fadeInLeftBig">
 						<p>
-							その進路のこと話します。
+							+ヒトα版へようこそ<br><br>
+							このサービスは進路情報を個人間でシェアするためのプラットフォームです。<br>
+							留学、進学、起業、フリーランス、就職活動、インターンなどでのあなたの経験をトークとして登録し、その経験を聞きたい人から申し込みが来たら有料で話すものです。<br>
+							本サイトは現在”トーク”を登録していただける方のみへ公開しています。
 						</p>
 					</div>
 				</div>
@@ -83,10 +86,8 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-12 how-it-works section-description wow fadeIn">
-				<h2>+ヒトへようこそ</h2>
+				<h2>使い方</h2>
 				<p>
-					＋ヒトは、進路に関わる情報を自分のネットワークを越えて個人から入手できるようにするマッチングサービスです。
-					<br>直接話すことで、個人が経験した実践的な情報を効率良く聞くことができます。</p>
 					<div class="divider-1 wow fadeInUp"><span></span></div>
 			</div>
 		</div>

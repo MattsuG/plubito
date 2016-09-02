@@ -6,14 +6,13 @@
 }
 
 body {
-    font-family: 'Hiragino Sans';
+    font-family: 'HiraginoSans-W0';
     font-size: 14px;
     font-weight: 300;
     color: #000;
     line-height: 30px;
     text-align: center;
 }
-
 
 strong { font-weight: 500; }
 
@@ -25,7 +24,7 @@ a, a:hover, a:focus {
 
 h1, h2 {
 	margin-top: 10px;
-	font-size: 38px;
+	font-size: 25px;
     font-weight: 100;
     color: #555;
     line-height: 50px;
@@ -258,18 +257,16 @@ ul.navbar-nav {
 
 .inner-bg { padding: 10px 0 20px 0; }
 
-.top-content .text {color: #000000; font-size: 45px;  margin-left: 45%; @font-face {
-  font-family: "Hiragino Sans";
-  src: local(HiraginoSans-W0);
-  font-weight: 100;}; }
+.top-content .text {color: #000000; font-size: 18px; text-align: left;  margin-left: 10%; margin-right: 10%; @font-face {
+  font-family: "HiraginoSans-W0";
+  font-weight: 100;}}
 
-.top-content .text h1 { color: #fff; font-size: 70px; @font-face {
-  font-family: "Hiragino Sans";
-  src: local(HiraginoSans-W0);
+.top-content .text h1 { color: #fff; font-size: 18px; @font-face {
+  font-family: "HiraginoSans-W0";
   font-weight: 100;}}
 
 
-.top-content .description { margin: 60px 0 10px 0; writing-mode: vertical-rl;}
+.top-content .description { margin: 60px 0 10px 0;}
 .top-content .description p { opacity: 1.0;}
 
 .subscribe { margin-top: 35px; }
