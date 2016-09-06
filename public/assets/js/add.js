@@ -30,7 +30,7 @@
          fr.readAsDataURL(file);
        } else {
          $('#' + previewId).attr('src', '').css('display','none');
-         $('#' + labelId).text('You can choose only jpg or png file');
+         $('#' + labelId).text('画像はjpgかpngで指定してください');
        }
        //display: none;で隠したinputタグのfile情報をphotoCoverに渡す
          $('#' + photoCoverId).val($('#' + id).val().replace("C:\\fakepath\\", ""));

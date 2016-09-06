@@ -62,7 +62,7 @@ class UserController extends Controller
                 $img = Image::make($file3->getRealPath());
                 chmod($path, 0777);
                 $img->resize(800, 600)->save($path.'/'.$filename);
-                chmod($path, 0744);
+                chmod($path, 0644);
                 $pic3_path = '/'.$path.'/'.$filename;
             }
             else
