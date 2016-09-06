@@ -13,7 +13,7 @@ class CreateTalksTable extends Migration
     public function up()
     {
         Schema::create('talks', function (Blueprint $table) {
-            $table->primary('id');
+            $table->increments('id');
             $table->integer('mentor_id');
             $table->string('title', 255);
             $table->integer('category_id');
