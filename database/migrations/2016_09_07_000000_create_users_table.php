@@ -17,6 +17,7 @@ class CreateUsersTable extends Migration
             $table->string('firstname', 255);
             $table->string('lastname', 255);
             $table->integer('gender');
+            $table->string('email', 255);
             $table->string('profile_picture_path', 255);
             $table->string('introduction', 1023);
             $table->date('birthday');
