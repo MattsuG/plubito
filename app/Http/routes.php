@@ -26,7 +26,7 @@ Route::group(['middleware' => 'guest'], function() {
 	Route::get('/becometalker', 'TopPageController@becometalker');
 });
 
-Route::group(['middleware' => 'web'], function() {
+Route::group(['middlewareGroups' => 'web'], function() {
 	// ログイン
 	Route::get('auth/login', 'Auth\AuthController@getLogin');
 	Route::post('auth/login', 'Auth\AuthController@postLogin');
@@ -40,7 +40,7 @@ Route::group(['middleware' => 'web'], function() {
 
 Route::group(['middleware' => 'auth'], function () {
 
-	Route::group(['middleware' => 'web'], function () {
+	Route::group(['middlewareGroups' => 'web'], function () {
 		//トーク関係ページ
 		Route::get('mentor/like/{id}', 'MentorController@like');
 		Route::post('mentor/apply', 'MentorController@apply');
