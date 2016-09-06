@@ -11,7 +11,7 @@
 @stop
 
 @section('content')
-<<<<<<< HEAD
+
 <div id="wrapper">
     <nav class="navbar-default navbar-static-side" role="navigation">
         <div class="sidebar-collapse">
@@ -78,7 +78,6 @@
             </nav>
         </div>
 
-=======
         <div class="row wrapper border-bottom white-bg page-heading inbox-title">
             <div class="col-lg-9ƒ">
                 <h2>トーク一覧</h2>
@@ -89,7 +88,7 @@
                 </ol>
             </div>
         </div>
->>>>>>> 67d23216230c596fd91b94e25a07f4e5982633f3
+        
         <div class="row white-bg">
             <form method="get" role="search" class="navbar-form" action="">
                 <div class="form-group">
