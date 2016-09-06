@@ -13,10 +13,8 @@ class CreateApplicationsTable extends Migration
     public function up()
     {
         Schema::create('applications', function (Blueprint $table) {
-            $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->integer('talk_id')->unsigned();
-            $table->foreign('talk_id')->references('id')->on('talks');
+            $table->integer('user_id');
+            $table->integer('talk_id');
             $table->tinyInteger('approved_flag');
             $table->tinyInteger('paid_flag');
             $table->tinyInteger('user_finished_flag');

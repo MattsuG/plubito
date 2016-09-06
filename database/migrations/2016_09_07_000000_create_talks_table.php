@@ -14,8 +14,7 @@ class CreateTalksTable extends Migration
     {
         Schema::create('talks', function (Blueprint $table) {
             $table->primary('id');
-            $table->integer('mentor_id')->unsigned();
-            $table->foreign('mentor_id')->references('id')->on('users');
+            $table->integer('mentor_id');
             $table->varchar('title', 255);
             $table->integer('category_id');
             $table->integer('price');

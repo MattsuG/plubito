@@ -13,10 +13,8 @@ class CreateMailsTable extends Migration
     public function up()
     {
         Schema::create('mails', function (Blueprint $table) {
-            $table->integer('sender_id')->unsigned();
-            $table->foreign('sender_id')->references('id')->on('users');
-            $table->integer('receiver_id')->unsigned();
-            $table->foreign('receiver_id')->references('id')->on('users');
+            $table->integer('sender_id');
+            $table->integer('receiver_id');
             $table->integer('talk_id');
             $table->varchar('body', 1023);
             $table->timestamp('sent_ad');
