@@ -77,7 +77,7 @@ class MentorController extends Controller
           $img = Image::make($file0->getRealPath());
             chmod($path, 0777);
           $img->resize(800, 600)->save($path.'/'.$filename);
-            chmod($path, 0744);
+            chmod($path, 0644);
           $pic0_path = '/'.$path.'/'.$filename;
       }
       else
@@ -95,7 +95,7 @@ class MentorController extends Controller
             $img = Image::make($file0->getRealPath());
             chmod($path, 0777);
             $img->resize(800, 600)->save($path.'/'.$filename);
-            chmod($path, 0744);
+            chmod($path, 0644);
             $pic1_path = '/'.$path.'/'.$filename;          
         }
         else
@@ -177,7 +177,7 @@ class MentorController extends Controller
           $img = Image::make($file0->getRealPath());
             chmod($path, 0777);
           $img->resize(800, 600)->save($path.'/'.$filename);
-            chmod($path, 0744);
+            chmod($path, 0644);
           $pic0_path = '/'.$path.'/'.$filename;
       
       }
@@ -203,7 +203,7 @@ class MentorController extends Controller
           $img = Image::make($file0->getRealPath());
             chmod($path, 0777);
           $img->resize(800, 600)->save($path.'/'.$filename);
-            chmod($path, 0744);
+            chmod($path, 0644);
           $pic1_path = '/'.$path.'/'.$filename;          
         }
         elseif ($request->pic1_delete !== '1')
