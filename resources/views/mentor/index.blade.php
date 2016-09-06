@@ -127,9 +127,6 @@
             </div>
         </div>
 
-<strong class="font-bold">{{ var_dump(Auth::user()) }}</strong>
-
-
 @stop
 
 @section('Js')
