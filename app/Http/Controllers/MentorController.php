@@ -6,7 +6,11 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests\TalkRequest;
 
-use App;
+use App\Talk;
+
+use App\User;
+
+use App\Category;
 
 use Image;
 
@@ -16,19 +20,17 @@ use Input;
 
 use File;
 
-use DB;
-
 use Auth;
 
 class MentorController extends Controller
 {
 
-  public function index() 
+  public function index()
   {
     $category_id = Input::get('category_id');
     $word     = Input::get('word');
 
-    $query = App\Talk::query();
+    $query = Talk::query();
 
     $talks = $query->with('category');
 
@@ -42,20 +44,29 @@ class MentorController extends Controller
 
     $talks = $talks->orderBy('created_at', 'DESC')
     ->paginate(15);
-    $categories = App\Category::All();
+
+    $categories = Category::All();
 
     return view("mentor.index", compact('talks', 'categories', 'category_id', 'word'));
   }
 
   public function create()
   {
-    $categories = App\Category::All();
+    if ((int)Auth::user()->role === 0) {
+      redirect("mentor/index");
+      die();
+    }
+
+    $categories = Category::All();
     return view("mentor.add", ['categories' => $categories]);
   }
 
   public function store(TalkRequest $request)
   {
-
+    if ((int)Auth::user()->role === 0) {
+      redirect("mentor/index");
+      die();
+    }
 
     $file0 = $request->file('pic0');
 
@@ -94,9 +105,10 @@ class MentorController extends Controller
         }
 
 
-      $talk = new App\Talk();
+      $talk = new Talk();
       $talk->title = $request->title;
       $talk->category_id = $request->category;
+      $talk->talk_time = $request->time;
       $talk->price = $request->price;
       $talk->detail = $request->detail;
       $talk->pic0_path = $pic0_path;
@@ -105,7 +117,7 @@ class MentorController extends Controller
       $talk->save();
 
 
-      $thisTalk = App\Talk::where('mentor_id', Session::get('id'))
+      $thisTalk = Talk::where('mentor_id', Session::get('id'))
       ->first();
 
       return redirect("mentor");
@@ -113,7 +125,7 @@ class MentorController extends Controller
 
   public function show($id)
   {
-    $talk = App\Talk::find($id);
+    $talk = Talk::findOrFail($id);
     $check_like = $talk->likes->contains(Auth::user()->id);
     $check_application = $talk->applications->contains(Auth::user()->id);
     return view("mentor.show", compact('talk', 'check_like', 'check_application'));
@@ -121,24 +133,32 @@ class MentorController extends Controller
 
   public function edit($id)
   {
+    if ((int)Auth::user()->role === 0) {
+      redirect("mentor/index");
+      die();
+    }
+    $talk = Talk::findOrFail($id);
+    $categories = Category::All();
 
-    $talk = App\Talk::find($id);
-    $categories = App\Category::All();
 
-
-    // if ($talk->mentor_id !== Auth::user()->id) {
-    //   return redirect("mentor");
-    // }
+    if ((int)$talk->mentor_id !== (int)Auth::user()->id) {
+      return redirect("mentor/".$id);
+      die();
+    }
 
     return view("mentor.edit", compact('talk', 'categories'));
   }
 
-  public function update(TalkRequest $request, $id) {
-    
-    $thisTalk = App\Talk::find($id);
+  public function update(TalkRequest $request, $id) {   
+    if ((int)Auth::user()->role === 0) {
+      redirect("mentor/index");
+      die();
+    }
+    $thisTalk = Talk::findOrFail($id);
 
     if ((int)$thisTalk->mentor_id !== (int)Auth::user()->id) {
       return redirect('mentor/index');
+      die();
     }
     $file0 = $request->file('pic0');
 
@@ -192,11 +212,10 @@ class MentorController extends Controller
         }
 
 
-      $talk = App\Talk::find($id);
+      $talk = Talk::findOrFail($id);
       $talk->title = $request->title;
       $talk->mentor_id = Auth::user()->id;
       $talk->category_id = $request->category;
-      $talk->price = $request->price;
       $talk->detail = $request->detail;
       $talk->pic0_path = $pic0_path;
       $talk->pic1_path = $pic1_path;
@@ -207,7 +226,7 @@ class MentorController extends Controller
 
   public function apply(Request $request) {
 
-      $talk = App\Talk::find($request->talk_id);
+      $talk = Talk::findOrFail($request->talk_id);
       if ((int)$talk->mentor_id === (int)Auth::user()->id) {
         \Session::flash('flash_message', '自分のトークには申し込みできません');
       }
@@ -224,7 +243,7 @@ class MentorController extends Controller
           {
             $talk->applications()->attach(Auth::user()->id);
             $talk->increment('applications_count');
-            \Session::flash('flash_message', '申し込みが完了しました'); 
+            \Session::flash('flash_message', '申し込みが完了しました。話し手にメッセージを送り、日時を相談してください。'); 
           }
       }
 
@@ -233,7 +252,7 @@ class MentorController extends Controller
 
   public function like($id) {
 
-      $talk = App\Talk::find($id);
+      $talk = Talk::findOrFail($id);
       if ((int)$talk->mentor_id === (int)Auth::user()->id) {
         \Session::flash('flash_message', '自分のトークには申し込みできません');
       } else {
@@ -249,14 +268,14 @@ class MentorController extends Controller
           {
             $talk->likes()->attach(Auth::user()->id);
             $talk->increment('likes_count');
-            \Session::flash('flash_message', '興味あり！しました'); 
+            \Session::flash('flash_message', '興味あり！しました');
           }
       }
 
       return redirect('mentor/'.$id);
+      exit();
   }
 }
-
 
   
 

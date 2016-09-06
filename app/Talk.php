@@ -21,6 +21,10 @@ class Talk extends Model
 		return $this->belongsToMany('App\User', 'likes');
 	}
 
+    // public function mails() {
+    //     return $this->belongsToMany('App\User', 'mails')->withPivot('body', 'sent_at');
+    // }
+
 	public function category() {
 		return $this->belongsTo('App\Category');
 	}

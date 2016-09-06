@@ -1,4 +1,4 @@
-@extends('common.layout')
+@extends('common.layout3')
 @section('TitleAndCss')
 <title>TopPage</title>
 <link rel="stylesheet" href="{{{asset('/assets/bootstrap/css/bootstrap.min.css')}}}">
@@ -12,22 +12,25 @@
 
     <div class="middle-box text-center loginscreen   animated fadeInDown">
         <div>
-            <div>
-
-                <h1 class="logo-name">+ヒト</h1>
-
-            </div>
             <h3>ユーザー登録</h3>
-            <p>hello new user^^</p>
             <form method="post" class="m-t" role="form" action="/auth/register">
-            <input type="hidden" name="_token" value="{{ csrf_token() }}">
             
                 {{-- nameフィールド --}}
                 <div class="form-group">
-                     @if ($errors->has('name'))
-                    <div class="errors"><p>{{ $errors->first('name') }}</p></div>
-                    @endif
-                    <input id="name" type="text" name="name" class="form-control" placeholder="名前" required="" value="{{ old('name') }}">
+                    <div class="col-md-6 name">
+                         @if ($errors->has('name'))
+                        <div class="errors"><p>{{ $errors->first('name') }}</p></div>
+                        @endif
+                        <input id="name" type="text" name="lastname" class="form-control" placeholder="姓" required value="{{ old('lastname') }}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-6 name">
+                         @if ($errors->has('name'))
+                        <div class="errors"><p>{{ $errors->first('name') }}</p></div>
+                        @endif
+                        <input id="name" type="text" name="firstname" class="form-control" placeholder="名" required value="{{ old('firstname') }}">
+                    </div>
                 </div>
 
                 {{-- emailフィールド --}}
@@ -35,7 +38,7 @@
                     @if ($errors->has('email'))
                     <div class="errors"><p>{{ $errors->first('email') }}</p></div>
                     @endif
-                    <input id="email" type="email" name="email" class="form-control" placeholder="Eメール" required="" value="{{ old('email') }}">
+                    <input id="email" type="email" name="email" class="form-control" placeholder="Eメール" required value="{{ old('email') }}">
                 </div>
 
                 {{-- passwordフィールド --}}
@@ -43,7 +46,7 @@
                     @if ($errors->has('password'))
                     <div class="errors"><p>{{ $errors->first('password') }}</p></div>
                     @endif
-                    <input id="password" type="password" name="password" class="form-control" placeholder="パスワード" required="">
+                    <input id="password" type="password" name="password" class="form-control" placeholder="パスワード" required>
                 </div>
 
                 {{-- password_confirmationフィールド --}}
@@ -52,12 +55,12 @@
                     <div class="errors"><p>{{ $errors->first('password_confirmation') }}</p></div>
                     @endif
                     
-                    <input id="password_confirmantion" type="password" name="password_confirmation" class="form-control" placeholder="パスワード確認" required="">
+                    <input id="password_confirmantion" type="password" name="password_confirmation" class="form-control" placeholder="パスワード確認" required>
                 </div>
 
                 {{-- 登録ボタン --}}
                 <div class="form-group">
-                        <div class="checkbox i-checks"><label> <input name="term" type="checkbox"><i></i> 利用規約に同意する </label></div>
+                        <div class="checkbox i-checks"><label> <input name="term" type="checkbox" required><i></i> 利用規約に同意する </label></div>
                 </div>
 
                 <button type="submit" class="btn btn-primary block full-width m-b">登録</button>

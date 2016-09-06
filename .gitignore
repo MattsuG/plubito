@@ -5,5 +5,8 @@ Homestead.yaml
 Homestead.json
 .env
 /public/talk_pictures
+<<<<<<< HEAD
 /public/.htaccess
 /public/.htpasswd
+=======
+>>>>>>> 67d23216230c596fd91b94e25a07f4e5982633f3

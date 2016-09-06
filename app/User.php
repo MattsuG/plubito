@@ -13,7 +13,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'occupation_id', 'profile_picture_path', 'introduction', 'birthday', 'pic3_path'
+        'name', 'email', 'password', 'occupation_id', 'profile_picture_path', 'introduction', 'birthday', 
     ];
 
     /**
@@ -55,10 +55,21 @@ class User extends Authenticatable
     }
 
     public function likes() {
-        return $this->belongsToMany('App\Talk', 'likes');
+        return $this->belongsToMany('App\Talk', 'likes')->withPivot('liked_at');
     }
 
     public function applications() {
-        return $this->belongsToMany('App\Talk', 'applications');
+        return $this->belongsToMany('App\Talk', 'applications')->withPivot('approved_flag', 'paid_flag', 'user_finished_flag', 'mentor_finished_flag', 'applied_at', 'approved_at', 'paid_at', 'finished_at');
+    }
+
+    public function appsToMe() {
+        return $this->hasManyThrough('App\Application', 'App\Talk', 'mentor_id');
+    }
+
+    public function sendMails() {
+        return $this->belongsToMany('App\Talk', 'mails', 'sender_id');
+    }
+    public function receivedMails() {
+        return $this->belongsToMany('App\Talk', 'mails', 'received_id');
     }
 }

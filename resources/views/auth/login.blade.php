@@ -1,4 +1,4 @@
-@extends('common.layout')
+@extends('common.layout3')
 @section('TitleAndCss')
 <title>TopPage</title>
 
@@ -6,19 +6,11 @@
 <link rel="stylesheet" href="{{{asset('/assets/font-awesome/css/font-awesome.min.css')}}}">
 <link rel="stylesheet" href="{{{asset('/assets/css/animate.css')}}}">
 <link rel="stylesheet" href="{{{asset('/assets/css/style.css')}}}">
-
 @stop
-
 @section('content')
     <div class="middle-box text-center loginscreen animated fadeInDown">
         <div>
-            <div>
-
-                <h1 class="logo-name">+ヒト</h1>
-
-            </div>
             <h3>ログイン</h3>
-            <p>welcome back to +ヒト</p>
             <form method="post" class="m-t" role="form" action="/auth/login">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
  
@@ -49,7 +41,7 @@
             {{-- ログインボタン --}}
             <button type="submit" class="btn btn-primary block full-width m-b">ログイン</button>
 
-                <a href="#"><small>パスワードをお忘れの場合</small></a>
+                <a href="#"><small>パスワードをお忘れの場合</small></a><br>
                 <p class="text-muted text-center"><small>アカウントをお持ちでない方</small></p>
                 <a class="btn btn-sm btn-white btn-block" href="/auth/register">サインアップ</a>
             </form>

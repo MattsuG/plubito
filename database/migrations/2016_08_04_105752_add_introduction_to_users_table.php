@@ -14,6 +14,8 @@ class AddIntroductionToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
+            $table->string('lastname');
+            $table->string('firstname');
             $table->string('gender');
             $table->string('birthday');
             $table->string('place');
@@ -43,6 +45,8 @@ class AddIntroductionToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
+            $table->dropColumn('lastname');
+            $table->dropColumn('firstname');
             $table->dropColumn('gender');
             $table->dropColumn('birthday');
             $table->dropColumn('place');
