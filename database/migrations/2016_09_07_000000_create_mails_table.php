@@ -16,7 +16,7 @@ class CreateMailsTable extends Migration
             $table->integer('sender_id');
             $table->integer('receiver_id');
             $table->integer('talk_id');
-            $table->varchar('body', 1023);
+            $table->string('body', 1023);
             $table->timestamp('sent_ad');
         });
     }

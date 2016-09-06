@@ -15,12 +15,12 @@ class CreateTalksTable extends Migration
         Schema::create('talks', function (Blueprint $table) {
             $table->primary('id');
             $table->integer('mentor_id');
-            $table->varchar('title', 255);
+            $table->string('title', 255);
             $table->integer('category_id');
             $table->integer('price');
             $table->text('detail');
-            $table->varchar('pic0_path', 255);
-            $table->varchar('pic1_path', 255);
+            $table->string('pic0_path', 255);
+            $table->string('pic1_path', 255);
             $table->timestamps();
             $table->integer('likes_count');
             $table->integer('applications_count');
