@@ -80,6 +80,10 @@ class UserController extends Controller
 
     //メンターがユーザーの申し込みを承認する
     public function approve(Request $request) { 
+        $this->validate($request, [
+          'user_id' => 'integer',
+          'r_page' => 'integer',
+        ]);
         $user = User::findOrFail($request->user_id);
         $user->applications()->sync([$request->talk_id => ['approved_flag' => 1, 'approved_at' => Carbon::now(), 'talk_date' => $request->date, 'starting_time' => $request->time]], false);
         \Session::flash('flash_message', 'リクエストを承認しました。支払いをお待ちください。');
@@ -165,6 +169,7 @@ class UserController extends Controller
     public function getMessage(Request $request) {
         $this->validate($request, [
           's_page' => 'integer',
+          'r_page' => 'integer'
         ]);
 
         $sent_mails = Mail::where('sender_id', Auth::user()->id)
@@ -187,43 +192,32 @@ class UserController extends Controller
         return view('user/message', compact('sent_mails', 'received_mails', 'received_active', 'sent_active'));
     }
 
-    public function getMessageDetail(Request $request, $id) {
-        $talk = Talk::findOrFail($id);
-        //idが$idであるトークに結びついた、自分に関連するメールを降順で全件取得する
-        $query = Mail::where('talk_id', $id);
+    public function getMessageDetail($id) {
+
+        $query = Mail::where('receiver_id', $id)
+        ->orWhere('sender_id', $id);
         $mails = $query->where(function($query){
                     $query->where('receiver_id', Auth::user()->id)
                             ->orWhere('sender_id', Auth::user()->id);
                 })
         ->orderBy('sent_at', 'DESC')
         ->paginate(10);
-        $send_to_id = $talk->mentor_id;
 
-        if (isset($request->receiver_id)) {
-            $send_to_id = $request->receiver_id;
-        }
-        //メンターはreceiver_idなしでは送信できないのでリダイレクト
-        elseif ((int)$talk->mentor_id === (int)Auth::user()->id) {
-            return redirect('user/message');
-        }
+        $receiver = User::find($id);
 
-        $receiver = User::find($send_to_id);
-
-        return view('user/message_detail', compact('talk', 'mails', 'send_to_id', 'receiver'));
+        return view('user/message_detail', compact('mails', 'receiver'));
     }
 
-    public function postMessage(Request $request) {
+    public function postMessage(Request $request, $id) {
 
         $this->validate($request, [
           'body' => 'required|max:500',
-          'receiver_id' => 'required|integer',
-          'talk_id' => 'required|integer'
+          'receiver_id' => 'required|integer'
         ]);
 
         $mail = new Mail();
         $mail->sender_id = Auth::user()->id;
-        $mail->receiver_id = $request->receiver_id;
-        $mail->talk_id = $request->talk_id;
+        $mail->receiver_id = $id;
         $mail->body = $request->body;
         $mail->sent_at = Carbon::now();
         $mail->save();

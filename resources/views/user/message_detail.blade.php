@@ -31,7 +31,6 @@
                 <div class="ibox float-e-margins">
                     <div class="ibox-content">
                         <form method="post" class="form-horizontal" action="{{ url('/user/message') }}">
-                            <h2>{{ $talk->title }} {{ $talk->price }}円/{{ $talk->talk_time }}分</h2>
                             <h2>送信先:{{ $receiver->lastname }}&nbsp{{ $receiver->firstname }}</h2>
 
                             <div class="form-group"><label class="col-sm-2 control-label">本文（＊必須）</label>
@@ -52,8 +51,6 @@
                             {{ csrf_field() }}
                             <div class="" class="events-pad">
                                 <div class="form-group">
-                                    <input type="hidden" name="talk_id" value="{{ $talk->id }}">
-                                    <input type="hidden" name="receiver_id" value="{{ $send_to_id }}">
                                     <input type="submit" id="confirm" class="btn btn-primary" value="メッセージを送信">
                                 </div>
                             </div>

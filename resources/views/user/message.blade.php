@@ -79,8 +79,7 @@
                                             <p>{{ $received_mail->body }}</p>
                                         </td>
                                         <td>
-                                            <form method="post" action="{{url('/user/message/'.$received_mail->talk->id)}}">
-                                                <input type="hidden" name="receiver_id" value="{{$received_mail->sender->id}}">
+                                            <form method="post" action="{{url('/user/message/'.$received_mail->sender_id)}}">
                                                 <input type="submit" value="詳細を見る">
                                                 {{ csrf_field() }}
                                             </form>
@@ -122,8 +121,7 @@
                                        <p>{{ $sent_mail->body }}</p>
                                     </td>
                                     <td>
-                                        <form method="post" action="{{url('/user/message/'.$sent_mail->talk->id)}}">
-                                            <input type="hidden" name="receiver_id" value="{{$sent_mail->receiver->id}}">
+                                        <form method="post" action="{{url('/user/message/'.$sent_mail->receiver_id)}}">
                                             <input type="submit" value="詳細を見る">
                                             {{ csrf_field() }}
                                         </form>

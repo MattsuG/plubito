@@ -56,8 +56,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 		Route::get('/user/message', 'UserController@getMessage');
 		Route::get('/user/message/{id}', 'UserController@getMessageDetail');
-		Route::post('/user/message/{id}', 'UserController@getMessageDetail');
-		Route::post('/user/message', 'UserController@postMessage');
+		Route::post('/user/message/{id}', 'UserController@postMessage');
 		Route::get('/user/email_edit/{id}', 'UserController@email_edit');
 		Route::patch('/user/email_edit/{id}', 'UserController@email_update');
 
