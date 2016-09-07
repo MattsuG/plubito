@@ -144,16 +144,17 @@
                     <div class="modal-body">
                         <p>{{ $talk->title }}</p>
                         <p>{{ $talk->price }}円</p>
+                        <p>{{ $talk->talk_time }}分</p>
                         <!-- <input type=""> -->
                     </div>
                     <!-- 6.モーダルのフッタ -->
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">やめる</button>
                         <form method="post" action="{{ url('/mentor/apply') }}">
                             <input name="talk_id" value="{{ $talk->id }}" type="hidden">
                             {{ csrf_field() }}
                             <input type="submit" class="btn btn-primary" value="申し込む">
                         </form>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">やめる</button>
                     </div>
                 </div>
             </div>
