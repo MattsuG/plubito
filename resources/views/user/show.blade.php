@@ -1,7 +1,7 @@
 
 @extends('common.layout')
 @section('TitleAndCss')
-<title>show.php | ユーザー詳細</title>
+<title>Plubito/ユーザー詳細</title>
 
 <link rel="stylesheet" href="{{{asset('/assets/bootstrap/css/bootstrap.min.css')}}}">
 <link rel="stylesheet" href="{{{asset('/assets/font-awesome/css/font-awesome.min.css')}}}">

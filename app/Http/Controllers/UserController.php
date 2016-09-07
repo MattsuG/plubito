@@ -93,10 +93,12 @@ class UserController extends Controller
 
         if ((int)$user->role === 1) {
             //表示する情報量の制御
+            $a = 1;
         }
 
         if ((int)$user->id === (int)Auth::user()->id) {
             //表示する情報量の制御
+            $a = 1;
         }
 
         return view("user/show")->with('user',$user);
