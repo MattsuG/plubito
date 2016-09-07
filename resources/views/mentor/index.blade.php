@@ -47,7 +47,7 @@
                                     <li>
                                     <a href="{{ url('mentor/'.$talk->id) }}" style="color:#000;text-decoration:none"><img src="{{{asset($talk->pic0_path)}}}" alt="">
                                     <h4>{{ $talk->title }}</h4>
-                                    <h4>いいね:{{ $talk->likes_count }}人 トーク:{{ $talk->applications_count }}人</h4>
+                                    <p><i class="fa fa-thumbs-up" aria-hidden="true">いいね：</i>{{ count($talk->likes) }}&nbsp;&nbsp;&nbsp;<i class="fa fa-headphones" aria-hidden="true">トーク：</i>{{ $talk->applications_count }}</p>
                                     <h4>{{ $talk->category->category_name }}</h4>
                                     <h4></a>
                                     <a href="{{ url('mentor/'.$talk->id) }}"><button type="button" class="btn2 btn-default btn-sm btn-block">詳細を見る</button></a>

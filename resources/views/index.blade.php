@@ -208,7 +208,7 @@
 						<img src="{{{asset($talk->pic0_path)}}}" alt="">
 					</div>
 					<p class="abbreviation3">{{ $talk->title }}</p>
-					<p>{{ count($talk->likes) }}&nbsp;<i class="fa fa-thumbs-up" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;{{ $talk->applications_count }}&nbsp;<i class="fa fa-headphones" aria-hidden="true"></i></p>
+					<p><i class="fa fa-thumbs-up" aria-hidden="true">いいね：</i>{{ count($talk->likes) }}&nbsp;&nbsp;&nbsp;<i class="fa fa-headphones" aria-hidden="true">トーク：</i>{{ $talk->applications_count }}</p>
 					<div class="pricing-box-features">
 						<ul>
 							<li>{{ $talk->name }}</li>
