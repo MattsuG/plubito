@@ -34,7 +34,11 @@
                     </div>
                     <div>
                         <div class="ibox-content no-padding border-left-right">
-                            <img alt="image" class="img-circle" src="{{ $talk->mentor->profile_picture_path }}">
+                            @if (!empty($talk->mentor->profile_picture_path))
+                            <img alt="image" class="img-circle" src="{{asset($user->profile_picture_path)}}">
+                            @else
+                            <img alt="image" class="img-circle" src="{{asset('/assets/img/default_thumbnail.jpg'}}">
+                            @endif
                         </div>
                         <div class="ibox-content profile-content">
                             <h4><strong>{{ $talk->mentor->lastname }}&nbsp{{ $talk->mentor->firstname }}</strong></h4>

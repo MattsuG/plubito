@@ -50,15 +50,14 @@ Route::group(['middleware' => 'auth'], function () {
 		//ユーザーページ
 		Route::get('/user/mypage', 'UserController@index');
 		Route::post('/user/approve', 'UserController@approve');
+		Route::get('/user/show/{id}', 'UserController@show');
 		Route::get('/user/edit', 'UserController@edit');
+		Route::patch('/user/edit', 'UserController@update');
+
 		Route::get('/user/message', 'UserController@getMessage');
 		Route::get('/user/message/{id}', 'UserController@getMessageDetail');
 		Route::post('/user/message/{id}', 'UserController@getMessageDetail');
 		Route::post('/user/message', 'UserController@postMessage');
-		Route::get('/user/show/{id}', 'UserController@show');
-		Route::post('/user', 'UserController@update');
-		Route::get('/user/edit/{id}', 'UserController@edit');
-		Route::patch('/user/edit/{id}', 'UserController@update');
 		Route::get('/user/email_edit/{id}', 'UserController@email_edit');
 		Route::patch('/user/email_edit/{id}', 'UserController@email_update');
 

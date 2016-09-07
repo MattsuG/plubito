@@ -32,10 +32,9 @@
                     <div>
                         <div class="ibox-content no-padding border-left-right">
                             @if (!empty($user->profile_picture_path))
-                            <img alt="image" class="img-circle" src="{{{asset(Auth::user()->profile_picture_path)}}}">
-                            @endif
-                            @if (empty($user->profile_picture_path))
-                            <img alt="image" class="img-circle" src="/assets/img/default_thumbnail.jpg">
+                            <img alt="image" class="img-circle" src="{{asset($user->profile_picture_path)}}">
+                            @else
+                            <img alt="image" class="img-circle" src="{{asset('/assets/img/default_thumbnail.jpg'}}">
                             @endif
                         </div>
                         <div class="ibox-content profile-content">
@@ -45,7 +44,7 @@
                                 自己紹介
                             </h5>
                             <p>
-                                {{ $user->introduction }}
+                                {!! nl2br(e($user->introduction)) !!}
                             </p>
 
                             <div class="user-button">
@@ -70,7 +69,7 @@
                             <div class="feed-activity-list" style="text-align: left">
                                 <div class="feed-element">
                                     <h6>やってみたいこと</h6>
-                                    {{ $user->vision }}
+                                    {!! nl2br(e($user->vision)) !!}
                                 </div>
                                 <div class="feed-element">
                                     <h6>現職</h6>

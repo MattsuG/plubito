@@ -89,30 +89,33 @@ class UserController extends Controller
     //show/idの形で飛んできたときの処理
     //$idが自分のuseridと一致するときは全ての情報を表示、更に編集ボタンを表示
     public function show($id) {
-        $user = User::find($id);
-        // dd($user->toArray());//dump die
-        return view("user/show")->with('user',$user);    	
+        $user = User::findOrFail($id);
+
+        if ((int)$user->role === 1) {
+            //表示する情報量の制御
+        }
+
+        if ((int)$user->id === (int)Auth::user()->id) {
+            //表示する情報量の制御
+        }
+
+        return view("user/show")->with('user',$user);
     }
 
     //自分のshowページ、もしくはサイドバーから飛んできたときの処理
     //sessionに格納されたuseridと一致するuserデータをDBより取得 viewに渡す
-    public function edit($id) {
+    public function edit() {
 
-        $user = User::findOrFail($id);
+        $user = User::find(Auth::user()->id);
 
-        if ((int)$user->id !== (int)Auth::user()->id) {
-          return redirect("mentor");
-          die();
-        }
-        // dd($user->toArray());//dump die
         return view("user/edit")->with('user',$user);
     }
 
     //editからpostで飛んできたときの処理
-    public function update(UserRequest $request, $id) {
+    public function update(UserRequest $request) {
          
 
-        $user = User::findOrFail($id);
+        $user = User::findOrFail(Auth::user()->id);
         $user->lastname = $request->lastname;
         $user->firstname = $request->firstname;
         $user->place = $request->place; 
@@ -138,20 +141,20 @@ class UserController extends Controller
                 $path = 'profile_pictures';
                 $img = Image::make($file3->getRealPath());
                 chmod($path, 0777);
-                $img->resize(800, 600)->save($path.'/'.$filename);
+                $img->resize(600, 600)->save($path.'/'.$filename);
                 chmod($path, 0644);
-                $pic3_path = '/'.$path.'/'.$filename;
+                $profile_picture_path = '/'.$path.'/'.$filename;
             }
             else
             {
                 //ファイルアップロードが無いときは変数を初期化（viewでのエラー防止）
-                $profile_picture_path = asset(Auth::user()->profile_picture_path);
+                $profile_picture_path = Auth::user()->profile_picture_path;
             }
 
         $user->profile_picture_path = $profile_picture_path;
 
         $user->save();
-        return view("user/show")->with('user',$user);
+        return redirect("user/show");
     }
 
     public function getMessage(Request $request) {
@@ -180,7 +183,7 @@ class UserController extends Controller
     }
 
     public function getMessageDetail(Request $request, $id) {
-        $talk = Talk::FindOrFail($id);
+        $talk = Talk::findOrFail($id);
         //idが$idであるトークに結びついた、自分に関連するメールを降順で全件取得する
         $query = Mail::where('talk_id', $id);
         $mails = $query->where(function($query){
