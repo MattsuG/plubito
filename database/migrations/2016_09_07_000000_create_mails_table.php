@@ -15,9 +15,8 @@ class CreateMailsTable extends Migration
         Schema::create('mails', function (Blueprint $table) {
             $table->integer('sender_id');
             $table->integer('receiver_id');
-            $table->integer('talk_id');
-            $table->string('body', 1023);
-            $table->timestamp('sent_ad');
+            $table->string('body', 511);
+            $table->timestamp('sent_at');
         });
     }
 
