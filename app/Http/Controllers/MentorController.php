@@ -151,7 +151,7 @@ class MentorController extends Controller
 
   public function update(TalkRequest $request, $id) {   
     if ((int)Auth::user()->role === 0) {
-      redirect("mentor/index");
+      return redirect("mentor/index");
       die();
     }
     $thisTalk = Talk::findOrFail($id);
