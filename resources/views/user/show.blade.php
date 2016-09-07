@@ -50,7 +50,7 @@
                             <div class="user-button">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <button type="button" class="btn btn-default btn-sm btn-block"><i class="fa fa-envelope"></i> メッセージを送る</button>
+                                        <button type="button" class="btn btn-default btn-sm btn-block" onclick="location.href='{{ url('user/message/'.$user->id) }}'"><i class="fa fa-envelope"></i> メッセージを送る</button>
                                     </div>
                                 </div>
                             </div>
