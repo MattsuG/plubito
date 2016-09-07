@@ -1,4 +1,4 @@
-@extends('common.layout2')
+@extends('common.layout_no_sidebar')
 @section('TitleAndCss')
 <title>TopPage</title>
 

@@ -79,37 +79,37 @@
                             <hr>
 
                             <div class="form-group"><label class="col-sm-2 control-label">前職</label>
-                                <div class="col-sm-10"><input type="text" name="past_job"placeholder="placeholder" value="{{ old('past_job', $user->past_job) }}" class="form-control"></div>
+                                <div class="col-sm-10"><input type="text" name="past_job"placeholder="会社名など" value="{{ old('past_job', $user->past_job) }}" class="form-control"></div>
                             </div>
                             <div class="form-group"><label class="col-sm-2 control-label">前職のポジション</label>
-                                <div class="col-sm-10"><input type="text" name="past_position" placeholder="placeholder" value="{{ old('past_position', $user->past_position) }}" class="form-control"></div>
+                                <div class="col-sm-10"><input type="text" name="past_position" placeholder="職種、部署など" value="{{ old('past_position', $user->past_position) }}" class="form-control"></div>
                             </div>   
                              <div class="form-group"><label class="col-sm-2 control-label">前職の業務内容詳細</label>
-                                <div class="col-sm-10"><textarea type="text" name="past_detail" placeholder="placeholder" rows="7" class="form-control" >{{ old('past_detail', $user->past_detail) }}</textarea></div>
+                                <div class="col-sm-10"><textarea type="text" name="past_detail" placeholder="具体的な業務内容、スキルなど" rows="7" class="form-control" >{{ old('past_detail', $user->past_detail) }}</textarea></div>
                             </div>
 
                             <hr>
 
                             <div class="form-group"><label class="col-sm-2 control-label">最終学歴</label>
-                                <div class="col-sm-10"><input type="text" name="latest_school" placeholder="placeholder" value="{{ old('latest_school', $user->latest_school) }}" class="form-control"></div>
+                                <div class="col-sm-10"><input type="text" name="latest_school" placeholder="学校名" value="{{ old('latest_school', $user->latest_school) }}" class="form-control"></div>
                             </div>
                             <div class="form-group"><label class="col-sm-2 control-label">学部・学科</label>
-                                <div class="col-sm-10"><input type="text" name="latest_major" placeholder="placeholder" value="{{ old('latest_major', $user->latest_major) }}" class="form-control"></div>
+                                <div class="col-sm-10"><input type="text" name="latest_major" placeholder="学部、学科名" value="{{ old('latest_major', $user->latest_major) }}" class="form-control"></div>
                             </div>   
                              <div class="form-group"><label class="col-sm-2 control-label">在籍期間</label>
-                                <div class="col-sm-10"><input type="text" name="latest_school_period" placeholder="placeholder" value="{{ old('latest_school_period', $user->latest_school_period) }}" class="form-control"></div>
+                                <div class="col-sm-10"><input type="text" name="latest_school_period" placeholder="〇〇年〇〇月〜〇〇年〇〇月" value="{{ old('latest_school_period', $user->latest_school_period) }}" class="form-control"></div>
                             </div>
 
                             <hr>
 
                              <div class="form-group"><label class="col-sm-2 control-label">その他学歴</label>
-                                <div class="col-sm-10"><input type="text" name="other_school"　placeholder="placeholder" value="{{ old('other_school', $user->other_school) }}" class="form-control"></div>
+                                <div class="col-sm-10"><input type="text" name="other_school" placeholder="学校名" value="{{ old('other_school', $user->other_school) }}" class="form-control"></div>
                             </div>
                             <div class="form-group"><label class="col-sm-2 control-label">学部・学科</label>
-                                <div class="col-sm-10"><input type="text" name="other_major" placeholder="placeholder" value="{{ old('other_major', $user->other_major) }}" class="form-control"></div>
+                                <div class="col-sm-10"><input type="text" name="other_major" placeholder="学部、学科名" value="{{ old('other_major', $user->other_major) }}" class="form-control"></div>
                             </div>   
                              <div class="form-group"><label class="col-sm-2 control-label">在籍期間</label>
-                                <div class="col-sm-10"><input type="text" name="other_school_period" placeholder="placeholder" value="{{ old('other_school_period', $user->other_school_period) }}" class="form-control"></div>
+                                <div class="col-sm-10"><input type="text" name="other_school_period" placeholder="〇〇年〇〇月〜〇〇年〇〇月" value="{{ old('other_school_period', $user->other_school_period) }}" class="form-control"></div>
                             </div>    
 
                             <button type="submit" class="btn btn-primary block full-width m-b">更新</button>
