@@ -147,7 +147,7 @@ class UserController extends Controller
                 $img = Image::make($file3->getRealPath());
                 chmod($path, 0777);
                 $img->resize(600, 600)->save($path.'/'.$filename);
-                chmod($path, 0644);
+                chmod($path, 0744);
                 $profile_picture_path = '/'.$path.'/'.$filename;
             }
             else
