@@ -50,7 +50,7 @@ Route::group(['middleware' => 'auth'], function () {
 		//ユーザーページ
 		Route::get('/user/mypage', 'UserController@index');
 		Route::post('/user/approve', 'UserController@approve');
-		Route::get('/user/show/{id}', 'UserController@show');
+		Route::get('/user/show/{id?}', 'UserController@show');
 		Route::get('/user/edit', 'UserController@edit');
 		Route::patch('/user/edit', 'UserController@update');
 

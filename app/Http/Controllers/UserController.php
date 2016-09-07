@@ -89,16 +89,19 @@ class UserController extends Controller
     //show/idの形で飛んできたときの処理
     //$idが自分のuseridと一致するときは全ての情報を表示、更に編集ボタンを表示
     public function show($id) {
-        $user = User::findOrFail($id);
-
+        if (!empty($id)) {
+            $user = User::find(Auth::user()->id);
+        }
+        else
+        {
+            $user = User::findOrFail($id);
+        }
         if ((int)$user->role === 1) {
             //表示する情報量の制御
-            $a = 1;
         }
 
         if ((int)$user->id === (int)Auth::user()->id) {
             //表示する情報量の制御
-            $a = 1;
         }
 
         return view("user/show")->with('user',$user);
