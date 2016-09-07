@@ -29,7 +29,7 @@
             <div class="col-lg-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-content">
-                        <form method="post" class="form-horizontal" action="{{ url('/user/edit', $user->id) }}" enctype="multipart/form-data" >
+                        <form method="post" class="form-horizontal" action="{{ url('/user/edit') }}" enctype="multipart/form-data" >
                             {{ csrf_field() }}
                             {{ method_field('patch') }}
 
