@@ -33,9 +33,9 @@ class CreateUsersTable extends Migration
             $table->string('current_job', 255);
             $table->string('current_position', 255);
             $table->string('current_detail', 255);
-            $table->string('post_job', 255);
-            $table->string('post_position', 255);
-            $table->string('post_detail', 255);
+            $table->string('past_job', 255);
+            $table->string('past_position', 255);
+            $table->string('past_detail', 255);
             $table->string('latest_school', 255);
             $table->string('latest_major', 255);
             $table->string('latest_school_period', 255);
