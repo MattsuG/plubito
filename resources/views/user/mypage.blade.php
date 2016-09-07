@@ -92,7 +92,7 @@
                                                 {{ $app_to_me->talk->talk_time }}分
                                             </td>
                                             <td>
-                                                <form method="post" action="{{url('/user/message/'.$app_to_me->talk->id)}}">
+                                                <form method="post" action="{{url('/user/message/'.$app_to_me->user->id)}}">
                                                     <input type="hidden" name="receiver_id" value="{{$app_to_me->user->id}}">
                                                     <input type="submit" class="btn btn-sm" value="メッセージ">
                                                     {{ csrf_field() }}

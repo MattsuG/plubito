@@ -193,7 +193,11 @@ class UserController extends Controller
     }
 
     public function getMessageDetail($id) {
-
+        if ((int)$id === (int)Auth::user()->id) {
+            return redirect ('user/message');
+            die();
+        }
+        $receiver = User::findOrFail($id);
         $query = Mail::where('receiver_id', $id)
         ->orWhere('sender_id', $id);
         $mails = $query->where(function($query){
@@ -203,16 +207,13 @@ class UserController extends Controller
         ->orderBy('sent_at', 'DESC')
         ->paginate(10);
 
-        $receiver = User::find($id);
-
         return view('user/message_detail', compact('mails', 'receiver'));
     }
 
     public function postMessage(Request $request, $id) {
 
         $this->validate($request, [
-          'body' => 'required|max:500',
-          'receiver_id' => 'required|integer'
+          'body' => 'required|max:500'
         ]);
 
         $mail = new Mail();
@@ -223,7 +224,7 @@ class UserController extends Controller
         $mail->save();
         \Session::flash('flash_message', 'メッセージを送信しました');
 
-        return redirect('user/message/'.$request->talk_id);
+        return redirect('user/message/'.$id);
     }
 
 }

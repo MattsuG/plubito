@@ -30,7 +30,7 @@
             <div class="col-lg-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-content">
-                        <form method="post" class="form-horizontal" action="{{ url('/user/message') }}">
+                        <form method="post" class="form-horizontal" action="{{ url('/user/message/'.$receiver->id) }}">
                             <h2>送信先:{{ $receiver->lastname }}&nbsp{{ $receiver->firstname }}</h2>
 
                             <div class="form-group"><label class="col-sm-2 control-label">本文（＊必須）</label>

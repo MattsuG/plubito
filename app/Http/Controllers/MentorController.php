@@ -64,7 +64,7 @@ class MentorController extends Controller
   public function store(TalkRequest $request)
   {
     if ((int)Auth::user()->role === 0) {
-      redirect("mentor/index");
+      return redirect("mentor/index");
       die();
     }
 
@@ -134,7 +134,7 @@ class MentorController extends Controller
   public function edit($id)
   {
     if ((int)Auth::user()->role === 0) {
-      redirect("mentor/index");
+      return redirect("mentor/index");
       die();
     }
     $talk = Talk::findOrFail($id);
