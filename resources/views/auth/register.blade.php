@@ -1,4 +1,4 @@
-@extends('common.layout3')
+@extends('common.layout_auth')
 @section('TitleAndCss')
 <title>TopPage</title>
 <link rel="stylesheet" href="{{{asset('/assets/bootstrap/css/bootstrap.min.css')}}}">

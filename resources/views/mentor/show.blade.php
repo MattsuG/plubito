@@ -42,7 +42,7 @@
                         </div>
                         <div class="ibox-content profile-content">
                             <h4><strong>{{ $talk->mentor->lastname }}&nbsp{{ $talk->mentor->firstname }}</strong></h4>
-                            <p><i class="fa fa-map-marker"></i> Seoul, S.Korea</p>
+                            <p><i class="fa fa-map-marker"></i>{{ $talk->mentor->place }}</p>
                             <h5>
                                 自己紹介
                             </h5>
