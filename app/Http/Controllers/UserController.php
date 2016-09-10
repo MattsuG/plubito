@@ -197,7 +197,7 @@ class UserController extends Controller
     public function getMessageDetail($id) {
 
 
-        $receiver = User::finOrFail($id);
+        $receiver = User::findOrFail($id);
         if ((int)$id === (int)Auth::user()->id) {
             return redirect ('user/message');
             die();
