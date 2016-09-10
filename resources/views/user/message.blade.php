@@ -75,10 +75,7 @@
                                             <p>{{ $received_mail->body }}</p>
                                         </td>
                                         <td>
-                                            <form method="post" action="{{url('/user/message/'.$received_mail->sender_id)}}">
-                                                <input type="submit" value="詳細を見る">
-                                                {{ csrf_field() }}
-                                            </form>
+                                            <button onclick="location.href='{{url('/user/message/'.$received_mail->sender_id)}}'" type="submit">詳細を見る</button>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -113,10 +110,7 @@
                                        <p style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">{{ $sent_mail->body }}</p>
                                     </td>
                                     <td>
-                                        <form method="post" action="{{url('/user/message/'.$sent_mail->receiver_id)}}">
-                                            <input type="submit" value="詳細を見る">
-                                            {{ csrf_field() }}
-                                        </form>
+                                            <button onclick="location.href='{{url('/user/message/'.$sent_mail->receiver_id)}}'" type="submit">詳細を見る</button>
                                     </td>
                                 </tr>
                                 @endforeach
