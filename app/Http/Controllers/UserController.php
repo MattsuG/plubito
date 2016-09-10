@@ -172,11 +172,13 @@ class UserController extends Controller
           'r_page' => 'integer'
         ]);
 
-        $sent_mails = Mail::where('sender_id', Auth::user()->id)
+        $sent_mails = Mail::with('receiver')
+        ->where('sender_id', Auth::user()->id)
         ->paginate(10);
         $sent_mails->setPageName('s_page');
 
-        $received_mails = Mail::where('receiver_id', Auth::user()->id)
+        $received_mails = Mail::with('sender')
+        ->where('receiver_id', Auth::user()->id)
         ->paginate(10);
         $received_mails->setpageName('r_page');
 
@@ -198,7 +200,8 @@ class UserController extends Controller
             die();
         }
         $receiver = User::findOrFail($id);
-        $query = Mail::where('receiver_id', $id)
+        $query = Mail::with('receiver', 'sender')
+        ->where('receiver_id', $id)
         ->orWhere('sender_id', $id);
         $mails = $query->where(function($query){
                     $query->where('receiver_id', Auth::user()->id)

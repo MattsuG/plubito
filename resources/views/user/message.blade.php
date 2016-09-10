@@ -57,7 +57,6 @@
                                 <tr>
                                     <th></th>
                                     <th>送信者</th>
-                                    <th>トーク名</th>
                                     <th>本文</th>
                                     <th></th>
                                 </tr>
@@ -71,9 +70,6 @@
                                         <td>
                                             {{ $received_mail->sender->lastname }}
                                             {{ $received_mail->sender->firstname }}
-                                        </td>
-                                        <td>
-                                            {{ $received_mail->talk->title }}
                                         </td>
                                         <td>
                                             <p>{{ $received_mail->body }}</p>
@@ -99,7 +95,6 @@
                                 <tr>
                                     <th></th>
                                     <th>送信先</th>
-                                    <th>トーク名</th>
                                     <th>本文</th>
                                     <th></th>
                                 </tr>
@@ -115,10 +110,7 @@
                                         {{ $sent_mail->receiver->firstname }}
                                     </td>
                                     <td>
-                                       {{ $sent_mail->talk->title }}
-                                    </td>
-                                    <td>
-                                       <p>{{ $sent_mail->body }}</p>
+                                       <p style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">{{ $sent_mail->body }}</p>
                                     </td>
                                     <td>
                                         <form method="post" action="{{url('/user/message/'.$sent_mail->receiver_id)}}">
