@@ -68,6 +68,11 @@ Route::group(['middleware' => 'auth'], function () {
 		// Password reset routes...
 		Route::get('/password/reset/{token}', 'Auth\PasswordController@getReset');
 		Route::post('/password/reset', 'Auth\PasswordController@postReset');
+
+		//PayPal
+		//Route::post('/payment', 'PayPalController@index');
+		//Route::post('/payment/confirmation', 'PayPalController@foo');
+
 	});
 
 });

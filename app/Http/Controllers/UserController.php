@@ -86,7 +86,7 @@ class UserController extends Controller
         ]);
         $user = User::findOrFail($request->user_id);
         $user->applications()->sync([$request->talk_id => ['approved_flag' => 1, 'approved_at' => Carbon::now(), 'talk_date' => $request->date, 'starting_time' => $request->time]], false);
-        \Session::flash('flash_message', 'リクエストを承認しました。支払いをお待ちください。');
+        \Session::flash('flash_message', 'リクエストを承認しました。支払いをお待ちください。トークが終了しましたら、忘れずに終了ボタンを押してください。');
         return redirect("user/mypage");
     }
 
@@ -195,18 +195,30 @@ class UserController extends Controller
     }
 
     public function getMessageDetail($id) {
+
+
+        $receiver = User::finOrFail($id);
         if ((int)$id === (int)Auth::user()->id) {
             return redirect ('user/message');
             die();
         }
-        $receiver = User::findOrFail($id);
+
+        if ((int)$receiver->role !== 1 && (int)Auth::user()->role !== 1) {
+            return redirect ('user/message');
+            die();
+        }
+
         $query = Mail::with('receiver', 'sender')
-        ->where('receiver_id', $id)
-        ->orWhere('sender_id', $id);
+        ->where(function($query) use($id){
+            $query->where('receiver_id', $id)
+                  ->orWhere('sender_id', $id);
+        });
+
         $mails = $query->where(function($query){
                     $query->where('receiver_id', Auth::user()->id)
                             ->orWhere('sender_id', Auth::user()->id);
                 })
+
         ->orderBy('sent_at', 'DESC')
         ->paginate(10);
 

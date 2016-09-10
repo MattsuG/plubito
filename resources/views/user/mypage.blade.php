@@ -237,9 +237,9 @@
                                         </td>
                                         <td>
                                             @if ((int)$app->pivot->approved_flag === 1 && (int)$app->pivot->paid_flag === 0)
-                                                <!-- PayPalボタン -->
+
                                             @elseif ((int)$app->pivot->paid_flag === 1)
-                                                <!-- 終了ボタン -->
+
                                             @endif
                                         </td>
                                     </tr>
