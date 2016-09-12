@@ -8,9 +8,9 @@ use App\User;
 class VerifyConfirmed{
     public function handle($request, Closure $next)
     {
-      $user = User::where('email', '=', $request->input('email'))->first();
+      $user = User::where('email', $request->email)->first();
         if ($user) {
-            if(! $user->isConfirmed()) {
+            if(!$user->isConfirmed()) {
                 \Session::flash('flash_message', 'ユーザー登録確認メールに従って、ユーザーを有効化してください。');
                 return redirect()->back()->withInput($request->only('email'));
             }

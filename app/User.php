@@ -47,7 +47,7 @@ class User extends Authenticatable
     }
  
     public function isConfirmed() { // email認証実装時追加⑤ 追加
-        return ! empty($this->confirmed_at);
+        return !empty($this->confirmed_at);
     }
 
     public function talks() {

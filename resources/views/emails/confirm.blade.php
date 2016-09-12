@@ -1,13 +1,13 @@
 {{-- resources/views/emails/confirm.blade.php --}}
  
 <p>
-    ようこそ、{{ $user['name'] }} さん
+    ようこそ、{{ $user->lastname }} {{ $user->firstname }} さん
 </p>
  
 <p>
-    以下のリンクをクリックしてユーザーを有効化してください。
+    この度は+ビトへの仮登録ありがとうございます。
 </p>
  
 <p>
-    <a href="{{ url('auth/confirm', [$token]) }}">ユーザーを有効化する</a>
+    <a href="{{ url('auth/confirm', [$token]) }}">こちら</a>をクリックして本登録に進んでください。
 </p>
