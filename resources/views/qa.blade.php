@@ -3,11 +3,11 @@
 <title>TopPage</title>
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100italic,300,300italic,400,400italic,500,500italic">
-<link rel="stylesheet" href="{{{asset('/assets/bootstrap/css/bootstrap.min.css')}}}">
-<link rel="stylesheet" href="{{{asset('/assets/font-awesome/css/font-awesome.min.css')}}}">
-<link rel="stylesheet" href="{{{asset('/assets/css/animate.css')}}}">
-<link rel="stylesheet" href="{{{asset('/assets/css/style_pre_index.css')}}}">
-<link rel="stylesheet" href="{{{asset('/assets/css/media-queries.css')}}}">
+<link rel="stylesheet" href="{{{secure_asset('/assets/bootstrap/css/bootstrap.min.css')}}}">
+<link rel="stylesheet" href="{{{secure_asset('/assets/font-awesome/css/font-awesome.min.css')}}}">
+<link rel="stylesheet" href="{{{secure_asset('/assets/css/animate.css')}}}">
+<link rel="stylesheet" href="{{{secure_asset('/assets/css/style_pre_index.css')}}}">
+<link rel="stylesheet" href="{{{secure_asset('/assets/css/media-queries.css')}}}">
 @stop
 
 @section('content')
@@ -24,12 +24,12 @@
 </div>
 @stop
 @section('Js')
-<script src="{{{asset('/assets/js/jquery-1.11.1.min.js')}}}"></script>
-<script src="{{{asset('/assets/bootstrap/js/bootstrap.min.js')}}}"></script>
-<script src="{{{asset('assets/js/jquery.backstretch.min.js')}}}"></script>
-<script src="{{{asset('/assets/js/wow.min.js')}}}"></script>
-<script src="{{{asset('/assets/js/retina-1.1.0.min.js')}}}"></script>
-<script src="{{{asset('assets/js/scripts.js')}}}"></script>
+<script src="{{{secure_asset('/assets/js/jquery-1.11.1.min.js')}}}"></script>
+<script src="{{{secure_asset('/assets/bootstrap/js/bootstrap.min.js')}}}"></script>
+<script src="{{{secure_asset('assets/js/jquery.backstretch.min.js')}}}"></script>
+<script src="{{{secure_asset('/assets/js/wow.min.js')}}}"></script>
+<script src="{{{secure_asset('/assets/js/retina-1.1.0.min.js')}}}"></script>
+<script src="{{{secure_asset('assets/js/scripts.js')}}}"></script>
 <script>
 $(function(){
     var $setElm = $('h3.abbreviation3');

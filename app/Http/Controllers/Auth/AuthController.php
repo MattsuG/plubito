@@ -58,10 +58,10 @@ class AuthController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'lastname' => 'required|max:255',
-            'firstname' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6|confirmed',
+            'lastname' => 'required|max:10',
+            'firstname' => 'required|max:10',
+            'email' => 'required|email|max:50|unique:users',
+            'password' => 'required|min:6|max:12|alpha_num|confirmed',
             'term' => 'required',
         ]);
     }
@@ -106,7 +106,7 @@ class AuthController extends Controller
             'emails.confirm',
             ['user' => $user, 'token' => $user->confirmation_token],
             function($message) use ($user) {
-                $message->to($user->email, $user->name)->subject('ユーザー登録確認');
+                $message->to($user->email, $user->firstname.'様')->subject('ユーザー登録確認');
             }
         );
     }
