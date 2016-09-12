@@ -92,7 +92,6 @@
                                                 {{ $app_to_me->talk->talk_time }}分
                                             </td>
                                             <td>
-                                                <button onclick="location.href='{{url('/user/message/'.$app_to_me->user->id)}}'" type="submit">詳細を見る</button>
                                                 <a href="{{url('/user/message/'.$app_to_me->user->id)}}">詳細を見る</a>
                                             </td>
                                             <td>
