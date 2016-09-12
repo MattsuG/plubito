@@ -43,6 +43,9 @@
                 <p class="text-muted text-center"><small>アカウントをお持ちでない方</small></p>
                 <a class="btn btn-sm btn-white btn-block" href="/auth/register">サインアップ</a>
             </form>
+            @if (Session::has('flash_message'))
+                <div class="alert alert-success">{{ Session::get('flash_message') }}</div>
+            @endif
             <p class="m-t"> <small>TIMELAG Inc. &copy; 2016</small> </p>
         </div>
     </div>
