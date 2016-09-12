@@ -13,12 +13,12 @@
             <ul class="nav metismenu" id="side-menu">
                 <li class="nav-header">
                     <div class="dropdown profile-element">                         
-                            <a href="/mentor"><img alt="image" class="img" src="{{{asset('/assets/img/plus.png')}}}" width="25px" height="50px" /></a>
+                            <a href="/mentor"><img alt="image" class="img" src="{{{secure_asset('/assets/img/plus.png')}}}" width="25px" height="50px" /></a>
                     </div>
                     <div class="dropdown profile-element"> 
                         <span>
                             @if (!empty(Auth::user()->profile_picture_path))
-                            <img alt="image" class="img-circle" src="{{{asset(Auth::user()->profile_picture_path)}}}">
+                            <img alt="image" class="img-circle" src="{{{secure_asset(Auth::user()->profile_picture_path)}}}">
                             @endif
                             @if (empty(Auth::user()->profile_picture_path))
                             <img alt="image" class="img-circle" src="/assets/img/default_thumbnail.jpg">
@@ -34,7 +34,7 @@
                         </a>                        
                     </div>                    
                     <div class="logo-element">
-                        <a href="/mentor"><img alt="image" class="img" src="{{{asset('/assets/img/plus.png')}}}" width="25px" height="50px" /></a>
+                        <a href="/mentor"><img alt="image" class="img" src="{{{secure_asset('/assets/img/plus.png')}}}" width="25px" height="50px" /></a>
                     </div>
                 </li>
                 <li>

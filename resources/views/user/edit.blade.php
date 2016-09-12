@@ -3,11 +3,11 @@
 @section('TitleAndCss')
 <title>show.php | ユーザー詳細</title>
 
-<link rel="stylesheet" href="{{{asset('/assets/bootstrap/css/bootstrap.min.css')}}}">
-<link rel="stylesheet" href="{{{asset('/assets/font-awesome/css/font-awesome.min.css')}}}">
-<link rel="stylesheet" href="{{{asset('/assets/css/style_pre_index.css')}}}">
-<link rel="stylesheet" href="{{{asset('/assets/css/animate.css')}}}">
-<link rel="stylesheet" href="{{{asset('/assets/css/style.css')}}}">
+<link rel="stylesheet" href="{{{secure_asset('/assets/bootstrap/css/bootstrap.min.css')}}}">
+<link rel="stylesheet" href="{{{secure_asset('/assets/font-awesome/css/font-awesome.min.css')}}}">
+<link rel="stylesheet" href="{{{secure_asset('/assets/css/style_pre_index.css')}}}">
+<link rel="stylesheet" href="{{{secure_asset('/assets/css/animate.css')}}}">
+<link rel="stylesheet" href="{{{secure_asset('/assets/css/style.css')}}}">
 
 <!-- <link href="css/style_pre_index.css" rel="stylesheet"> -->
 @stop
@@ -110,7 +110,17 @@
                             </div>   
                              <div class="form-group"><label class="col-sm-2 control-label">在籍期間</label>
                                 <div class="col-sm-10"><input type="text" name="other_school_period" placeholder="〇〇年〇〇月〜〇〇年〇〇月" value="{{ old('other_school_period', $user->other_school_period) }}" class="form-control"></div>
-                            </div>    
+                            </div>
+                            
+                            @if (count($errors) > 0)
+                            <div class="alert alert-danger">
+                                <ul>
+                                @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                                @endforeach
+                                </ul>
+                            </div>
+                            @endif   
 
                             <button type="submit" class="btn btn-primary block full-width m-b">更新</button>
 
@@ -122,13 +132,13 @@
 @stop
 
 @section('Js')
-<script src="{{{asset('/assets/js/jquery-2.1.1.js')}}}"></script>
-<script src="{{{asset('/assets/bootstrap/js/bootstrap.min.js')}}}"></script>
+<script src="{{{secure_asset('/assets/js/jquery-2.1.1.js')}}}"></script>
+<script src="{{{secure_asset('/assets/bootstrap/js/bootstrap.min.js')}}}"></script>
 
-<script src="{{{asset('/assets/js/plugins/metisMenu/jquery.metisMenu.js')}}}"></script>
-<script src="{{{asset('/assets/js/plugins/slimscroll/jquery.slimscroll.min.js')}}}"></script>
+<script src="{{{secure_asset('/assets/js/plugins/metisMenu/jquery.metisMenu.js')}}}"></script>
+<script src="{{{secure_asset('/assets/js/plugins/slimscroll/jquery.slimscroll.min.js')}}}"></script>
 
-<script src="{{{asset('/assets/js/inspinia.js')}}}"></script>
-<script src="{{{asset('/assets/js/plugins/pace/pace.min.js')}}}"></script>
-<script src="{{{asset('/assets/js/add.js')}}}"></script>
+<script src="{{{secure_asset('/assets/js/inspinia.js')}}}"></script>
+<script src="{{{secure_asset('/assets/js/plugins/pace/pace.min.js')}}}"></script>
+<script src="{{{secure_asset('/assets/js/add.js')}}}"></script>
 @stop
