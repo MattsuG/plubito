@@ -96,9 +96,9 @@ only screen and (                min-resolution: 192dpi),
 only screen and (                min-resolution: 2dppx) {
 	
 	/* logo */
-    .navbar-brand {
+    /*.navbar-brand {
     	background-image: url(../img/plus0.png) !important; background-repeat: no-repeat !important; background-size: 60px 50px !important;
-
+*/
     }
 
 	

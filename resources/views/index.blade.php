@@ -1,295 +1,729 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>TopPage</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100italic,300,300italic,400,400italic,500,500italic">
-<link rel="stylesheet" href="{{{asset('/assets/bootstrap/css/bootstrap.min.css')}}}">
-<link rel="stylesheet" href="{{{asset('/assets/font-awesome/css/font-awesome.min.css')}}}">
-<link rel="stylesheet" href="{{{asset('/assets/css/animate.css')}}}">
-<link rel="stylesheet" href="{{{asset('/assets/css/style_pre_index.css')}}}">
-<link rel="stylesheet" href="{{{asset('/assets/css/media-queries.css')}}}">
+    <title>INSPINIA - Landing Page</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100italic,300,300italic,400,400italic,500,500italic">
+    <link rel="stylesheet" href="{{{asset('/assets/bootstrap/css/bootstrap.min.css')}}}">
+    <link rel="stylesheet" href="{{{asset('/assets/font-awesome/css/font-awesome.min.css')}}}">
+    <link rel="stylesheet" href="{{{asset('/assets/css/animate.css')}}}">
+    <link rel="stylesheet" href="{{{asset('/assets/css/style.css')}}}">
+    <link rel="stylesheet" href="{{{asset('/assets/css/style_pre_index.css')}}}">
+    <link rel="stylesheet" href="{{{asset('/assets/css/media-queries.css')}}}">
 
 </head>
-<body class="gray-bg">
-
-<div class="loader">
-	<div class="loader-img"></div>
+<body id="page-top" class="landing-page">
+<div class="navbar-wrapper">
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header page-scroll">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html">+ヒト</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a class="page-scroll" href="#page-top">ホーム</a></li>
+                        <li><a class="page-scroll" href="#timeline">プロジェクト予定</a></li>
+                        <li><a class="page-scroll" href="#howtouse">使い方</a></li>
+                        <li><a class="page-scroll" href="#contact">問い合わせ</a></li>
+                        <li><a href="/auth/login">ログイン</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
 </div>
-				
-<!-- Top content -->
-<div class="top-content">
-	<!-- Top menu -->
-	<nav class="navbar navbar-inverse navbar-no-bg" role="navigation">
-		<div class="container">
-			<div class="navbar-header" style="background: white";>
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-navbar-1" style="background-color: #000000";>
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="/"></a>
-			</div>
-			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="collapse navbar-collapse" id="top-navbar-1" style="background-color: #fff">
-				<ul class="nav navbar-nav navbar-right">
-					<li><a class="scroll-link" href="#features">＋ヒトについて</a></li>
-					<li><a class="" href="/mentor">トークをみる</a></li>
-					<li><a class="" href="/auth/login">ログイン</a></li>
-					<li><a class="btn btn-link-2" href="/auth/register">サインアップ</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
-	<div class="inner-bg">
-		<div class="container">
-			<div class="row">
-				<div class="text">
-					<div class="description wow fadeInLeftBig">
-						<p>
-							+ヒトα版へようこそ<br><br>
-							このサービスは進路情報を個人間でシェアするためのプラットフォームです。<br>
-							留学、進学、起業、フリーランス、就職活動、インターンなどでのあなたの経験をトークとして登録し、その経験を聞きたい人から申し込みが来たら有料で話すものです。<br>
-							本サイトは現在”トーク”を登録していただける方のみへ公開しています。
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!-- <div class="row">
-	<div class="col-sm-8 col-sm-offset-2 top-video-link medium-paragraph wow fadeInUp">
-	<a href="#" class="launch-modal" data-modal-id="modal-how-it-works">
-	<span class="top-video-link-icon"><i class="fa fa-play"></i></span>
-	<span class="top-video-link-text">See how it works</span>
-	</a>
-	</div>
-	</div> -->
-
-	<div class="row">
-		<div class="col-sm-12 top-social wow fadeInUp">
-			<span class="divider-2"></span>
-			<a href="#"><i class="fa fa-facebook"></i></a> <span class="divider-2"></span> 
-			<a href="#"><i class="fa fa-twitter"></i></a> <span class="divider-2"></span> 
-		</div>
-	</div>
-
-</div>
-   
-<!-- How it works -->
-<div class="how-it-works-container section-container section-container-image-bg">
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-12 how-it-works section-description wow fadeIn">
-				<h2>使い方</h2>
-				<p>
-					<div class="divider-1 wow fadeInUp"><span></span></div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-sm-3  how-it-works-box wow fadeInUp">
-				<div class="how-it-works-box-icon">
-					<i class="fa fa-search fa-5x" aria-hidden="true"></i>
-				</div>
-				<h3>トークを検索</h3>
-				<p>カテゴリ検索やキーワード検索で聞いてみたいトークを検索</p>
-			</div>
-			<div class="col-sm-3  how-it-works-box wow fadeInDown">
-				<div class="how-it-works-box-icon">
-					<i class="fa fa-paper-plane fa-5x" aria-hidden="true"></i>
-				</div>
-				<h3>予約リクエスト</h3>
-				<p>聞いてみたいトークが見つかったら詳細ページから予約リクエスト</p>
-			</div>
-			<div class="col-sm-3  how-it-works-box wow fadeInUp">
-				<div class="how-it-works-box-icon">
-					<i class="fa fa-commenting fa-5x" aria-hidden="true"></i>
-				</div>
-				<h3>メッセージ</h3>
-				<p>話し手とのメッセージで事前にオンライン通話サービスのIDを交換</p>
-			</div>
-			<div class="col-sm-3 how-it-works-box wow fadeInDown">
-				<div class="how-it-works-box-icon">
-					<i class="fa fa-headphones fa-5x" aria-hidden="true"></i>
-				</div>
-				<h3>話す</h3>
-				<p>自分の進路の参考にできる情報を質問したり、体験談を聞く</p>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-sm-12 section-bottom-button wow fadeInUp">
-				<a class="btn btn-link-1 fa-5x" href="howtouse">詳しい使い方</a>
-			</div>
-		</div>
-	</div>
+<div id="inSlider" class="carousel carousel-fade" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#inSlider" data-slide-to="0" class="active"></li>
+        <li data-target="#inSlider" data-slide-to="1"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+        <div class="item active">
+            <div class="container">
+                <div class="carousel-caption">
+                    <h1>+ヒトα版へようこそ</h1><br><br>
+                    <p>+ヒトは進路情報を個人間でシェアするためのプラットフォームです。<br/>
+                    留学、進学、起業、就職活動、インターンなどでのあなたの経験をトークとして登録すると、<br>
+                    それ聞きたい人からリクエストが届きます。<br/>
+                    本サイトは現在”トーク”を登録していただける方のみへ公開しています。</p>
+                    <p>
+                        <a class="btn btn-lg btn-primary" href="/auth/register" role="button">話し手になる</a>
+                    </p>
+                </div>
+                <!-- <div class="carousel-image wow zoomIn">
+                    <img src="img/landing/laptop.png" alt="laptop"/>
+                </div> -->
+            </div>
+            <!-- Set background for slide in css -->
+            <div class="header-back one"></div>
+        </div>
+        <div class="item">
+            <div class="container">
+                <div class="carousel-caption">
+                    <h1>+ヒトα版へようこそ</h1><br><br>
+                    <p>+ヒトは進路情報を個人間でシェアするためのプラットフォームです。<br/>
+                    個人の留学、進学、起業、就職活動、インターンなどそれぞれの経験がトークとして公開しています。<br>
+                    聞きたいトークを検索しリクエストを送るとその人の話を聞くことができます。<br/>
+                    本サイトは現在”トーク”を登録していただける方のみへ公開しています。</p>
+                    <p>
+                    <p><a class="btn btn-lg btn-primary" href="/auth/register" role="button">サインアップ</a></p>
+                </div>
+            </div>
+            <!-- Set background for slide in css -->
+            <div class="header-back two"></div>
+        </div>
+    </div>
+    <a class="left carousel-control" href="#inSlider" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#inSlider" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
 </div>
 
-<!-- More features 2 -->
-<div class="more-features-2-container section-container section-container-gray-bg">
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-12 how-it-works section-description wow fadeIn">
-				<h2>カテゴリ</h2>
-			</div>
-			<div class="col-sm-3 more-features-2-box wow fadeInLeft">
-				<img src="assets/img/about/job.jpg" alt="" with="50%">
-			</div>
-			<div class="col-sm-9 more-features-2-box more-features-2-box-right wow fadeInUp">
-				<h3>就職・転職・起業。仕事について考えるとき:</h3>
-				<p>
-					大学3年から就職活動をして就職、長い間その企業でつとめる、そんな人生からすこし外れた経歴を持った人たちの話。
-				</p>
-				<p>
-					転職を複数回した経験のある人、起業経験者、大企業とスタートアップをどちらも経験した人、就活せずフリーランスで生きている人など。
-				</p>
-			</div>
-		</div>
-	</div>
+<div class="container">
+    <div class="row">
+        <section>
+            <div class="grid-items">
+                <ul>
+                 @foreach ($talks as $talk)
+                    <li>
+                    <a href="{{ url('mentor/'.$talk->id) }}" style="color:#000;text-decoration:none"><img src="{{{asset($talk->pic0_path)}}}" alt="">
+                    <h4>{{ $talk->title }}</h4>
+                    <p><i class="fa fa-thumbs-up" aria-hidden="true">いいね：</i>{{ count($talk->likes) }}&nbsp;&nbsp;&nbsp;<i class="fa fa-headphones" aria-hidden="true">トーク：</i>{{ $talk->applications_count }}</p>
+                    <h4>{{ $talk->category->category_name }}</h4>
+                    <h4></a>
+                    <a href="{{ url('mentor/'.$talk->id) }}"><button type="button" class="btn2 btn-default btn-sm btn-block">詳細を見る</button></a>
+                    </li>
+                @endforeach
+                </ul>
+            </div>
+        </section>
+    </div>
 </div>
-        
-<!-- Many options -->
-<div class="many-options-container section-container-gray-bg">
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-9 many-options-box wow fadeInLeft">
-				<h3>海外へ出ようと思う人へ:</h3>
-				<p>
-					海外大学・大学院へ留学した人、現地で就職した人など。
-					実際に行ってみないと分からない情報や準備でしたことなど実践的な話。
-				</p>
-			</div>
-			<div class="col-sm-3 many-options-box many-options-box-right wow fadeInUp">
-				<img src="assets/img/about/studyabroad.jpg" alt="">
-			</div>
-		</div>
-	</div>
-</div>
-<div class="more-features-2-container section-container section-container-gray-bg">
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-12 how-it-works section-description wow fadeIn">
-			</div>
-			<div class="col-sm-3 more-features-2-box wow fadeInLeft">
-				<img src="assets/img/about/study.jpg" alt="" with="50%">
-			</div>
-			<div class="col-sm-9 more-features-2-box more-features-2-box-right wow fadeInUp">
-				<h3>大学受験以外の選択肢が気になったら:</h3>
-				<p>
-					受験勉強して大学へ行くことが当たり前だったこれまで。今は、もっといろんな選択肢がある。
-					大学受験せずに他の進路を走っている人、大学へ入学したけれど中退して別の道を選んだ人など。
-				</p>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-sm-12 section-bottom-button wow fadeInUp">
-				<a class="btn btn-link-1 scroll-link fa-5x" href="#pricing">トークをみる</a>
-			</div>
-		</div>
-	</div>
-</div>
-<!-- Pricing -->
-<div class="pricing-container section-container">
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-12 pricing section-description wow fadeIn">
-				<h2>新しいトーク</h2>
-			</div>
-		</div>
-		<div class="row"> 
-			@foreach ($talks as $talk)         
-			<div class="col-sm-3 pricing-box pricing-box-best wow fadeInDown">
-				<div class="pricing-box-inner">
-					<div class="pricing-box-price">
-						<img src="{{{asset($talk->pic0_path)}}}" alt="">
-					</div>
-					<p class="abbreviation3">{{ $talk->title }}</p>
-					<p><i class="fa fa-thumbs-up" aria-hidden="true">いいね：</i>{{ count($talk->likes) }}&nbsp;&nbsp;&nbsp;<i class="fa fa-headphones" aria-hidden="true">トーク：</i>{{ $talk->applications_count }}</p>
-					<div class="pricing-box-features">
-						<ul>
-							<li>{{ $talk->name }}</li>
-							<!-- <li>価格:{{ $talk->price }}</li> -->
-							<li><a href="{{ url('auth/login') }}"><button type="button" class="btn btn-default btn-sm btn-block">詳細を見る</button></a></li>                 
-						</ul>
-					</div>
-				</div>
-			</div>
-			@endforeach  
-		</div>
-		<div class="row">
-			<div class="col-sm-12 section-bottom-button wow fadeInUp">
-				<a class="btn btn-link-1 scroll-link fa-5x" href="#pricing">トークをみる</a>
-			</div>
-		</div>
-	</div>
-</div>
-<!-- Footer -->
-<footer>
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-4 footer-about wow fadeInUp">
-				<h4>+ヒトについて</h4>
-				<p>
-					<a href="qa">Q & A</a><br>
-					<a href="howtouse">使い方</a><br>
-					<a href="becometalker">話し手になる</a><br>
-					<!-- <a>運営会社</a><br> -->		
-				</p>
-			</div>
-			<div class="col-sm-4 footer-contact-info wow fadeInDown">
-				<h4>コンタクト</h4>
-				<p><i class="fa fa-envelope"></i> Email:　info@timelag.co.jp</a></p>	             
-			</div>
-			<div class="col-sm-4 footer-social wow fadeInUp">
-				<h4>ソーシャルメディア</h4>
-				<p>
-					<a href="https://www.facebook.com/Timelag%E3%83%96%E3%83%AD%E3%82%B0-1000788249945274/?fref=ts"><i class="fa fa-facebook"></i></a> 
-					<a href="#"><i class="fa fa-twitter"></i></a>  
-				</p>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-sm-6 footer-copyright">
-				&copy; All right reserved by TIMELAG Inc.
-			</div>
-			<div class="col-sm-6 footer-menu">
-				<ul>
-					<li><a class="scroll-link" href="#top-content">ページトップ</a></li>
-					<li><a href="terms">利用規約</a></li>
-					<li><a href="privacy">個人情報</a></li>
-					<li><a href="tradeterm">特定商取引法</a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
-</footer>
+
+
+<!-- <section id="features" class="container services">
+    <div class="row">
+        <div class="col-sm-3">
+            <h2>Full responsive</h2>
+            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus.</p>
+            <p><a class="navy-link" href="#" role="button">Details &raquo;</a></p>
+        </div>
+        <div class="col-sm-3">
+            <h2>LESS/SASS Files</h2>
+            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus.</p>
+            <p><a class="navy-link" href="#" role="button">Details &raquo;</a></p>
+        </div>
+        <div class="col-sm-3">
+            <h2>6 Charts Library</h2>
+            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus.</p>
+            <p><a class="navy-link" href="#" role="button">Details &raquo;</a></p>
+        </div>
+        <div class="col-sm-3">
+            <h2>Advanced Forms</h2>
+            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus.</p>
+            <p><a class="navy-link" href="#" role="button">Details &raquo;</a></p>
+        </div>
+    </div>
+</section> -->
+
+<!-- <section  class="container features">
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <div class="navy-line"></div>
+            <h1>Over 40+ unique view<br/> <span class="navy"> with many custom components</span> </h1>
+            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 text-center wow fadeInLeft">
+            <div>
+                <i class="fa fa-mobile features-icon"></i>
+                <h2>Full responsive</h2>
+                <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus.</p>
+            </div>
+            <div class="m-t-lg">
+                <i class="fa fa-bar-chart features-icon"></i>
+                <h2>6 Charts Library</h2>
+                <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus.</p>
+            </div>
+        </div>
+        <div class="col-md-6 text-center  wow zoomIn">
+            <img src="img/landing/perspective.png" alt="dashboard" class="img-responsive">
+        </div>
+        <div class="col-md-3 text-center wow fadeInRight">
+            <div>
+                <i class="fa fa-envelope features-icon"></i>
+                <h2>Mail pages</h2>
+                <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus.</p>
+            </div>
+            <div class="m-t-lg">
+                <i class="fa fa-google features-icon"></i>
+                <h2>AngularJS version</h2>
+                <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus.</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <div class="navy-line"></div>
+            <h1>Discover great feautres</h1>
+            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. </p>
+        </div>
+    </div>
+    <div class="row features-block">
+        <div class="col-lg-6 features-text wow fadeInLeft">
+            <small>INSPINIA</small>
+            <h2>Perfectly designed </h2>
+            <p>INSPINIA Admin Theme is a premium admin dashboard template with flat design concept. It is fully responsive admin dashboard template built with Bootstrap 3+ Framework, HTML5 and CSS3, Media query. It has a huge collection of reusable UI components and integrated with latest jQuery plugins.</p>
+            <a href="" class="btn btn-primary">Learn more</a>
+        </div>
+        <div class="col-lg-6 text-right wow fadeInRight">
+            <img src="img/landing/dashboard.png" alt="dashboard" class="img-responsive pull-right">
+        </div>
+    </div>
+</section>
+ -->
+<!-- <section id="team" class="gray-section team">
+    <div class="container">
+        <div class="row m-b-lg">
+            <div class="col-lg-12 text-center">
+                <div class="navy-line"></div>
+                <h1>Our Team</h1>
+                <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 wow fadeInLeft">
+                <div class="team-member">
+                    <img src="img/landing/avatar3.jpg" class="img-responsive img-circle img-small" alt="">
+                    <h4><span class="navy">Amelia</span> Smith</h4>
+                    <p>Lorem ipsum dolor sit amet, illum fastidii dissentias quo ne. Sea ne sint animal iisque, nam an soluta sensibus. </p>
+                    <ul class="list-inline social-icon">
+                        <li><a href="#"><i class="fa fa-twitter"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-facebook"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-linkedin"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="team-member wow zoomIn">
+                    <img src="img/landing/avatar1.jpg" class="img-responsive img-circle" alt="">
+                    <h4><span class="navy">John</span> Novak</h4>
+                    <p>Lorem ipsum dolor sit amet, illum fastidii dissentias quo ne. Sea ne sint animal iisque, nam an soluta sensibus.</p>
+                    <ul class="list-inline social-icon">
+                        <li><a href="#"><i class="fa fa-twitter"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-facebook"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-linkedin"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-4 wow fadeInRight">
+                <div class="team-member">
+                    <img src="img/landing/avatar2.jpg" class="img-responsive img-circle img-small" alt="">
+                    <h4><span class="navy">Peter</span> Johnson</h4>
+                    <p>Lorem ipsum dolor sit amet, illum fastidii dissentias quo ne. Sea ne sint animal iisque, nam an soluta sensibus.</p>
+                    <ul class="list-inline social-icon">
+                        <li><a href="#"><i class="fa fa-twitter"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-facebook"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-linkedin"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 text-center m-t-lg m-b-lg">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
+            </div>
+        </div>
+    </div>
+</section> -->
+
+<!-- <section class="features">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="navy-line"></div>
+                <h1>Even more great feautres</h1>
+                <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. </p>
+            </div>
+        </div>
+        <div class="row features-block">
+            <div class="col-lg-3 features-text wow fadeInLeft">
+                <small>INSPINIA</small>
+                <h2>Perfectly designed </h2>
+                <p>INSPINIA Admin Theme is a premium admin dashboard template with flat design concept. It is fully responsive admin dashboard template built with Bootstrap 3+ Framework, HTML5 and CSS3, Media query. It has a huge collection of reusable UI components and integrated with latest jQuery plugins.</p>
+                <a href="" class="btn btn-primary">Learn more</a>
+            </div>
+            <div class="col-lg-6 text-right m-t-n-lg wow zoomIn">
+                <img src="img/landing/iphone.jpg" class="img-responsive" alt="dashboard">
+            </div>
+            <div class="col-lg-3 features-text text-right wow fadeInRight">
+                <small>INSPINIA</small>
+                <h2>Perfectly designed </h2>
+                <p>INSPINIA Admin Theme is a premium admin dashboard template with flat design concept. It is fully responsive admin dashboard template built with Bootstrap 3+ Framework, HTML5 and CSS3, Media query. It has a huge collection of reusable UI components and integrated with latest jQuery plugins.</p>
+                <a href="" class="btn btn-primary">Learn more</a>
+            </div>
+        </div>
+    </div>
+
+</section> -->
+
+<section id="timeline" class="timeline gray-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="navy-line"></div>
+                <h1>プロジェクト予定</h1>
+                <p>＋ヒトの正式リリースまでのスケジュールです。 </p>
+            </div>
+        </div>
+        <div class="row features-block">
+
+            <div class="col-lg-12">
+                <div id="vertical-timeline" class="vertical-container light-timeline center-orientation">
+                    <div class="vertical-timeline-block">
+                        <div class="vertical-timeline-icon navy-bg">
+                            <i class="fa fa-briefcase"></i>
+                        </div>
+
+                        <div class="vertical-timeline-content">
+                            <h2>話し手公開</h2>
+                            <p>初めに話し手としてトークをご登録いただける方に登録をお願いします。プロフィールやトークの登録、メッセージのやり取りは可能ですが、実際に決済はまだ行うことができません。
+                            </p>
+                            <span class="vertical-date"><small>9月15日</small> </span>
+                        </div>
+                    </div>
+
+                    <div class="vertical-timeline-block">
+                        <div class="vertical-timeline-icon navy-bg">
+                            <i class="fa fa-file-text"></i>
+                        </div>
+
+                        <div class="vertical-timeline-content">
+                            <h2>α版公開</h2>
+                            <p>トークが一定数集まった時点で決済機能を付け、一般ユーザーへ公開します。実際にトークに申し込みが来たら日時を決定し、聞き手が支払いをしたらスカイプIDなどを交換していただきトークをして頂けます。</p>
+                            <span class="vertical-date"><small>10月1日</small> </span>
+                        </div>
+                    </div>
+
+                    <div class="vertical-timeline-block">
+                        <div class="vertical-timeline-icon navy-bg">
+                            <i class="fa fa-cogs"></i>
+                        </div>
+
+                        <div class="vertical-timeline-content">
+                            <h2>β版公開</h2>
+                            <p>α版から得たフィードバックをもとにより便利にご利用いただくために改良したものをリリースします。</p>
+                            <span class="vertical-date"><small>12月1日</small> </span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</section>
+
+<!-- <section id="testimonials" class="navy-section testimonials" style="margin-top: 0">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center wow zoomIn">
+                <i class="fa fa-comment big-icon"></i>
+                <h1>
+                    What our users say
+                </h1>
+                <div class="testimonials-text">
+                    <i>"Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."</i>
+                </div>
+                <small>
+                    <strong>12.02.2014 - Andy Smith</strong>
+                </small>
+            </div>
+        </div>
+    </div>
+
+</section> -->
+
+<!-- <section class="comments gray-section" style="margin-top: 0">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="navy-line"></div>
+                <h1>What our partners say</h1>
+                <p>Donec sed odio dui. Etiam porta sem malesuada. </p>
+            </div>
+        </div>
+        <div class="row features-block">
+            <div class="col-lg-4">
+                <div class="bubble">
+                    "Uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."
+                </div>
+                <div class="comments-avatar">
+                    <a href="" class="pull-left">
+                        <img alt="image" src="img/landing/avatar3.jpg">
+                    </a>
+                    <div class="media-body">
+                        <div class="commens-name">
+                            Andrew Williams
+                        </div>
+                        <small class="text-muted">Company X from California</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="bubble">
+                    "Uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."
+                </div>
+                <div class="comments-avatar">
+                    <a href="" class="pull-left">
+                        <img alt="image" src="img/landing/avatar1.jpg">
+                    </a>
+                    <div class="media-body">
+                        <div class="commens-name">
+                            Andrew Williams
+                        </div>
+                        <small class="text-muted">Company X from California</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="bubble">
+                    "Uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."
+                </div>
+                <div class="comments-avatar">
+                    <a href="" class="pull-left">
+                        <img alt="image" src="img/landing/avatar2.jpg">
+                    </a>
+                    <div class="media-body">
+                        <div class="commens-name">
+                            Andrew Williams
+                        </div>
+                        <small class="text-muted">Company X from California</small>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+
+</section> -->
+
+<section id="howtouse" class="features">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="navy-line"></div>
+                <h1>使い方</h1>
+                <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-5 col-lg-offset-1 features-text">
+                <small>- 1 -</small>
+                <h2>トーク検索 </h2>
+                <i class="fa fa-search fa-5x big-icon pull-right"></i>
+                <p>ログインすると「トーク一覧」ページが表示されます。カテゴリ検索やキーワード検索から聞いてみたいトークを検索し、そのトークの詳細をごらんください。</p>
+            </div>
+            <div class="col-lg-5 features-text">
+                <small>- 2 -</small>
+                <h2>予約リクエスト </h2>
+                <i class="fa fa-paper-plane fa-5x big-icon pull-right"></i>
+                <p>聞いてみたいトークが見つかったら詳細ページで詳細を確認し、実際にトークを聞いてみたい場合は予約リクエストボタンを押してください。
+                予約リクエストボタンを押すと話し手のマイページにリクエストが表示されます。話してへメッセージを送り日時を相談しましょう。</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-5 col-lg-offset-1 features-text">
+                <small>- 3 -</small>
+                <h2>メッセージ </h2>
+                <i class="fa fa-clock-o big-icon pull-right"></i>
+                <p>話し手と日時を確約できたらリクエストが承認されます。メッセージで事前にオンライン通話サービスのIDを交換しましょう。</p>
+            </div>
+            <div class="col-lg-5 features-text">
+                <small>- 4 -</small>
+                <h2>話す・会う</h2>
+                <i class="fa fa-users big-icon pull-right"></i>
+                <p>約束した時間までにトークへの支払いを済ませ、時間になったら話し手と通話を始めてください。</p>
+            </div>
+        </div>
+        <div class="row" style="text-align: center; margin-top: 20px;">
+            <a href="#" class="btn btn-xs btn-primary"> 詳しい使い方</a>
+        </div>
+    </div>
+
+</section>
+<!-- <section id="pricing" class="pricing">
+    <div class="container">
+        <div class="row m-b-lg">
+            <div class="col-lg-12 text-center">
+                <div class="navy-line"></div>
+                <h1>App Pricing</h1>
+                <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 wow zoomIn">
+                <ul class="pricing-plan list-unstyled">
+                    <li class="pricing-title">
+                        Basic
+                    </li>
+                    <li class="pricing-desc">
+                        Lorem ipsum dolor sit amet, illum fastidii dissentias quo ne. Sea ne sint animal iisque, nam an soluta sensibus.
+                    </li>
+                    <li class="pricing-price">
+                        <span>$16</span> / month
+                    </li>
+                    <li>
+                        Dashboards
+                    </li>
+                    <li>
+                        Projects view
+                    </li>
+                    <li>
+                        Contacts
+                    </li>
+                    <li>
+                        Calendar
+                    </li>
+                    <li>
+                        AngularJs
+                    </li>
+                    <li>
+                        <a class="btn btn-primary btn-xs" href="#">Signup</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-lg-4 wow zoomIn">
+                <ul class="pricing-plan list-unstyled selected">
+                    <li class="pricing-title">
+                        Standard
+                    </li>
+                    <li class="pricing-desc">
+                        Lorem ipsum dolor sit amet, illum fastidii dissentias quo ne. Sea ne sint animal iisque, nam an soluta sensibus.
+                    </li>
+                    <li class="pricing-price">
+                        <span>$22</span> / month
+                    </li>
+                    <li>
+                        Dashboards
+                    </li>
+                    <li>
+                        Projects view
+                    </li>
+                    <li>
+                        Contacts
+                    </li>
+                    <li>
+                        Calendar
+                    </li>
+                    <li>
+                        AngularJs
+                    </li>
+                    <li>
+                        <strong>Support platform</strong>
+                    </li>
+                    <li class="plan-action">
+                        <a class="btn btn-primary btn-xs" href="#">Signup</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-lg-4 wow zoomIn">
+                <ul class="pricing-plan list-unstyled">
+                    <li class="pricing-title">
+                        Premium
+                    </li>
+                    <li class="pricing-desc">
+                        Lorem ipsum dolor sit amet, illum fastidii dissentias quo ne. Sea ne sint animal iisque, nam an soluta sensibus.
+                    </li>
+                    <li class="pricing-price">
+                        <span>$160</span> / month
+                    </li>
+                    <li>
+                        Dashboards
+                    </li>
+                    <li>
+                        Projects view
+                    </li>
+                    <li>
+                        Contacts
+                    </li>
+                    <li>
+                        Calendar
+                    </li>
+                    <li>
+                        AngularJs
+                    </li>
+                    <li>
+                        <a class="btn btn-primary btn-xs" href="#">Signup</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row m-t-lg">
+            <div class="col-lg-8 col-lg-offset-2 text-center m-t-lg">
+                <p>*Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. <span class="navy">Various versions</span>  have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+            </div>
+        </div>
+    </div>
+
+</section>
+ -->
+<section id="contact" class="gray-section contact">
+    <div class="container">
+        <div class="row m-b-lg">
+            <div class="col-lg-12 text-center">
+                <div class="navy-line"></div>
+                <h1>お問い合わせ</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <!-- <a href="mailto:test@email.com" class="btn btn-primary">お問い合わせメール</a> -->
+                <p class="m-t-sm">
+                    (株)タイムラグ<br>
+                    Email:info@timelag.co.jp<br>
+                </p>
+                <ul class="list-inline social-icon">
+                    <li><a href="#"><i class="fa fa-twitter"></i></a>
+                    </li>
+                    <li><a href="#"><i class="fa fa-facebook"></i></a>
+                    </li>
+                    <li><a href="#"><i class="fa fa-linkedin"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <ul class="list-inline termlink">
+                    <li><a href="terms">利用規約</a></li>
+                    <li><a href="privacy">個人情報</a></li>
+                    <li><a href="tradeterm">特定商取引法</a></li>
+                    <li><a href="qa">Q & A</a></li>
+                    <li><a href="howtouse">使い方</a></li>
+                    <li><a href="becometalker">話し手になる</a><li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 text-center m-b-lg">
+            <hr>
+                <p>&copy; 2016 All right reserved by Timelag.Inc</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Mainly scripts -->
 <script src="{{{asset('/assets/js/jquery-2.1.1.js')}}}"></script>
 <script src="{{{asset('/assets/bootstrap/js/bootstrap.min.js')}}}"></script>
 <script src="{{{asset('assets/js/jquery.backstretch.min.js')}}}"></script>
 <script src="{{{asset('/assets/js/wow.min.js')}}}"></script>
 <script src="{{{asset('/assets/js/retina-1.1.0.min.js')}}}"></script>
 <script src="{{{asset('assets/js/scripts.js')}}}"></script>
+<script src="{{{asset('/assets/js/plugins/metisMenu/jquery.metisMenu.js')}}}"></script>
+<script src="{{{asset('/assets/js/plugins/slimscroll/jquery.slimscroll.min.js')}}}"></script>
+<script src="{{{asset('/assets/js/inspinia.js')}}}"></script>
+<script src="{{{asset('/assets/js/plugins/pace/pace.min.js')}}}"></script>
 <script>
-$(function(){
-    var $setElm = $('h3.abbreviation3');
-    var cutFigure = '11'; // カットする文字数
-    var afterTxt = ' …'; // 文字カット後に表示するテキスト
+    $(document).ready(function () {
 
-    $setElm.each(function(){
-        var textLength = $(this).text().length;
-        var textTrim = $(this).text().substr(0,(cutFigure))
+        $('body').scrollspy({
+            target: '.navbar-fixed-top',
+            offset: 80
+        });
 
-        if(cutFigure < textLength) {
-            $(this).html(textTrim + afterTxt).css({visibility:'visible'});
-        } else if(cutFigure >= textLength) {
-            $(this).css({visibility:'visible'});
-        }
+        // Page scrolling feature
+        $('a.page-scroll').bind('click', function(event) {
+            var link = $(this);
+            $('html, body').stop().animate({
+                scrollTop: $(link.attr('href')).offset().top - 50
+            }, 500);
+            event.preventDefault();
+            $("#navbar").collapse('hide');
+        });
     });
-});
+
+    var cbpAnimatedHeader = (function() {
+        var docElem = document.documentElement,
+                header = document.querySelector( '.navbar-default' ),
+                didScroll = false,
+                changeHeaderOn = 200;
+        function init() {
+            window.addEventListener( 'scroll', function( event ) {
+                if( !didScroll ) {
+                    didScroll = true;
+                    setTimeout( scrollPage, 250 );
+                }
+            }, false );
+        }
+        function scrollPage() {
+            var sy = scrollY();
+            if ( sy >= changeHeaderOn ) {
+                $(header).addClass('navbar-scroll')
+            }
+            else {
+                $(header).removeClass('navbar-scroll')
+            }
+            didScroll = false;
+        }
+        function scrollY() {
+            return window.pageYOffset || docElem.scrollTop;
+        }
+        init();
+
+    })();
+
+    // Activate WOW.js plugin for animation on scrol
+    new WOW().init();
+
 </script>
+
+<!-- jQueryの読み込み(CDN)-->
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
+<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.3.min.js"><\/script>')</script>
+<!-- jQuery Easing Pluginの読み込み(CDN)-->
+<!-- ローカルで動作するように本書とは一部記述を変えています -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+<script>window.jQuery.easing.def || document.write('<script src="js/vendor/jquery.easing.1.3.js"><\/script>')</script>
+
+<!-- jquery.vgrid.min.jsの読み込み -->
+<script src="{{{asset('/assets/js/jquery.vgrid.min.js')}}}"></script>
+<script src="{{{asset('/assets/js/script.js')}}}"></script>
+
 </body>
 </html>
