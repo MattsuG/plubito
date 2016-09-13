@@ -132,7 +132,7 @@ class AuthController extends Controller
  
         $this->create($mailer, $request->all(), $config->get('app.key'));
  
-        \Session::flash('flash_message', '仮登録確認メールを送りました。メール内のリンクから本登録をしてください。');
+        \Session::flash('flash_message', '仮登録確認メールを送りました。メール内のリンクから本登録へお進みください。');
  
         return redirect('auth/login');
     }

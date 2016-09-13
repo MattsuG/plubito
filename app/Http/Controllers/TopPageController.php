@@ -14,32 +14,45 @@ use App;
 
 class TopPageController extends Controller
 {
-    public function index() {
-    	$talks = App\Talk::orderBy('created_at', 'desc')
-	    ->take(6)
-	    ->get();
-	    $categories = App\Category::All();
-	    return view("index", compact('talks', 'categories'));
-    }
-    public function terms() {
-	    return view("/terms");
-    }
-    public function privacy() {
-	    return view("/privacy");
-    }
-    public function tradeterm() {
-	    return view("/tradeterm");
-    }
-    public function howtouse() {
-        return view("/howtouse");
-    }
-    public function qa() {
-        return view("/qa");
-    }
-    public function about() {
-        return view("/about");
-    }
-    public function becometalker() {
-        return view("/becometalker");
+    public function index($path=null) {
+        switch ($path) {
+            case null:
+
+                $talks = App\Talk::orderBy('created_at', 'desc')
+                ->take(6)
+                ->get();
+                $categories = App\Category::All();
+                return view("/guestpages.index", compact('talks', 'categories'));
+
+                break;
+
+            case 'terms':
+                return view('/guestpages.terms');
+                break;
+
+            case 'privacy':
+                return view('/guestpages.privacy');
+                break;
+
+            case 'tradeterm':
+                return view('/guestpages.tradeterm');
+                break;
+
+            case 'howtouse':
+                return view('/guestpages.howtouse');
+                break;
+
+            case 'qa':
+                return view('/guestpages.qa');
+                break;
+
+            case 'about':
+                return view('/guestpages.about');
+                break;
+
+            case 'becometalker':
+                return view('/guestpages.becometalker');
+                break;
+        }
     }
 }
