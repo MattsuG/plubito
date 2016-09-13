@@ -81,8 +81,8 @@ class UserController extends Controller
     //メンターがユーザーの申し込みを承認する
     public function approve(Request $request) { 
         $this->validate($request, [
-          'user_id' => 'integer',
-          'r_page' => 'integer',
+          'date' => 'required|date|after:tomorrow',
+          'time' => 'required|time',
         ]);
         $user = User::findOrFail($request->user_id);
         $user->applications()->sync([$request->talk_id => ['approved_flag' => 1, 'approved_at' => Carbon::now(), 'talk_date' => $request->date, 'starting_time' => $request->time]], false);

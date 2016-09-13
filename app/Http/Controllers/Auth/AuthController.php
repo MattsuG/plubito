@@ -106,7 +106,7 @@ class AuthController extends Controller
             'emails.confirm',
             ['user' => $user, 'token' => $user->confirmation_token],
             function($message) use ($user) {
-                $message->to($user->email, $user->firstname.'様')->subject('ユーザー登録確認');
+                $message->to($user->email, $user->firstname.'様')->subject('+ビト 仮登録のお知らせ');
             }
         );
     }
@@ -132,7 +132,7 @@ class AuthController extends Controller
  
         $this->create($mailer, $request->all(), $config->get('app.key'));
  
-        \Session::flash('flash_message', 'ユーザー登録確認メールを送りました。');
+        \Session::flash('flash_message', '仮登録確認メールを送りました。メール内のリンクから本登録へお進みください。');
  
         return redirect('auth/login');
     }
@@ -144,7 +144,7 @@ class AuthController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      */
     public function getConfirm($token) {
-        $user = User::where('confirmation_token', '=', $token)->first();
+        $user = User::where('confirmation_token', $token)->first();
         if (! $user) {
             \Session::flash('flash_message', '無効なトークンです。');
             return redirect('auth/login');
@@ -156,20 +156,5 @@ class AuthController extends Controller
         \Session::flash('flash_message', 'ユーザー登録が完了しました。ログインしてください。');
         return redirect('auth/login');
     }
-// }
 
-    // /**
-    //  * Create a new user instance after a valid registration.
-    //  *
-    //  * @param  array  $data
-    //  * @return User
-    //  */
-    // protected function create(array $data)
-    // {
-    //     return User::create([
-    //         'name' => $data['name'],
-    //         'email' => $data['email'],
-    //         'password' => bcrypt($data['password']),
-    //     ]);
-    // }
 }

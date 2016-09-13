@@ -14,18 +14,6 @@
 
 	 
 
-Route::group(['middleware' => 'guest'], function() {
-
-	Route::get('/', 'TopPageController@index');
-	Route::get('/terms', 'TopPageController@terms');
-	Route::get('/privacy', 'TopPageController@privacy');
-	Route::get('/tradeterm', 'TopPageController@tradeterm');
-	Route::get('/howtouse', 'TopPageController@howtouse');
-	Route::get('/qa', 'TopPageController@qa');
-	Route::get('/about', 'TopPageController@about');
-	Route::get('/becometalker', 'TopPageController@becometalker');
-});
-
 Route::group(['middlewareGroups' => 'web'], function() {
 	// ログイン
 	Route::get('/auth/login', 'Auth\AuthController@getLogin');
@@ -36,6 +24,9 @@ Route::group(['middlewareGroups' => 'web'], function() {
 	Route::get('/auth/register', 'Auth\AuthController@getRegister');
 	Route::post('/auth/register', 'Auth\AuthController@postRegister');
 	Route::get('/auth/confirm/{token}', 'Auth\AuthController@getConfirm');
+
+	Route::get('/auth/resend', 'Auth\AuthController@getResend');
+	Route::post('/auth/resend', 'Auth\AuthController@postResend');
 });
 
 Route::group(['middleware' => 'auth'], function () {
@@ -70,12 +61,17 @@ Route::group(['middleware' => 'auth'], function () {
 		Route::post('/password/reset', 'Auth\PasswordController@postReset');
 
 		//PayPal
-		//Route::post('/payment', 'PayPalController@index');
-		//Route::post('/payment/confirmation', 'PayPalController@foo');
+		Route::post('/payment', 'PayPalController@index');
+		Route::post('/payment/confirmation', 'PayPalController@foo');
 
 	});
 
 });
 
+//トップページ・規約ページ等会員登録なしで閲覧できるページ
+Route::group(['middleware' => 'guest'], function() {
+	//全ページを1メソッドで切り分け
+	Route::get('/{path?}', 'TopPageController@index');
+});
 
 
