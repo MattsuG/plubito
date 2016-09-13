@@ -84,7 +84,7 @@
                                     </div>
                                 </div>
                                 <div class="feed-element" style="text-align: left;">
-                                    <h6>詳細</h6>
+                                    <h6 style="text-align: center;">詳細</h6>
                                     {!! nl2br(e($talk->detail)) !!}
                                 </div>
                                 <div class="feed-element">
