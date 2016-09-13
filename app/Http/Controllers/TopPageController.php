@@ -19,7 +19,7 @@ class TopPageController extends Controller
             case null:
 
                 $talks = App\Talk::orderBy('created_at', 'desc')
-                ->take(6)
+                ->take(8)
                 ->get();
                 $categories = App\Category::All();
                 return view("/guestpages.index", compact('talks', 'categories'));
