@@ -137,12 +137,30 @@ class AuthController extends Controller
         return redirect('auth/login');
     }
 
-    /**
-     * ⑤ ユーザーを確認済にする
-     *
-     * @param $token
-     * @return \Illuminate\Http\RedirectResponse
-     */
+    public function postResend(Request $request, Mailer $mailer, Config $config) {
+
+    $this->validate($request, ['email' => 'required|email']);
+    $user = User::where('email', '=', $request->input('email'))->first();
+
+    if(!$user) {
+        \Session::flash('flash_message', '登録されていないメールアドレスです。');
+        return redirect()->back()
+        ->withInput($request->only('email'))
+        ->withErrors(['email' => trans('passwords.user')]);
+    }
+
+        if($user->isConfirmed()) {
+            \Session::flash('flash_message', '既に、本登録が完了しています。ログインしてください。');
+            return redirect('auth/login');
+        }
+
+        $this->sendConfirmMail($mailer, $user);
+     
+        \Session::flash('flash_message', 'ユーザー登録確認メールを送りました。');
+        return redirect()->guest('auth/login');
+    }
+
+    //ユーザーを確認済にする
     public function getConfirm($token) {
         $user = User::where('confirmation_token', $token)->first();
         if (! $user) {

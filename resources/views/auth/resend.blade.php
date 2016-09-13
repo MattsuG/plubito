@@ -1,6 +1,6 @@
 @extends('common.layout_auth')
 @section('TitleAndCss')
-<title>TopPage</title>
+<title>+ビト / メール再送信</title>
 
 <link rel="stylesheet" href="{{{secure_asset('/assets/bootstrap/css/bootstrap.min.css')}}}">
 <link rel="stylesheet" href="{{{secure_asset('/assets/font-awesome/css/font-awesome.min.css')}}}">
@@ -15,17 +15,10 @@
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
  
                 <div class="form-group">
+                    <label for="email"></label>
                     <input id="email" name="email" type="email" class="form-control" placeholder="Eメールアドレス" required="" value="{{ old('email') }}">
                 </div>
 
-                <div class="form-group">
-                    <input id="password" name="password" type="password" class="form-control" placeholder="パスワード" required="">
-                </div>
-
-                <label for="remember" class="pure-checkbox">
-                    <input id="remember" type="checkbox" name="remember"
-                      {!! old('remember') ? 'checked="checked"' : '' !!} > 継続ログイン
-                </label>
 
                 @if (count($errors) > 0)
                     <div class="alert alert-danger">

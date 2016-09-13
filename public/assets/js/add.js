@@ -35,7 +35,7 @@
        //display: none;で隠したinputタグのfile情報をphotoCoverに渡す
          $('#' + photoCoverId).val($('#' + id).val().replace("C:\\fakepath\\", ""));
      }
-
+        
 
 //文字数チェッカー 規定の文字数を超えると文字色をピンクに
     $('#title').bind('keydown keyup keypress change',function(){

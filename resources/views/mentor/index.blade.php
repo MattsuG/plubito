@@ -43,7 +43,10 @@
                         <section>
                             <div class="grid-items">
                                 <ul>
-                                 @foreach ($talks as $talk)
+                                @if (count($talks) < 1)
+                                    <h2>お探しの条件に一致するトークは見つかりませんでした。</h2>
+                                @endif
+                                @foreach ($talks as $talk)
                                     <li>
                                     <a href="{{ url('mentor/'.$talk->id) }}" style="color:#000;text-decoration:none"><img src="{{{secure_asset($talk->pic0_path)}}}" alt="">
                                     <h4>{{ $talk->title }}</h4>
