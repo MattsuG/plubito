@@ -38,8 +38,8 @@
                         <li><a class="page-scroll" href="#page-top">ホーム</a></li>
                         <li><a class="page-scroll" href="#timeline">プロジェクト予定</a></li>
                         <li><a class="page-scroll" href="#howtouse">使い方</a></li>
-                        <li><a class="page-scroll" href="#contact">問い合わせ</a></li>
                         <li><a href="/auth/login">ログイン</a></li>
+                        <li><a href="/auth/register">サインアップ</a></li>
                     </ul>
                 </div>
             </div>
@@ -55,10 +55,10 @@
             <div class="container">
                 <div class="carousel-caption">
                     <h1>+ヒトα版へようこそ</h1><br><br>
-                    <p>+ヒトは進路情報を個人間でシェアするためのプラットフォームです。<br/>
+                    <p>+ヒトは個人のもっている進路に関わる情報を有料でシェアするためのプラットフォームです。<br/>
                     留学、進学、起業、就職活動、インターンなどでのあなたの経験をトークとして登録すると、<br>
                     それ聞きたい人からリクエストが届きます。<br/>
-                    本サイトは現在”トーク”を登録していただける方のみへ公開しています。</p>
+                    本サイトは現在”トーク”を登録して頂ける方へ公開しています。</p>
                     <p>
                         <a class="btn btn-lg btn-primary" href="/auth/register" role="button">話し手になる</a>
                     </p>
@@ -73,10 +73,10 @@
         <div class="item">
             <div class="container">
                 <div class="carousel-caption">
-                    <h1>+ヒトα版へようこそ</h1><br><br>
-                    <p>+ヒトは進路情報を個人間でシェアするためのプラットフォームです。<br/>
-                    個人の留学、進学、起業、就職活動、インターンなどそれぞれの経験がトークとして公開しています。<br>
-                    聞きたいトークを検索しリクエストを送るとその人の話を聞くことができます。<br/>
+                    <h1>+ヒト(α版)へようこそ</h1><br><br>
+                    <p>+ヒトは個人の持っている進路に関わる情報を有料でシェアするためのプラットフォームです。<br/>
+                    個人の留学、進学、起業、就職活動、インターンなどそれぞれの経験がトークとして公開されています。<br>
+                    聞きたいトークを検索し、ビデオ通話、面会を申し込むことが出来ます。<br/>
                     本サイトは現在”トーク”を登録していただける方のみへ公開しています。</p>
                     <p>
                     <p><a class="btn btn-lg btn-primary" href="/auth/register" role="button">サインアップ</a></p>
@@ -98,22 +98,20 @@
 
 <div class="container">
     <div class="row">
-        <section>
-            <div class="grid-items">
-                <ul>
-                 @foreach ($talks as $talk)
-                    <li>
-                    <a href="{{ url('mentor/'.$talk->id) }}" style="color:#000;text-decoration:none"><img src="{{{asset($talk->pic0_path)}}}" alt="">
-                    <h4>{{ $talk->title }}</h4>
-                    <p><i class="fa fa-thumbs-up" aria-hidden="true">いいね：</i>{{ count($talk->likes) }}&nbsp;&nbsp;&nbsp;<i class="fa fa-headphones" aria-hidden="true">トーク：</i>{{ $talk->applications_count }}</p>
-                    <h4>{{ $talk->category->category_name }}</h4>
-                    <h4></a>
-                    <a href="{{ url('mentor/'.$talk->id) }}"><button type="button" class="btn2 btn-default btn-sm btn-block">詳細を見る</button></a>
-                    </li>
-                @endforeach
-                </ul>
-            </div>
-        </section>
+        <div class="grid-items">
+            <ul>
+             @foreach ($talks as $talk)
+                <li>
+                <a href="{{ url('mentor/'.$talk->id) }}" style="color:#000;text-decoration:none"><img src="{{{asset($talk->pic0_path)}}}" alt="">
+                <h4>{{ $talk->title }}</h4>
+                <p><i class="fa fa-thumbs-up" aria-hidden="true">いいね：</i>{{ count($talk->likes) }}&nbsp;&nbsp;&nbsp;<i class="fa fa-headphones" aria-hidden="true">トーク：</i>{{ $talk->applications_count }}</p>
+                <h4>{{ $talk->category->category_name }}</h4>
+                <h4></a>
+                <a href="{{ url('mentor/'.$talk->id) }}"><button type="button" class="btn2 btn-default btn-sm btn-block">詳細を見る</button></a>
+                </li>
+            @endforeach
+            </ul>
+        </div>
     </div>
 </div>
 <!-- <section id="features" class="container services">
@@ -311,10 +309,10 @@
                         </div>
 
                         <div class="vertical-timeline-content">
-                            <h2>話し手公開</h2>
+                            <h2>9/15 話し手公開</h2>
                             <p>初めに話し手としてトークをご登録いただける方に登録をお願いします。プロフィールやトークの登録、メッセージのやり取りは可能ですが、実際に決済はまだ行うことができません。
                             </p>
-                            <span class="vertical-date"><small>9月15日</small> </span>
+ <!--                            <span class="vertical-date"><small>9月15日</small> </span> -->
                         </div>
                     </div>
 
@@ -324,9 +322,9 @@
                         </div>
 
                         <div class="vertical-timeline-content">
-                            <h2>α版公開</h2>
+                            <h2>10/1 α版公開</h2>
                             <p>トークが一定数集まった時点で決済機能を付け、一般ユーザーへ公開します。実際にトークに申し込みが来たら日時を決定し、聞き手が支払いをしたらスカイプIDなどを交換していただきトークをして頂けます。</p>
-                            <span class="vertical-date"><small>10月1日</small> </span>
+                            <!-- <span class="vertical-date"><small>10月1日</small> </span> -->
                         </div>
                     </div>
 
@@ -336,9 +334,9 @@
                         </div>
 
                         <div class="vertical-timeline-content">
-                            <h2>β版公開</h2>
+                            <h2>12/1 β版公開</h2>
                             <p>α版から得たフィードバックをもとにより便利にご利用いただくために改良したものをリリースします。</p>
-                            <span class="vertical-date"><small>12月1日</small> </span>
+                           <!--  <span class="vertical-date"><small>12月1日</small> </span> -->
                         </div>
                     </div>
 
@@ -442,7 +440,7 @@
 <section id="howtouse" class="features">
     <div class="container">
         <div class="row">
-            <div class="col-lg-12 text-center">
+            <div class="col-lg-12">
                 <div class="navy-line"></div>
                 <h1>使い方</h1>
                 <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. </p>
@@ -601,21 +599,22 @@
 
 </section>
  -->
+<footer>
 <section id="contact" class="gray-section contact">
     <div class="container">
         <div class="row m-b-lg">
             <div class="col-lg-12 text-center">
                 <div class="navy-line"></div>
-                <h1>お問い合わせ</h1>
+          <!--       <h1>お問い合わせ</h1> -->
             </div>
         </div>
         <div class="row">
             <div class="col-lg-12 text-center">
                 <!-- <a href="mailto:test@email.com" class="btn btn-primary">お問い合わせメール</a> -->
-                <p class="m-t-sm">
+                <!-- <p style="font-size: 18px; color: #676a6c;">
                     (株)タイムラグ<br>
                     Email:info@timelag.co.jp<br>
-                </p>
+                </p> -->
                 <ul class="list-inline social-icon">
                     <li><a href="#"><i class="fa fa-twitter"></i></a>
                     </li>
@@ -634,7 +633,7 @@
                     <li><a href="tradeterm">特定商取引法</a></li>
                     <li><a href="qa">Q & A</a></li>
                     <li><a href="howtouse">使い方</a></li>
-                    <li><a href="becometalker">話し手になる</a><li>
+                    <li><a href="becometalker">話し手になる</a></li>
                 </ul>
             </div>
         </div>
@@ -646,6 +645,7 @@
         </div>
     </div>
 </section>
+</footer>
 
 <!-- Mainly scripts -->
 <script src="{{{asset('/assets/js/jquery-2.1.1.js')}}}"></script>

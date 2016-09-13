@@ -3400,6 +3400,7 @@ body {
   font-size: 13px;
   color: #676a6c;
   overflow-x: hidden;
+  text-align: center;
 }
 html,
 body {
@@ -6714,8 +6715,8 @@ body.landing-page {
 }
 .landing-page .navbar-default .nav li a {
   color: #fff;
-  font-family: 'Open Sans', helvetica, arial, sans-serif;
-  font-weight: 700;
+  font-family: inherit;
+  font-weight: 100;
   letter-spacing: 1px;
   text-transform: uppercase;
   font-size: 14px;
@@ -6759,8 +6760,8 @@ body.landing-page {
   font-size: 14px;
   background: #000000;
   padding: 15px 20px 15px 20px;
-  border-radius: 0 0 5px 5px;
-  font-weight: 700;
+  border-radius: 0 0 0px 0px;
+  font-weight: 300;
   transition: all 0.3s ease-in-out 0s;
 }
 .landing-page .navbar-scroll.navbar-default .nav li a {
@@ -6797,7 +6798,7 @@ body.landing-page {
 }
 .landing-page .navbar.navbar-scroll .navbar-brand {
   margin-top: 15px;
-  border-radius: 5px;
+  border-radius: 0px;
   font-size: 12px;
   padding: 10px;
   height: auto;
@@ -6926,6 +6927,7 @@ body.landing-page {
 }
 .landing-page .features-text {
   margin-top: 40px;
+  text-align: left;
 }
 .landing-page .features small {
   color: #000000;
@@ -7027,6 +7029,11 @@ body.landing-page {
 }
 .landing-page section.timeline {
   padding-bottom: 30px;
+  text-align: left;
+}
+.landing-page section.howtouse {
+  padding-bottom: 30px;
+  text-align: left;
 }
 .landing-page section.comments {
   padding-bottom: 80px;
@@ -7081,7 +7088,7 @@ body.landing-page {
   color: #FFFFFF;
   font-size: 14px;
   padding: 10px 20px;
-  font-weight: 600;
+  font-weight: 100;
 }
 .landing-page .btn-primary:hover,
 .landing-page .btn-primary:focus,
@@ -8325,3 +8332,41 @@ body.md-skin {
     margin: 0;
   }
 }
+
+/***** Footer *****/
+
+.email{
+  font-size: 18px
+  color: #000;
+}
+
+footer h3 { margin-top: 0; color: #fff; }
+
+footer a { color: #000; }
+footer a:hover, footer a:focus { color: #c3c3c3; outline: 0; }
+
+.footer-about a { color: #000; border: 0; }
+.footer-about a:hover, .footer-about a:focus { border-bottom: 1px dotted #c3c3c3; }
+
+.footer-contact-info p { word-wrap: break-word; }
+.footer-contact-info i { padding-right: 10px; font-size: 14px; color: #000; vertical-align: text-top; }
+.footer-contact-info a { color: #000; border: 0; }
+.footer-contact-info a:hover, .footer-contact-info a:focus { border-bottom: 1px dotted #c3c3c3; }
+
+.footer-social a { margin-right: 20px; }
+.footer-social i { font-size: 18px; vertical-align: text-top; }
+
+.footer-copyright {
+  margin-top: 30px;
+  padding-top: 30px;
+  border-top: 1px solid #555;
+}
+
+.footer-menu {
+  margin-top: 30px;
+  padding-top: 30px;
+  border-top: 1px solid #555;
+  text-align: right;
+}
+.footer-menu ul { margin: 0; padding: 0; list-style: none; }
+.footer-menu li { display: inline; margin-left: 20px; }

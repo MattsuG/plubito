@@ -16,7 +16,7 @@ class TopPageController extends Controller
 {
     public function index() {
     	$talks = App\Talk::orderBy('created_at', 'desc')
-	    ->take(6)
+	    ->take(8)
 	    ->get();
 	    $categories = App\Category::All();
 	    return view("index", compact('talks', 'categories'));
