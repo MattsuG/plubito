@@ -2,11 +2,11 @@
 @section('TitleAndCss')
 <title>show.php | トーク一覧</title>
 
-<link rel="stylesheet" href="{{{secure_asset('/assets/bootstrap/css/bootstrap.min.css')}}}">
-<link rel="stylesheet" href="{{{secure_asset('/assets/font-awesome/css/font-awesome.min.css')}}}">
-<link rel="stylesheet" href="{{{secure_asset('/assets/css/style_pre_index.css')}}}">
-<link rel="stylesheet" href="{{{secure_asset('/assets/css/animate.css')}}}">
-<link rel="stylesheet" href="{{{secure_asset('/assets/css/style.css')}}}">
+<link rel="stylesheet" href="{{{asset('/assets/bootstrap/css/bootstrap.min.css')}}}">
+<link rel="stylesheet" href="{{{asset('/assets/font-awesome/css/font-awesome.min.css')}}}">
+<link rel="stylesheet" href="{{{asset('/assets/css/style_pre_index.css')}}}">
+<link rel="stylesheet" href="{{{asset('/assets/css/animate.css')}}}">
+<link rel="stylesheet" href="{{{asset('/assets/css/style.css')}}}">
 
 @stop
 
@@ -48,7 +48,7 @@
                                 @endif
                                 @foreach ($talks as $talk)
                                     <li>
-                                    <a href="{{ url('mentor/'.$talk->id) }}" style="color:#000;text-decoration:none"><img src="{{{secure_asset($talk->pic0_path)}}}" alt="">
+                                    <a href="{{ url('mentor/'.$talk->id) }}" style="color:#000;text-decoration:none"><img src="{{{asset($talk->pic0_path)}}}" alt="">
                                     <h4>{{ $talk->title }}</h4>
                                     <p><i class="fa fa-thumbs-up" aria-hidden="true">いいね：</i>{{ count($talk->likes) }}&nbsp;&nbsp;&nbsp;<i class="fa fa-headphones" aria-hidden="true">トーク：</i>{{ $talk->applications_count }}</p>
                                     <h4>{{ $talk->category->category_name }}</h4>
@@ -67,14 +67,14 @@
 @stop
 
 @section('Js')
-<script src="{{{secure_asset('/assets/js/jquery-2.1.1.js')}}}"></script>
-<script src="{{{secure_asset('/assets/bootstrap/js/bootstrap.min.js')}}}"></script>
+<script src="{{{asset('/assets/js/jquery-2.1.1.js')}}}"></script>
+<script src="{{{asset('/assets/bootstrap/js/bootstrap.min.js')}}}"></script>
 
-<script src="{{{secure_asset('/assets/js/plugins/metisMenu/jquery.metisMenu.js')}}}"></script>
-<script src="{{{secure_asset('/assets/js/plugins/slimscroll/jquery.slimscroll.min.js')}}}"></script>
+<script src="{{{asset('/assets/js/plugins/metisMenu/jquery.metisMenu.js')}}}"></script>
+<script src="{{{asset('/assets/js/plugins/slimscroll/jquery.slimscroll.min.js')}}}"></script>
 
-<script src="{{{secure_asset('/assets/js/inspinia.js')}}}"></script>
-<script src="{{{secure_asset('/assets/js/plugins/pace/pace.min.js')}}}"></script>
+<script src="{{{asset('/assets/js/inspinia.js')}}}"></script>
+<script src="{{{asset('/assets/js/plugins/pace/pace.min.js')}}}"></script>
 <script>
 $(function(){
     var $setElm = $('h3.abbreviation3');
@@ -101,6 +101,6 @@ $(function(){
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 <script>window.jQuery.easing.def || document.write('<script src="js/vendor/jquery.easing.1.3.js"><\/script>')</script>
 <!-- jquery.vgrid.min.jsの読み込み -->
-<script src="{{{secure_asset('/assets/js/jquery.vgrid.min.js')}}}"></script>
-<script src="{{{secure_asset('/assets/js/script.js')}}}"></script>
+<script src="{{{asset('/assets/js/jquery.vgrid.min.js')}}}"></script>
+<script src="{{{asset('/assets/js/script.js')}}}"></script>
 @stop
