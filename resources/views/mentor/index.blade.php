@@ -55,6 +55,9 @@
                                 @endforeach
                                 </ul>
                             </div>
+                            <div id="pagenate">
+                            {!! $talks->render() !!}
+                        </div>
                         </section>
                     </article>
                 </main>
@@ -72,24 +75,7 @@
 
 <script src="{{{asset('/assets/js/inspinia.js')}}}"></script>
 <script src="{{{asset('/assets/js/plugins/pace/pace.min.js')}}}"></script>
-<script>
-$(function(){
-    var $setElm = $('h3.abbreviation3');
-    var cutFigure = '11'; // カットする文字数
-    var afterTxt = ' …'; // 文字カット後に表示するテキスト
 
-    $setElm.each(function(){
-        var textLength = $(this).text().length;
-        var textTrim = $(this).text().substr(0,(cutFigure))
-
-        if(cutFigure < textLength) {
-            $(this).html(textTrim + afterTxt).css({visibility:'visible'});
-        } else if(cutFigure >= textLength) {
-            $(this).css({visibility:'visible'});
-        }
-    });
-});
-</script>
 <!-- jQueryの読み込み(CDN)-->
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
 <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.3.min.js"><\/script>')</script>
