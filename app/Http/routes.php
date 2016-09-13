@@ -14,11 +14,6 @@
 
 	 
 
-Route::group(['middleware' => 'guest'], function() {
-	//全ページを1メソッドで切り分け
-	Route::get('/{path?}', 'TopPageController@index');
-});
-
 Route::group(['middlewareGroups' => 'web'], function() {
 	// ログイン
 	Route::get('/auth/login', 'Auth\AuthController@getLogin');
@@ -73,5 +68,10 @@ Route::group(['middleware' => 'auth'], function () {
 
 });
 
+//トップページ・規約ページ等会員登録なしで閲覧できるページ
+Route::group(['middleware' => 'guest'], function() {
+	//全ページを1メソッドで切り分け
+	Route::get('/{path?}', 'TopPageController@index');
+});
 
 
