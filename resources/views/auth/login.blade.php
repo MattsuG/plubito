@@ -22,10 +22,10 @@
                     <input id="password" name="password" type="password" class="form-control" placeholder="パスワード" required="">
                 </div>
 
-                <label for="remember" class="pure-checkbox">
+                <!-- <label for="remember" class="pure-checkbox">
                     <input id="remember" type="checkbox" name="remember"
                       {!! old('remember') ? 'checked="checked"' : '' !!} > 継続ログイン
-                </label>
+                </label> -->
 
                 @if (count($errors) > 0)
                     <div class="alert alert-danger">
