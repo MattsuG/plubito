@@ -8,9 +8,6 @@
 <link rel="stylesheet" href="{{secure_asset('/assets/css/style_pre_index.css')}}">
 <link rel="stylesheet" href="{{secure_asset('/assets/css/animate.css')}}">
 <link rel="stylesheet" href="{{secure_asset('/assets/css/style.css')}}">
-<link rel="stylesheet" href="{{secure_asset('/assets/css/jquery-ui.min.css')}}">
-<link rel="stylesheet" href="{{secure_asset('/assets/css/jquery.timepicker.css')}}">
-
 
 <!-- <link href="css/style_pre_index.css" rel="stylesheet"> -->
 @stop
@@ -297,17 +294,6 @@
                         @if (Session::has('flash_message'))
                             <div class="alert alert-success">{{ Session::get('flash_message') }}</div>
                         @endif
-
-                        @if (count($errors) > 0)
-                            <div class="alert alert-danger">
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>                       
-                         @endif
-                         
                         </div>
                         </div>
                         </div>
@@ -320,10 +306,8 @@
 @section('Js')
 <script src="{{secure_asset('/assets/js/modernizr.js')}}"></script>
 <script src="{{secure_asset('/assets/js/jquery-2.1.1.js')}}"></script>
-<script src="{{secure_asset('/assets/js/jquery-ui.min.js')}}"></script>
-<script src="{{secure_asset('/assets/js/jquery.timepicker.min.js')}}"></script>
-<script src="{{secure_asset('/assets/js/respond-browsers.js')}}"></script>
 <script src="{{secure_asset('/assets/bootstrap/js/bootstrap.min.js')}}"></script>
+
 <script src="{{secure_asset('/assets/js/plugins/metisMenu/jquery.metisMenu.js')}}"></script>
 <script src="{{secure_asset('/assets/js/plugins/slimscroll/jquery.slimscroll.min.js')}}"></script>
 

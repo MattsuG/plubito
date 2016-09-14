@@ -72,12 +72,18 @@
                                     {!! nl2br(e($user->vision)) !!}
                                 </div>
                                 <div class="feed-element">
+                                    <h6>その他</h6>
+                                    {!! nl2br(e($user->others)) !!}
+                                </div>
+                                <div class="feed-element">
                                     <h6>現職</h6>
                                     {{ $user->current_job }}
                                     <h6>ポジション</h6>
                                         {{ $user->current_position }}
                                     <h6>業務内容</h6>
                                         {!! nl2br(e($user->current_detail)) !!} 
+                                    <h6>在籍期間</h6>
+                                        {{ $user->current_period }}
                                 </div>
                                 <div class="feed-element">
                                     <h6>前職</h6>
@@ -86,6 +92,8 @@
                                         {{ $user->past_position }}
                                     <h6>業務内容</h6>
                                         {!! nl2br(e($user->past_detail)) !!}
+                                    <h6>在籍期間</h6>
+                                        {{ $user->past_period }}
                                 </div>
                                 <div class="feed-element">
                                     <h6>最終学歴</h6>

@@ -130,12 +130,15 @@ class UserController extends Controller
         $user->place = $request->place; 
         $user->introduction = $request->introduction;
         $user->vision = $request->vision;
+        $user->others = $request->others;
         $user->current_job = $request->current_job; 
         $user->current_position = $request->current_position;
         $user->current_detail = $request->current_detail;
+        $user->current_period = $request->current_period;
         $user->past_job = $request->past_job; 
         $user->past_position = $request->past_position;
         $user->past_detail = $request->past_detail;
+        $user->past_period = $request->past_period;
         $user->latest_school = $request->latest_school; 
         $user->latest_major = $request->latest_major;
         $user->latest_school_period = $request->latest_school_period;
@@ -143,6 +146,8 @@ class UserController extends Controller
         $user->other_major = $request->other_major;
         $user->other_school_period = $request->other_school_period;
         $file3 = $request->file('pic3');
+
+        $profile_picture_path = Auth::user()->profile_picture_path;
 
         if(!empty($file3))
             {
@@ -153,11 +158,6 @@ class UserController extends Controller
                 $img->resize(600, 600)->save($path.'/'.$filename);
                 chmod($path, 0744);
                 $profile_picture_path = '/'.$path.'/'.$filename;
-            }
-            else
-            {
-                //ファイルアップロードが無いときは変数を初期化（viewでのエラー防止）
-                $profile_picture_path = Auth::user()->profile_picture_path;
             }
 
         $user->profile_picture_path = $profile_picture_path;

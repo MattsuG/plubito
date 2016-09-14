@@ -37,12 +37,12 @@
                             <div class="form-group"><label class="col-sm-2 control-label">プロフィール画像</label>
                                 <input class="pic" name="pic3" id="pic3" type="file" style="display:none" enctype="multipart/form-data">
                                 <div class="input-group">
-                                  <input type="text" id="photoCover0" class="form-control" placeholder="jpgもしくはpng(5MBまで)" value="{{ old('profile_picture_path', $user->profile_picture_path) }}">
+                                  <input type="text" id="photoCover3" class="form-control" placeholder="jpgもしくはpng(5MBまで)" value="{{secure_asset($user->profile_picture_path)}}">
                                   <span class="input-group-btn"><button type="button" class="btn btn-primary" onclick="$('#pic3').click();">ファイル選択</button></span>
                                 </div>
                                 <label id="label3" class="cebroad-pink"></label>
                                 <div class="events-pad">
-                                  <img src="" id="preview3" style="display:none; width: 300px;">
+                                  <img src="{{secure_asset($user->profile_picture_path)}}" id="preview3" style="width: 300px;">
                             </div>
 
                              <hr>
@@ -64,6 +64,10 @@
                                 <div class="col-sm-10"><textarea type="text" name="vision" placeholder="今後やってみたいこと" rows="4" class="form-control">{{ old('vision', $user->vision) }}</textarea></div>
                             </div>
 
+                            <div class="form-group"><label class="col-sm-2 control-label">自由記入欄</label>
+                                <div class="col-sm-10"><textarea type="text" name="others" placeholder="他項目に書き入れられない情報はここへどうぞ" rows="4" class="form-control">{{ old('others', $user->others) }}</textarea></div>
+                            </div>
+
                             <hr>
 
                             <div class="form-group"><label class="col-sm-2 control-label">現職</label>
@@ -76,6 +80,10 @@
                                 <div class="col-sm-10"><textarea type="text" name="current_detail" placeholder="具体的な業務内容、スキルなど"  rows="7" class="form-control">{{ old('current_detail', $user->current_detail) }}</textarea></div>
                             </div>
 
+                             <div class="form-group"><label class="col-sm-2 control-label">在籍期間</label>
+                                <div class="col-sm-10"><input type="text" name="current_period" placeholder="〇〇年〇〇月〜〇〇年〇〇月" value="{{ old('current_period', $user->current_period) }}" class="form-control"></div>
+                            </div>
+
                             <hr>
 
                             <div class="form-group"><label class="col-sm-2 control-label">前職</label>
@@ -83,9 +91,14 @@
                             </div>
                             <div class="form-group"><label class="col-sm-2 control-label">前職のポジション</label>
                                 <div class="col-sm-10"><input type="text" name="past_position" placeholder="職種、部署など" value="{{ old('past_position', $user->past_position) }}" class="form-control"></div>
-                            </div>   
+                            </div>
+
                              <div class="form-group"><label class="col-sm-2 control-label">前職の業務内容詳細</label>
                                 <div class="col-sm-10"><textarea type="text" name="past_detail" placeholder="具体的な業務内容、スキルなど" rows="7" class="form-control" >{{ old('past_detail', $user->past_detail) }}</textarea></div>
+                            </div>
+
+                            <div class="form-group"><label class="col-sm-2 control-label">在籍期間</label>
+                                <div class="col-sm-10"><input type="text" name="past_period" placeholder="〇〇年〇〇月〜〇〇年〇〇月" value="{{ old('past_period', $user->past_period) }}" class="form-control"></div>
                             </div>
 
                             <hr>
