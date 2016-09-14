@@ -1,7 +1,12 @@
+Options -Indexes
+AuthUserfile /var/www/proto_b/public/.htpasswd
+AuthGroupfile /dev/null
+AuthName "Please enter your ID and password"
+AuthType Basic
+require valid-user
+
+
 <IfModule mod_rewrite.c>
-    <IfModule mod_negotiation.c>
-        Options -MultiViews
-    </IfModule>
 
     RewriteEngine On
 
