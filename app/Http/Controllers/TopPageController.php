@@ -21,6 +21,7 @@ class TopPageController extends Controller
         $categories = App\Category::All();
         return view("/guestpages.index", compact('talks', 'categories'));
     }
+    
     public function supportPages($path) {
         switch ($path) {
 
@@ -54,6 +55,7 @@ class TopPageController extends Controller
 
             default:
                 return view('/errors.404');
+                break;
         }
     }
 }

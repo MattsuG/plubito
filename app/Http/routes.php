@@ -70,7 +70,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 //トップページ
 Route::group(['middleware' => 'guest'], function() {
-	//全ページを1メソッドで切り分け
+
 	Route::get('/', 'TopPageController@index');
 });
 
