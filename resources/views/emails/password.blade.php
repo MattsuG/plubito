@@ -1,7 +1,3 @@
- <p>
-    {{ $user->lastname }} {{ $user->firstname }} さん
-</p>
- 
 <p>
     パスワードリセット用のリンクをお送りします。
 </p>
