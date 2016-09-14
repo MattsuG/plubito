@@ -175,13 +175,11 @@ class UserController extends Controller
 
         $sent_mails = Mail::with('receiver')
         ->where('sender_id', Auth::user()->id)
-        ->paginate(10);
-        $sent_mails->setPageName('s_page');
+        ->paginate(10, ['*'], 's_page');
 
         $received_mails = Mail::with('sender')
         ->where('receiver_id', Auth::user()->id)
-        ->paginate(10);
-        $received_mails->setpageName('r_page');
+        ->paginate(10, ['*'], 'r_page');
 
         //pageNameに応じてactiveタブを切り替え
         $received_active = 'active';
