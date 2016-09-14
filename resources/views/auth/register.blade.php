@@ -40,7 +40,7 @@
                 </div>
 
                 <div class="form-group">
-                        <div class="checkbox i-checks"><label> <input name="term" type="checkbox" required><i></i> 利用規約に同意する </label></div>
+                        <div class="checkbox i-checks"><label> <input name="term" type="checkbox" required><i></i><a href="/terms">利用規約</a>に同意する </label></div>
                 </div>
 
                 @if (count($errors) > 0)
@@ -53,7 +53,7 @@
                 </div>
                 @endif
 
-                <button type="submit" class="btn btn-primary block full-width m-b">登録</button>
+                <button type="submit" class="btn btn-primary block full-width m-b">利用規約に同意して登録する</button>
 
                 <p class="text-muted text-center"><small>すでにアカウントをお持ちですか？</small></p>
                 <a class="btn btn-sm btn-white btn-block" href="/auth/login">ログイン</a>
