@@ -2,10 +2,10 @@
 @section('TitleAndCss')
 <title>TopPage</title>
 
-<link rel="stylesheet" href="{{asset('/assets/bootstrap/css/bootstrap.min.css')}}">
-<link rel="stylesheet" href="{{asset('/assets/font-awesome/css/font-awesome.min.css')}}">
-<link rel="stylesheet" href="{{asset('/assets/css/animate.css')}}">
-<link rel="stylesheet" href="{{asset('/assets/css/style.css')}}">
+<link rel="stylesheet" href="{{secure_asset('/assets/bootstrap/css/bootstrap.min.css')}}">
+<link rel="stylesheet" href="{{secure_asset('/assets/font-awesome/css/font-awesome.min.css')}}">
+<link rel="stylesheet" href="{{secure_asset('/assets/css/animate.css')}}">
+<link rel="stylesheet" href="{{secure_asset('/assets/css/style.css')}}">
 @stop
 @section('content')
     <div class="middle-box text-center loginscreen animated fadeInDown">
@@ -46,10 +46,10 @@
     </div>
 @stop
 @section('Js')
-<script src="{{asset('/assets/js/jquery-1.11.1.min.js')}}"></script>
-<script src="{{asset('/assets/bootstrap/js/bootstrap.min.js')}}"></script>
-<script src="{{asset('assets/js/jquery.backstretch.min.js')}}"></script>
-<script src="{{asset('/assets/js/wow.min.js')}}"></script>
-<script src="{{asset('/assets/js/retina-1.1.0.min.js')}}"></script>
-<script src="{{asset('assets/js/scripts.js')}}"></script>
+<script src="{{secure_asset('/assets/js/jquery-1.11.1.min.js')}}"></script>
+<script src="{{secure_asset('/assets/bootstrap/js/bootstrap.min.js')}}"></script>
+<script src="{{secure_asset('assets/js/jquery.backstretch.min.js')}}"></script>
+<script src="{{secure_asset('/assets/js/wow.min.js')}}"></script>
+<script src="{{secure_asset('/assets/js/retina-1.1.0.min.js')}}"></script>
+<script src="{{secure_asset('assets/js/scripts.js')}}"></script>
 @stop

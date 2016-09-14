@@ -2,9 +2,9 @@
 
 @section('TitleAndCss')
 <title>TopPage</title>
-    <link rel="stylesheet" href="{{asset('/assets/bootstrap/css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{asset('/assets/font-awesome/css/font-awesome.min.css')}}">
-    <link rel="stylesheet" href="{{asset('/assets/css/style.css')}}">
+    <link rel="stylesheet" href="{{secure_asset('/assets/bootstrap/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{secure_asset('/assets/font-awesome/css/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{secure_asset('/assets/css/style.css')}}">
 @section('content')
 <div class="terms_title">
     <h3>話し手になる</h3>
