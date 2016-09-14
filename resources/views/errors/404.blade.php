@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>プラビト / サーバーエラー</title>
+        <title>プラビト / Not Found</title>
 
         <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
 
@@ -40,7 +40,7 @@
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">技術的な問題が発生しました。前のページにお戻りください。</div>
+                <div class="title">お探しのページは存在しません。 <a href="{{url('/')}}">トップページへ</a></div>
             </div>
         </div>
     </body>

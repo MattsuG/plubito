@@ -137,6 +137,10 @@ class AuthController extends Controller
         return redirect('auth/login');
     }
 
+    public function getResend() {
+        return view('auth.resend');
+    }
+
     public function postResend(Request $request, Mailer $mailer, Config $config) {
 
     $this->validate($request, ['email' => 'required|email']);

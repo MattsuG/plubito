@@ -61,17 +61,18 @@ Route::group(['middleware' => 'auth'], function () {
 		Route::post('/password/reset', 'Auth\PasswordController@postReset');
 
 		//PayPal
-		Route::post('/payment', 'PayPalController@index');
-		Route::post('/payment/confirmation', 'PayPalController@foo');
+		//Route::post('/payment', 'PayPalController@index');
+		//Route::post('/payment/confirmation', 'PayPalController@foo');
 
 	});
 
 });
 
-//トップページ・規約ページ等会員登録なしで閲覧できるページ
+//トップページ
 Route::group(['middleware' => 'guest'], function() {
 	//全ページを1メソッドで切り分け
-	Route::get('/{path?}', 'TopPageController@index');
+	Route::get('/', 'TopPageController@index');
 });
 
-
+//規約など(ログイン・非ログイン問わず閲覧可能)
+Route::get('/{path}', 'TopPageController@supportPages');

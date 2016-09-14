@@ -1,4 +1,3 @@
-
 @extends('common.layout')
 @section('TitleAndCss')
 <title>add.php | トーク作成</title>

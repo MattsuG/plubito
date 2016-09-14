@@ -1,4 +1,5 @@
-@extends('common.layout_no_sidebar')
+@extends(Auth::user() ? 'common.layout' : 'common.layout_no_sidebar')
+
 @section('TitleAndCss')
 <title>TopPage</title>
 

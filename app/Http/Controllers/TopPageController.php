@@ -14,17 +14,15 @@ use App;
 
 class TopPageController extends Controller
 {
-    public function index($path=null) {
+    public function index() {
+         $talks = App\Talk::orderBy('created_at', 'desc')
+        ->take(8)
+        ->get();
+        $categories = App\Category::All();
+        return view("/guestpages.index", compact('talks', 'categories'));
+    }
+    public function supportPages($path) {
         switch ($path) {
-            case null:
-
-                $talks = App\Talk::orderBy('created_at', 'desc')
-                ->take(8)
-                ->get();
-                $categories = App\Category::All();
-                return view("/guestpages.index", compact('talks', 'categories'));
-
-                break;
 
             case 'terms':
                 return view('/guestpages.terms');
@@ -53,6 +51,9 @@ class TopPageController extends Controller
             case 'becometalker':
                 return view('/guestpages.becometalker');
                 break;
+
+            default:
+                return view('/errors.404');
         }
     }
 }
