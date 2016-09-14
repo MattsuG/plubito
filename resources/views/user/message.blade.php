@@ -65,7 +65,11 @@
                                 @foreach($received_mails as $received_mail)
                                     <tr>
                                         <td>
-                                            <img alt="profile_image" class="img-circle" src="{{ asset($received_mail->sender->profile_picture_path) }}">
+                                            @if (!empty($received_mail->sender->profile_picture_path))
+                                                <img alt="profile_image" class="img-circle" src="{{ asset($received_mail->sender->profile_picture_path) }}" style="width: 50px; height: 50px;">
+                                            @else
+                                                <img alt="image" class="img-circle" src="{{secure_asset('/assets/img/default_thumbnail.jpg')}}" style="width: 50px; height: 50px;">
+                                            @endif
                                         </td>
                                         <td>
                                             {{ $received_mail->sender->lastname }}
@@ -100,7 +104,11 @@
                                 @foreach ($sent_mails as $sent_mail)
                                 <tr>
                                     <td>
-                                        <img alt="profile_image" class="img-circle" src="{{ asset($sent_mail->receiver->profile_picture_path) }}">
+                                        @if (!empty($sent_mail->receiver->profile_picture_path))
+                                            <img alt="profile_image" class="img-circle" src="{{ asset($sent_mail->receiver->profile_picture_path) }}" style="width: 50px; height: 50px;">
+                                        @else
+                                            <img alt="image" class="img-circle" src="{{secure_asset('/assets/img/default_thumbnail.jpg')}}" style="width: 50px; height: 50px;">
+                                        @endif
                                     </td>
                                     <td>
                                         {{ $sent_mail->receiver->lastname }}

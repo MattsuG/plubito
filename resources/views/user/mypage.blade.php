@@ -92,7 +92,7 @@
                                                 {{ $app_to_me->talk->talk_time }}分
                                             </td>
                                             <td>
-                                                <a href="{{url('/user/message/'.$app_to_me->user->id)}}">詳細を見る</a>
+                                                <a href="{{url('/user/message/'.$app_to_me->user->id)}}">メッセージを送る</a>
                                             </td>
                                             <td>
                                             @if ((int)$app_to_me->approved_flag === 0)

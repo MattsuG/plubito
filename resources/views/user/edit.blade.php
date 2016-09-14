@@ -37,7 +37,7 @@
                             <div class="form-group"><label class="col-sm-2 control-label">プロフィール画像</label>
                                 <input class="pic" name="pic3" id="pic3" type="file" style="display:none" enctype="multipart/form-data">
                                 <div class="input-group">
-                                  <input type="text" id="photoCover3" class="form-control" placeholder="jpgもしくはpng(5MBまで)" value="{{secure_asset($user->profile_picture_path)}}">
+                                  <input type="text" id="photoCover3" class="form-control" placeholder="jpgもしくはpng(5MBまで)">
                                   <span class="input-group-btn"><button type="button" class="btn btn-primary" onclick="$('#pic3').click();">ファイル選択</button></span>
                                 </div>
                                 <label id="label3" class="cebroad-pink"></label>

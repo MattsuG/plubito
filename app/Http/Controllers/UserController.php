@@ -46,6 +46,7 @@ class UserController extends Controller
         ->paginate(10, ['*'], 'm_page');
 
         $my_talks = Talk::where('mentor_id', Auth::user()->id)
+        ->orderBy('created_at', 'DESC')
         ->paginate(10, ['*'], 't_page');
 
         $like_active = '';
