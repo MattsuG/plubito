@@ -53,7 +53,7 @@ class MentorController extends Controller
   public function create()
   {
     if ((int)Auth::user()->role === 0) {
-      return ("mentor");
+      return redirect("mentor");
       die();
     }
 
