@@ -40,7 +40,7 @@
                 @endif
 
                 {!! csrf_field() !!}
-
+                <input type="hidden" name="token" value="{{ $token }}">
                 <button type="submit" class="btn btn-primary block full-width m-b">パスワード変更</button>
 
             </form>

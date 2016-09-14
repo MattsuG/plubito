@@ -76,7 +76,7 @@ class AuthController extends Controller
             'emails.confirm',
             ['user' => $user, 'token' => $user->confirmation_token],
             function($message) use ($user) {
-                $message->to($user->email, $user->firstname.'様')->subject('+ヒト 仮登録のお知らせ');
+                $message->to($user->email, $user->firstname.'様')->subject('プラビト 仮登録のお知らせ');
             }
         );
     }

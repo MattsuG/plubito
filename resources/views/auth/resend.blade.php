@@ -1,6 +1,6 @@
 @extends('common.layout_auth')
 @section('TitleAndCss')
-<title>+ビト / メール再送信</title>
+<title>プラビト / メール再送信</title>
 
 <link rel="stylesheet" href="{{secure_asset('/assets/bootstrap/css/bootstrap.min.css')}}">
 <link rel="stylesheet" href="{{secure_asset('/assets/font-awesome/css/font-awesome.min.css')}}">
