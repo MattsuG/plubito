@@ -175,10 +175,12 @@ class UserController extends Controller
 
         $sent_mails = Mail::with('receiver')
         ->where('sender_id', Auth::user()->id)
+        ->orderBy('sent_at', 'DESC')
         ->paginate(10, ['*'], 's_page');
 
         $received_mails = Mail::with('sender')
         ->where('receiver_id', Auth::user()->id)
+        ->orderBy('sent_at', 'DESC')
         ->paginate(10, ['*'], 'r_page');
 
         //pageNameに応じてactiveタブを切り替え
