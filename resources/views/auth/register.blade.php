@@ -67,10 +67,10 @@
 
 @section('Js')
 <!-- Mainly scripts -->
-<script src="js/jquery-2.1.1.js"></script>
-<script src="js/bootstrap.min.js"></script>
+<script src="{{secure_asset('/assets/js/jquery-2.1.1.js')}}"></script>
+<script src="{{secure_asset('/assets/js/bootstrap.min.js')}}"></script>
 <!-- iCheck -->
-<script src="js/plugins/iCheck/icheck.min.js"></script>
+<script src="{{secure_asset('/assets/js/plugins/iCheck/icheck.min.js')}}"></script>
 <script>
     $(document).ready(function(){
         $('.i-checks').iCheck({

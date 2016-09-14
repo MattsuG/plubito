@@ -19,43 +19,15 @@ class TopPageController extends Controller
         ->take(8)
         ->get();
         $categories = App\Category::All();
-        return view("/guestpages.index", compact('talks', 'categories'));
+        return view('guestpages.index', compact('talks', 'categories'));
     }
     
     public function supportPages($path) {
-        switch ($path) {
-
-            case 'terms':
-                return view('/guestpages.terms');
-                break;
-
-            case 'privacy':
-                return view('/guestpages.privacy');
-                break;
-
-            case 'tradeterm':
-                return view('/guestpages.tradeterm');
-                break;
-
-            case 'howtouse':
-                return view('/guestpages.howtouse');
-                break;
-
-            case 'qa':
-                return view('/guestpages.qa');
-                break;
-
-            case 'about':
-                return view('/guestpages.about');
-                break;
-
-            case 'becometalker':
-                return view('/guestpages.becometalker');
-                break;
-
-            default:
-                return view('/errors.404');
-                break;
+        if (view()->exists('guestpages.'.$path)) {
+            return view('guestpages.'.$path);
+        } else {
+            return view('errors.404');
         }
+    
     }
 }

@@ -1,62 +1,56 @@
-
 @extends('common.layout_auth')
 @section('TitleAndCss')
-<title>show.php | ユーザー詳細</title>
-
+<title>プラビト / パスワード変更</title>
 <link rel="stylesheet" href="{{secure_asset('/assets/bootstrap/css/bootstrap.min.css')}}">
 <link rel="stylesheet" href="{{secure_asset('/assets/font-awesome/css/font-awesome.min.css')}}">
-<link rel="stylesheet" href="{{secure_asset('/assets/css/style_pre_index.css')}}">
 <link rel="stylesheet" href="{{secure_asset('/assets/css/animate.css')}}">
 <link rel="stylesheet" href="{{secure_asset('/assets/css/style.css')}}">
-
-<!-- <link href="css/style_pre_index.css" rel="stylesheet"> -->
+<link rel="stylesheet" href="{{secure_asset('/assets/css/media-queries.css')}}">
 @stop
 
 @section('content')
-<!-- resources/views/auth/reset.blade.php -->
 
-<form method="POST" action="/password/reset">
-    {!! csrf_field() !!}
-    <input type="hidden" name="token" value="{{ $token }}">
+    <div class="middle-box text-center loginscreen   animated fadeInDown">
+        <div>
+            <h3>パスワード変更</h3>
+            <form method="post" class="m-t" role="form" action="">
+            
 
-    @if (count($errors) > 0)
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    @endif
+                <div class="form-group">
+                    <input id="email" type="email" name="email" class="form-control" placeholder="Eメール" required value="{{ old('email') }}">
+                </div>
 
-    <div>
-        Email
-        <input type="email" name="email" value="{{ old('email') }}">
+                <div class="form-group">
+                    <input id="password" type="password" name="password" class="form-control" placeholder="パスワード" required>
+                    <label>数字と半角・全角アルファベット使用可 6文字以上12文字以内</label>
+                </div>
+
+                <div class="form-group">  
+                    <input id="password_confirmantion" type="password" name="password_confirmation" class="form-control" placeholder="パスワード確認" required>
+                </div>
+
+                @if (count($errors) > 0)
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
+
+                {!! csrf_field() !!}
+
+                <button type="submit" class="btn btn-primary block full-width m-b">パスワード変更</button>
+
+            </form>
+            <p class="m-t"> <small>TIMELAG Inc. &copy; 2016</small> </p>
+        </div>
     </div>
-
-    <div>
-        Password
-        <input type="password" name="password">
-    </div>
-
-    <div>
-        Confirm Password
-        <input type="password" name="password_confirmation">
-    </div>
-
-    <div>
-        <button type="submit">
-            Reset Password
-        </button>
-    </div>
-</form>
 @stop
 
 @section('Js')
+<!-- Mainly scripts -->
 <script src="{{secure_asset('/assets/js/jquery-2.1.1.js')}}"></script>
-<script src="{{secure_asset('/assets/bootstrap/js/bootstrap.min.js')}}"></script>
-
-<script src="{{secure_asset('/assets/js/plugins/metisMenu/jquery.metisMenu.js')}}"></script>
-<script src="{{secure_asset('/assets/js/plugins/slimscroll/jquery.slimscroll.min.js')}}"></script>
-
-<script src="{{secure_asset('/assets/js/inspinia.js')}}"></script>
-<script src="{{secure_asset('/assets/js/plugins/pace/pace.min.js')}}"></script>
+<script src="{{secure_asset('/assets/js/bootstrap.min.js')}}"></script>
 @stop

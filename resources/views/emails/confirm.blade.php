@@ -1,6 +1,4 @@
-{{-- resources/views/emails/confirm.blade.php --}}
- 
-<p>
+ <p>
     ようこそ、{{ $user->lastname }} {{ $user->firstname }} さん
 </p>
  

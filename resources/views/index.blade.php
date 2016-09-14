@@ -723,10 +723,10 @@
 
 </script>
 
-<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.3.min.js"><\/script>')</script>
+<script>window.jQuery || document.write('<script src="{{secure_asset('/assets/js/vendor/jquery-1.11.3.min.js')}}"><\/script>')</script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-<script>window.jQuery.easing.def || document.write('<script src="js/vendor/jquery.easing.1.3.js"><\/script>')</script>
+<script>window.jQuery.easing.def || document.write('<script src="secure_asset('/assets/js/vendor/jquery.easing.1.3.js')}}"><\/script>')</script>
 
 <script src="{{secure_asset('/assets/js/jquery.vgrid.min.js')}}"></script>
 <script src="{{secure_asset('/assets/js/script.js')}}"></script>

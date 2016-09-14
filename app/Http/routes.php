@@ -11,29 +11,18 @@
 |
 */
 
+//トップページ
+Route::group(['middleware' => 'guest'], function() {
 
-     
+    Route::get('/', 'TopPageController@index');
+});  
 
 Route::group(['middlewareGroups' => 'web'], function() {
-    // ログイン
-    Route::get('/auth/login', 'Auth\AuthController@getLogin');
-    Route::post('/auth/login', 'Auth\AuthController@postLogin');
-    Route::get('/auth/logout', 'Auth\AuthController@getLogout');
+	//ユーザー登録・ログイン
+    Route::controller('/auth', 'Auth\AuthController');
          
-    // ユーザー登録
-    Route::get('/auth/register', 'Auth\AuthController@getRegister');
-    Route::post('/auth/register', 'Auth\AuthController@postRegister');
-    Route::get('/auth/confirm/{token}', 'Auth\AuthController@getConfirm');
-
-    Route::get('/auth/resend', 'Auth\AuthController@getResend');
-    Route::post('/auth/resend', 'Auth\AuthController@postResend');
-
-            //パスワードリセット
-    Route::get('/password/email', 'Auth\PasswordController@getEmail');
-        Route::post('/password/email', 'Auth\PasswordController@postEmail');
-
-        Route::get('/password/reset/{token}', 'Auth\PasswordController@getReset');
-        Route::post('/password/reset', 'Auth\PasswordController@postReset');
+    //パスワードリセット
+    Route::controller('/password', 'Auth\PasswordController');
 });
 
 Route::group(['middleware' => 'auth'], function () {
@@ -43,7 +32,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/mentor/like/{id}', 'MentorController@like');
         Route::post('/mentor/apply', 'MentorController@apply');
         Route::resource('/mentor', 'MentorController');
-
 
         //ユーザーページ
         Route::get('/user/mypage', 'UserController@index');
@@ -55,8 +43,9 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/user/message', 'UserController@getMessage');
         Route::get('/user/message/{id}', 'UserController@getMessageDetail');
         Route::post('/user/message/{id}', 'UserController@postMessage');
-        Route::get('/user/email_edit/{id}', 'UserController@email_edit');
-        Route::patch('/user/email_edit/{id}', 'UserController@email_update');
+
+        //Route::get('/user/email_edit/{id}', 'UserController@email_edit');
+        //Route::patch('/user/email_edit/{id}', 'UserController@email_update');
 
         //PayPal
         //Route::post('/payment', 'PayPalController@index');
@@ -64,12 +53,6 @@ Route::group(['middleware' => 'auth'], function () {
 
     });
 
-});
-
-//トップページ
-Route::group(['middleware' => 'guest'], function() {
-
-    Route::get('/', 'TopPageController@index');
 });
 
 //規約など(ログイン・非ログイン問わず閲覧可能)

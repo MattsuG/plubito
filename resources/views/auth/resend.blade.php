@@ -11,8 +11,8 @@
     <div class="middle-box text-center loginscreen animated fadeInDown">
         <div>
             <h3>ログイン</h3>
-            <form method="post" class="m-t" role="form" action="/auth/login">
-            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            <form method="post" class="m-t" role="form" action="">
+                {{ csrf_field() }}
  
                 <div class="form-group">
                     <label for="email">登録したemailアドレスを再入力してください。</label>
@@ -30,12 +30,13 @@
                     </div>
                 @endif
 
-            <button type="submit" class="btn btn-primary block full-width m-b">ログイン</button>
-
-                <a href="/password/email"><small>パスワードをお忘れの場合</small></a><br>
-                <p class="text-muted text-center"><small>アカウントをお持ちでない方</small></p>
-                <a class="btn btn-sm btn-white btn-block" href="/auth/register">サインアップ</a>
+                <button type="submit" class="btn btn-primary block full-width m-b">ログイン</button>
             </form>
+
+            <a href="{{url('/password/email')}}"><small>パスワードをお忘れの場合</small></a><br>
+            <p class="text-muted text-center"><small>アカウントをお持ちでない方</small></p>
+            <a class="btn btn-sm btn-white btn-block" href="/auth/register">サインアップ</a>
+
             @if (Session::has('flash_message'))
                 <div class="alert alert-success">{{ Session::get('flash_message') }}</div>
             @endif

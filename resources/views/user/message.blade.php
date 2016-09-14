@@ -17,7 +17,7 @@
       -o-text-overflow: ellipsis; /* Opera9,10対応 */
     }
 </style>
-<!-- <link href="css/style_pre_index.css" rel="stylesheet"> -->
+
 @stop
 
 @section('content')

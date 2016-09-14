@@ -21,7 +21,7 @@
                             <img alt="image" class="img-circle" src="{{secure_asset(Auth::user()->profile_picture_path)}}">
                             @endif
                             @if (empty(Auth::user()->profile_picture_path))
-                            <img alt="image" class="img-circle" src="/assets/img/default_thumbnail.jpg">
+                            <img alt="image" class="img-circle" src="{{secure_asset('/assets/img/default_thumbnail.jpg')}}">
                             @endif
                         </span>
                         <a class="dropdown-toggle" href="#">

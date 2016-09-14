@@ -714,11 +714,11 @@
 
 <!-- jQueryの読み込み(CDN)-->
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
-<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.3.min.js"><\/script>')</script>
+<script>window.jQuery || document.write('<script src="{{secure_asset('/assets/js/vendor/jquery-1.11.3.min.js')}}"><\/script>')</script>
 <!-- jQuery Easing Pluginの読み込み(CDN)-->
 <!-- ローカルで動作するように本書とは一部記述を変えています -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-<script>window.jQuery.easing.def || document.write('<script src="js/vendor/jquery.easing.1.3.js"><\/script>')</script>
+<script>window.jQuery.easing.def || document.write('<script src="{{secure_asset('/assets/js/vendor/jquery.easing.1.3.js')}}"><\/script>')</script>
 
 <!-- jquery.vgrid.min.jsの読み込み -->
 <script src="{{secure_asset('/assets/js/jquery.vgrid.min.js')}}"></script>

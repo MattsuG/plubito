@@ -34,7 +34,8 @@
 
             <button type="submit" class="btn btn-primary block full-width m-b">ログイン</button>
 
-                <a href="/password/email"><small>パスワードをお忘れの場合</small></a><br>
+                <a href="{{url('/password/email')}}"><small>パスワードをお忘れの場合</small></a><br>
+                <a href="{{ url('/auth/resend') }}">ユーザー登録確認メールを再送する</a><br>
                 <p class="text-muted text-center"><small>アカウントをお持ちでない方</small></p>
                 <a class="btn btn-sm btn-white btn-block" href="/auth/register">サインアップ</a>
             </form>

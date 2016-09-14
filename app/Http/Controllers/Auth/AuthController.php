@@ -49,32 +49,7 @@ class AuthController extends Controller
         $this->middleware('confirm', ['only' => 'postLogin']); // ① 追加
     }
 
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'lastname' => ['required', 'max:10'],
-            'firstname' => ['required', 'max:10'],
-            'email' => ['required', 'email', 'max:50', 'unique:users'],
-            'password' => ['required', 'confirmed', 'min:6', 'max:12', 'alpha_num', 'regex:/[0-9a-zA-Z]/'],
-            'term' => ['required'],
-        ]);
-    }
 
-    /**
-     * ② ユーザーの作成
-     * ユーザーを作成し、確認メールを送信する
-     *
-     * @param Mailer $mailer
-     * @param array $data
-     * @param $app_key
-     * @return User
-     */
     protected function create(Mailer $mailer, array $data, $app_key)
     {
         $user = new User;
@@ -94,12 +69,7 @@ class AuthController extends Controller
         return $user;
     }
 
-    /**
-     * ③ 確認メールの送信
-     *
-     * @param Mailer $mailer
-     * @param User $user
-     */
+
     private function sendConfirmMail(Mailer $mailer, User $user)
     {
         $mailer->send(
@@ -111,24 +81,16 @@ class AuthController extends Controller
         );
     }
 
-    /**
-     * ④ ユーザー登録アクション
-     * バリデーションチェックを行い、ユーザーを作成する
-     *
-     * @param Request $request
-     * @param Mailer $mailer
-     * @param Config $config
-     * @return \Illuminate\Http\RedirectResponse
-     */
+
     public function postRegister(Request $request, Mailer $mailer, Config $config)
     {
-        $validator = $this->validator($request->all());
- 
-        if ($validator->fails()) {
-            $this->throwValidationException(
-                $request, $validator
-            );
-        }
+        $this->validate($request, [
+            'lastname' => ['required', 'max:10'],
+            'firstname' => ['required', 'max:10'],
+            'email' => ['required', 'email', 'max:50', 'unique:users'],
+            'password' => ['required', 'confirmed', 'min:6', 'max:12', 'alpha_num', 'regex:/[0-9a-zA-Z]/'],
+            'term' => ['required'],
+        ]);
  
         $this->create($mailer, $request->all(), $config->get('app.key'));
  
@@ -144,7 +106,7 @@ class AuthController extends Controller
     public function postResend(Request $request, Mailer $mailer, Config $config) {
 
     $this->validate($request, ['email' => 'required|email']);
-    $user = User::where('email', '=', $request->input('email'))->first();
+    $user = User::where('email', $request->email)->first();
 
     if(!$user) {
         \Session::flash('flash_message', '登録されていないメールアドレスです。');
@@ -154,7 +116,7 @@ class AuthController extends Controller
     }
 
         if($user->isConfirmed()) {
-            \Session::flash('flash_message', '既に、本登録が完了しています。ログインしてください。');
+            \Session::flash('flash_message', '既に本登録が完了しています。ログインしてください。');
             return redirect('auth/login');
         }
 

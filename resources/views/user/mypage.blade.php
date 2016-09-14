@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="{{secure_asset('/assets/css/jquery-ui.min.css')}}">
 <link rel="stylesheet" href="{{secure_asset('/assets/css/jquery.timepicker.css')}}">
 
-<!-- <link href="css/style_pre_index.css" rel="stylesheet"> -->
+
 @stop
 
 @section('content')

@@ -24,7 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('password', 255);
             $table->string('remember_token', 255);
             $table->string('confirmation_token', 255);
-            $table->timestamp('confirmed_at')->datetime()->default(null);
+            $table->datetime('confirmed_at')->default(null);
             $table->timestamp('confirmation_sent_at');
             $table->timestamps();
             $table->integer('role');
