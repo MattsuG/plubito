@@ -12,7 +12,7 @@
 
     <div class="middle-box text-center loginscreen   animated fadeInDown">
         <div>
-            <h3>パスワード変更</h3>
+            <h3>ユーザー登録確認メール再送</h3>
             <form method="post" class="m-t" role="form" action="">
             
 
@@ -41,7 +41,7 @@
 
                 {!! csrf_field() !!}
                 <input type="hidden" name="token" value="{{ $token }}">
-                <button type="submit" class="btn btn-primary block full-width m-b">パスワード変更</button>
+                <button type="submit" class="btn btn-primary block full-width m-b">再送する</button>
 
             </form>
             <p class="m-t"> <small>TIMELAG Inc. &copy; 2016</small> </p>

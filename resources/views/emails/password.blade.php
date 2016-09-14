@@ -3,5 +3,5 @@
 </p>
  
 <p>
-    <a href="{{ url('auth/reset', [$token]) }}">こちら</a>をクリックしてパスワードリセットに進んでください。
+    <a href="{{ url('/password/reset', [$token]) }}">こちら</a>をクリックしてパスワードリセットに進んでください。
 </p>
