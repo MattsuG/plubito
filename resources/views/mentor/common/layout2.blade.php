@@ -7,7 +7,7 @@
 </head>
 <body>
 
-	@yield('content')
-	@yield('Js')
+    @yield('content')
+    @yield('Js')
 </body>
 </html>

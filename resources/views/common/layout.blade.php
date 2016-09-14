@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     @yield('TitleAndCss')
 </head>
 <body class="gray-bg">
@@ -78,8 +78,8 @@
 
             </nav>
         </div>
-	@yield('content')
-	    <div class="row">
+    @yield('content')
+        <div class="row">
         <hr>
             <footer>
                 <section id="contact" class="gray-section contact">
@@ -131,6 +131,6 @@
         </div>
     </div>
 </div>
-	@yield('Js')
+    @yield('Js')
 </body>
 </html>

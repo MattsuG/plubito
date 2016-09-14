@@ -1,16 +1,16 @@
 textarea {
-	resize: none;
+    resize: none;
 }
 .testvar {
-	height: 2000px;
+    height: 2000px;
 }
 .events-pad {
-	padding-top: 20px;
-	padding-bottom: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 /*cebroadのメインカラー*/
 .cebroad-pink {
-	color: #ff2a50;
+    color: #ff2a50;
 }
 /*cebroadのメインカラーを用いたボタン*/
 .btn-cebroad {

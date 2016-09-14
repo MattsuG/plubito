@@ -24,8 +24,8 @@ use Carbon\Carbon;
 
 class UserController extends Controller
 {
-	//メールやトーク一覧が見れる 自分のuseridに関連するデータを全部引っ張りだす
-	//処理が複雑になるのでRikuto担当
+    //メールやトーク一覧が見れる 自分のuseridに関連するデータを全部引っ張りだす
+    //処理が複雑になるのでRikuto担当
     public function index(Request $request) {
         
         $user = User::find(Auth::user()->id);
