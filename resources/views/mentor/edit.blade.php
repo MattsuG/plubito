@@ -36,7 +36,7 @@
                             <input type="hidden" name="MAX_FILE_SIZE" value="10485760">
 
                             <div class="form-group"><label class="col-sm-2 control-label">タイトル（＊必須）</label>
-                                <div class="col-sm-10"><input type="text" name="title" id="title" placeholder="最大５０文字" class="form-control" value="{{ old('title') or $talk->title }}"></div>
+                                <div class="col-sm-10"><input type="text" name="title" id="title" placeholder="最大５０文字" class="form-control" value="{{ old('title', $talk->title) }}"></div>
                                 <p id="title_count"></p>
                             </div>
 
@@ -55,7 +55,7 @@
 
                             <div class="form-group"><label class="col-sm-2 control-label">詳細（＊必須）</label>
                                 <div class="col-sm-10">
-                                    <textarea name="detail" id="detail" class="form-control" rows="20" required placeholder="最大1000文字">{{ old('detail') or $talk->detail }}</textarea>
+                                    <textarea name="detail" id="detail" class="form-control" rows="20" required placeholder="最大1000文字">{{ old('detail', $talk->detail) }}</textarea>
                                     <p id="detail_count"></p>
                                     <p>※時間相談のやり取りをスムーズにするため、この詳細欄にあなたがトークをすることができる曜日や時間帯を書くことをオススメします。</p>
                                 </div>
@@ -68,33 +68,21 @@
                                 <div class="input-group">
                                   <input type="text" id="photoCover0" class="form-control" placeholder="jpgもしくはpng(5MBまで)">
                                   <span class="input-group-btn"><button type="button" class="btn btn-primary" onclick="$('#pic0').click();">ファイル選択</button></span>
-                                  @if ($talk->pic0_path !== '/assets/img/default_thumbnail.jpg')
-                                    <input type="checkbox" name="pic0_delete" value="1">この画像を削除
-                                  @endif
                                 </div>
                                 <label id="label0" class="cebroad-pink"></label>
                                 <div class="events-pad">
-                                  @if ($talk->pic0_path !== '/assets/ing/default_thumbnail.jpg')
-                                    <img src="{{asset($talk->pic0_path)}}" id="view0" style="width: 300px">
-                                  @endif
-                                  <img src="" id="preview0" style="display:none; width: 300px;">
+                                  <img src="{{secure_asset($talk->pic0_path)}}" id="preview0" style="width: 300px;">
                                 </div>
                             </div>
                             <div class="form-group"><label class="col-sm-2 control-label">挿入画像２</label>
                                 <input class="pic" name="pic1" id="pic1" type="file" style="display:none">
                                 <div class="input-group">
-                                  <input type="text" id="photoCover0" class="form-control" placeholder="jpgもしくはpng(5MBまで)">
+                                  <input type="text" id="photoCover1" class="form-control" placeholder="jpgもしくはpng(5MBまで)">
                                   <span class="input-group-btn"><button type="button" class="btn btn-primary" onclick="$('#pic1').click();">ファイル選択</button></span>
-                                  @if ($talk->pic1_path !== '')
-                                    <input type="checkbox" name="pic1_delete" value="1">この画像を削除
-                                  @endif
                                 </div>
                                 <label id="label1" class="cebroad-pink"></label>
                                 <div class="events-pad">
-                                  @if (!empty($talk->pic1_path))
-                                    <img src="{{asset($talk->pic1_path)}}" id="view1" style="width: 300px">
-                                  @endif
-                                  <img src="" id="preview1" style="display:none; width: 300px;">
+                                  <img src="{{secure_asset($talk->pic1_path)}}" id="preview1" style="width: 300px;">
                                 </div>
                             </div>
                             @if (count($errors) > 0)

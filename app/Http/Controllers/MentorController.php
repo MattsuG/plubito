@@ -53,7 +53,7 @@ class MentorController extends Controller
   public function create()
   {
     if ((int)Auth::user()->role === 0) {
-      redirect("mentor/index");
+      redirect("mentor");
       die();
     }
 
@@ -64,7 +64,7 @@ class MentorController extends Controller
   public function store(TalkRequest $request)
   {
     if ((int)Auth::user()->role === 0) {
-      return redirect("mentor/index");
+      return redirect("mentor");
       die();
     }
 
@@ -134,7 +134,7 @@ class MentorController extends Controller
   public function edit($id)
   {
     if ((int)Auth::user()->role === 0) {
-      return redirect("mentor/index");
+      return redirect("mentor");
       die();
     }
     $talk = Talk::findOrFail($id);
@@ -151,27 +151,28 @@ class MentorController extends Controller
 
   public function update(TalkRequest $request, $id) {   
     if ((int)Auth::user()->role === 0) {
-      return redirect("mentor/index");
+      return redirect("mentor");
       die();
     }
     $thisTalk = Talk::findOrFail($id);
 
     if ((int)$thisTalk->mentor_id !== (int)Auth::user()->id) {
-      return redirect('mentor/index');
+      return redirect('mentor');
       die();
     }
+
     $file0 = $request->file('pic0');
+    $pic0_path = $thisTalk->pic0_path;
 
-
-      if ($request->pic0_delete === '1')
+      if (!empty($request->pic0_delete))
       {
         File::delete($thisTalk->pic0_path);
         $pic0_path = '/assets/img/default_thumbnail.jpg';
       }
-      
 
       if(!empty($file0))
       {
+          //ランダムな文字列に元の拡張子を足す
           $filename = str_random(20).'.'.$file0->getClientOriginalExtension();
           $path = 'talk_pictures';
           $img = Image::make($file0->getRealPath());
@@ -179,17 +180,13 @@ class MentorController extends Controller
           $img->resize(800, 600)->save($path.'/'.$filename);
             chmod($path, 0744);
           $pic0_path = '/'.$path.'/'.$filename;
-      
-      }
-      elseif ($request->pic0_delete !== '1')
-      {
-        $pic0_path = $thisTalk->$pic0_path;
       }
 
 
     $file1 = $request->file('pic1');
+    $pic1_path = $thisTalk->pic1_path;
 
-    if ($request->pic1_delete === '1')
+    if (!empty($request->pic1_delete))
     {
       File::delete($thisTalk->pic1_path);
       $pic1_path = '';
@@ -198,21 +195,17 @@ class MentorController extends Controller
     if (!empty($file1))
       {
 
-          $filename = str_random(20).'.'.$file0->getClientOriginalExtension();
+          $filename = str_random(20).'.'.$file1->getClientOriginalExtension();
           $path = 'talk_pictures';
-          $img = Image::make($file0->getRealPath());
+          $img = Image::make($file1->getRealPath());
             chmod($path, 0777);
           $img->resize(800, 600)->save($path.'/'.$filename);
             chmod($path, 0744);
           $pic1_path = '/'.$path.'/'.$filename;          
         }
-        elseif ($request->pic1_delete !== '1')
-        {
-            $pic1_path = $thisTalk->pic1_path;
-        }
 
 
-      $talk = Talk::findOrFail($id);
+      $talk = Talk::find($id);
       $talk->title = $request->title;
       $talk->mentor_id = Auth::user()->id;
       $talk->category_id = $request->category;

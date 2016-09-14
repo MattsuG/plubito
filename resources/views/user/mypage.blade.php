@@ -11,7 +11,6 @@
 <link rel="stylesheet" href="{{asset('/assets/css/jquery-ui.min.css')}}">
 <link rel="stylesheet" href="{{asset('/assets/css/jquery.timepicker.css')}}">
 
-
 <!-- <link href="css/style_pre_index.css" rel="stylesheet"> -->
 @stop
 
@@ -95,7 +94,7 @@
                                                 {{ $app_to_me->talk->talk_time }}分
                                             </td>
                                             <td>
-                                                <a href="{{url('/user/message/'.$app_to_me->user->id)}}">詳細を見る</a>
+                                                <a href="{{url('/user/message/'.$app_to_me->user->id)}}">メッセージを送る</a>
                                             </td>
                                             <td>
                                             @if ((int)$app_to_me->approved_flag === 0)
@@ -297,17 +296,6 @@
                         @if (Session::has('flash_message'))
                             <div class="alert alert-success">{{ Session::get('flash_message') }}</div>
                         @endif
-
-                        @if (count($errors) > 0)
-                            <div class="alert alert-danger">
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>                       
-                         @endif
-                         
                         </div>
                         </div>
                         </div>
