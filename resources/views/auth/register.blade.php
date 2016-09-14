@@ -32,7 +32,7 @@
 
                 <div class="form-group">
                     <input id="password" type="password" name="password" class="form-control" placeholder="パスワード" required>
-                    <label for="password">パスワードはアルファベットと数字の組み合わせで、6文字以上12文字以内で指定してください。</label>
+                    <label>数字と半角・全角アルファベット使用可 6文字以上12文字以内</label>
                 </div>
 
                 <div class="form-group">  
