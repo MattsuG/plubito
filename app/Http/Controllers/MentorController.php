@@ -58,7 +58,7 @@ class MentorController extends Controller
     }
 
     $categories = Category::All();
-    return view("mentor.add", ['categories' => $categories]);
+    return view("mentor.create", ['categories' => $categories]);
   }
 
   public function store(TalkRequest $request)

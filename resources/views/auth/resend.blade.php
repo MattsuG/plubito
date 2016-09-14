@@ -1,11 +1,11 @@
 @extends('common.layout_auth')
 @section('TitleAndCss')
-<title>TopPage</title>
+<title>+ビト / メール再送信</title>
 
-<link rel="stylesheet" href="{{{secure_asset('/assets/bootstrap/css/bootstrap.min.css')}}}">
-<link rel="stylesheet" href="{{{secure_asset('/assets/font-awesome/css/font-awesome.min.css')}}}">
-<link rel="stylesheet" href="{{{secure_asset('/assets/css/animate.css')}}}">
-<link rel="stylesheet" href="{{{secure_asset('/assets/css/style.css')}}}">
+<link rel="stylesheet" href="{{{asset('/assets/bootstrap/css/bootstrap.min.css')}}">
+<link rel="stylesheet" href="{{{asset('/assets/font-awesome/css/font-awesome.min.css')}}">
+<link rel="stylesheet" href="{{{asset('/assets/css/animate.css')}}">
+<link rel="stylesheet" href="{{{asset('/assets/css/style.css')}}">
 @stop
 @section('content')
     <div class="middle-box text-center loginscreen animated fadeInDown">
@@ -15,17 +15,10 @@
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
  
                 <div class="form-group">
+                    <label for="email">登録したemailアドレスを再入力してください。</label>
                     <input id="email" name="email" type="email" class="form-control" placeholder="Eメールアドレス" required="" value="{{ old('email') }}">
                 </div>
 
-                <div class="form-group">
-                    <input id="password" name="password" type="password" class="form-control" placeholder="パスワード" required="">
-                </div>
-
-                <label for="remember" class="pure-checkbox">
-                    <input id="remember" type="checkbox" name="remember"
-                      {!! old('remember') ? 'checked="checked"' : '' !!} > 継続ログイン
-                </label>
 
                 @if (count($errors) > 0)
                     <div class="alert alert-danger">
@@ -51,10 +44,10 @@
     </div>
 @stop
 @section('Js')
-<script src="{{{secure_asset('/assets/js/jquery-1.11.1.min.js')}}}"></script>
-<script src="{{{secure_asset('/assets/bootstrap/js/bootstrap.min.js')}}}"></script>
-<script src="{{{secure_asset('assets/js/jquery.backstretch.min.js')}}}"></script>
-<script src="{{{secure_asset('/assets/js/wow.min.js')}}}"></script>
-<script src="{{{secure_asset('/assets/js/retina-1.1.0.min.js')}}}"></script>
-<script src="{{{secure_asset('assets/js/scripts.js')}}}"></script>
+<script src="{{{asset('/assets/js/jquery-1.11.1.min.js')}}"></script>
+<script src="{{{asset('/assets/bootstrap/js/bootstrap.min.js')}}"></script>
+<script src="{{{asset('assets/js/jquery.backstretch.min.js')}}"></script>
+<script src="{{{asset('/assets/js/wow.min.js')}}"></script>
+<script src="{{{asset('/assets/js/retina-1.1.0.min.js')}}"></script>
+<script src="{{{asset('assets/js/scripts.js')}}"></script>
 @stop

@@ -3,11 +3,11 @@
 @section('TitleAndCss')
 <title>show.php | トーク詳細</title>
 
-<link rel="stylesheet" href="{{{asset('/assets/bootstrap/css/bootstrap.min.css')}}}">
-<link rel="stylesheet" href="{{{asset('/assets/font-awesome/css/font-awesome.min.css')}}}">
-<link rel="stylesheet" href="{{{asset('/assets/css/style_pre_index.css')}}}">
-<link rel="stylesheet" href="{{{asset('/assets/css/animate.css')}}}">
-<link rel="stylesheet" href="{{{asset('/assets/css/style.css')}}}">
+<link rel="stylesheet" href="{{asset('/assets/bootstrap/css/bootstrap.min.css')}}">
+<link rel="stylesheet" href="{{asset('/assets/font-awesome/css/font-awesome.min.css')}}">
+<link rel="stylesheet" href="{{asset('/assets/css/style_pre_index.css')}}">
+<link rel="stylesheet" href="{{asset('/assets/css/animate.css')}}">
+<link rel="stylesheet" href="{{asset('/assets/css/style.css')}}">
 
 <!-- <link href="css/style_pre_index.css" rel="stylesheet"> -->
 @stop
@@ -76,9 +76,9 @@
                                     <h6>{{ $talk->category->category_name }}</h6>
                                     {{ $talk->title }} 
                                     <div class="photos">
-                                        <img alt="image" class="feed-photo" src="{{{asset($talk->pic0_path)}}}">
+                                        <img alt="image" class="feed-photo" src="{{asset($talk->pic0_path)}}">
                                         @if (!empty($talk->pic1_path))
-                                        <img alt="image" class="feed-photo" src="{{{asset($talk->pic1_path)}}}">
+                                        <img alt="image" class="feed-photo" src="{{asset($talk->pic1_path)}}">
                                         @endif
 
                                     </div>
@@ -164,12 +164,12 @@
 @stop
 
 @section('Js')
-<script src="{{{asset('/assets/js/jquery-2.1.1.js')}}}"></script>
-<script src="{{{asset('/assets/bootstrap/js/bootstrap.min.js')}}}"></script>
+<script src="{{asset('/assets/js/jquery-2.1.1.js')}}"></script>
+<script src="{{asset('/assets/bootstrap/js/bootstrap.min.js')}}"></script>
 
-<script src="{{{asset('/assets/js/plugins/metisMenu/jquery.metisMenu.js')}}}"></script>
-<script src="{{{asset('/assets/js/plugins/slimscroll/jquery.slimscroll.min.js')}}}"></script>
+<script src="{{asset('/assets/js/plugins/metisMenu/jquery.metisMenu.js')}}"></script>
+<script src="{{asset('/assets/js/plugins/slimscroll/jquery.slimscroll.min.js')}}"></script>
 
-<script src="{{{asset('/assets/js/inspinia.js')}}}"></script>
-<script src="{{{asset('/assets/js/plugins/pace/pace.min.js')}}}"></script>
+<script src="{{asset('/assets/js/inspinia.js')}}"></script>
+<script src="{{asset('/assets/js/plugins/pace/pace.min.js')}}"></script>
 @stop
