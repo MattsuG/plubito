@@ -36,7 +36,7 @@
                             <input type="hidden" name="MAX_FILE_SIZE" value="10485760">
 
                             <div class="form-group"><label class="col-sm-2 control-label">タイトル（＊必須）</label>
-                                <div class="col-sm-10"><input type="text" name="title" id="title" placeholder="最大５０文字" class="form-control" value="{{ old('title') or $talk->title }}"></div>
+                                <div class="col-sm-10"><input type="text" name="title" id="title" placeholder="最大５０文字" class="form-control" value="{{ old('title', $talk->title) }}"></div>
                                 <p id="title_count"></p>
                             </div>
 
@@ -50,12 +50,12 @@
                                     </select>
                                 </div>
                             </div>
-                            {{var_dump($talk)}}
+
                             <hr>
 
                             <div class="form-group"><label class="col-sm-2 control-label">詳細（＊必須）</label>
                                 <div class="col-sm-10">
-                                    <textarea name="detail" id="detail" class="form-control" rows="20" required placeholder="最大1000文字">{{ old('detail') or $talk->detail }}</textarea>
+                                    <textarea name="detail" id="detail" class="form-control" rows="20" required placeholder="最大1000文字">{{ old('detail', $talk->detail) }}</textarea>
                                     <p id="detail_count"></p>
                                     <p>※時間相談のやり取りをスムーズにするため、この詳細欄にあなたがトークをすることができる曜日や時間帯を書くことをオススメします。</p>
                                 </div>
@@ -71,7 +71,7 @@
                                 </div>
                                 <label id="label0" class="cebroad-pink"></label>
                                 <div class="events-pad">
-                                  <img src="{{secure_asset($talk->pic0_path)}}" id="preview0" style="display:none; width: 300px;">
+                                  <img src="{{secure_asset($talk->pic0_path)}}" id="preview0" style="width: 300px;">
                                 </div>
                             </div>
                             <div class="form-group"><label class="col-sm-2 control-label">挿入画像２</label>
@@ -82,7 +82,7 @@
                                 </div>
                                 <label id="label1" class="cebroad-pink"></label>
                                 <div class="events-pad">
-                                  <img src="{{secure_asset($talk->pic1_path)}}" id="preview1" style="display:none; width: 300px;">
+                                  <img src="{{secure_asset($talk->pic1_path)}}" id="preview1" style="width: 300px;">
                                 </div>
                             </div>
                             @if (count($errors) > 0)

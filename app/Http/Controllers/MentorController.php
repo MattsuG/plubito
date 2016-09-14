@@ -195,9 +195,9 @@ class MentorController extends Controller
     if (!empty($file1))
       {
 
-          $filename = str_random(20).'.'.$file0->getClientOriginalExtension();
+          $filename = str_random(20).'.'.$file1->getClientOriginalExtension();
           $path = 'talk_pictures';
-          $img = Image::make($file0->getRealPath());
+          $img = Image::make($file1->getRealPath());
             chmod($path, 0777);
           $img->resize(800, 600)->save($path.'/'.$filename);
             chmod($path, 0744);
