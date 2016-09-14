@@ -1,9 +1,9 @@
 @extends('common.layout_no_sidebar')
 @section('TitleAndCss')
 <title>TopPage</title>
-<link rel="stylesheet" href="{{{asset('/assets/bootstrap/css/bootstrap.min.css')}}}">
-<link rel="stylesheet" href="{{{asset('/assets/font-awesome/css/font-awesome.min.css')}}}">
-<link rel="stylesheet" href="{{{asset('/assets/css/style.css')}}}">
+<link rel="stylesheet" href="{{secure_asset('/assets/bootstrap/css/bootstrap.min.css')}}">
+<link rel="stylesheet" href="{{secure_asset('/assets/font-awesome/css/font-awesome.min.css')}}">
+<link rel="stylesheet" href="{{secure_asset('/assets/css/style.css')}}">
 @stop
 
 @section('content')

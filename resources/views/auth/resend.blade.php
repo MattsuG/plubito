@@ -2,10 +2,10 @@
 @section('TitleAndCss')
 <title>+ビト / メール再送信</title>
 
-<link rel="stylesheet" href="{{{secure_asset('/assets/bootstrap/css/bootstrap.min.css')}}}">
-<link rel="stylesheet" href="{{{secure_asset('/assets/font-awesome/css/font-awesome.min.css')}}}">
-<link rel="stylesheet" href="{{{secure_asset('/assets/css/animate.css')}}}">
-<link rel="stylesheet" href="{{{secure_asset('/assets/css/style.css')}}}">
+<link rel="stylesheet" href="{{{secure_asset('/assets/bootstrap/css/bootstrap.min.css')}}">
+<link rel="stylesheet" href="{{{secure_asset('/assets/font-awesome/css/font-awesome.min.css')}}">
+<link rel="stylesheet" href="{{{secure_asset('/assets/css/animate.css')}}">
+<link rel="stylesheet" href="{{{secure_asset('/assets/css/style.css')}}">
 @stop
 @section('content')
     <div class="middle-box text-center loginscreen animated fadeInDown">
@@ -15,7 +15,7 @@
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
  
                 <div class="form-group">
-                    <label for="email"></label>
+                    <label for="email">登録したemailアドレスを再入力してください。</label>
                     <input id="email" name="email" type="email" class="form-control" placeholder="Eメールアドレス" required="" value="{{ old('email') }}">
                 </div>
 
@@ -44,10 +44,10 @@
     </div>
 @stop
 @section('Js')
-<script src="{{{secure_asset('/assets/js/jquery-1.11.1.min.js')}}}"></script>
-<script src="{{{secure_asset('/assets/bootstrap/js/bootstrap.min.js')}}}"></script>
-<script src="{{{secure_asset('assets/js/jquery.backstretch.min.js')}}}"></script>
-<script src="{{{secure_asset('/assets/js/wow.min.js')}}}"></script>
-<script src="{{{secure_asset('/assets/js/retina-1.1.0.min.js')}}}"></script>
-<script src="{{{secure_asset('assets/js/scripts.js')}}}"></script>
+<script src="{{{secure_asset('/assets/js/jquery-1.11.1.min.js')}}"></script>
+<script src="{{{secure_asset('/assets/bootstrap/js/bootstrap.min.js')}}"></script>
+<script src="{{{secure_asset('assets/js/jquery.backstretch.min.js')}}"></script>
+<script src="{{{secure_asset('/assets/js/wow.min.js')}}"></script>
+<script src="{{{secure_asset('/assets/js/retina-1.1.0.min.js')}}"></script>
+<script src="{{{secure_asset('assets/js/scripts.js')}}"></script>
 @stop
