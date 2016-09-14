@@ -8,16 +8,15 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>INSPINIA - Landing Page</title>
+    <title>プラビト - Landing Page</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100italic,300,300italic,400,400italic,500,500italic">
-    <link rel="stylesheet" href="{{secure_asset('/assets/bootstrap/css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{secure_asset('/assets/font-awesome/css/font-awesome.min.css')}}">
-    <link rel="stylesheet" href="{{secure_asset('/assets/css/animate.css')}}">
-    <link rel="stylesheet" href="{{secure_asset('/assets/css/style.css')}}">
-    <link rel="stylesheet" href="{{secure_asset('/assets/css/style_pre_index.css')}}">
-    <link rel="stylesheet" href="{{secure_asset('/assets/css/media-queries.css')}}">
+    <link rel="stylesheet" href="{{{asset('/assets/bootstrap/css/bootstrap.min.css')}}}">
+    <link rel="stylesheet" href="{{{asset('/assets/font-awesome/css/font-awesome.min.css')}}}">
+    <link rel="stylesheet" href="{{{asset('/assets/css/animate.css')}}}">
+    <link rel="stylesheet" href="{{{asset('/assets/css/style.css')}}}">
+    <link rel="stylesheet" href="{{{asset('/assets/css/media-queries.css')}}}">
 
 </head>
 <body id="page-top" class="landing-page">
@@ -31,11 +30,11 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.html">+ヒト</a>
+                    <a class="navbar-brand" href="/">+ヒト</a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a class="page-scroll" href="#page-top">ホーム</a></li>
+                        <li><a class="page-scroll" href="/">ホーム</a></li>
                         <li><a class="page-scroll" href="#timeline">プロジェクト予定</a></li>
                         <li><a class="page-scroll" href="#howtouse">使い方</a></li>
                         <li><a href="/auth/login">ログイン</a></li>
@@ -443,7 +442,7 @@
             <div class="col-lg-12">
                 <div class="navy-line"></div>
                 <h1>使い方</h1>
-                <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. </p>
+                <p>+ヒトの大まかな使い方です。詳細は「詳しい使い方」をご覧下さい。 </p>
             </div>
         </div>
         <div class="row">
@@ -620,7 +619,7 @@
                     </li>
                     <li><a href="#"><i class="fa fa-facebook"></i></a>
                     </li>
-                    <li><a href="#"><i class="fa fa-linkedin"></i></a>
+                    <li><a href="#"><i class="fa fa-instagram"></i></a>
                     </li>
                 </ul>
             </div>
@@ -648,6 +647,17 @@
 </footer>
 
 <!-- Mainly scripts -->
+<<<<<<< HEAD
+<script src="{{{asset('/assets/js/jquery-2.1.1.js')}}}"></script>
+<script src="{{{asset('/assets/bootstrap/js/bootstrap.min.js')}}}"></script>
+<script src="{{{asset('assets/js/jquery.backstretch.min.js')}}}"></script>
+<script src="{{{asset('/assets/js/wow.min.js')}}}"></script>
+<script src="{{{asset('assets/js/scripts.js')}}}"></script>
+<script src="{{{asset('/assets/js/plugins/metisMenu/jquery.metisMenu.js')}}}"></script>
+<script src="{{{asset('/assets/js/plugins/slimscroll/jquery.slimscroll.min.js')}}}"></script>
+<script src="{{{asset('/assets/js/inspinia.js')}}}"></script>
+<script src="{{{asset('/assets/js/plugins/pace/pace.min.js')}}}"></script>
+=======
 <script src="{{secure_asset('/assets/js/jquery-2.1.1.js')}}"></script>
 <script src="{{secure_asset('/assets/bootstrap/js/bootstrap.min.js')}}"></script>
 <script src="{{secure_asset('assets/js/jquery.backstretch.min.js')}}"></script>
@@ -658,6 +668,7 @@
 <script src="{{secure_asset('/assets/js/plugins/slimscroll/jquery.slimscroll.min.js')}}"></script>
 <script src="{{secure_asset('/assets/js/inspinia.js')}}"></script>
 <script src="{{secure_asset('/assets/js/plugins/pace/pace.min.js')}}"></script>
+>>>>>>> master
 <script>
     $(document).ready(function () {
 

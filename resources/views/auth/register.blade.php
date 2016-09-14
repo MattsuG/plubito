@@ -1,11 +1,11 @@
 @extends('common.layout_auth')
 @section('TitleAndCss')
 <title>TopPage</title>
-<link rel="stylesheet" href="{{secure_asset('/assets/bootstrap/css/bootstrap.min.css')}}">
-<link rel="stylesheet" href="{{secure_asset('/assets/font-awesome/css/font-awesome.min.css')}}">
-<link rel="stylesheet" href="{{secure_asset('/assets/css/animate.css')}}">
-<link rel="stylesheet" href="{{secure_asset('/assets/css/style.css')}}">
-<link rel="stylesheet" href="{{secure_asset('/assets/css/media-queries.css')}}">
+<link rel="stylesheet" href="{{asset('/assets/bootstrap/css/bootstrap.min.css')}}">
+<link rel="stylesheet" href="{{asset('/assets/font-awesome/css/font-awesome.min.css')}}">
+<link rel="stylesheet" href="{{asset('/assets/css/animate.css')}}">
+<link rel="stylesheet" href="{{asset('/assets/css/style.css')}}">
+<link rel="stylesheet" href="{{asset('/assets/css/media-queries.css')}}">
 @stop
 
 @section('content')
@@ -40,7 +40,7 @@
                 </div>
 
                 <div class="form-group">
-                        <div class="checkbox i-checks"><label> <input name="term" type="checkbox" required><i></i> 利用規約に同意する </label></div>
+                        <div class="checkbox i-checks"><label> <input name="term" type="checkbox" required><i></i><a href="/terms">利用規約</a>に同意する </label></div>
                 </div>
 
                 @if (count($errors) > 0)
@@ -53,7 +53,7 @@
                 </div>
                 @endif
 
-                <button type="submit" class="btn btn-primary block full-width m-b">登録</button>
+                <button type="submit" class="btn btn-primary block full-width m-b">利用規約に同意して登録する</button>
 
                 <p class="text-muted text-center"><small>すでにアカウントをお持ちですか？</small></p>
                 <a class="btn btn-sm btn-white btn-block" href="/auth/login">ログイン</a>

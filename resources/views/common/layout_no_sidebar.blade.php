@@ -50,9 +50,9 @@
         <div class="row">
             <div class="col-lg-12 text-center">
                 <ul class="list-inline social-icon">
-                    <li><a href="#"><i class="fa fa-twitter"></i></a>
+                    <li><a href="https://twitter.com/plubito"><i class="fa fa-twitter"></i></a>
                     </li>
-                    <li><a href="#"><i class="fa fa-facebook"></i></a>
+                    <li><a href="https://www.facebook.com/plubito/"><i class="fa fa-facebook"></i></a>
                     </li>
                     <li><a href="#"><i class="fa fa-linkedin"></i></a>
                     </li>
