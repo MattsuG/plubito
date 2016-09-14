@@ -53,7 +53,7 @@ class MentorController extends Controller
   public function create()
   {
     if ((int)Auth::user()->role === 0) {
-      redirect("mentor");
+      return ("mentor");
       die();
     }
 
@@ -137,6 +137,7 @@ class MentorController extends Controller
       return redirect("mentor");
       die();
     }
+
     $talk = Talk::findOrFail($id);
     $categories = Category::All();
 
