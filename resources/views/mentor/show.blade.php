@@ -18,7 +18,7 @@
                 <h2>トーク詳細</h2>
                 <ol class="breadcrumb">
                     <li>
-                        <a href="/mentor">トーク一覧</a>
+                        <a href="/mentor">トーク詳細</a>
                     </li>
                     <li class="active">
                         <strong>トーク詳細</strong>
@@ -160,7 +160,6 @@
             </div>
         </div>
     @endif
-</div>
 @stop
 
 @section('Js')
