@@ -27,7 +27,7 @@
         </div>
 
 
-        <div class="row wrapper border-bottom white-bg">
+        <div class="row wrapper white-bg">
             <div class="col-lg-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-content">
