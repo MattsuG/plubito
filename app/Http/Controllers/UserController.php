@@ -84,6 +84,8 @@ class UserController extends Controller
         $this->validate($request, [
           'date' => ['required', 'date', 'after:tomorrow'],
           'time' => ['required', 'regex:/([0-1][0-9]|2[0-3]):[0-5][0-9]/'],
+          'user_id' => ['alpha_num'],
+          'talk_id' => ['alpha_num']
         ]);
         $user = User::findOrFail($request->user_id);
         $user->applications()->sync([$request->talk_id => ['approved_flag' => 1, 'approved_at' => Carbon::now(), 'talk_date' => $request->date, 'starting_time' => $request->time]], false);
