@@ -17,17 +17,17 @@
 
         <div class="row wrapper border-bottom white-bg page-heading inbox-title">
             <div class="col-lg-9ƒ">
-                <h2>トーク一覧</h2>
+                <h2>トーク編集</h2>
                 <ol class="breadcrumb">
                     <li class="active">
-                        <strong>トーク一覧</strong>
+                        <strong>トーク編集</strong>
                     </li>
                 </ol>
             </div>
         </div>
 
 
-        <div class="row wrapper border-bottom white-bg">
+        <div class="row wrapper white-bg">
             <div class="col-lg-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-content">
