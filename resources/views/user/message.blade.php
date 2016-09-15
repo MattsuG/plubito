@@ -68,7 +68,7 @@
                                             @if (!empty($received_mail->sender->profile_picture_path))
                                                 <img alt="profile_image" class="img-circle" src="{{ asset($received_mail->sender->profile_picture_path) }}" style="width: 50px; height: 50px;">
                                             @else
-                                                <img alt="image" class="img-circle" src="{{asset('/assets/img/default_thumbnail.jpg')}}" style="width: 50px; height: 50px;">
+                                                <img alt="image" class="img-circle" src="{{secure_asset('/assets/img/default_thumbnail.jpg')}}" style="width: 50px; height: 50px;">
                                             @endif
                                         </td>
                                         <td>
