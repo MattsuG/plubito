@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="{{secure_asset('/assets/css/animate.css')}}">
 <link rel="stylesheet" href="{{secure_asset('/assets/css/style.css')}}">
 <style>
-    p{
+    .messagelist{
       width: 100px;
       white-space: nowrap;
       overflow: hidden;
@@ -76,7 +76,7 @@
                                             {{ $received_mail->sender->firstname }}
                                         </td>
                                         <td>
-                                            <p>{{ $received_mail->body }}</p>
+                                            <p style="message;">{{ $received_mail->body }}</p>
                                         </td>
                                         <td>
                                             <button onclick="location.href='{{url('/user/message/'.$received_mail->sender_id)}}'" type="submit">詳細を見る</button>
@@ -107,7 +107,7 @@
                                         @if (!empty($sent_mail->receiver->profile_picture_path))
                                             <img alt="profile_image" class="img-circle" src="{{ asset($sent_mail->receiver->profile_picture_path) }}" style="width: 50px; height: 50px;">
                                         @else
-                                            <img alt="image" class="img-circle" src="{{secure_asset('/assets/img/default_thumbnail.jpg')}}" style="width: 50px; height: 50px;">
+                                            <img alt="image" class="img-circle" src="{{asset('/assets/img/default_thumbnail.jpg')}}" style="width: 50px; height: 50px;">
                                         @endif
                                     </td>
                                     <td>
@@ -115,7 +115,7 @@
                                         {{ $sent_mail->receiver->firstname }}
                                     </td>
                                     <td>
-                                       <p style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">{{ $sent_mail->body }}</p>
+                                       <p class="messagelist">{{ $sent_mail->body }}</p>
                                     </td>
                                     <td>
                                             <button onclick="location.href='{{url('/user/message/'.$sent_mail->receiver_id)}}'" type="submit">詳細を見る</button>
@@ -139,12 +139,12 @@
 @stop
 
 @section('Js')
-<script src="{{secure_asset('/assets/js/jquery-2.1.1.js')}}"></script>
-<script src="{{secure_asset('/assets/bootstrap/js/bootstrap.min.js')}}"></script>
+<script src="{{asset('/assets/js/jquery-2.1.1.js')}}"></script>
+<script src="{{asset('/assets/bootstrap/js/bootstrap.min.js')}}"></script>
 
-<script src="{{secure_asset('/assets/js/plugins/metisMenu/jquery.metisMenu.js')}}"></script>
-<script src="{{secure_asset('/assets/js/plugins/slimscroll/jquery.slimscroll.min.js')}}"></script>
+<script src="{{asset('/assets/js/plugins/metisMenu/jquery.metisMenu.js')}}"></script>
+<script src="{{asset('/assets/js/plugins/slimscroll/jquery.slimscroll.min.js')}}"></script>
 
-<script src="{{secure_asset('/assets/js/inspinia.js')}}"></script>
-<script src="{{secure_asset('/assets/js/plugins/pace/pace.min.js')}}"></script>
+<script src="{{asset('/assets/js/inspinia.js')}}"></script>
+<script src="{{asset('/assets/js/plugins/pace/pace.min.js')}}"></script>
 @stop
