@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="{{secure_asset('/assets/css/animate.css')}}">
 <link rel="stylesheet" href="{{secure_asset('/assets/css/style.css')}}">
 <style>
-    p{
+    .messagelist{
       width: 100px;
       white-space: nowrap;
       overflow: hidden;
