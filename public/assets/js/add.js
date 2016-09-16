@@ -52,7 +52,7 @@
     $('#detail').bind('keydown keyup keypress change',function(){
         var thisValueLength = $(this).val().length;
         $('#detail_count').text(thisValueLength);
-        if(thisValueLength > 500) {
+        if(thisValueLength > 1000) {
             $('#detail_count').addClass('cebroad-pink');
         } else {
             $('#detail_count').removeClass('cebroad-pink');
