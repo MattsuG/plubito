@@ -239,7 +239,11 @@
                                         </td>
                                         <td>
                                             @if ((int)$app->pivot->approved_flag === 1 && (int)$app->pivot->paid_flag === 0)
-
+                                                <form action="{{url('/payment')}}" method="post">
+                                                    <input type="hidden" value="{{$app->id}}" name="talk_id">
+                                                    {{csrf_field()}}
+                                                    <button type="submit">支払い</button>
+                                                </form>
                                             @elseif ((int)$app->pivot->paid_flag === 1)
 
                                             @endif

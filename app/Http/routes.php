@@ -48,8 +48,8 @@ Route::group(['middleware' => 'auth'], function () {
         //Route::patch('/user/email_edit/{id}', 'UserController@email_update');
 
         //PayPal
-        //Route::post('/payment', 'PayPalController@index');
-        //Route::post('/payment/confirmation', 'PayPalController@foo');
+        Route::post('/payment', 'PayPalController@setExpressCheckout');
+        Route::post('/payment/confirmation', 'PayPalController@foo');
 
     });
 
