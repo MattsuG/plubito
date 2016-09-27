@@ -49,7 +49,8 @@ Route::group(['middleware' => 'auth'], function () {
 
         //PayPal
         Route::post('/payment', 'PayPalController@setExpressCheckout');
-        Route::post('/payment/confirmation', 'PayPalController@foo');
+        Route::get('/payment/confirm', 'PayPalController@getConfirm');
+        Route::post('/payment/confirm', 'PayPalController@postConfirm');
 
     });
 
