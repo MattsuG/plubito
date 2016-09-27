@@ -47,19 +47,24 @@ class PayPalController extends Controller
 			die();
 		}
 
-		$return_url        = 'https://plubito-rictory.c9users.io/payment/confirm';
-		$cancel_url        = 'https://plubito-rictory.c9users.io/user/mypage';
-		$amount            = $talk->price + $talk->price * $this->tax_rate / 100;
+		$return_url = 'https://plubito-rictory.c9users.io/payment/confirm';
+		$cancel_url = 'https://plubito-rictory.c9users.io/user/mypage';
+		$tax_amount = $talk->price * $this->tax_rate / 100;
+		$amount     = $talk->price + $tax_amount;
 
 		if(App::environment('staging')) {
 			$this->sandbox = '';
+			$return_url = 'https://plubito.jp/payment/confirm';
+			$cancel_url = 'https://plubito.jp/user/mypage';
 		}
 
 		//PayPal Express CheckoutAPIを実行
-		//$api = 'https://api-3t.'.$this->sandbox.'paypal.com/nvp?METHOD=SetExpressCheckout&VERSION='.$this->api_version.'$&USER='.$api_user_name.'&PWD='.$api_user_password.'&SIGNATURE='.$api_signature.'&RETURNURL='.$return_url.'&CANCELURL='.$cancel_url.'&L_PAYMENTREQUEST_0_AMT0='.$talk->price.'.0&L_PAYMENTREQUEST_0_NAME0='.$talk->title.'&L_PAYMENTREQUEST_0_TAXAMT0='.$tax_rate.'.00&L_PAYMENTREQUEST_0_QTY0=0&L_PAYMENTREQUEST_0_ITEMCATEGORY0=Digital&PAYMENTREQUEST_0_PAYMENTACTION=Sale&PAYMENTREQUEST_0_CURRENCYCODE=JPY&PAYMENTREQUEST_0_AMT='.$amount.'.0&PAYMENTREQUEST_0_ITEMAMT='.$talk->price.'.0&REQCONFIRMSHIPPING=0&NOSHIPPING=1&SOLUTIONTYPE=Sole';
 
-		 $api_request = 'https://api-3t.'.$this->sandbox.'paypal.com/nvp?USER='.$this->api_user_name.'&PWD='.$this->api_user_password.'&SIGNATURE='.$this->api_signature.'&METHOD=SetExpressCheckout&VERSION='.$this->api_version.'&PAYMENTREQUEST_0_AMT='.$amount.'&PAYMENTREQUEST_0_CURRENCYCODE=JPY&PAYMENTREQUEST_0_PAYMENTACTION=Sale&cancelUrl='.$cancel_url.'&returnUrl='.$return_url;
+		// $api_request = 'https://api-3t.'.$this->sandbox.'paypal.com/nvp?USER='.$this->api_user_name.'&PWD='.$this->api_user_password.'&SIGNATURE='.$this->api_signature.'&METHOD=SetExpressCheckout&VERSION='.$this->api_version.'&L_PAYMENTREQUEST_0_ITEMCATEGORY0=Digital&L_PAYMENTREQUEST_0_AMT0='.$talk->price.'&L_PAYMENTREQUEST_0_TAXAMT0='.$tax_amount.'&L_PAYMENTREQUEST_0_NAME0='.$talk->title.'&L_PAYMENTREQUEST_0_QTY0=1&PAYMENTREQUEST_0_ITEMAMT='.$talk->price.'&L_PAYMENTREQUEST_0_TAXAMT='.$tax_amount.'&PAYMENTREQUEST_0_AMT='.$amount.'&PAYMENTREQUEST_0_CURRENCYCODE=JPY&PAYMENTREQUEST_0_PAYMENTACTION=Sale&REQCONFIRMSHIPPING=0&NOSHIPPING=1&SOLUTIONTYPE=Sole&returnUrl='.$return_url.'&cancelUrl='.$cancel_url;
 
+		$api_request = 'https://api-3t.'.$this->sandbox.'paypal.com/nvp?USER='.$this->api_user_name.'&PWD='.$this->api_user_password.'&SIGNATURE='.$this->api_signature.'&METHOD=SetExpressCheckout&VERSION='.$this->api_version.'&L_PAYMENTREQUEST_0_ITEMCATEGORY0=Digital&L_PAYMENTREQUEST_0_AMT0='.$talk->price.'&L_PAYMENTREQUEST_0_NAME0='.$talk->title.'&L_PAYMENTREQUEST_0_QTY0=1&PAYMENTREQUEST_0_ITEMAMT='.$talk->price.'&PAYMENTREQUEST_0_AMT='.$talk->price.'&PAYMENTREQUEST_0_CURRENCYCODE=JPY&PAYMENTREQUEST_0_PAYMENTACTION=Sale&REQCONFIRMSHIPPING=0&NOSHIPPING=1&SOLUTIONTYPE=Sole&returnUrl='.$return_url.'&cancelUrl='.$cancel_url;
+
+		echo $api_request.'<br>';
 
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $api_request);
@@ -75,6 +80,8 @@ class PayPalController extends Controller
 			return redirect('https://www.'.$this->sandbox.'paypal.com/jp/cgi-bin/webscr?cmd=_express-checkout&token=EC-'.$token[1]);
 		} else {
 			echo $response;
+			\Session::flash('flash_message', '通信に失敗しました。時間を空けてもう一度お試しください。');
+			//return back();
 		}
 
 	}
